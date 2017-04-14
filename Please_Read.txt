@@ -1,0 +1,21 @@
+How to Run Server:
+
+make sure you have run npm install:
+	->: npm install
+
+run the “start” script:
+	->: ./start
+
+
+
+
+Git instructions:
+
+Once you have cloned off of GitHub, you’ll need to set remote origin to the GitHub Repo:
+	
+	->: git remote set-url origin https://github.com/rdclif/caelumRTS.git
+
+Next, perform your first commit:
+	->: git add .
+	->: git commit -m “my first commit”
+	->: git push
