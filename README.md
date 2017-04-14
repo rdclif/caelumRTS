@@ -1,3 +1,22 @@
+CaelumRTS  -  Based on the melonJS boilerplate
+
+-Make sure you have nodeJS installed
+
+-Run npm install
+	% npm install
+	
+-To start server
+  % ./start
+
+
+
+
+
+
+
+
+
+
 melonJS boilerplate
 -------------------------------------------------------------------------------
 
