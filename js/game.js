@@ -45,6 +45,6 @@ var game = {
         me.pool.register("cityObject", game.cityObject);
 
         // Start the game.
-        me.state.change(me.state.PLAY);
+        me.state.change(me.state.MENU);
     }
 };
