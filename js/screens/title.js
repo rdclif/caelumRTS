@@ -14,6 +14,36 @@ game.TitleScreen = me.ScreenObject.extend({
 	// add to the world container
 	me.game.world.addChild(backgroundImage, 1);
 
+	// create a basic GUI Object
+	var myButton = me.GUI_Object.extend(
+	{
+		init:function (x, y)
+		{
+			var settings = {}
+			settings.image = "button_0";
+	//		settings.framewidth = 100;
+	//		settings.frameheight = 50;
+			// super constructor
+			this._super(me.GUI_Object, "init", [x, y, settings]);
+			// define the object z order
+			this.pos.z = 4;
+		},
+
+		// output something in the console
+		// when the object is clicked
+		onClick:function (event)
+		{
+			me.state.change(me.state.PLAY);
+			// don't propagate the event
+			return false;
+		}
+	});
+
+	// add the object at pos (10,10)
+	me.game.world.addChild(new myButton(275,350));
+
+
+
 	// add a new renderable component with the scrolling text
 	me.game.world.addChild(new (me.Renderable.extend ({
 
@@ -56,13 +86,13 @@ game.TitleScreen = me.ScreenObject.extend({
         })), 2);
 
 
-		me.input.bindKey(me.input.KEY.ENTER, "enter", true);
-		me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);
-		this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
-     			if (action === "enter") {
-				me.state.change(me.state.PLAY);
-			}
-		});
+	me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+	me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);
+	this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
+		if (action === "enter") {
+			me.state.change(me.state.PLAY);
+		}
+	});
 
     },
 
