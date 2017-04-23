@@ -1,17 +1,11 @@
 
-game.KnightEntity = me.Entity.extend({
+game.Knight = game.playerObject.extend({
     /**
      * constructor
      */
     init : function (x, y, settings) {
         // call the constructor
-        this._super(me.Entity, 'init', [x, y, settings]);
-
-        // set the default horizontal & vertical speed (accel vector)
-        this.body.setVelocity(3, 3);
-
-        // set the display to follow our position on both axis
-        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+        this._super(game.playerObject, 'init', [x, y, settings]);
 
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
@@ -44,11 +38,11 @@ game.KnightEntity = me.Entity.extend({
         me.collision.check(this);
 
         // return true if we moved or if the renderable was updated
-        return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
+        return (this._super(game.playerObject, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
     },
 
     onDestroyEvent : function() {
-        me.input.releasePointerEvent('mousedown', me.game.viewport);
+
     },
 
     /**

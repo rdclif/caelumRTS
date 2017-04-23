@@ -85,7 +85,6 @@ game.TitleScreen = me.ScreenObject.extend({
 		}
         })), 2);
 
-
 	me.input.bindKey(me.input.KEY.ENTER, "enter", true);
 	me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);
 	this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
@@ -101,6 +100,9 @@ game.TitleScreen = me.ScreenObject.extend({
      *  action to perform when leaving this screen (state change)
      */
     onDestroyEvent: function() {
-        ; // TODO
+        me.input.unbindKey(me.input.KEY.ENTER);
+        me.input.unbindPointer(me.input.pointer.LEFT);
+        me.event.unsubscribe(this.handler);
+		// TODO
     }
 });

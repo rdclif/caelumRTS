@@ -37,12 +37,19 @@ var game = {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
 
+        me.input.bindKey(me.input.KEY.LEFT,  "left");
+        me.input.bindKey(me.input.KEY.RIGHT, "right");
+        me.input.bindKey(me.input.KEY.UP,    "up");
+        me.input.bindKey(me.input.KEY.DOWN,  "down");
+
+
+
         //set gravity to 0
         me.sys.gravity = 0;
 
         // add our player entity in the entity pool
-        me.pool.register("knightPlayer", game.KnightEntity);
-        me.pool.register("cityObject", game.cityObject);
+        me.pool.register("knightPlayer", game.Knight);
+        me.pool.register("cityObject", game.City);
 
         // Start the game.
         me.state.change(me.state.MENU);

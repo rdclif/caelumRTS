@@ -1,15 +1,11 @@
 
-game.cityObject = me.Entity.extend({
+game.City = game.playerObject.extend({
     /**
      * constructor
      */
     init: function (x, y, settings) {
         // call the constructor
-        this._super(me.Entity, 'init', [x, y, settings]);
-
-        // set the default horizontal & vertical speed (accel vector)
-        this.body.setVelocity(0, 0);
-
+        this._super(game.playerObject, 'init', [x, y, settings]);
 
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
@@ -22,7 +18,6 @@ game.cityObject = me.Entity.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
 
-        this.body.setCollisionMask(me.collision.types.WORLD_SHAPE);
     },
 
     /*
@@ -38,7 +33,7 @@ game.cityObject = me.Entity.extend({
         me.collision.check(this);
 
         // return true if we moved or if the renderable was updated
-        return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
+        return (this._super(game.playerObject, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
     },
 
     /**
