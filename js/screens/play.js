@@ -15,6 +15,9 @@ game.PlayScreen = me.ScreenObject.extend({
         // Can also be forced by specifying a "Infinity" z value to the addChild function.
         this.HUD = new game.HUD.Container();
         me.game.world.addChild(this.HUD);
+
+
+
     },
     keyPressed: function (action /*, keyCode, edge */) {
 

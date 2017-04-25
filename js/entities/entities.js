@@ -55,7 +55,8 @@ game.playerObject = me.Entity.extend({
     // mouse down function
     onSelect : function (event) {
         if (this.hover === true) {
-            alert(this.name);
+            this.onClick(this);
+            this.game.repaint();
         }
 
         return true;
@@ -73,5 +74,6 @@ game.playerObject = me.Entity.extend({
     update: function () {
         return this.selected || this.hover;
     }
+
 
 });

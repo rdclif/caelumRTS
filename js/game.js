@@ -42,7 +42,10 @@ var game = {
         me.input.bindKey(me.input.KEY.UP,    "up");
         me.input.bindKey(me.input.KEY.DOWN,  "down");
 
-
+        game.texture = new me.video.renderer.Texture(
+            me.loader.getJSON("UI_Assets"),
+            me.loader.getImage("UI_Assets")
+        );
 
         //set gravity to 0
         me.sys.gravity = 0;

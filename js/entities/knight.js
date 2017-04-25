@@ -40,6 +40,25 @@ game.Knight = game.playerObject.extend({
         // return true if we moved or if the renderable was updated
         return (this._super(game.playerObject, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
     },
+    onClick : function (event) {
+        var panel = new game.UI.Container(this.pos.x-100, this.pos.y-150, 250, 150, "KNIGHT");
+
+        panel.addChild(new game.UI.ButtonUI(
+            30, 45,
+            "grey",
+            "Move"
+        ));
+        panel.addChild(new game.UI.ButtonUI(
+            30, 90,
+            "grey",
+            "Attack"
+        )
+        );
+
+        // add the panel to word (root) container
+        me.game.world.addChild(panel);
+
+    },
 
     onDestroyEvent : function() {
 
