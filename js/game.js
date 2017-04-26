@@ -37,15 +37,16 @@ var game = {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
 
+        game.texture = new me.video.renderer.Texture(
+            me.loader.getJSON("menu"),
+            me.loader.getImage("menu")
+        );
+
         me.input.bindKey(me.input.KEY.LEFT,  "left");
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.UP,    "up");
         me.input.bindKey(me.input.KEY.DOWN,  "down");
 
-        game.texture = new me.video.renderer.Texture(
-            me.loader.getJSON("UI_Assets"),
-            me.loader.getImage("UI_Assets")
-        );
 
         //set gravity to 0
         me.sys.gravity = 0;

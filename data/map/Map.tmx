@@ -14,12 +14,6 @@
   </data>
  </layer>
  <objectgroup name="Object Layer 1" offsetx="64" offsety="2">
-  <object id="1" name="knightPlayer" x="128" y="224" width="48" height="64">
-   <properties>
-    <property name="framewidth" type="int" value="48"/>
-    <property name="image" value="knight"/>
-   </properties>
-  </object>
   <object id="14" name="cityObject" x="317" y="290" width="128" height="128">
    <properties>
     <property name="framewidth" type="int" value="128"/>

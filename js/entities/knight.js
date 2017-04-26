@@ -3,9 +3,15 @@ game.Knight = game.playerObject.extend({
     /**
      * constructor
      */
-    init : function (x, y, settings) {
+    init : function (x, y ) {
         // call the constructor
-        this._super(game.playerObject, 'init', [x, y, settings]);
+        this._super(game.playerObject, 'init', [x, y, {
+            image : "knight",
+            name : "Knight",
+            width : 48,
+            height : 64,
+            framewidth : 48
+        }]);
 
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
@@ -41,22 +47,7 @@ game.Knight = game.playerObject.extend({
         return (this._super(game.playerObject, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
     },
     onClick : function (event) {
-        var panel = new game.UI.Container(this.pos.x-100, this.pos.y-150, 250, 150, "KNIGHT");
-
-        panel.addChild(new game.UI.ButtonUI(
-            30, 45,
-            "grey",
-            "Move"
-        ));
-        panel.addChild(new game.UI.ButtonUI(
-            30, 90,
-            "grey",
-            "Attack"
-        )
-        );
-
-        // add the panel to word (root) container
-        me.game.world.addChild(panel);
+        //alert(this.name);
 
     },
 

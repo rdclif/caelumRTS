@@ -7,60 +7,48 @@ game.HUD = game.HUD || {};
 
 game.HUD.Container = me.Container.extend({
 
-    init: function() {
-        // call the constructor
-        this._super(me.Container, 'init');
+        init: function (x, y) {
+            // call the constructor
+            this._super(me.Container, "init", [x, y]);
 
-        // persistent across level change
-        this.isPersistent = true;
+            this.height = 125;
+            this.width = 190;
 
-        // make sure we use screen coordinates
-        this.floating = true;
-
-        // give a name
-        this.name = "HUD";
-
-        // add our child score object at the top left corner
-        this.addChild(new game.HUD.ScoreItem(5, 5));
-    }
-});
+            this.pos.x = me.game.viewport.width-this.width;
+            this.pos.y = me.game.viewport.height-this.height;
 
 
-/**
- * a basic HUD item to display score
- */
-game.HUD.ScoreItem = me.Renderable.extend({
-    /**
-     * constructor
-     */
-    init: function(x, y) {
+            this.anchorPoint.set(0, 0);
 
-        // call the parent constructor
-        // (size does not matter here)
-        this._super(me.Renderable, 'init', [x, y, 10, 10]);
+            // persistent across level change
+            this.isPersistent = true;
 
-        // local copy of the global score
-        this.score = -1;
-    },
+            // make sure our object is always draw first
+            this.z = Infinity;
 
-    /**
-     * update function
-     */
-    update : function () {
-        // we don't do anything fancy here, so just
-        // return true if the score has been updated
-        if (this.score !== game.data.score) {
-            this.score = game.data.score;
-            return true;
+            this.floating = true;
+
+            // give a name
+            this.name = "UIPanel";
+
+            // back panel sprite
+            this.panelSprite = game.texture.createSpriteFromName("panel_brown");
+            this.panelSprite.anchorPoint.set(0, 0);
+            // scale to match the container size
+            this.panelSprite.scale(
+                this.width / this.panelSprite.width,
+                this.height / this.panelSprite.height
+            );
+            this.addChild(this.panelSprite);
+
+
+            // input status flags
+            this.selected = false;
+            this.hover = false;
+            // to memorize where we grab the shape
+            this.grabOffset = new me.Vector2d(0, 0);
         }
-        return false;
-    },
-
-    /**
-     * draw the score
-     */
-    draw : function (context) {
-        // draw it baby !
-    }
 
 });
+
+

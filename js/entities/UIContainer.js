@@ -22,7 +22,7 @@ game.UI.Container = me.Container.extend({
         this.name = "UIPanel";
 
         // back panel sprite
-        this.panelSprite = game.texture.createSpriteFromName("grey_panel");
+        this.panelSprite = game.texture.createSpriteFromName("panel_brown");
         this.panelSprite.anchorPoint.set(0,0);
         // scale to match the container size
         this.panelSprite.scale(
