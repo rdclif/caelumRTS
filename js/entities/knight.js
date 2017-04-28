@@ -48,6 +48,8 @@ game.Knight = game.playerObject.extend({
     },
     onClick : function (event) {
         //alert(this.name);
+       var hud = me.game.world.children[0].children[0];
+       hud.knightPanel();
 
     },
 

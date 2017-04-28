@@ -56,7 +56,7 @@ game.playerObject = me.Entity.extend({
     onSelect : function (event) {
         if (this.hover === true) {
             this.onClick(this);
-            this.game.repaint();
+            me.game.repaint();
         }
 
         return true;
