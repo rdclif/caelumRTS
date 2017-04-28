@@ -1,13 +1,13 @@
 
-game.Knight = game.playerObject.extend({
+game.Builder = game.playerObject.extend({
     /**
      * constructor
      */
     init : function (x, y ) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image : "knight",
-            name : "Knight",
+            image : "builder",
+            name : "Builder",
             width : 36,
             height : 48,
             framewidth : 36
@@ -22,7 +22,7 @@ game.Knight = game.playerObject.extend({
         this.renderable.addAnimation("up",  [0, 1, 2]);
         this.renderable.addAnimation("down",  [6, 7, 8]);
         this.renderable.addAnimation("left",  [9, 10, 11]);
-        this.renderable.addAnimation("attack",  [12, 13, 14]);
+        this.renderable.addAnimation("build",  [12, 13, 14]);
         // define a standing animation (using the frame)
         this.renderable.addAnimation("stand",  [7]);
 
@@ -48,7 +48,7 @@ game.Knight = game.playerObject.extend({
     onClick : function (event) {
         //alert(this.name);
        var hud = me.game.world.children[0].children[0];
-       hud.knightPanel(this);
+       hud.knightPanel();
 
     },
 

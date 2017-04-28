@@ -10,6 +10,7 @@ game.playerObject = me.Entity.extend({
         // status flags
         this.selected = false;
         this.hover = false;
+        this.alwaysUpdate = true;
 
         // to memorize where we grab the shape
         this.grabOffset = new me.Vector2d(0,0);

@@ -36,6 +36,13 @@ game.City = game.playerObject.extend({
         return (this._super(game.playerObject, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
     },
 
+    onClick : function (event) {
+        //alert(this.name);
+        var hud = me.game.world.children[0].children[0];
+        hud.cityPanel(this);
+
+    },
+
     /**
      * colision handler
      * (called when colliding with other objects)

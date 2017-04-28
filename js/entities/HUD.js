@@ -11,6 +11,7 @@ game.HUD.Container = me.Container.extend({
         // persistent across level change
         this.isPersistent = true;
 
+        this.alwaysUpdate = true;
         // make sure we use screen coordinates
         this.floating = true;
 
@@ -36,6 +37,8 @@ game.HUD.UIPanel = me.Container.extend({
         // persistent across level change
         this.isPersistent = true;
 
+        this.alwaysUpdate = true;
+
         this.floating = true;
 
         // give a name
@@ -53,13 +56,21 @@ game.HUD.UIPanel = me.Container.extend({
         this.addChild(this.panelSprite);
 
     },
-    knightPanel : function () {
+    knightPanel : function (knight) {
+        this.remove();
         this.addChild(new game.UI.cancelButton(12,80));
         this.addChild(new game.UI.moveButton(12, 15));
     },
+    cityPanel : function (city) {
+        this.remove();
+        this.addChild(new game.UI.builderButton(12, 15));
+        this.addChild(new game.UI.cancelButton(12,80));
+    },
+
     remove : function () {
-        this.removeChildern(this.children[0]);
-        this.removeChildern(this.children[0]);
+        while(this.children[0].name !== "panel") {
+            this.removeChildern(this.children[0]);
+        };
     },
 
     removeChildern : function (child) {

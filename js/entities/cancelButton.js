@@ -20,7 +20,8 @@ game.UI.cancelButton = me.GUI_Object.extend({
         this.anchorPoint.set(0, 0);
         this.setOpacity(0.9);
 
-        this.name = "cancel";
+        this.name = "cancelButton";
+        this.alwaysUpdate = true;
 
         this.font = new me.Font("kenpixel", 12, "black");
         this.font.textAlign = "center";
@@ -72,5 +73,9 @@ game.UI.cancelButton = me.GUI_Object.extend({
     removeChildNow : function (child) {
         this._super(me.Container, "removeChildNow", [child]);
         this.updateChildBounds();
+    },
+    update: function () {
+        return this.selected || this.hover;
     }
+
 });
