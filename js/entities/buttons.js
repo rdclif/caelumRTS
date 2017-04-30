@@ -1,5 +1,4 @@
-game.UI = game.UI || {};
-
+game.UI = game.UI || {}; 
 /**
  * a basic button control
  */
