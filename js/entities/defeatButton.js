@@ -1,29 +1,33 @@
-game.UI = game.UI || {}; 
+game.UI = game.UI || {};
+
 /**
  * a basic button control
  */
-game.UI.ButtonUI = me.GUI_Object.extend({
+game.UI.defeatButton = me.GUI_Object.extend({
     /**
      * constructor
      */
-    init: function(x, y, color, label) {
+    init: function(x, y) {
         this._super(me.GUI_Object, "init", [ x, y, {
             image: game.texture,
-            region : "buttonLong_" + color
+            region : "buttonSquare_blue"
         } ]);
 
         // offset of the two used images in the texture
-        this.unclicked_region = game.texture.getRegion("buttonLong_" + color);
-        this.clicked_region = game.texture.getRegion("buttonLong_" + color + "_pressed");
+        this.unclicked_region = game.texture.getRegion("buttonSquare_blue");
+        this.clicked_region = game.texture.getRegion("buttonSquare_blue_pressed");
+
+        this.name = "defeatButton";
+        this.alwaysUpdate = true;
 
         this.anchorPoint.set(0, 0);
-        this.setOpacity(0.5);
+        this.setOpacity(0.9);
 
         this.font = new me.Font("kenpixel", 12, "black");
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = label;
+        this.label = "Defeat";
 
         // only the parent container is a floating object
         this.floating = false;
@@ -37,6 +41,8 @@ game.UI.ButtonUI = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
+
+	me.state.change(me.state.GAMEOVER);
         // don't propagate the event
         return false;
     },
@@ -60,5 +66,8 @@ game.UI.ButtonUI = me.GUI_Object.extend({
             this.pos.x + this.width / 2,
             this.pos.y + this.height / 2
         );
+    },
+    update: function () {
+        return this.selected || this.hover;
     }
 });

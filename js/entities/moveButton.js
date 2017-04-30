@@ -49,7 +49,6 @@ game.UI.moveButton = me.GUI_Object.extend({
      * function called when the pointer button is released
      */
     onRelease : function (/* event */) {
-        console.log(this);
         this.setRegion(this.unclicked_region);
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;

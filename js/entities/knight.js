@@ -46,9 +46,12 @@ game.Knight = game.playerObject.extend({
         return (this._super(game.playerObject, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
     },
     onClick : function (event) {
-        //alert(this.name);
-       var hud = me.game.world.children[0].children[0];
-       hud.knightPanel(this);
+	//alert(this.name);
+	var hud = me.game.world.children[0].children[0];
+	hud.knightPanel(this);
+
+//	me.game.world.addChild(new game.selectIcon(this.pos.x, this.pos.y, 36));
+	me.game.world.addChild(new game.selectIcon(this.pos.x + 26, this.pos.y + 55, 36));
 
     },
 
