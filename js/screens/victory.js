@@ -1,11 +1,11 @@
-game.DefeatScreen = me.ScreenObject.extend({
+game.VictoryScreen = me.ScreenObject.extend({
     /**
      *  action to perform on state change
      */
     onResetEvent: function() {
         //TItle screen
 	var backgroundImage = new me.Sprite(0, 0, {
-	    image: me.loader.getImage('defeat_screen'),
+	    image: me.loader.getImage('victory_screen'),
 	});
 	
 	backgroundImage.anchorPoint.set(0, 0);
@@ -61,7 +61,7 @@ game.DefeatScreen = me.ScreenObject.extend({
 		},
 
 		draw : function (renderer) {
-			this.font.draw(renderer, "Defeat", me.game.viewport.width / 2 - 70, 40);
+			this.font.draw(renderer, "Victory", me.game.viewport.width / 2 - 70, 40);
 			this.font.draw(renderer, "Click anywhere to return to Main Menu.", 20, 380);
 		},
 	
