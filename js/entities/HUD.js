@@ -60,11 +60,13 @@ game.HUD.UIPanel = me.Container.extend({
         this.remove();
         this.addChild(new game.UI.cancelButton(12,80));
         this.addChild(new game.UI.moveButton(12, 15));
+        this.addChild(new game.UI.attackButton(70, 15));
     },
     cityPanel : function (city) {
         this.remove();
         this.addChild(new game.UI.builderButton(12, 15));
         this.addChild(new game.UI.cancelButton(12,80));
+        this.addChild(new game.UI.defeatButton(70, 15));
     },
 
     remove : function () {
