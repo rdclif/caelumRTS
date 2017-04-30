@@ -38,7 +38,7 @@ game.City = game.playerObject.extend({
 
     onClick : function (event) {
         //alert(this.name);
-        var hud = me.game.world.children[0].children[0];
+        var hud = me.game.world.getChildByName("UIPanel")[0];
         hud.cityPanel(this);
 
     },

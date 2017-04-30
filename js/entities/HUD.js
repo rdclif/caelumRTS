@@ -68,7 +68,7 @@ game.HUD.UIPanel = me.Container.extend({
         this.addChild(new game.UI.builderButton(12, 15));
         this.addChild(new game.UI.cancelButton(12,80));
         this.addChild(new game.UI.defeatButton(70, 15));
-	this.addChild(new game.UI.victoryButton(70, 80));
+	    this.addChild(new game.UI.victoryButton(70, 80));
 
     },
 

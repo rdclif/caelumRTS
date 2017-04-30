@@ -53,7 +53,8 @@ game.UI.cancelButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-        var hud = me.game.world.children[0].children[0];
+
+        var hud = me.game.world.getChildByName("UIPanel")[0];
         hud.remove();
         me.game.repaint();
         return false;
