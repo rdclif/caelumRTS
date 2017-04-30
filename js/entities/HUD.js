@@ -34,12 +34,13 @@ game.HUD.UIPanel = me.Container.extend({
 
         this.anchorPoint.set(0, 0);
 
+
         // persistent across level change
         this.isPersistent = true;
 
         this.alwaysUpdate = true;
 
-        this.floating = true;
+        //this.floating = true;
 
         // give a name
         this.name = "UIPanel";
