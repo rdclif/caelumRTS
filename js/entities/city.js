@@ -41,6 +41,11 @@ game.City = game.playerObject.extend({
         var hud = me.game.world.getChildByName("UIPanel")[0];
         hud.cityPanel(this);
 
+	game.data.x_center = this._absPos.x;
+	game.data.y_center = this._absPos.y;
+	game.data.x_offset = this._width;
+	game.data.y_offset = this._height;
+
     },
 
     /**
