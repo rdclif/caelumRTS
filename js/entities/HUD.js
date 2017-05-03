@@ -13,7 +13,7 @@ game.HUD.Container = me.Container.extend({
 
         this.alwaysUpdate = true;
         // make sure we use screen coordinates
-        this.floating = true;
+        //this.floating = true;
 
         this.anchorPoint.set(0,0);
 
@@ -40,7 +40,7 @@ game.HUD.UIPanel = me.Container.extend({
 
         this.alwaysUpdate = true;
 
-        //this.floating = true;
+        this.floating = true;
 
         // give a name
         this.name = "UIPanel";
@@ -60,7 +60,7 @@ game.HUD.UIPanel = me.Container.extend({
     knightPanel : function (knight) {
         this.remove();
         this.addChild(new game.UI.cancelButton(12,80));
-        this.addChild(new game.UI.moveButton(12, 15));
+        this.addChild(new game.UI.moveButton(12, 15, knight));
         this.addChild(new game.UI.attackButton(70, 15));
     },
     cityPanel : function (city) {
@@ -81,10 +81,8 @@ game.HUD.UIPanel = me.Container.extend({
     removeChildern : function (child) {
         this._super(me.Container, "removeChildNow", [child]);
         this.updateChildBounds();
-    },
-    // update function
-    update : function(dt) {
-        return this._super(me.Container, "update", [ dt ]) || this.hover;
     }
+    // update function
+
 
 });

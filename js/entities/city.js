@@ -50,7 +50,7 @@ game.City = game.playerObject.extend({
     onCollision: function (response, other) {
         //if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
 
-        return true;
+        return false;
     }
 });
 

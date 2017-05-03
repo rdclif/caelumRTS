@@ -12,6 +12,11 @@ game.playerObject = me.Entity.extend({
         this.hover = false;
         this.alwaysUpdate = true;
 
+        this.body.maxVel.x = 3;
+        this.body.maxVel.y = 3;
+        this.body.accel.x = 1.7;
+        this.body.accel.y = 1.7;
+
         // to memorize where we grab the shape
         this.grabOffset = new me.Vector2d(0,0);
     },
@@ -67,14 +72,6 @@ game.playerObject = me.Entity.extend({
     onRelease : function (/*event*/) {
         this.selected = false;
         return false;
-    },
-
-    /**
-     * update function
-     */
-    update: function () {
-        return this.selected || this.hover;
     }
-
 
 });
