@@ -5,7 +5,11 @@ var game = {
     // an object where to store game information
     data : {
         // score
-        score : 0
+        score : 0,
+	x_center : 0,
+	y_center : 0,
+	x_offset : 0,
+	y_offset : 0
     },
 
 
@@ -56,6 +60,7 @@ var game = {
 
         // add our player entity in the entity pool
         me.pool.register("knightPlayer", game.Knight);
+	me.pool.register("builderPlayer", game.Builder);
         me.pool.register("cityObject", game.City);
 
         // Start the game.

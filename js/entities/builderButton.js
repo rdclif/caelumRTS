@@ -41,6 +41,20 @@ game.UI.builderButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
+
+	//36 is the width of the builder sprite, should be standard for foot units
+	var spawnLocation_x = game.data.x_center + (game.data.x_offset / 2) - (36 / 2);
+//	var spawnLocation_x = game.data.x_center;
+	var spawnLocation_y = game.data.y_center + game.data.y_offset;
+//	var spawnLocation_y = game.data.y_center;
+
+	//Function not implemented yet, so just pseudocode right now
+	//if(checkPositionOccupied() )
+	//	adjust position by one sprite width to left or right in alternating fashion
+
+//console.log(game.data.x_center + " " + game.data.x_offset + ' ' + game.data.y_center + ' ' + game.data.y_offset);
+	me.game.world.addChild(me.pool.pull("builderPlayer", spawnLocation_x, spawnLocation_y));
+
         // don't propagate the event
         return false;
     },

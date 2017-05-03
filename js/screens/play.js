@@ -8,6 +8,7 @@ game.PlayScreen = me.ScreenObject.extend({
         me.levelDirector.loadLevel("Map");
         this.handle = me.event.subscribe(me.event.KEYDOWN, this.keyPressed.bind(this));
         me.game.world.addChild(me.pool.pull("knightPlayer", 100, 100));
+        
 
 
         // reset the score
