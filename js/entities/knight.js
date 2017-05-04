@@ -1,4 +1,3 @@
-
 game.Knight = game.playerObject.extend({
         /**
          * constructor

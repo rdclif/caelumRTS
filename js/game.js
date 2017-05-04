@@ -41,7 +41,7 @@ var game = {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
         me.state.set(me.state.GAMEOVER, new game.DefeatScreen());
-	me.state.set(me.state.GAME_END, new game.VictoryScreen());
+	    me.state.set(me.state.GAME_END, new game.VictoryScreen());
 
 
         game.texture = new me.video.renderer.Texture(
@@ -60,8 +60,9 @@ var game = {
 
         // add our player entity in the entity pool
         me.pool.register("knightPlayer", game.Knight);
-	me.pool.register("builderPlayer", game.Builder);
+	    me.pool.register("builderPlayer", game.Builder);
         me.pool.register("cityObject", game.City);
+        me.pool.register("barracksObject", game.Barracks);
 
         // Start the game.
         me.state.change(me.state.MENU);

@@ -3,7 +3,7 @@ game.UI = game.UI || {};
 /**
  * a basic button control
  */
-game.UI.moveButton = me.GUI_Object.extend({
+game.UI.buildButton = me.GUI_Object.extend({
     /**
      * constructor
      */
@@ -18,28 +18,24 @@ game.UI.moveButton = me.GUI_Object.extend({
         this.unclicked_region = game.texture.getRegion("buttonSquare_blue");
         this.clicked_region = game.texture.getRegion("buttonSquare_blue_pressed");
 
-
         this.player = player;
 
-
-
-        this.name = "moveButton";
+        this.name = "buildButton";
         this.alwaysUpdate = true;
 
         this.anchorPoint.set(0, 0);
         this.setOpacity(0.9);
 
 
+
         this.font = new me.Font("kenpixel", 12, "black");
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "Move";
+        this.label = "Build";
 
         // only the parent container is a floating object
         this.floating = false;
-
-        console.log(this);
     },
 
     /**
@@ -62,18 +58,12 @@ game.UI.moveButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-        me.game.world.addChild(new game.moveIcon(100, 100));
+        var hud = me.game.world.getChildByName("UIPanel")[0];
+        hud.buildPanel(this.player);
         // don't propagate the event
         return false;
     },
 
-    //movePointer calls this function - passes mouse x y back so this can call player movePlayerTo function
-    movePlayer : function (x, y) {
-        //melon likes it better when I create new vars to pass
-        var newx = x;
-        var newy = y;
-        this.player.movePlayerTo(newx,newy);
-    },
 
     draw: function(renderer) {
         this._super(me.GUI_Object, "draw", [ renderer ]);

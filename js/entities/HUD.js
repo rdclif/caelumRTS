@@ -17,10 +17,12 @@ game.HUD.Container = me.Container.extend({
 
         this.anchorPoint.set(0,0);
 
+        this.floating = true;
+
         // give a name
         this.name = "HUD";
 
-        this.addChild(new game.HUD.UIPanel(me.game.viewport.width-201, me.game.viewport.height-151, 200, 150));
+        //this.addChild(new game.HUD.UIPanel(me.game.viewport.width-201, me.game.viewport.height-151, 200, 150));
 
     }
 });
@@ -59,6 +61,8 @@ game.HUD.UIPanel = me.Container.extend({
     },
     knightPanel : function (knight) {
         this.remove();
+        var hud = me.game.world.getChildByName("UIPanel")[0];
+        var x = me.game.viewport.localToWorld(hud.pos.x,hud.pos.y);
         this.addChild(new game.UI.cancelButton(12,80));
         this.addChild(new game.UI.moveButton(12, 15, knight));
         this.addChild(new game.UI.attackButton(70, 15));
@@ -68,21 +72,36 @@ game.HUD.UIPanel = me.Container.extend({
         this.addChild(new game.UI.builderButton(12, 15));
         this.addChild(new game.UI.cancelButton(12,80));
         this.addChild(new game.UI.defeatButton(70, 15));
-	this.addChild(new game.UI.victoryButton(70, 80));
+	    this.addChild(new game.UI.victoryButton(70, 80));
 
+    },
+    builderPanel : function (builder) {
+        this.remove();
+        this.addChild(new game.UI.cancelButton(12,80));
+        this.addChild(new game.UI.moveButton(12, 15, builder));
+        this.addChild(new game.UI.buildButton(70, 15, builder));
+    },
+
+    buildPanel : function (builder) {
+        this.remove();
+        this.addChild(new game.UI.barracksButton(12,15, builder));
+        this.addChild(new game.UI.cancelButton(12,80));
     },
 
     remove : function () {
         while(this.children[0].name !== "panel") {
             this.removeChildern(this.children[0]);
-        };
+        }
     },
 
     removeChildern : function (child) {
         this._super(me.Container, "removeChildNow", [child]);
         this.updateChildBounds();
+    },
+    draw : function (renderer) {
+        this._super(me.Container, "draw", [ renderer ]);
+        this.updateChildBounds();
     }
-    // update function
 
 
 });

@@ -3,7 +3,7 @@ game.UI = game.UI || {};
 /**
  * a basic button control
  */
-game.UI.moveButton = me.GUI_Object.extend({
+game.UI.barracksButton = me.GUI_Object.extend({
     /**
      * constructor
      */
@@ -23,7 +23,7 @@ game.UI.moveButton = me.GUI_Object.extend({
 
 
 
-        this.name = "moveButton";
+        this.name = "barracksButton";
         this.alwaysUpdate = true;
 
         this.anchorPoint.set(0, 0);
@@ -34,7 +34,7 @@ game.UI.moveButton = me.GUI_Object.extend({
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "Move";
+        this.label = "Barracks";
 
         // only the parent container is a floating object
         this.floating = false;
@@ -62,17 +62,19 @@ game.UI.moveButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-        me.game.world.addChild(new game.moveIcon(100, 100));
+        console.log(this.player);
+        me.game.world.addChild(new game.buildBarracksIcon(100, 100));
         // don't propagate the event
         return false;
     },
 
-    //movePointer calls this function - passes mouse x y back so this can call player movePlayerTo function
-    movePlayer : function (x, y) {
+    //move to build callls movePlayerTo, and buildSomething function.
+    moveToBuild : function (x, y) {
         //melon likes it better when I create new vars to pass
         var newx = x;
         var newy = y;
-        this.player.movePlayerTo(newx,newy);
+        this.player.movePlayerTo(newx,newy+25);
+        this.player.buildSomething(newx, newy, "barracksObject");
     },
 
     draw: function(renderer) {

@@ -6,11 +6,20 @@ game.Builder = game.playerObject.extend({
     init : function (x, y ) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image : "builder",
-            name : "Builder",
-            width : 36,
-            height : 48,
-            framewidth : 36
+            image: "builder",
+            name: "Builder",
+            width: 36,
+            height: 48,
+            framewidth: 36,
+            newX: 0,
+            newY: 0,
+            direction: "stand",
+            walk: false,
+            building: false,
+            buildx: 0,
+            buildy: 0,
+            buildType: "",
+            buildTime: 1
         }]);
 
         // ensure the player is updated even when outside of the viewport
@@ -36,6 +45,30 @@ game.Builder = game.playerObject.extend({
      */
     update : function (dt) {
 
+        var distx = this.newX - this.pos.x;
+        var disty = this.newY - this.pos.y;
+
+        if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
+            this.moveObject(distx, disty);
+            if (!this.renderable.isCurrentAnimation(this.direction)) {
+                this.renderable.setCurrentAnimation(this.direction);
+            }
+        } else  {
+            this.walk = false;
+            this.body.vel.x = 0;
+            this.body.vel.y = 0;
+        }
+        if (!(this.walk) && !(this.building)) {
+            this.renderable.setCurrentAnimation("stand");
+        }
+
+        if (this.building && this.walk==false) {
+            this.buildBuilding();
+            if (!this.renderable.isCurrentAnimation("build")) {
+                this.renderable.setCurrentAnimation("build");
+            }
+        }
+
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 
@@ -45,10 +78,53 @@ game.Builder = game.playerObject.extend({
         // return true if we moved or if the renderable was updated
         return (this._super(game.playerObject, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
     },
+
+    buildBuilding : function () {
+        //TODO: add different times for building type
+        this.buildTime += 1;
+        if (this.buildTime >= 1000) {
+            me.game.world.addChild(me.pool.pull(this.buildType, this.buildx-50, this.buildy-50));
+            this.buildTime = 0;
+            this.building = false;
+            this.buildType = "";
+        }
+
+    },
+
+    movePlayerTo :function (x, y) {
+        this.newX = Math.round(x);
+        this.newY = Math.round(y);
+        this.walk = true;
+    },
+
+    moveObject : function(distx, disty){
+        if (this.walk) {
+            var angle = Math.atan2(disty, distx);
+            this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
+            this.body.vel.y = Math.sin(angle) * this.body.accel.y * me.timer.tick;
+
+            if (Math.abs(distx) > Math.abs(disty)) {
+                this.direction = ( distx > 0) ? "right" : "left";
+
+            } else {
+                this.direction = ( disty > 0) ? "down" : "up";
+            }
+        }
+    },
+
+    buildSomething : function (x, y, string) {
+        this.buildx = x;
+        this.buildy = y;
+        this.buildType = string;
+        this.building = true;
+        this.buildTime = 0;
+        console.log(this);
+    },
+
     onClick : function (event) {
         //alert(this.name);
-       var hud = me.game.world.children[0].children[0];
-       hud.knightPanel();
+       var hud =  me.game.world.getChildByName("UIPanel")[0];
+       hud.builderPanel(this);
 
     },
 
@@ -61,7 +137,8 @@ game.Builder = game.playerObject.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
-        return true;
+        //Turning off collisions for now
+        return false;
     }
 
 });
