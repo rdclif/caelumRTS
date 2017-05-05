@@ -86,7 +86,7 @@ game.Knight = game.playerObject.extend({
 	    hud.knightPanel(this);
 
 	    //me.game.world.addChild(new game.selectIcon(this.pos.x, this.pos.y, 36));
-	    me.game.world.addChild(new game.selectIcon(this.pos.x + 26, this.pos.y + 55, 36));
+	    //me.game.world.addChild(new game.selectIcon(this.pos.x + 26, this.pos.y + 55, 36));
 
     },
 

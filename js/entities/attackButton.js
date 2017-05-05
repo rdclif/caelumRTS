@@ -7,10 +7,11 @@ game.UI.attackButton = me.GUI_Object.extend({
     /**
      * constructor
      */
-    init: function(x, y) {
+    init: function(x, y, player) {
         this._super(me.GUI_Object, "init", [ x, y, {
             image: game.texture,
-            region : "buttonSquare_blue"
+            region : "buttonSquare_blue",
+            player : {}
         } ]);
 
         // offset of the two used images in the texture
@@ -28,6 +29,8 @@ game.UI.attackButton = me.GUI_Object.extend({
         this.font.textBaseline = "middle";
 
         this.label = "Attack";
+
+        this.player = player;
 
         // only the parent container is a floating object
         this.floating = false;
@@ -53,6 +56,7 @@ game.UI.attackButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
+        me.game.world.addChild(new game.attackIcon(100, 100));
         // don't propagate the event
         return false;
     },

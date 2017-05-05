@@ -70,12 +70,13 @@ game.City = game.playerObject.extend({
     },
 
     trainPlayer : function () {
+        var timeToTrain = 800;
         var progress =  me.game.world.getChildByName("progressBar")[0];
         if (progress) {
-            progress.updateProgress(1, 1000);
+            progress.updateProgress(1, timeToTrain);
         }
         this.trainTime += 1;
-        if (this.trainTime >= 1000) {
+        if (this.trainTime >= timeToTrain) {
             //TODO: move spawn loacation if space is occupied
             me.game.world.addChild(me.pool.pull(this.trainType, this.trainx+60, this.trainy+110));
             this.trainTime = 0;
