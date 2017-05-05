@@ -57,7 +57,7 @@ game.City = game.playerObject.extend({
             //still has bugs
             var hud = me.game.world.getChildByName("UIPanel")[0];
             hud.cityPanel(this);
-            hud.addChild(new game.progressBar(150, 35));
+            hud.addChild(new game.progressBar(150, 32));
         }
     },
 
@@ -71,7 +71,9 @@ game.City = game.playerObject.extend({
 
     trainPlayer : function () {
         var progress =  me.game.world.getChildByName("progressBar")[0];
-        progress.updateProgress(1,1000);
+        if (progress) {
+            progress.updateProgress(1, 1000);
+        }
         this.trainTime += 1;
         if (this.trainTime >= 1000) {
             //TODO: move spawn loacation if space is occupied
