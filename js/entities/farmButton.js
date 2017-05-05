@@ -3,37 +3,43 @@ game.UI = game.UI || {};
 /**
  * a basic button control
  */
-game.UI.builderButton = me.GUI_Object.extend({
+game.UI.farmButton = me.GUI_Object.extend({
     /**
      * constructor
      */
-    init: function(x, y, city) {
+    init: function(x, y, player) {
         this._super(me.GUI_Object, "init", [ x, y, {
             image: game.texture,
             region : "buttonSquare_blue",
-            city : {}
+            player : {}
         } ]);
 
         // offset of the two used images in the texture
         this.unclicked_region = game.texture.getRegion("buttonSquare_blue");
         this.clicked_region = game.texture.getRegion("buttonSquare_blue_pressed");
 
-        this.city = city;
+
+        this.player = player;
+
+
+
+        this.name = "farmButton";
+        this.alwaysUpdate = true;
 
         this.anchorPoint.set(0, 0);
         this.setOpacity(0.9);
 
-        this.alwaysUpdate = true;
-        this.name = "builderButton";
 
         this.font = new me.Font("kenpixel", 12, "black");
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "Builder";
+        this.label = "Farm";
 
         // only the parent container is a floating object
         this.floating = false;
+
+        console.log(this);
     },
 
     /**
@@ -44,20 +50,6 @@ game.UI.builderButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
-
-	//36 is the width of the builder sprite, should be standard for foot units
-	    //var spawnLocation_x = game.data.x_center + (game.data.x_offset / 2) - (36 / 2);
-//	var spawnLocation_x = game.data.x_center;
-	    //var spawnLocation_y = game.data.y_center + game.data.y_offset;
-//	var spawnLocation_y = game.data.y_center;
-
-	//Function not implemented yet, so just pseudocode right now
-	//if(checkPositionOccupied() )
-	//	adjust position by one sprite width to left or right in alternating fashion
-
-//console.log(game.data.x_center + " " + game.data.x_offset + ' ' + game.data.y_center + ' ' + game.data.y_offset);
-	    //me.game.world.addChild(me.pool.pull("builderPlayer", spawnLocation_x, spawnLocation_y));
-
         // don't propagate the event
         return false;
     },
@@ -70,19 +62,20 @@ game.UI.builderButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-        //var hud =  me.game.world.getChildByName("UIPanel")[0];
-        this.train();
-        me.game.repaint();
+        console.log(this.player);
+        me.game.world.addChild(new game.buildFarmIcon(100, 100));
+        // don't propagate the event
         return false;
     },
 
-    train : function () {
-        var spawnLocation_y = this.city.pos.y;
-        var spawnLocation_x = this.city.pos.x;
-        this.city.callTraining(spawnLocation_x,spawnLocation_y,"builderPlayer")
+    //move to build callls movePlayerTo, and buildSomething function.
+    moveToBuild : function (x, y) {
+        //melon likes it better when I create new vars to pass
+        var newx = x;
+        var newy = y;
+        this.player.movePlayerTo(newx,newy+25);
+        this.player.buildSomething(newx, newy, "farmObject");
     },
-
-
 
     draw: function(renderer) {
         this._super(me.GUI_Object, "draw", [ renderer ]);
@@ -91,13 +84,5 @@ game.UI.builderButton = me.GUI_Object.extend({
             this.pos.x + this.width / 2,
             this.pos.y + this.height / 2
         );
-    },
-
-    removeChildNow : function (child) {
-        this._super(me.Container, "removeChildNow", [child]);
-        this.updateChildBounds();
-    },
-    update: function () {
-        return this.selected || this.hover;
     }
 });

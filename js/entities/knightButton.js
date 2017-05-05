@@ -3,34 +3,31 @@ game.UI = game.UI || {};
 /**
  * a basic button control
  */
-game.UI.builderButton = me.GUI_Object.extend({
+game.UI.knightButton = me.GUI_Object.extend({
     /**
      * constructor
      */
-    init: function(x, y, city) {
+    init: function(x, y) {
         this._super(me.GUI_Object, "init", [ x, y, {
             image: game.texture,
-            region : "buttonSquare_blue",
-            city : {}
+            region : "buttonSquare_blue"
         } ]);
 
         // offset of the two used images in the texture
         this.unclicked_region = game.texture.getRegion("buttonSquare_blue");
         this.clicked_region = game.texture.getRegion("buttonSquare_blue_pressed");
 
-        this.city = city;
-
         this.anchorPoint.set(0, 0);
         this.setOpacity(0.9);
 
         this.alwaysUpdate = true;
-        this.name = "builderButton";
+        this.name = "knightButton";
 
         this.font = new me.Font("kenpixel", 12, "black");
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "Builder";
+        this.label = "Knight";
 
         // only the parent container is a floating object
         this.floating = false;
@@ -46,9 +43,9 @@ game.UI.builderButton = me.GUI_Object.extend({
         this.height = this.clicked_region.height;
 
 	//36 is the width of the builder sprite, should be standard for foot units
-	    //var spawnLocation_x = game.data.x_center + (game.data.x_offset / 2) - (36 / 2);
+	    var spawnLocation_x = game.data.x_center + (game.data.x_offset / 2) - (36 / 2);
 //	var spawnLocation_x = game.data.x_center;
-	    //var spawnLocation_y = game.data.y_center + game.data.y_offset;
+	    var spawnLocation_y = game.data.y_center + game.data.y_offset;
 //	var spawnLocation_y = game.data.y_center;
 
 	//Function not implemented yet, so just pseudocode right now
@@ -56,7 +53,7 @@ game.UI.builderButton = me.GUI_Object.extend({
 	//	adjust position by one sprite width to left or right in alternating fashion
 
 //console.log(game.data.x_center + " " + game.data.x_offset + ' ' + game.data.y_center + ' ' + game.data.y_offset);
-	    //me.game.world.addChild(me.pool.pull("builderPlayer", spawnLocation_x, spawnLocation_y));
+	    me.game.world.addChild(me.pool.pull("knightPlayer", spawnLocation_x, spawnLocation_y));
 
         // don't propagate the event
         return false;
@@ -70,16 +67,10 @@ game.UI.builderButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-        //var hud =  me.game.world.getChildByName("UIPanel")[0];
-        this.train();
+        var hud =  me.game.world.getChildByName("UIPanel")[0];
+
         me.game.repaint();
         return false;
-    },
-
-    train : function () {
-        var spawnLocation_y = this.city.pos.y;
-        var spawnLocation_x = this.city.pos.x;
-        this.city.callTraining(spawnLocation_x,spawnLocation_y,"builderPlayer")
     },
 
 

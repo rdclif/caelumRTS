@@ -22,8 +22,6 @@ game.HUD.Container = me.Container.extend({
         // give a name
         this.name = "HUD";
 
-        //this.addChild(new game.HUD.UIPanel(me.game.viewport.width-201, me.game.viewport.height-151, 200, 150));
-
     }
 });
 
@@ -39,6 +37,7 @@ game.HUD.UIPanel = me.Container.extend({
 
         // persistent across level change
         this.isPersistent = true;
+
 
         this.alwaysUpdate = true;
 
@@ -59,22 +58,15 @@ game.HUD.UIPanel = me.Container.extend({
         this.addChild(this.panelSprite);
 
     },
-    knightPanel : function (knight) {
-        this.remove();
-        var hud = me.game.world.getChildByName("UIPanel")[0];
-        var x = me.game.viewport.localToWorld(hud.pos.x,hud.pos.y);
-        this.addChild(new game.UI.cancelButton(12,80));
-        this.addChild(new game.UI.moveButton(12, 15, knight));
-        this.addChild(new game.UI.attackButton(70, 15));
-    },
-    cityPanel : function (city) {
-        this.remove();
-        this.addChild(new game.UI.builderButton(12, 15));
-        this.addChild(new game.UI.cancelButton(12,80));
-        this.addChild(new game.UI.defeatButton(70, 15));
-	    this.addChild(new game.UI.victoryButton(70, 80));
 
+    barracksPanel : function (barracks) {
+        this.remove();
+        this.addChild(new game.UI.soldierButton(12,15));
+        this.addChild(new game.UI.knightButton(70,15));
+        this.addChild(new game.UI.catapultButton(70,80));
+        this.addChild(new game.UI.cancelButton(12,80));
     },
+
     builderPanel : function (builder) {
         this.remove();
         this.addChild(new game.UI.cancelButton(12,80));
@@ -85,8 +77,52 @@ game.HUD.UIPanel = me.Container.extend({
     buildPanel : function (builder) {
         this.remove();
         this.addChild(new game.UI.barracksButton(12,15, builder));
+        this.addChild(new game.UI.farmButton(70, 15, builder));
+        this.addChild(new game.UI.mineButton(70, 80, builder));
         this.addChild(new game.UI.cancelButton(12,80));
     },
+
+    catapultPanel : function (catapult) {
+        this.remove();
+        this.addChild(new game.UI.cancelButton(12,80));
+        this.addChild(new game.UI.moveButton(12, 15, catapult));
+        this.addChild(new game.UI.attackButton(70, 15));
+    },
+
+    cityPanel : function (city) {
+        this.remove();
+        this.addChild(new game.UI.builderButton(12, 15, city));
+        this.addChild(new game.UI.cancelButton(12,80));
+        //this.addChild(new game.progressBar(150,35));
+        //this.addChild(new game.UI.defeatButton(70, 15));
+        //this.addChild(new game.UI.victoryButton(70, 80));
+
+    },
+
+    farmPanel : function () {
+        this.remove();
+        this.addChild(new game.UI.cancelButton(12,80));
+    },
+
+    knightPanel : function (knight) {
+        this.remove();
+        this.addChild(new game.UI.cancelButton(12,80));
+        this.addChild(new game.UI.moveButton(12, 15, knight));
+        this.addChild(new game.UI.attackButton(70, 15));
+    },
+
+    minePanel : function () {
+        this.remove();
+        this.addChild(new game.UI.cancelButton(12,80));
+    },
+
+    soldierPanel : function (soldier) {
+        this.remove();
+        this.addChild(new game.UI.cancelButton(12,80));
+        this.addChild(new game.UI.moveButton(12, 15, soldier));
+        this.addChild(new game.UI.attackButton(70, 15));
+    },
+
 
     remove : function () {
         while(this.children[0].name !== "panel") {
@@ -99,9 +135,13 @@ game.HUD.UIPanel = me.Container.extend({
         this.updateChildBounds();
     },
     draw : function (renderer) {
+        //keeps HUD in front of all objects
+        this.pos.z = Infinity;
         this._super(me.Container, "draw", [ renderer ]);
         this.updateChildBounds();
     }
 
 
 });
+
+

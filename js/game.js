@@ -59,10 +59,14 @@ var game = {
         me.sys.gravity = 0;
 
         // add our player entity in the entity pool
+        me.pool.register("catapultPlayer", game.Catapult);
         me.pool.register("knightPlayer", game.Knight);
+        me.pool.register("soldierPlayer", game.Soldier);
 	    me.pool.register("builderPlayer", game.Builder);
         me.pool.register("cityObject", game.City);
         me.pool.register("barracksObject", game.Barracks);
+        me.pool.register("farmObject", game.Farm);
+        me.pool.register("mineObject", game.Mine);
 
         // Start the game.
         me.state.change(me.state.MENU);

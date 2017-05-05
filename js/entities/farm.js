@@ -1,13 +1,13 @@
 
-game.Barracks = game.playerObject.extend({
+game.Farm = game.playerObject.extend({
     /**
      * constructor
      */
     init : function (x, y ) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image: "barracks",
-            name: "Barracks",
+            image: "farm",
+            name: "Farm",
             width: 100,
             height: 100,
             framewidth: 100
@@ -46,12 +46,7 @@ game.Barracks = game.playerObject.extend({
     onClick : function (event) {
         //alert(this.name);
         var hud = me.game.world.getChildByName("UIPanel")[0];
-        hud.barracksPanel(this);
-
-	    game.data.x_center = this._absPos.x;
-	    game.data.y_center = this._absPos.y;
-	    game.data.x_offset = this._width;
-	    game.data.y_offset = this._height;
+        hud.farmPanel(this);
 
     },
 

@@ -5,10 +5,22 @@ game.City = game.playerObject.extend({
      */
     init: function (x, y, settings) {
         // call the constructor
-        this._super(game.playerObject, 'init', [x, y, settings]);
+        this._super(game.playerObject, 'init', [x, y, {
+            image: "city",
+            name: "Builder",
+            width: 128,
+            height: 128,
+            framewidth: 128,
+            training: false,
+            trainx: 0,
+            trainy: 0,
+            trainType: "",
+            trainTime: 0
+        }]);
 
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
+        this.trainTime = 0;
 
         this.renderable.addAnimation("attacked", [1, 2]);
 
@@ -25,6 +37,9 @@ game.City = game.playerObject.extend({
      */
     update: function (dt) {
 
+        if (this.training) {
+            this.trainPlayer()
+        }
 
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
@@ -38,14 +53,33 @@ game.City = game.playerObject.extend({
 
     onClick : function (event) {
         //alert(this.name);
-        var hud = me.game.world.getChildByName("UIPanel")[0];
-        hud.cityPanel(this);
+        if (!(this.training)) {
+            //still has bugs
+            var hud = me.game.world.getChildByName("UIPanel")[0];
+            hud.cityPanel(this);
+            hud.addChild(new game.progressBar(150, 35));
+        }
+    },
 
-	game.data.x_center = this._absPos.x;
-	game.data.y_center = this._absPos.y;
-	game.data.x_offset = this._width;
-	game.data.y_offset = this._height;
+    callTraining : function (x,y,string) {
+        this.trainx = x;
+        this.trainy = y;
+        this.trainType = string;
+        this.training = true;
+        this.trainTime = 0;
+    },
 
+    trainPlayer : function () {
+        var progress =  me.game.world.getChildByName("progressBar")[0];
+        progress.updateProgress(1,1000);
+        this.trainTime += 1;
+        if (this.trainTime >= 1000) {
+            //TODO: move spawn loacation if space is occupied
+            me.game.world.addChild(me.pool.pull(this.trainType, this.trainx+60, this.trainy+110));
+            this.trainTime = 0;
+            this.training = false;
+            this.trainType = "";
+        }
     },
 
     /**

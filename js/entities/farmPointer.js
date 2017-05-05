@@ -1,12 +1,12 @@
-game.buildBarracksIcon = me.Entity.extend({
+game.buildFarmIcon = me.Entity.extend({
     /**
      * constructor
      */
     init : function (x, y) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image : "barracks",
-            name : "buildBarracksIcon",
+            image : "farm",
+            name : "buildFarmIcon",
             width : 100,
             height : 100,
             framewidth : 100
@@ -36,12 +36,12 @@ game.buildBarracksIcon = me.Entity.extend({
     },
 
     onClick : function (event) {
-        var barracksButton = me.game.world.getChildByName("barracksButton")[0];
+        var farmButton = me.game.world.getChildByName("farmButton")[0];
         var x = me.game.viewport.localToWorld(me.input.pointer.pos.x,me.input.pointer.pos.y);
         //not sure why but melon likes it better when I pass these as variables
         var xvar = x.x;
         var yvar = x.y;
-        barracksButton.moveToBuild(xvar, yvar)
+        farmButton.moveToBuild(xvar, yvar)
         me.game.world.removeChild(this);
         me.game.repaint();
 
