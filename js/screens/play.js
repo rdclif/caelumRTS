@@ -20,6 +20,9 @@ game.PlayScreen = me.ScreenObject.extend({
         this.HUD = new game.HUD.UIPanel(me.game.viewport.width-201, me.game.viewport.height-151, 200, 150);
         me.game.world.addChild(this.HUD);
 
+        var menu = new game.HUD.menuPanel(0,0, 50, 50);
+        me.game.world.addChild(menu);
+
 
 
     },

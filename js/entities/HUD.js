@@ -144,4 +144,50 @@ game.HUD.UIPanel = me.Container.extend({
 
 });
 
+game.HUD.menuPanel = me.Container.extend({
+    init: function(x, y, width, height) {
+        // call the constructor
+        this._super(me.Container, "init", [x, y, width, height]);
+
+        this.anchorPoint.set(0, 0);
+
+
+        // persistent across level change
+        this.isPersistent = true;
+
+
+        this.alwaysUpdate = true;
+
+        this.floating = true;
+
+        // give a name
+        this.name = "menuPanel";
+
+        this.addChild(new game.UI.menuButton(0,0, this));
+    },
+
+    menu : function () {
+        this.addChild(new game.UI.menuSaveButton(0,35, this));
+        this.addChild(new game.UI.menuQuitButton(0,70, this));
+    },
+
+    remove : function () {
+        while(this.children[0].name !== "menuButton") {
+            this.removeChildern(this.children[0]);
+        }
+    },
+
+    removeChildern : function (child) {
+        this._super(me.Container, "removeChildNow", [child]);
+        this.updateChildBounds();
+    },
+    draw : function (renderer) {
+        //keeps HUD in front of all objects
+        this.pos.z = Infinity;
+        this._super(me.Container, "draw", [ renderer ]);
+        this.updateChildBounds();
+    }
+
+
+});
 
