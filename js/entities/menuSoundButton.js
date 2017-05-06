@@ -21,7 +21,7 @@ game.UI.menuSoundButton = me.GUI_Object.extend({
         this.container = cont;
 
         this.anchorPoint.set(0, 0);
-        this.setOpacity(0.8);
+        //this.setOpacity(0.8);
 
         this.name = "menuSaveButton";
         this.alwaysUpdate = true;
@@ -45,6 +45,7 @@ game.UI.menuSoundButton = me.GUI_Object.extend({
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
         //TODO:  Sound Stuff
+		
         this.container.soundmenu();
         me.game.repaint();
         return false;

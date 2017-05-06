@@ -21,7 +21,7 @@ game.UI.soundMuteButton = me.GUI_Object.extend({
         this.container = cont;
 
         this.anchorPoint.set(0, 0);
-        this.setOpacity(0.8);
+        //this.setOpacity(0.8);
 
         this.name = "soundMuteButton";
         this.alwaysUpdate = true;

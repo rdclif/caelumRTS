@@ -62,7 +62,7 @@ var game = {
         me.pool.register("catapultPlayer", game.Catapult);
         me.pool.register("knightPlayer", game.Knight);
         me.pool.register("soldierPlayer", game.Soldier);
-	    me.pool.register("builderPlayer", game.Builder);
+	me.pool.register("builderPlayer", game.Builder);
         me.pool.register("cityObject", game.City);
         me.pool.register("barracksObject", game.Barracks);
         me.pool.register("farmObject", game.Farm);

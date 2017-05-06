@@ -21,7 +21,7 @@ game.UI.soundVolumeDownButton = me.GUI_Object.extend({
         this.container = cont;
 
         this.anchorPoint.set(0, 0);
-        this.setOpacity(0.8);
+        //this.setOpacity(0.8);
 
         this.name = "volumeDownButton";
         this.alwaysUpdate = true;
@@ -30,7 +30,7 @@ game.UI.soundVolumeDownButton = me.GUI_Object.extend({
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "VolumeDown";
+        this.label = "Volume Down";
 
         // only the parent container is a floating object
         this.floating = false;

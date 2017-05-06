@@ -7,27 +7,30 @@ game.UI.victoryButton = me.GUI_Object.extend({
     /**
      * constructor
      */
-    init: function(x, y) {
+    init: function(x, y, cont) {
         this._super(me.GUI_Object, "init", [ x, y, {
             image: game.texture,
-            region : "buttonSquare_blue"
+            region : "menu_up",
+            container : {}
         } ]);
 
         // offset of the two used images in the texture
-        this.unclicked_region = game.texture.getRegion("buttonSquare_blue");
-        this.clicked_region = game.texture.getRegion("buttonSquare_blue_pressed");
+        this.unclicked_region = game.texture.getRegion("menu_up");
+        this.clicked_region = game.texture.getRegion("menu_pressed");
+
+        this.container = cont;
+
+        this.anchorPoint.set(0, 0);
+        //this.setOpacity(0.8);
 
         this.name = "victoryButton";
         this.alwaysUpdate = true;
-
-        this.anchorPoint.set(0, 0);
-        this.setOpacity(0.9);
 
         this.font = new me.Font("kenpixel", 12, "black");
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "Victory";
+        this.label = "Victory Screen";
 
         // only the parent container is a floating object
         this.floating = false;
@@ -66,6 +69,11 @@ game.UI.victoryButton = me.GUI_Object.extend({
             this.pos.x + this.width / 2,
             this.pos.y + this.height / 2
         );
+    },
+	
+	removeChildNow : function (child) {
+        this._super(me.Container, "removeChildNow", [child]);
+        this.updateChildBounds();
     },
     update: function () {
         return this.selected || this.hover;

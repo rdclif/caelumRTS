@@ -126,11 +126,11 @@ game.HUD.UIPanel = me.Container.extend({
 
     remove : function () {
         while(this.children[0].name !== "panel") {
-            this.removeChildern(this.children[0]);
+            this.removeChildren(this.children[0]);
         }
     },
 
-    removeChildern : function (child) {
+    removeChildren : function (child) {
         this._super(me.Container, "removeChildNow", [child]);
         this.updateChildBounds();
     },
@@ -170,6 +170,7 @@ game.HUD.menuPanel = me.Container.extend({
         this.addChild(new game.UI.menuSaveButton(0,35, this));
 		this.addChild(new game.UI.menuSoundButton(0,70, this));
 		this.addChild(new game.UI.menuQuitButton(0,105, this));
+		this.addChild(new game.UI.menuDebugButton(0,140, this));
     },
 	
 	
@@ -178,14 +179,19 @@ game.HUD.menuPanel = me.Container.extend({
 		this.addChild(new game.UI.soundVolumeDownButton(105,70));
 		this.addChild(new game.UI.soundMuteButton(105,105));
 	},
+	
+	debugmenu :function () {
+		this.addChild(new game.UI.victoryButton(105,140));
+		this.addChild(new game.UI.defeatButton(105,175));
+	},
 
     remove : function () {
         while(this.children[0].name !== "menuButton") {
-            this.removeChildern(this.children[0]);
+            this.removeChildren(this.children[0]);
         }
     },
 
-    removeChildern : function (child) {
+    removeChildren : function (child) {
         this._super(me.Container, "removeChildNow", [child]);
         this.updateChildBounds();
     },

@@ -70,7 +70,7 @@ game.City = game.playerObject.extend({
     },
 
     trainPlayer : function () {
-        var timeToTrain = 800;
+        var timeToTrain = 200;
         var progress =  me.game.world.getChildByName("progressBar")[0];
         if (progress) {
             progress.updateProgress(1, timeToTrain);

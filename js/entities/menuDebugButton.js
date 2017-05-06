@@ -3,7 +3,7 @@ game.UI = game.UI || {};
 /**
  * a basic button control
  */
-game.UI.menuButton = me.GUI_Object.extend({
+game.UI.menuDebugButton = me.GUI_Object.extend({
     /**
      * constructor
      */
@@ -23,16 +23,14 @@ game.UI.menuButton = me.GUI_Object.extend({
         this.anchorPoint.set(0, 0);
         //this.setOpacity(0.8);
 
-        this.name = "menuButton";
+        this.name = "menuDebugButton";
         this.alwaysUpdate = true;
 
         this.font = new me.Font("kenpixel", 12, "black");
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "Menu";
-		
-		this.active = false;
+        this.label = "Debug Options";
 
         // only the parent container is a floating object
         this.floating = false;
@@ -47,18 +45,8 @@ game.UI.menuButton = me.GUI_Object.extend({
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
 
-		if (this.active)
-		{
-			this.active = false;
-			this.container.remove();
-		}
-		else
-		{
-			this.active = true;
-			this.container.menu();
-		}
-        
-        //console.log(this);
+        this.container.debugmenu();
+        me.game.repaint();
         return false;
     },
 
