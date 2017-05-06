@@ -31,6 +31,7 @@ game.UI.menuSoundButton = me.GUI_Object.extend({
         this.font.textBaseline = "middle";
 
         this.label = "Sound";
+		this.active = false;
 
         // only the parent container is a floating object
         this.floating = false;
@@ -46,7 +47,35 @@ game.UI.menuSoundButton = me.GUI_Object.extend({
         this.height = this.clicked_region.height;
         //TODO:  Sound Stuff
 		
-        this.container.soundmenu();
+		if (this.active)
+		{
+			//alert("deleting");
+			this.active = false;
+			console.log(this.container);
+			
+			//Relies on fact that the first 3 elements in array are the new buttons
+			for (i = 0; i < 3; i++)
+			{
+				this.container.removeChild( this.container.getChildAt(i) );
+				
+			}
+			
+			//Possible alternate method, but doesn't work with what we have now, since it would require reorganization of children, may be worthwhile to do later
+			/*
+			this.container.forEach(function (child) {
+				// do something with the child
+				
+				console.log(child);
+				//child.remove();
+			});*/
+
+		}
+		else
+		{
+			this.active = true;
+		    this.container.soundmenu();
+		}
+		
         me.game.repaint();
         return false;
     },

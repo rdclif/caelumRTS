@@ -31,6 +31,7 @@ game.UI.menuDebugButton = me.GUI_Object.extend({
         this.font.textBaseline = "middle";
 
         this.label = "Debug Options";
+		this.debug = false;
 
         // only the parent container is a floating object
         this.floating = false;
@@ -45,7 +46,38 @@ game.UI.menuDebugButton = me.GUI_Object.extend({
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
 
-        this.container.debugmenu();
+		
+		if (this.active)
+		{
+			//alert("deleting");
+			this.active = false;
+			console.log(this.container);
+			
+			//Relies on fact that the first 2 elements in array are the new buttons
+			for (i = 0; i < 2; i++)
+			{
+				this.container.removeChild( this.container.getChildAt(i) );
+				
+			}
+			
+			//Possible alternate method, but doesn't work with what we have now, since it would require reorganization of children, may be worthwhile to do later
+			/*
+			this.container.forEach(function (child) {
+				// do something with the child
+				
+				console.log(child);
+				//child.remove();
+			});*/
+
+		}
+		else
+		{
+			this.active = true;
+		    this.container.debugmenu();
+		}
+		
+		
+        //this.container.debugmenu();
         me.game.repaint();
         return false;
     },
