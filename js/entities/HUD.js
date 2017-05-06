@@ -168,8 +168,16 @@ game.HUD.menuPanel = me.Container.extend({
 
     menu : function () {
         this.addChild(new game.UI.menuSaveButton(0,35, this));
-        this.addChild(new game.UI.menuQuitButton(0,70, this));
+		this.addChild(new game.UI.menuSoundButton(0,70, this));
+		this.addChild(new game.UI.menuQuitButton(0,105, this));
     },
+	
+	
+	soundmenu :function () {
+		this.addChild(new game.UI.soundVolumeUpButton(105,35));
+		this.addChild(new game.UI.soundVolumeDownButton(105,70));
+		this.addChild(new game.UI.soundMuteButton(105,105));
+	},
 
     remove : function () {
         while(this.children[0].name !== "menuButton") {

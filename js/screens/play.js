@@ -5,7 +5,8 @@ game.PlayScreen = me.ScreenObject.extend({
     onResetEvent: function() {
 
         //load map
-        me.levelDirector.loadLevel("Map");
+        me.levelDirector.loadLevel("Map2");
+		me.audio.playTrack("bensound-acousticbreeze");
         this.handle = me.event.subscribe(me.event.KEYDOWN, this.keyPressed.bind(this));
         me.game.world.addChild(me.pool.pull("knightPlayer", 100, 100));
         me.game.world.addChild(me.pool.pull("cityObject", 300, 300));
