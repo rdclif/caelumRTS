@@ -49,30 +49,11 @@ game.save.object.prototype.load = function () {
 
     var sprites = JSON.parse(localStorage.getItem("me.save.sprites"));
     if (sprites) {
-        var idcounter = JSON.parse(localStorage.getItem("me.save.idCounter"));
-        var food = JSON.parse(localStorage.getItem("me.save.Food"));
-        var gold = JSON.parse(localStorage.getItem("me.save.Gold"));
-        console.log(sprites);
-        var old;
-        for (var y in me.game.world.children) {
-            if (me.game.world.children[y].id) {
-                old = me.game.world.children[y];
-                console.log(old);
-                me.game.world.removeChild(old);
-            }
-        }
-        me.game.world.removeChild(old);
-
-        game.data.idCounter = idcounter;
-        game.data.goldCounter = gold;
-        game.data.foodCounter = food;
-
-        for (var x = 0; x < sprites.length; x += 1) {
-            var sprite = sprites[x];
-            me.game.world.addChild(me.pool.pull(sprite.pool, sprite.x, sprite.y));
-        }
+        game.data.loadSave = 1;
+        me.state.change(me.state.PLAY);
     }
     else {
+
         console.log("no save found");
     }
 };

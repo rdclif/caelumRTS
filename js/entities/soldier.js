@@ -96,7 +96,10 @@ game.Soldier = game.playerObject.extend({
     },
 
     onDestroyEvent : function() {
-
+        me.input.releasePointerEvent("pointerdown", this);
+        me.input.releasePointerEvent("pointerup", this);
+        me.input.releasePointerEvent("pointercancel", this);
+        me.event.unsubscribe(this.handler);
     },
 
     /**

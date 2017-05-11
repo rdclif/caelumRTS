@@ -45,7 +45,7 @@ game.UI.menuQuitButton = me.GUI_Object.extend({
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
         //TODO: Quit Stuff
-
+        me.state.change(me.state.MENU);
         this.container.remove();
         me.game.repaint();
         return false;

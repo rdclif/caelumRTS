@@ -1,13 +1,13 @@
 
-game.Builder = game.playerObject.extend({
+game.cBuilder = game.playerObject.extend({
     /**
      * constructor
      */
     init : function (x, y ) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image: "builder",
-            name: "Builder",
+            image: "cBuilder",
+            name: "cBuilder",
             pool : "",
             width: 36,
             height: 48,
@@ -39,7 +39,7 @@ game.Builder = game.playerObject.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
 
-        this.pool = "builderPlayer";
+        this.pool = "builderComputer";
 
         this.setId();
 

@@ -191,6 +191,12 @@ game.HUD.menuPanel = me.Container.extend({
         }
     },
 
+    removeAll : function () {
+        while(this.children.length > 0) {
+            this.removeChildren(this.children[0]);
+        }
+    },
+
     removeChildren : function (child) {
         this._super(me.Container, "removeChildNow", [child]);
         this.updateChildBounds();

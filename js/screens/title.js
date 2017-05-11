@@ -9,7 +9,7 @@ game.TitleScreen = me.ScreenObject.extend({
 	});
 	
 	backgroundImage.anchorPoint.set(0, 0);
-	backgroundImage.scale(1.25,1);
+	backgroundImage.scale(backgroundImage.width/me.game.viewport.width,2);
 
 	// add to the world container
 	me.game.world.addChild(backgroundImage, 1);

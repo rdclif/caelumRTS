@@ -8,23 +8,29 @@ game.PlayScreen = me.ScreenObject.extend({
         me.levelDirector.loadLevel("Map2");
 		me.audio.playTrack("bensound-acousticbreeze");
         this.handle = me.event.subscribe(me.event.KEYDOWN, this.keyPressed.bind(this));
-        me.game.world.addChild(me.pool.pull("knightPlayer", 100, 100));
-        me.game.world.addChild(me.pool.pull("cityObject", 300, 300));
-        
-
-
-        // reset the score
-        game.data.score = 0;
-
         // Add our HUD to the game world, add it last so that this is on top of the rest.
         // Can also be forced by specifying a "Infinity" z value to the addChild function.
         this.HUD = new game.HUD.UIPanel(me.game.viewport.width-201, me.game.viewport.height-151, 200, 150);
         me.game.world.addChild(this.HUD);
 
-        var menu = new game.HUD.menuPanel(0,0, 50, 50);
-        me.game.world.addChild(menu);
+        this.menu = new game.HUD.menuPanel(0,0, 50, 50);
+        me.game.world.addChild(this.menu);
 
 
+        if (game.data.loadSave) {
+            this.loadSave();
+
+        } else {
+
+            me.game.world.addChild(me.pool.pull("knightPlayer", 100, 100));
+            me.game.world.addChild(me.pool.pull("cityObject", 300, 300));
+
+            // reset the score
+            game.data.score = 0;
+            game.data.foodCounter = 50;
+            game.data.goldCounter = 100;
+
+        }
 
     },
     keyPressed: function (action /*, keyCode, edge */) {
@@ -50,11 +56,33 @@ game.PlayScreen = me.ScreenObject.extend({
 
     },
 
+    loadSave : function () {
+
+        var sprites = JSON.parse(localStorage.getItem("me.save.sprites"));
+        var idcounter = JSON.parse(localStorage.getItem("me.save.idCounter"));
+        var food = JSON.parse(localStorage.getItem("me.save.Food"));
+        var gold = JSON.parse(localStorage.getItem("me.save.Gold"));
+        console.log(sprites);
+
+        game.data.idCounter = idcounter;
+        game.data.goldCounter = gold;
+        game.data.foodCounter = food;
+
+        for (var x = 0; x < sprites.length; x += 1) {
+            var sprite = sprites[x];
+            me.game.world.addChild(me.pool.pull(sprite.pool, sprite.x, sprite.y));
+        }
+        game.data.loadSave = 0;
+    },
+
     /**
      *  action to perform when leaving this screen (state change)
      */
     onDestroyEvent: function() {
         // remove the HUD from the game world
+        this.HUD.remove();
         me.game.world.removeChild(this.HUD);
+        this.menu.removeAll()
+        me.game.world.removeChild(this.menu);
     }
 });

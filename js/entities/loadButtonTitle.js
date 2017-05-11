@@ -58,7 +58,7 @@ game.UI.loadButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-
+        me.saveGame.load();
         return false;
     },
 

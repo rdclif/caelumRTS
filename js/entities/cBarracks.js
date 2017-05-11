@@ -1,13 +1,13 @@
 
-game.Barracks = game.playerObject.extend({
+game.cBarracks = game.playerObject.extend({
     /**
      * constructor
      */
     init : function (x, y ) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image: "barracks",
-            name: "Barracks",
+            image: "cBarracks",
+            name: "cBarracks",
             pool: "",
             width: 100,
             height: 100,
@@ -33,7 +33,7 @@ game.Barracks = game.playerObject.extend({
 
         this.setId();
 
-        this.pool = "barracksObject";
+        this.pool = "barracksComputerObject";
 
     },
 

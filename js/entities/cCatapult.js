@@ -1,12 +1,12 @@
-game.Catapult = game.playerObject.extend({
+game.cCatapult = game.playerObject.extend({
         /**
          * constructor
          */
         init : function (x, y ) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image : "catapult",
-            name : "Catapult",
+            image : "cCatapult",
+            name : "cCatapult",
             pool : "",
             width : 72,
             height : 72,
@@ -35,7 +35,7 @@ game.Catapult = game.playerObject.extend({
         this.newX = x;
         this.newY = y;
 
-        this.pool = "catapultPlayer";
+        this.pool = "catapultComputer";
 
         this.setId();
 

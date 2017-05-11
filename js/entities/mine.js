@@ -54,6 +54,12 @@ game.Mine = game.playerObject.extend({
         hud.minePanel(this);
 
     },
+    onDestroyEvent : function() {
+        me.input.releasePointerEvent("pointerdown", this);
+        me.input.releasePointerEvent("pointerup", this);
+        me.input.releasePointerEvent("pointercancel", this);
+        me.event.unsubscribe(this.handler);
+    },
 
     /**
      * colision handler

@@ -1,17 +1,17 @@
 
-game.Barracks = game.playerObject.extend({
+game.cCity = game.playerObject.extend({
     /**
      * constructor
      */
-    init : function (x, y ) {
+    init: function (x, y, settings) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image: "barracks",
-            name: "Barracks",
+            image: "cCity",
+            name: "cCity",
             pool: "",
-            width: 100,
-            height: 100,
-            framewidth: 100,
+            width: 128,
+            height: 128,
+            framewidth: 128,
             training: false,
             trainx: 0,
             trainy: 0,
@@ -19,9 +19,11 @@ game.Barracks = game.playerObject.extend({
             trainTime: 0
         }]);
 
-
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
+        this.trainTime = 0;
+
+        this.name = "city";
 
         this.renderable.addAnimation("attacked", [1, 2]);
 
@@ -31,9 +33,9 @@ game.Barracks = game.playerObject.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
 
-        this.setId();
+        this.pool = "cityComputerObject";
 
-        this.pool = "barracksObject";
+        this.setId();
 
     },
 
@@ -58,10 +60,12 @@ game.Barracks = game.playerObject.extend({
 
     onClick : function (event) {
         //alert(this.name);
-        var hud = me.game.world.getChildByName("UIPanel")[0];
-        hud.barracksPanel(this);
-        hud.addChild(new game.progressBar(150, 32));
-
+        if (!(this.training)) {
+            //still has bugs
+            var hud = me.game.world.getChildByName("UIPanel")[0];
+            hud.cityPanel(this);
+            hud.addChild(new game.progressBar(150, 32));
+        }
     },
 
     callTraining : function (x,y,string) {
@@ -81,7 +85,7 @@ game.Barracks = game.playerObject.extend({
         this.trainTime += 1;
         if (this.trainTime >= timeToTrain) {
             //TODO: move spawn loacation if space is occupied
-            me.game.world.addChild(me.pool.pull(this.trainType, this.trainx+50, this.trainy+90));
+            me.game.world.addChild(me.pool.pull(this.trainType, this.trainx+60, this.trainy+110));
             this.trainTime = 0;
             this.training = false;
             this.trainType = "";

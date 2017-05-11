@@ -9,6 +9,7 @@ var game = {
         idCounter : 1,
         goldCounter : 100,
         foodCounter : 50,
+        loadSave : 0
     },
 
 
@@ -60,7 +61,7 @@ var game = {
         //set gravity to 0
         me.sys.gravity = 0;
 
-        // add our player entity in the entity pool
+        // add player entities in the entity pool
         me.pool.register("catapultPlayer", game.Catapult);
         me.pool.register("knightPlayer", game.Knight);
         me.pool.register("soldierPlayer", game.Soldier);
@@ -69,6 +70,16 @@ var game = {
         me.pool.register("barracksObject", game.Barracks);
         me.pool.register("farmObject", game.Farm);
         me.pool.register("mineObject", game.Mine);
+
+        // add computer entities in the entity pool
+        me.pool.register("catapultComputer", game.cCatapult);
+        me.pool.register("knightComputer", game.cKnight);
+        me.pool.register("soldierComputer", game.cSoldier);
+        me.pool.register("builderComputer", game.cBuilder);
+        me.pool.register("cityComputerObject", game.cCity);
+        me.pool.register("barracksComputerObject", game.cBarracks);
+        me.pool.register("farmComputerObject", game.cFarm);
+        me.pool.register("mineComputerObject", game.cMine);
 
         // Start the game.
         me.state.change(me.state.MENU);

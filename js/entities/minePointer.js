@@ -48,6 +48,7 @@ game.buildMineIcon = me.Entity.extend({
     },
     onDestroyEvent : function() {
         me.game.world.updateChildBounds();
+        me.input.releasePointerEvent("pointerdown", this);
     },
 
     /**

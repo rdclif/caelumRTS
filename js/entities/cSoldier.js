@@ -1,16 +1,16 @@
-game.Catapult = game.playerObject.extend({
+game.cSoldier = game.playerObject.extend({
         /**
          * constructor
          */
         init : function (x, y ) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image : "catapult",
-            name : "Catapult",
+            image : "cSoldier",
+            name : "cSoldier",
             pool : "",
-            width : 72,
-            height : 72,
-            framewidth : 72,
+            width : 36,
+            height : 48,
+            framewidth : 36,
             newX : 0,
             newY : 0,
             direction : "stand",
@@ -21,21 +21,20 @@ game.Catapult = game.playerObject.extend({
         this.alwaysUpdate = true;
 
         // define a basic walking animation (using all frames)
-        this.renderable.addAnimation("right",  [2, 7]);
-        this.renderable.addAnimation("up",  [0, 5]);
-        this.renderable.addAnimation("down",  [4, 9]);
-        this.renderable.addAnimation("attack-up",  [5, 10, 15]);
-        this.renderable.addAnimation("attack-side",  [7, 12, 17]);
-        this.renderable.addAnimation("attack-down",  [9, 14, 19]);
+        this.renderable.addAnimation("right",  [3, 4, 5]);
+        this.renderable.addAnimation("up",  [0, 1, 2]);
+        this.renderable.addAnimation("down",  [6, 7, 8]);
+        this.renderable.addAnimation("left",  [9, 10, 11]);
+        this.renderable.addAnimation("attack",  [12, 13, 14]);
         // define a standing animation (using the frame)
-        this.renderable.addAnimation("stand",  [2]);
+        this.renderable.addAnimation("stand",  [7]);
 
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
         this.newX = x;
         this.newY = y;
 
-        this.pool = "catapultPlayer";
+        this.pool = "soldierComputer";
 
         this.setId();
 
@@ -47,18 +46,8 @@ game.Catapult = game.playerObject.extend({
 
         if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
             this.moveObject(distx, disty);
-            if (this.direction == "left"){
-                this.renderable.flipX(true);
-                this.direction = "right";
-                if (!this.renderable.isCurrentAnimation(this.direction)) {
-                    this.renderable.setCurrentAnimation(this.direction);
-                }
-            }
-            else {
-                this.renderable.flipX(false);
-                if (!this.renderable.isCurrentAnimation(this.direction)) {
-                    this.renderable.setCurrentAnimation(this.direction);
-                }
+            if (!this.renderable.isCurrentAnimation(this.direction)) {
+                this.renderable.setCurrentAnimation(this.direction);
             }
         } else  {
             this.walk = false;
@@ -99,7 +88,7 @@ game.Catapult = game.playerObject.extend({
     onClick : function (event) {
 	    //alert(this.name);
 	    var hud = me.game.world.getChildByName("UIPanel")[0];
-	    hud.catapultPanel(this);
+	    hud.soldierPanel(this);
 
 	    //me.game.world.addChild(new game.selectIcon(this.pos.x, this.pos.y, 36));
 	    //me.game.world.addChild(new game.selectIcon(this.pos.x + 26, this.pos.y + 55, 36));
