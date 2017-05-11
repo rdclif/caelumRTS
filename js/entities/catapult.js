@@ -7,6 +7,7 @@ game.Catapult = game.playerObject.extend({
         this._super(game.playerObject, 'init', [x, y, {
             image : "catapult",
             name : "Catapult",
+            pool : "",
             width : 72,
             height : 72,
             framewidth : 72,
@@ -33,6 +34,10 @@ game.Catapult = game.playerObject.extend({
         this.renderable.setCurrentAnimation("stand");
         this.newX = x;
         this.newY = y;
+
+        this.pool = "catapultPlayer";
+
+        this.setId();
 
     },
 

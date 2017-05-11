@@ -9,39 +9,14 @@ game.TitleScreen = me.ScreenObject.extend({
 	});
 	
 	backgroundImage.anchorPoint.set(0, 0);
-	backgroundImage.scale(me.game.viewport.width / backgroundImage.width, me.game.viewport.height / backgroundImage.height);
+	backgroundImage.scale(1.25,1);
 
 	// add to the world container
 	me.game.world.addChild(backgroundImage, 1);
 
-	// create a basic GUI Object
-	var myButton = me.GUI_Object.extend(
-	{
-		init:function (x, y)
-		{
-			var settings = {}
-			settings.image = "button_0";
-	//		settings.framewidth = 100;
-	//		settings.frameheight = 50;
-			// super constructor
-			this._super(me.GUI_Object, "init", [x, y, settings]);
-			// define the object z order
-			this.pos.z = 4;
-		},
-
-		// output something in the console
-		// when the object is clicked
-		onClick:function (event)
-		{
-			me.state.change(me.state.PLAY);
-			// don't propagate the event
-			return false;
-		}
-	});
-
 	// add the object at pos (10,10)
-	me.game.world.addChild(new myButton(275,350));
-
+	me.game.world.addChild(new game.UI.startButton(me.game.viewport.width/2-100, me.game.viewport.height/2));
+	me.game.world.addChild(new game.UI.loadButton(me.game.viewport.width/2-100, me.game.viewport.height/2+55));
 
 
 	// add a new renderable component with the scrolling text
@@ -72,8 +47,8 @@ game.TitleScreen = me.ScreenObject.extend({
 		},
 
 		draw : function (renderer) {
-			this.font.draw(renderer, "Caelum - RTS", 160, 80);
-			this.font.draw(renderer, "Click anywhere to start playing.", 20, 380);
+			this.font.draw(renderer, "Caelum - RTS", me.game.viewport.width/2-130, 80);
+			//this.font.draw(renderer, "Click anywhere to start playing.", 20, 380);
 //			this.font.draw(renderer, this.scroller, this.scrollerpos, 440);
 		},
 	
@@ -85,13 +60,6 @@ game.TitleScreen = me.ScreenObject.extend({
 		}
         })), 2);
 
-	me.input.bindKey(me.input.KEY.ENTER, "enter", true);
-	me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);
-	this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
-		if (action === "enter") {
-			me.state.change(me.state.PLAY);
-		}
-	});
 
     },
 
@@ -100,9 +68,7 @@ game.TitleScreen = me.ScreenObject.extend({
      *  action to perform when leaving this screen (state change)
      */
     onDestroyEvent: function() {
-        me.input.unbindKey(me.input.KEY.ENTER);
-        me.input.unbindPointer(me.input.pointer.LEFT);
-        me.event.unsubscribe(this.handler);
+
 		// TODO
     }
 });

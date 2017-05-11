@@ -7,6 +7,7 @@ game.Knight = game.playerObject.extend({
         this._super(game.playerObject, 'init', [x, y, {
             image : "knight",
             name : "Knight",
+            pool : "",
             width : 36,
             height : 48,
             framewidth : 36,
@@ -32,6 +33,10 @@ game.Knight = game.playerObject.extend({
         this.renderable.setCurrentAnimation("stand");
         this.newX = x;
         this.newY = y;
+
+        this.pool = "knightPlayer";
+
+        this.setId();
 
     },
 
@@ -84,6 +89,8 @@ game.Knight = game.playerObject.extend({
 	    //alert(this.name);
 	    var hud = me.game.world.getChildByName("UIPanel")[0];
 	    hud.knightPanel(this);
+
+	    console.log(this);
 		
 		//8 Rectangles total, good idea to create dedicated function for rendering this shape to avoid copy pasting repeated code
 		var horizW = this.width / 3;

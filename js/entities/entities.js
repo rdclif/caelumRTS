@@ -19,6 +19,7 @@ game.playerObject = me.Entity.extend({
 
         // to memorize where we grab the shape
         this.grabOffset = new me.Vector2d(0,0);
+
     },
 
     onActivateEvent: function () {
@@ -72,6 +73,11 @@ game.playerObject = me.Entity.extend({
     onRelease : function (/*event*/) {
         this.selected = false;
         return false;
+    },
+    setId : function () {
+        this.id = game.data.idCounter;
+        game.data.idCounter += 1;
     }
+
 
 });

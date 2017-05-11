@@ -8,6 +8,7 @@ game.Barracks = game.playerObject.extend({
         this._super(game.playerObject, 'init', [x, y, {
             image: "barracks",
             name: "Barracks",
+            pool: "",
             width: 100,
             height: 100,
             framewidth: 100,
@@ -29,6 +30,10 @@ game.Barracks = game.playerObject.extend({
 
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
+
+        this.setId();
+
+        this.pool = "barracksObject";
 
     },
 

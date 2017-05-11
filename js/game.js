@@ -6,10 +6,9 @@ var game = {
     data : {
         // score
         score : 0,
-	x_center : 0,
-	y_center : 0,
-	x_offset : 0,
-	y_offset : 0
+        idCounter : 1,
+        goldCounter : 100,
+        foodCounter : 50,
     },
 
 
@@ -44,6 +43,9 @@ var game = {
 	    me.state.set(me.state.GAME_END, new game.VictoryScreen());
 
 
+	    me.saveGame = new game.save.object;
+
+
         game.texture = new me.video.renderer.Texture(
             me.loader.getJSON("menu"),
             me.loader.getImage("menu")
@@ -62,7 +64,7 @@ var game = {
         me.pool.register("catapultPlayer", game.Catapult);
         me.pool.register("knightPlayer", game.Knight);
         me.pool.register("soldierPlayer", game.Soldier);
-	me.pool.register("builderPlayer", game.Builder);
+	    me.pool.register("builderPlayer", game.Builder);
         me.pool.register("cityObject", game.City);
         me.pool.register("barracksObject", game.Barracks);
         me.pool.register("farmObject", game.Farm);

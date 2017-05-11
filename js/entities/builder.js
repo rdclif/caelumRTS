@@ -8,6 +8,7 @@ game.Builder = game.playerObject.extend({
         this._super(game.playerObject, 'init', [x, y, {
             image: "builder",
             name: "Builder",
+            pool : "",
             width: 36,
             height: 48,
             framewidth: 36,
@@ -37,6 +38,10 @@ game.Builder = game.playerObject.extend({
 
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
+
+        this.pool = "builderPlayer";
+
+        this.setId();
 
     },
 

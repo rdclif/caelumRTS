@@ -44,9 +44,8 @@ game.UI.menuSaveButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
-        //TODO:  Save Stuff
-        this.container.remove();
-        me.game.repaint();
+
+
         return false;
     },
 
@@ -58,7 +57,10 @@ game.UI.menuSaveButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-
+        //save important data
+        me.saveGame.saveAll();
+        this.container.remove();
+        me.game.repaint();
         return false;
     },
 

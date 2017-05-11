@@ -3,34 +3,34 @@ game.UI = game.UI || {};
 /**
  * a basic button control
  */
-game.UI.menuQuitButton = me.GUI_Object.extend({
+game.UI.startButton = me.GUI_Object.extend({
     /**
      * constructor
      */
-    init: function(x, y, cont) {
+    init: function(x, y) {
         this._super(me.GUI_Object, "init", [ x, y, {
             image: game.texture,
-            region : "menu_up",
-            container : {}
+            region : "buttonLong_blue",
         } ]);
 
         // offset of the two used images in the texture
-        this.unclicked_region = game.texture.getRegion("menu_up");
-        this.clicked_region = game.texture.getRegion("menu_pressed");
+        this.unclicked_region = game.texture.getRegion("buttonLong_blue");
+        this.clicked_region = game.texture.getRegion("buttonLong_blue_pressed");
 
-        this.container = cont;
 
         this.anchorPoint.set(0, 0);
         //this.setOpacity(0.8);
 
-        this.name = "menuQuitButton";
+        this.name = "startButton";
         this.alwaysUpdate = true;
 
         this.font = new me.Font("kenpixel", 12, "black");
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "Quit";
+        this.label = "New Game";
+		
+		this.active = false;
 
         // only the parent container is a floating object
         this.floating = false;
@@ -44,10 +44,8 @@ game.UI.menuQuitButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
-        //TODO: Quit Stuff
-
-        this.container.remove();
-        me.game.repaint();
+        
+        //console.log(this);
         return false;
     },
 
@@ -59,7 +57,7 @@ game.UI.menuQuitButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-
+        me.state.change(me.state.PLAY);
         return false;
     },
 

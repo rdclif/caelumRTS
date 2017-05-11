@@ -7,7 +7,8 @@ game.City = game.playerObject.extend({
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
             image: "city",
-            name: "Builder",
+            name: "city",
+            pool: "",
             width: 128,
             height: 128,
             framewidth: 128,
@@ -22,6 +23,8 @@ game.City = game.playerObject.extend({
         this.alwaysUpdate = true;
         this.trainTime = 0;
 
+        this.name = "city";
+
         this.renderable.addAnimation("attacked", [1, 2]);
 
         // define a standing animation (using the frame)
@@ -29,6 +32,10 @@ game.City = game.playerObject.extend({
 
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
+
+        this.pool = "cityObject";
+
+        this.setId();
 
     },
 

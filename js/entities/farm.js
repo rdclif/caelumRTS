@@ -8,6 +8,7 @@ game.Farm = game.playerObject.extend({
         this._super(game.playerObject, 'init', [x, y, {
             image: "farm",
             name: "Farm",
+            pool: "",
             width: 100,
             height: 100,
             framewidth: 100
@@ -24,6 +25,10 @@ game.Farm = game.playerObject.extend({
 
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
+
+        this.pool = "farmObject";
+
+        this.setId();
 
     },
 

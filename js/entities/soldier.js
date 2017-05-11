@@ -7,6 +7,7 @@ game.Soldier = game.playerObject.extend({
         this._super(game.playerObject, 'init', [x, y, {
             image : "soldier",
             name : "Soldier",
+            pool : "",
             width : 36,
             height : 48,
             framewidth : 36,
@@ -32,6 +33,10 @@ game.Soldier = game.playerObject.extend({
         this.renderable.setCurrentAnimation("stand");
         this.newX = x;
         this.newY = y;
+
+        this.pool = "soldierPlayer";
+
+        this.setId();
 
     },
 

@@ -8,6 +8,7 @@ game.Mine = game.playerObject.extend({
         this._super(game.playerObject, 'init', [x, y, {
             image: "mine",
             name: "Mine",
+            pool: "",
             width: 100,
             height: 100,
             framewidth: 100
@@ -24,6 +25,10 @@ game.Mine = game.playerObject.extend({
 
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
+
+        this.pool = "mineObject";
+
+        this.setId();
 
     },
 
