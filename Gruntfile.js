@@ -176,6 +176,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-download-electron');
   grunt.loadNpmTasks('grunt-asar');
+  grunt.loadNpmTasks('grunt-forever');
 
   // Custom Tasks
   grunt.loadTasks('tasks');
