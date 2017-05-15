@@ -44,10 +44,7 @@ game.UI.soundMuteButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
-		me.audio.setVolume(0);
-        me.audio.muteAll();
-        this.container.remove();
-        me.game.repaint();
+
         return false;
     },
 
@@ -59,6 +56,11 @@ game.UI.soundMuteButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
+
+        me.audio.setVolume(0);
+        me.audio.muteAll();
+        this.container.remove();
+        me.game.repaint();
 
         return false;
     },

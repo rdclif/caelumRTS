@@ -11,7 +11,8 @@ game.Mine = game.playerObject.extend({
             pool: "",
             width: 100,
             height: 100,
-            framewidth: 100
+            framewidth: 100,
+            counter: 0
         }]);
 
 
@@ -28,6 +29,8 @@ game.Mine = game.playerObject.extend({
 
         this.pool = "mineObject";
 
+        this.counter = 0;
+
         this.setId();
 
     },
@@ -37,6 +40,13 @@ game.Mine = game.playerObject.extend({
      */
     update: function (dt) {
 
+
+        //player earns gold
+        this.counter += 1;
+        if (this.counter >= 200) {
+            game.data.goldCounter += 1;
+            this.counter = 0;
+        };
 
         // apply physics to the body (this moves the entity)
         this.body.update(dt);

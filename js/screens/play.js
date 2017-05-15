@@ -12,6 +12,9 @@ game.PlayScreen = me.ScreenObject.extend({
         // Can also be forced by specifying a "Infinity" z value to the addChild function.
         this.HUD = new game.HUD.UIPanel(me.game.viewport.width-201, me.game.viewport.height-151, 200, 150);
         me.game.world.addChild(this.HUD);
+        this.text = new game.HUD.Container();
+        me.game.world.addChild(this.text);
+
 
         this.menu = new game.HUD.menuPanel(0,0, 50, 50);
         me.game.world.addChild(this.menu);
@@ -27,8 +30,8 @@ game.PlayScreen = me.ScreenObject.extend({
 
             // reset the score
             game.data.score = 0;
-            game.data.foodCounter = 50;
-            game.data.goldCounter = 100;
+            game.data.foodCounter = 500;
+            game.data.goldCounter = 1000;
 
         }
 
@@ -82,7 +85,9 @@ game.PlayScreen = me.ScreenObject.extend({
         // remove the HUD from the game world
         this.HUD.remove();
         me.game.world.removeChild(this.HUD);
+        me.game.world.removeChild(this.text);
         this.menu.removeAll()
         me.game.world.removeChild(this.menu);
+        me.audio.stopTrack();
     }
 });

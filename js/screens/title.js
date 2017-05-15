@@ -14,7 +14,7 @@ game.TitleScreen = me.ScreenObject.extend({
 	// add to the world container
 	me.game.world.addChild(backgroundImage, 1);
 
-	// add the object at pos (10,10)
+	// add buttons
 	me.game.world.addChild(new game.UI.startButton(me.game.viewport.width/2-100, me.game.viewport.height/2));
 	me.game.world.addChild(new game.UI.loadButton(me.game.viewport.width/2-100, me.game.viewport.height/2+55));
 

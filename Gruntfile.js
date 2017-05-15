@@ -192,4 +192,4 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('dist', ['default', 'download-electron', 'asar']);
   grunt.registerTask('serve', ['resources', 'connect', 'watch']);
-}
+};

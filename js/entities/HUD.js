@@ -22,7 +22,40 @@ game.HUD.Container = me.Container.extend({
         // give a name
         this.name = "HUD";
 
+        me.game.world.addChild(new (me.Renderable.extend ({
+
+            // constructor
+            init : function () {
+                this._super(me.Renderable, 'init', [0, 0, me.game.viewport.width, me.game.viewport.height]);
+                this.floating = true;
+                this.font = new me.Font("kenpixel", 14, "gray");
+                this.font.bold();
+                this.scroller = "Placeholder Text";
+                console.log(this.font);
+            },
+
+
+            update : function (dt) {
+
+                return true;
+            },
+
+            draw : function (renderer) {
+                var hud = "Food: " + game.data.foodCounter + "  Gold: " + game.data.goldCounter;
+                this.font.draw(renderer, hud, me.game.viewport.width-150, 8);
+
+            },
+
+
+            onDestroyEvent : function () {
+
+            }
+        })));
+
+
     }
+
+
 });
 
 
@@ -166,6 +199,10 @@ game.HUD.menuPanel = me.Container.extend({
         this.addChild(new game.UI.menuButton(0,0, this));
     },
 
+    alert : function (string) {
+        this.addChild(new game.UI.alertBox(me.game.viewport.width/2-200,me.game.viewport.height/2-25, this, string));
+    },
+
     menu : function () {
         this.addChild(new game.UI.menuSaveButton(0,35, this));
 		this.addChild(new game.UI.menuSoundButton(0,70, this));
@@ -175,9 +212,9 @@ game.HUD.menuPanel = me.Container.extend({
 	
 	
 	soundmenu :function () {
-		this.addChild(new game.UI.soundVolumeUpButton(105,35));
-		this.addChild(new game.UI.soundVolumeDownButton(105,70));
-		this.addChild(new game.UI.soundMuteButton(105,105));
+		this.addChild(new game.UI.soundVolumeUpButton(105,35, this));
+		this.addChild(new game.UI.soundVolumeDownButton(105,70, this));
+		this.addChild(new game.UI.soundMuteButton(105,105, this));
 	},
 	
 	debugmenu :function () {

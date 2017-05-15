@@ -120,11 +120,46 @@ game.Builder = game.playerObject.extend({
     },
 
     buildSomething : function (x, y, string) {
-        this.buildx = x;
-        this.buildy = y;
-        this.buildType = string;
-        this.building = true;
-        this.buildTime = 0;
+        var menu = me.game.world.getChildByName("menuPanel")[0];
+        if (string === "barracksObject") {
+            if (game.data.goldCounter >= 1000) {
+                this.buildx = x;
+                this.buildy = y;
+                this.buildType = string;
+                this.building = true;
+                this.buildTime = 0;
+                game.data.goldCounter -= 1000;
+            }
+            else {
+                menu.alert("You do not have enough gold.");
+            }
+        }
+        if (string === "farmObject") {
+            if (game.data.goldCounter >= 200) {
+                this.buildx = x;
+                this.buildy = y;
+                this.buildType = string;
+                this.building = true;
+                this.buildTime = 0;
+                game.data.goldCounter -= 200;
+            }
+            else {
+                menu.alert("You do not have enough gold.");
+            }
+        }
+        if (string === "mineObject") {
+            if (game.data.goldCounter >= 200) {
+                this.buildx = x;
+                this.buildy = y;
+                this.buildType = string;
+                this.building = true;
+                this.buildTime = 0;
+                game.data.goldCounter -= 200;
+            }
+            else {
+                menu.alert("You do not have enough gold.");
+            }
+        }
     },
 
     onClick : function (event) {

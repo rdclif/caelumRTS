@@ -75,6 +75,25 @@ game.UI.soundVolumeDownButton = me.GUI_Object.extend({
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
 
+        x = me.audio.getVolume();
+        console.log(x);
+        if (x <= 0)
+        {
+            me.audio.muteAll();
+            x = 0;
+        }
+        else if(x >= 1)
+        {
+            x -= .2;
+        }
+        else
+        {
+            x -=.2;
+        }
+        me.audio.setVolume(x);
+        this.container.remove();
+        me.game.repaint();
+
         return false;
     },
 

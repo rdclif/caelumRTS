@@ -7,8 +7,10 @@ var game = {
         // score
         score : 0,
         idCounter : 1,
-        goldCounter : 100,
-        foodCounter : 50,
+        goldCounter : 1000,
+        foodCounter : 500,
+
+        //loadSave is used in the play onReset function
         loadSave : 0
     },
 

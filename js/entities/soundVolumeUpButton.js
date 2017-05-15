@@ -44,26 +44,7 @@ game.UI.soundVolumeUpButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
-        //TODO:  Sound Stuff
 
-		x = me.audio.getVolume();
-		console.log(x);
-		if (x == 0)
-		{
-			me.audio.unmuteAll();
-			x+= .2;
-		}
-		else if(x >= 1)
-		{
-			x = 1;
-		}
-		else 
-		{
-			x +=.2;
-		}
-		me.audio.setVolume(x);
-        this.container.remove();
-        me.game.repaint();
         return false;
     },
 
@@ -75,7 +56,26 @@ game.UI.soundVolumeUpButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
+        //TODO:  Sound Stuff
 
+        x = me.audio.getVolume();
+        console.log(x);
+        if (x == 0)
+        {
+            me.audio.unmuteAll();
+            x+= .2;
+        }
+        else if(x >= 1)
+        {
+            x = 1;
+        }
+        else
+        {
+            x +=.2;
+        }
+        me.audio.setVolume(x);
+        this.container.remove();
+        me.game.repaint();
         return false;
     },
 

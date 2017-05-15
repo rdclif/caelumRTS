@@ -11,7 +11,8 @@ game.Farm = game.playerObject.extend({
             pool: "",
             width: 100,
             height: 100,
-            framewidth: 100
+            framewidth: 100,
+            counter:  0
         }]);
 
 
@@ -28,6 +29,8 @@ game.Farm = game.playerObject.extend({
 
         this.pool = "farmObject";
 
+        this.counter = 0;
+
         this.setId();
 
     },
@@ -37,6 +40,13 @@ game.Farm = game.playerObject.extend({
      */
     update: function (dt) {
 
+
+        //player earns food
+        this.counter += 1;
+        if (this.counter >= 200) {
+            game.data.foodCounter += 1;
+            this.counter = 0;
+        }
 
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
