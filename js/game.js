@@ -73,6 +73,7 @@ var game = {
         me.pool.register("farmObject", game.Farm);
         me.pool.register("mineObject", game.Mine);
 
+
         // add computer entities in the entity pool
         me.pool.register("catapultComputer", game.cCatapult);
         me.pool.register("knightComputer", game.cKnight);

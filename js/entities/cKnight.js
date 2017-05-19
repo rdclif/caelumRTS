@@ -35,6 +35,8 @@ game.cKnight = game.playerObject.extend({
         this.newY = y;
 
         this.pool = "knightComputer";
+        this.maxHP = 100;
+        this.hp = 100;
 
         this.setId();
 
@@ -90,9 +92,15 @@ game.cKnight = game.playerObject.extend({
 	    var hud = me.game.world.getChildByName("UIPanel")[0];
 	    hud.knightPanel(this);
 
-	    console.log(this);
-		
-		//8 Rectangles total, good idea to create dedicated function for rendering this shape to avoid copy pasting repeated code
+        //hp bar stuff
+        var hp = me.game.world.getChildByName("hpBar")[0];
+        if (hp) {
+            me.game.world.removeChild(hp);
+        }
+        me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
+
+
+        //8 Rectangles total, good idea to create dedicated function for rendering this shape to avoid copy pasting repeated code
 		var horizW = this.width / 3;
 		var horizH = this.height / 10;
 		var vertW = horizH;

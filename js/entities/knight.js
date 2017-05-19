@@ -34,6 +34,9 @@ game.Knight = game.playerObject.extend({
         this.newX = x;
         this.newY = y;
 
+        this.maxHP = 100;
+        this.hp = 100;
+
         this.pool = "knightPlayer";
 
         this.setId();
@@ -86,11 +89,17 @@ game.Knight = game.playerObject.extend({
     },
 
     onClick : function (event) {
-	    //alert(this.name);
+
 	    var hud = me.game.world.getChildByName("UIPanel")[0];
 	    hud.knightPanel(this);
 
-	    console.log(this);
+        //hp bar stuff
+        var hp = me.game.world.getChildByName("hpBar")[0];
+        if (hp) {
+            me.game.world.removeChild(hp);
+        }
+        me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
+
 		
 		//8 Rectangles total, good idea to create dedicated function for rendering this shape to avoid copy pasting repeated code
 		var horizW = this.width / 3;

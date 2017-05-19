@@ -56,6 +56,10 @@ game.UI.cancelButton = me.GUI_Object.extend({
 
         var hud = me.game.world.getChildByName("UIPanel")[0];
         hud.remove();
+        var hp = me.game.world.getChildByName("hpBar")[0];
+        if (hp) {
+            me.game.world.removeChild(hp);
+        }
         me.game.repaint();
         return false;
     },

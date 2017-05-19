@@ -34,6 +34,9 @@ game.Soldier = game.playerObject.extend({
         this.newX = x;
         this.newY = y;
 
+        this.maxHP = 100;
+        this.hp = 100;
+
         this.pool = "soldierPlayer";
 
         this.setId();
@@ -92,6 +95,14 @@ game.Soldier = game.playerObject.extend({
 
 	    //me.game.world.addChild(new game.selectIcon(this.pos.x, this.pos.y, 36));
 	    //me.game.world.addChild(new game.selectIcon(this.pos.x + 26, this.pos.y + 55, 36));
+
+        //hp bar stuff
+        var hp = me.game.world.getChildByName("hpBar")[0];
+        if (hp) {
+            me.game.world.removeChild(hp);
+        }
+        me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
+
 
     },
 

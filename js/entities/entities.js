@@ -71,9 +71,12 @@ game.playerObject = me.Entity.extend({
 
     // mouse up function
     onRelease : function (/*event*/) {
-        this.selected = false;
+        //this.selected = false;
         return false;
     },
+
+
+
     setId : function () {
         this.id = game.data.idCounter;
         game.data.idCounter += 1;

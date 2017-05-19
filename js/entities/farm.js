@@ -31,6 +31,9 @@ game.Farm = game.playerObject.extend({
 
         this.counter = 0;
 
+        this.maxHP = 100;
+        this.hp = 100;
+
         this.setId();
 
     },
@@ -62,6 +65,14 @@ game.Farm = game.playerObject.extend({
         //alert(this.name);
         var hud = me.game.world.getChildByName("UIPanel")[0];
         hud.farmPanel(this);
+
+        //hp bar stuff
+        var hp = me.game.world.getChildByName("hpBar")[0];
+        if (hp) {
+            me.game.world.removeChild(hp);
+        }
+        me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
+
 
     },
     onDestroyEvent : function() {

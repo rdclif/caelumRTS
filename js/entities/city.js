@@ -35,6 +35,9 @@ game.City = game.playerObject.extend({
 
         this.pool = "cityObject";
 
+        this.maxHP = 100;
+        this.hp = 100;
+
         this.setId();
 
     },
@@ -66,6 +69,14 @@ game.City = game.playerObject.extend({
             hud.cityPanel(this);
             hud.addChild(new game.progressBar(150, 32));
         }
+
+        //hp bar stuff
+        var hp = me.game.world.getChildByName("hpBar")[0];
+        if (hp) {
+            me.game.world.removeChild(hp);
+        }
+        me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
+
     },
 
     callTraining : function (x,y,string) {

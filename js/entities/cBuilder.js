@@ -41,6 +41,9 @@ game.cBuilder = game.playerObject.extend({
 
         this.pool = "builderComputer";
 
+        this.maxHP = 100;
+        this.hp = 100;
+
         this.setId();
 
     },
@@ -131,6 +134,14 @@ game.cBuilder = game.playerObject.extend({
         //alert(this.name);
        var hud =  me.game.world.getChildByName("UIPanel")[0];
        hud.builderPanel(this);
+
+        //hp bar stuff
+        var hp = me.game.world.getChildByName("hpBar")[0];
+        if (hp) {
+            me.game.world.removeChild(hp);
+        }
+        me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
+
 
     },
 

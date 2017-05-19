@@ -31,6 +31,9 @@ game.cBarracks = game.playerObject.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
 
+        this.maxHP = 100;
+        this.hp = 100;
+
         this.setId();
 
         this.pool = "barracksComputerObject";
@@ -61,6 +64,14 @@ game.cBarracks = game.playerObject.extend({
         var hud = me.game.world.getChildByName("UIPanel")[0];
         hud.barracksPanel(this);
         hud.addChild(new game.progressBar(150, 32));
+
+        //hp bar stuff
+        var hp = me.game.world.getChildByName("hpBar")[0];
+        if (hp) {
+            me.game.world.removeChild(hp);
+        }
+        me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
+
 
     },
 
