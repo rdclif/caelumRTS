@@ -46,6 +46,8 @@ game.Builder = game.playerObject.extend({
 
         this.setId();
 
+        console.log(me.game.viewport);
+
     },
 
     /*

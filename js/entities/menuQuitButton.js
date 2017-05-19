@@ -20,6 +20,8 @@ game.UI.menuQuitButton = me.GUI_Object.extend({
 
         this.container = cont;
 
+        this.pos.z = Infinity;
+
         this.anchorPoint.set(0, 0);
         //this.setOpacity(0.8);
 

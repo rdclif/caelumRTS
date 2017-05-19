@@ -53,8 +53,7 @@ game.cFarm = game.playerObject.extend({
 
     onClick : function (event) {
         //alert(this.name);
-        var hud = me.game.world.getChildByName("UIPanel")[0];
-        hud.farmPanel(this);
+
 
         //hp bar stuff
         var hp = me.game.world.getChildByName("hpBar")[0];

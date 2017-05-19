@@ -38,7 +38,7 @@ game.hpBar = me.Entity.extend({
 
         this.finish = sprite.maxHP;
 
-        console.log(this);
+        //console.log(this);
 
     },
 

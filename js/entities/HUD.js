@@ -74,7 +74,7 @@ game.HUD.UIPanel = me.Container.extend({
 
         this.alwaysUpdate = true;
 
-        this.floating = true;
+        this.floating = false;
 
         // give a name
         this.name = "UIPanel";
@@ -169,8 +169,9 @@ game.HUD.UIPanel = me.Container.extend({
     },
     draw : function (renderer) {
         //keeps HUD in front of all objects
-        this.pos.z = Infinity;
         this._super(me.Container, "draw", [ renderer ]);
+        this.pos.x = ((me.game.viewport.pos.x + me.game.viewport.width)-201);
+        this.pos.y = ((me.game.viewport.pos.y + me.game.viewport.height)-151);
         this.updateChildBounds();
     }
 
@@ -184,6 +185,7 @@ game.HUD.menuPanel = me.Container.extend({
 
         this.anchorPoint.set(0, 0);
 
+        this.pos.z = Infinity;
 
         // persistent across level change
         this.isPersistent = true;
@@ -191,7 +193,10 @@ game.HUD.menuPanel = me.Container.extend({
 
         this.alwaysUpdate = true;
 
-        this.floating = true;
+        this.floating = false;
+
+        this.pos.x = me.game.viewport.pos.x;
+        this.pos.y = me.game.viewport.pos.y;
 
         // give a name
         this.name = "menuPanel";
@@ -240,8 +245,10 @@ game.HUD.menuPanel = me.Container.extend({
     },
     draw : function (renderer) {
         //keeps HUD in front of all objects
-        this.pos.z = Infinity;
         this._super(me.Container, "draw", [ renderer ]);
+        this.pos.x = me.game.viewport.pos.x;
+        this.pos.y = me.game.viewport.pos.y;
+        this.pos.z = Infinity;
         this.updateChildBounds();
     }
 

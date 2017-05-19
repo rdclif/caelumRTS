@@ -11,13 +11,15 @@ game.PlayScreen = me.ScreenObject.extend({
         // Add our HUD to the game world, add it last so that this is on top of the rest.
         // Can also be forced by specifying a "Infinity" z value to the addChild function.
         this.HUD = new game.HUD.UIPanel(me.game.viewport.width-201, me.game.viewport.height-151, 200, 150);
-        me.game.world.addChild(this.HUD);
+        me.game.world.addChild(this.HUD, Infinity);
+
+        //gold and food
         this.text = new game.HUD.Container();
         me.game.world.addChild(this.text);
 
-
+        //menu
         this.menu = new game.HUD.menuPanel(0,0, 50, 50);
-        me.game.world.addChild(this.menu);
+        me.game.world.addChild(this.menu, Infinity);
 
 
         if (game.data.loadSave) {
@@ -25,8 +27,16 @@ game.PlayScreen = me.ScreenObject.extend({
 
         } else {
 
-            me.game.world.addChild(me.pool.pull("knightPlayer", 100, 100));
-            me.game.world.addChild(me.pool.pull("cityObject", 300, 300));
+            me.game.world.addChild(me.pool.pull("knightPlayer", 300, 300));
+            me.game.world.addChild(me.pool.pull("cityObject", 100, 150));
+
+            //load computer player
+            var level  = me.levelDirector.getCurrentLevel();
+
+            me.game.world.addChild(me.pool.pull("knightComputer", level.width-300, level.height-100));
+            me.game.world.addChild(me.pool.pull("cityComputerObject", level.width-300, level.height-300));
+
+
 
             // reset the score
             game.data.score = 0;

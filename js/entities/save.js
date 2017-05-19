@@ -30,13 +30,13 @@ game.save.object.prototype.saveAll = function () {
 
     //save important data
     for (var x in me.game.world.children) {
-        if (me.game.world.children[x].id) {
+        if (me.game.world.children[x].sId) {
             this.data.push({
                 "id" : me.game.world.children[x].id,
                 "pool" : me.game.world.children[x].pool,
                 "x" : me.game.world.children[x].pos.x,
                 "y" : me.game.world.children[x].pos.y,
-                "hp" : me.game.game.world.children[x].hp
+                "hp" : me.game.world.children[x].hp
             });
 
         }

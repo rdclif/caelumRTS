@@ -101,11 +101,6 @@ game.cCatapult = game.playerObject.extend({
 
     onClick : function (event) {
 	    //alert(this.name);
-	    var hud = me.game.world.getChildByName("UIPanel")[0];
-	    hud.catapultPanel(this);
-
-	    //me.game.world.addChild(new game.selectIcon(this.pos.x, this.pos.y, 36));
-	    //me.game.world.addChild(new game.selectIcon(this.pos.x + 26, this.pos.y + 55, 36));
 
         //hp bar stuff
         var hp = me.game.world.getChildByName("hpBar")[0];

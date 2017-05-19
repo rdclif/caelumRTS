@@ -20,6 +20,8 @@ game.UI.menuSoundButton = me.GUI_Object.extend({
 
         this.container = cont;
 
+        this.pos.z = Infinity;
+
         this.anchorPoint.set(0, 0);
         //this.setOpacity(0.8);
 
@@ -88,6 +90,10 @@ game.UI.menuSoundButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
+
+        //deactivate menu menu button
+        var menu = me.game.world.getChildByName("menuButton")[0];
+        menu.active = false;
 
         return false;
     },

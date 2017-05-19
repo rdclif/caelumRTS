@@ -78,7 +78,7 @@ game.playerObject = me.Entity.extend({
 
 
     setId : function () {
-        this.id = game.data.idCounter;
+        this.sId = game.data.idCounter;
         game.data.idCounter += 1;
     },
 
