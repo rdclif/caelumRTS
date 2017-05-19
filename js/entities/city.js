@@ -35,8 +35,8 @@ game.City = game.playerObject.extend({
 
         this.pool = "cityObject";
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = 1000;
+        this.hp = 1000;
 
         this.setId();
 
@@ -72,6 +72,7 @@ game.City = game.playerObject.extend({
 
         //hp bar stuff
         var hp = me.game.world.getChildByName("hpBar")[0];
+        //remove if one already exists
         if (hp) {
             me.game.world.removeChild(hp);
         }

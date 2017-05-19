@@ -73,7 +73,8 @@ game.PlayScreen = me.ScreenObject.extend({
 
         for (var x = 0; x < sprites.length; x += 1) {
             var sprite = sprites[x];
-            me.game.world.addChild(me.pool.pull(sprite.pool, sprite.x, sprite.y));
+            var added = me.game.world.addChild(me.pool.pull(sprite.pool, sprite.x, sprite.y));
+            added.loadHP(sprite.hp);
         }
         game.data.loadSave = 0;
     },

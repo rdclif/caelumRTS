@@ -31,8 +31,8 @@ game.Barracks = game.playerObject.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = 600;
+        this.hp = 600;
 
         this.setId();
 

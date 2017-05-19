@@ -28,8 +28,8 @@ game.cMine = game.playerObject.extend({
 
         this.pool = "mineComputerObject";
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = 400;
+        this.hp = 400;
 
         this.setId();
 

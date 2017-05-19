@@ -80,6 +80,10 @@ game.playerObject = me.Entity.extend({
     setId : function () {
         this.id = game.data.idCounter;
         game.data.idCounter += 1;
+    },
+
+    loadHP : function (amt) {
+        this.hp = amt;
     }
 
 

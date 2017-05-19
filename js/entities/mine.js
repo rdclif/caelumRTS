@@ -31,8 +31,8 @@ game.Mine = game.playerObject.extend({
 
         this.counter = 0;
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = 300;
+        this.hp = 300;
 
         this.setId();
 

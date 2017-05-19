@@ -28,8 +28,8 @@ game.cFarm = game.playerObject.extend({
 
         this.pool = "farmComputerObject";
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = 300;
+        this.hp = 300;
 
         this.setId();
 

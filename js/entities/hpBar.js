@@ -45,9 +45,16 @@ game.hpBar = me.Entity.extend({
     update : function (dt) {
 
         this.hp = this.sprite.hp;
-        this.pos.x = this.sprite.pos.x-5;
-        this.pos.y = this.sprite.pos.y+this.offset;
 
+        //hp bar position
+        if (this.sprite.width > 80) {
+            this.pos.x = this.sprite.pos.x + (this.sprite.width/2-15);
+        } else {
+            this.pos.x = this.sprite.pos.x - 5;
+        }
+        this.pos.y = this.sprite.pos.y+this.offset+5;
+
+        //hp bar level
         if (this.sprite.hp <= 0 ) {
 
             if (!this.renderable.isCurrentAnimation("empty")) {
@@ -79,8 +86,6 @@ game.hpBar = me.Entity.extend({
                 this.renderable.setCurrentAnimation("full");
             }
         }
-
-
 
 
         return true;

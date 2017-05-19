@@ -35,7 +35,8 @@ game.save.object.prototype.saveAll = function () {
                 "id" : me.game.world.children[x].id,
                 "pool" : me.game.world.children[x].pool,
                 "x" : me.game.world.children[x].pos.x,
-                "y" : me.game.world.children[x].pos.y
+                "y" : me.game.world.children[x].pos.y,
+                "hp" : me.game.game.world.children[x].hp
             });
 
         }

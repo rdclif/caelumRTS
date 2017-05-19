@@ -107,34 +107,34 @@ game.Knight = game.playerObject.extend({
 		var vertW = horizH;
 		var vertH = horizW;
 		//Upper Left Corner
-		me.game.world.addChild(new game.selectionBox(	this.pos.x, 
-														this.pos.y, 
-														horizW, horizH));
-		me.game.world.addChild(new game.selectionBox(	this.pos.x, 
-														this.pos.y, 
-														vertW, vertH));
-		
-		//Upper Right Corner
-		me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - horizW, 
-														this.pos.y, 
-														horizW, horizH));
-		me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - vertW, 
-														this.pos.y, 
-														vertW, vertH));
-		
-		//Lower Left Corner
-		me.game.world.addChild(new game.selectionBox(	this.pos.x, 
-														this.pos.y + this.height, 
-														horizW, horizH));
-		me.game.world.addChild(new game.selectionBox(	this.pos.x, 
-														this.pos.y + this.height - vertH + vertW, vertW, vertH));
-																									
-		//Lower Right Corner
-		me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - horizW, 
-														this.pos.y + this.height, 
-														horizW, horizH));
-		me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - vertW, 
-														this.pos.y + this.height - vertH + vertW, vertW, vertH));
+		// me.game.world.addChild(new game.selectionBox(	this.pos.x,
+		// 												this.pos.y,
+		// 												horizW, horizH));
+		// me.game.world.addChild(new game.selectionBox(	this.pos.x,
+		// 												this.pos.y,
+		// 												vertW, vertH));
+		//
+		// //Upper Right Corner
+		// me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - horizW,
+		// 												this.pos.y,
+		// 												horizW, horizH));
+		// me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - vertW,
+		// 												this.pos.y,
+		// 												vertW, vertH));
+		//
+		// //Lower Left Corner
+		// me.game.world.addChild(new game.selectionBox(	this.pos.x,
+		// 												this.pos.y + this.height,
+		// 												horizW, horizH));
+		// me.game.world.addChild(new game.selectionBox(	this.pos.x,
+		// 												this.pos.y + this.height - vertH + vertW, vertW, vertH));
+		//
+		// //Lower Right Corner
+		// me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - horizW,
+		// 												this.pos.y + this.height,
+		// 												horizW, horizH));
+		// me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - vertW,
+		// 												this.pos.y + this.height - vertH + vertW, vertW, vertH));
 	/*
 		me.game.world.addChild(new game.selectionBox(this.pos.x, this.pos.y, 20, 20));
 		me.game.world.addChild(new game.selectionBox(this.pos.x, this.pos.y, 20, 20));
