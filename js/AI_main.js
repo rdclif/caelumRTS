@@ -19,6 +19,9 @@ game.AI_main = me.Entity.extend({
         this.gold = game.data.goldCounter_comp;
 		this.act = false;
 		
+		
+		this.numTimes = 0;
+		
 		//Only has default numbers for unit/building counts, need to modify for loading files later on 
 		this.numUnits = {builder: 0, knight: 1, catapult: 0};
 		this.numBuildings = {city: 1, farm: 0, mine: 0};
@@ -34,31 +37,60 @@ game.AI_main = me.Entity.extend({
 
 		//Arbitrary limit on computer thinking speed to avoid bogging down the system
         this.counter += 1;
-        if (this.counter == 0 || this.counter >= 20) {
+        if (this.counter == 0 || this.counter >= 100) {
             this.act = true;
             this.counter = 0;
         }
 		
+		
 		if(this.act)
 		{
-			//Try just creating up to 3 builders
+			//Try just creating up to 3 builders (right now unit numbers list is not incremented, so always stays at 0)
 			if(this.numUnits.builder < 3)
 			{
 				//Get the city and instruct it to build more builders
 				//Assumption is that there is only 1 city (by game design)
 				var city = me.game.world.getChildByName("cCity");
-				console.log(city);
+				//console.log(city);
 				if ( city.length > 0 )
 				{
 					city = city[0];
-					console.log(city);
+					//console.log(city);
 					var spawnLocation_x = city.pos.x;
 					var spawnLocation_y = city.pos.y;
 					city.callTraining(spawnLocation_x, spawnLocation_y, "builderComputer");
 				}
 			}
 			
-			//Try moving a unit somewhere
+			//Try moving a unit somewhere (starting knight)
+			var knight = me.game.world.getChildByName("cKnight");
+			//console.log(knight);
+			if ( knight.length > 0 )
+			{
+				knight = knight[0];
+				//console.log(knight);
+				var destinationX = 50;
+				var destinationY = 50;
+				knight.movePlayerTo(destinationX, destinationY);
+			}
+
+			
+			var builder = me.game.world.getChildByName("cBuilder");
+			//console.log(builder);
+			if ( builder.length > 0 )
+			{
+				builder = builder[builder.length - 1];
+				if(!builder.busy)
+				{
+					//console.log(builder);
+					var buildLocation_x = Math.floor(Math.random() * (1400 - 100)) + 100;
+					var buildLocation_y = Math.floor(Math.random() * (1400 - 100)) + 100;
+					builder.busy = true;
+					builder.movePlayerTo(buildLocation_x, buildLocation_y+25);
+					builder.buildSomething(buildLocation_x, buildLocation_y, "farmComputerObject");
+				}
+			}
+			
 		}
 	
 	}

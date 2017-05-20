@@ -76,18 +76,22 @@ game.cCity = game.playerObject.extend({
     },
 
     callTraining : function (x,y,string) {
-		if (string === "builderComputer") {
-            if(game.data.goldCounter_comp >= 100 && game.data.foodCounter_comp >= 50) {
-                this.trainx = x;
-                this.trainy = y;
-                this.trainType = string;
-                this.training = true;
-                this.trainTime = 0;
-                game.data.goldCounter_comp -= 100;
-                game.data.foodCounter_comp -= 50;
-            }
+		//Can only start training units when not busy
+		if(!this.training)
+		{
+			if (string === "builderComputer") {
+				if(game.data.goldCounter_comp >= 100 && game.data.foodCounter_comp >= 50) {
+					this.trainx = x;
+					this.trainy = y;
+					this.trainType = string;
+					this.training = true;
+					this.trainTime = 0;
+					game.data.goldCounter_comp -= 100;
+					game.data.foodCounter_comp -= 50;
+				}
 
-        }
+			}
+		}
     },
 
     trainPlayer : function () {

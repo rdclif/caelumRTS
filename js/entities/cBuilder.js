@@ -72,7 +72,9 @@ game.cBuilder = game.playerObject.extend({
             this.renderable.setCurrentAnimation("stand");
         }
 
+
         if (this.building && this.walk==false) {
+			console.log("building");
             this.buildBuilding();
             if (!this.renderable.isCurrentAnimation("build")) {
                 this.renderable.setCurrentAnimation("build");
@@ -92,6 +94,7 @@ game.cBuilder = game.playerObject.extend({
     buildBuilding : function () {
         //TODO: add different times for building type
         this.buildTime += 1;
+
         if (this.buildTime >= 1000) {
             me.game.world.addChild(me.pool.pull(this.buildType, this.buildx-50, this.buildy-50));
             this.buildTime = 0;
@@ -123,11 +126,19 @@ game.cBuilder = game.playerObject.extend({
     },
 
     buildSomething : function (x, y, string) {
-        this.buildx = x;
-        this.buildy = y;
-        this.buildType = string;
-        this.building = true;
-        this.buildTime = 0;
+	
+		if (string === "farmComputerObject") {
+			console.log(game.data.goldCounter_comp);
+            if (game.data.goldCounter_comp >= 200) {
+                this.buildx = x;
+                this.buildy = y;
+                this.buildType = string;
+                this.building = true;
+                this.buildTime = 0;
+                game.data.goldCounter_comp -= 200;
+            }
+        }
+		
     },
 
     onClick : function (event) {
