@@ -178,6 +178,10 @@ game.Builder = game.playerObject.extend({
             me.game.world.removeChild(hp);
         }
         me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
+		
+		//Create selection box around newly selected object
+		removeFromWorld("selectBox");
+		createSelectionBox( this );
 
     },
 

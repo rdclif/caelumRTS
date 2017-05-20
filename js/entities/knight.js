@@ -100,52 +100,78 @@ game.Knight = game.playerObject.extend({
         }
         me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
 
+		//Create selection box around newly selected object
+		removeFromWorld("selectBox");
+		createSelectionBox( this );
 		
+/*	OK TO REMOVE - Original code, already moved to another function in utils.js
 		//8 Rectangles total, good idea to create dedicated function for rendering this shape to avoid copy pasting repeated code
 		var horizW = this.width / 3;
 		var horizH = this.height / 10;
 		var vertW = horizH;
 		var vertH = horizW;
 		//Upper Left Corner
-		// me.game.world.addChild(new game.selectionBox(	this.pos.x,
-		// 												this.pos.y,
-		// 												horizW, horizH));
-		// me.game.world.addChild(new game.selectionBox(	this.pos.x,
-		// 												this.pos.y,
-		// 												vertW, vertH));
-		//
-		// //Upper Right Corner
-		// me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - horizW,
-		// 												this.pos.y,
-		// 												horizW, horizH));
-		// me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - vertW,
-		// 												this.pos.y,
-		// 												vertW, vertH));
-		//
-		// //Lower Left Corner
-		// me.game.world.addChild(new game.selectionBox(	this.pos.x,
-		// 												this.pos.y + this.height,
-		// 												horizW, horizH));
-		// me.game.world.addChild(new game.selectionBox(	this.pos.x,
-		// 												this.pos.y + this.height - vertH + vertW, vertW, vertH));
-		//
-		// //Lower Right Corner
-		// me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - horizW,
-		// 												this.pos.y + this.height,
-		// 												horizW, horizH));
-		// me.game.world.addChild(new game.selectionBox(	this.pos.x + this.width - vertW,
-		// 												this.pos.y + this.height - vertH + vertW, vertW, vertH));
-	/*
-		me.game.world.addChild(new game.selectionBox(this.pos.x, this.pos.y, 20, 20));
-		me.game.world.addChild(new game.selectionBox(this.pos.x, this.pos.y, 20, 20));
-		me.game.world.addChild(new game.selectionBox(this.pos.x, this.pos.y, 20, 20));
-		me.game.world.addChild(new game.selectionBox(this.pos.x, this.pos.y, 20, 20));
-		me.game.world.addChild(new game.selectionBox(this.pos.x, this.pos.y, 20, 20));
-		me.game.world.addChild(new game.selectionBox(this.pos.x, this.pos.y, 20, 20));
-		*/
-
-	    //me.game.world.addChild(new game.selectIcon(this.pos.x, this.pos.y, 36));
-	    //me.game.world.addChild(new game.selectIcon(this.pos.x + 26, this.pos.y + 55, 36));
+		var hOffset = 0;
+		var vOffset = 0;
+		me.game.world.addChild( new game.selectionBox(	this.pos.x + hOffset, 
+														this.pos.y + vOffset, 
+														horizW, horizH,
+														hOffset, vOffset,
+														this));
+		me.game.world.addChild( new game.selectionBox(	this.pos.x + hOffset, 
+														this.pos.y + vOffset, 
+														vertW, vertH,
+														hOffset, vOffset,
+														this));
+		
+		//Upper Right Corner
+		hOffset = this.width - horizW;
+		vOffset = 0;
+		me.game.world.addChild( new game.selectionBox(	this.pos.x + hOffset, 
+														this.pos.y + vOffset, 
+														horizW, horizH,
+														hOffset, vOffset,
+														this));
+		hOffset = this.width - vertW;
+		vOffset = 0;
+		me.game.world.addChild( new game.selectionBox(	this.pos.x + hOffset, 
+														this.pos.y + vOffset, 
+														vertW, vertH,
+														hOffset, vOffset,
+														this));
+		
+		//Lower Left Corner
+		hOffset = 0;
+		vOffset = this.height;
+		me.game.world.addChild( new game.selectionBox(	this.pos.x + hOffset, 
+														this.pos.y + vOffset, 
+														horizW, horizH,
+														hOffset, vOffset,
+														this));
+		hOffset = 0;
+		vOffset = this.height - vertH + vertW;
+		me.game.world.addChild( new game.selectionBox(	this.pos.x + hOffset, 
+														this.pos.y + vOffset, 
+														vertW, vertH,
+														hOffset, vOffset,
+														this));
+		
+		//Lower Right Corner
+		hOffset = this.width - horizW;
+		vOffset = this.height;
+		me.game.world.addChild( new game.selectionBox(	this.pos.x + hOffset, 
+														this.pos.y + vOffset, 
+														horizW, horizH, 
+														hOffset, vOffset,
+														this));
+		hOffset = this.width - vertW;
+		vOffset = this.height - vertH + vertW;
+		me.game.world.addChild( new game.selectionBox(	this.pos.x + hOffset, 
+														this.pos.y + vOffset, 
+														vertW, vertH,
+														hOffset, vOffset,
+														this));
+*/
 
     },
 

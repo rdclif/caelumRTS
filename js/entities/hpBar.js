@@ -46,13 +46,14 @@ game.hpBar = me.Entity.extend({
 
         this.hp = this.sprite.hp;
 
+		
         //hp bar position
         if (this.sprite.width > 80) {
             this.pos.x = this.sprite.pos.x + (this.sprite.width/2-15);
         } else {
             this.pos.x = this.sprite.pos.x - 5;
         }
-        this.pos.y = this.sprite.pos.y+this.offset+5;
+        this.pos.y = this.sprite.pos.y+this.offset+10;
 
         //hp bar level
         if (this.sprite.hp <= 0 ) {
