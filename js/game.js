@@ -9,6 +9,8 @@ var game = {
         idCounter : 1,
         goldCounter : 1000,
         foodCounter : 500,
+		goldCounter_comp : 1000,
+		foodCounter_comp : 500,
 
         //loadSave is used in the play onReset function
         loadSave : 0
@@ -63,6 +65,7 @@ var game = {
         //set gravity to 0
         me.sys.gravity = 0;
 
+		
         // add player entities in the entity pool
         me.pool.register("catapultPlayer", game.Catapult);
         me.pool.register("knightPlayer", game.Knight);

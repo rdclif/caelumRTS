@@ -45,8 +45,8 @@ game.Farm = game.playerObject.extend({
 
 
         //player earns food
-        this.counter += 1;
-        if (this.counter >= 200) {
+        this.counter += FOODPERTICK;
+        if (this.counter >= TIMEPERTICK_FOOD) {
             game.data.foodCounter += 1;
             this.counter = 0;
         }

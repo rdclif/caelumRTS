@@ -40,6 +40,12 @@ game.cFarm = game.playerObject.extend({
      */
     update: function (dt) {
 
+	    //player earns food
+        this.counter += FOODPERTICK;
+        if (this.counter >= TIMEPERTICK_FOOD) {
+            game.data.foodCounter_comp += 1;
+            this.counter = 0;
+        }
 
         // apply physics to the body (this moves the entity)
         this.body.update(dt);

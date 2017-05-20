@@ -23,8 +23,6 @@ game.cCity = game.playerObject.extend({
         this.alwaysUpdate = true;
         this.trainTime = 0;
 
-        this.name = "city";
-
         this.renderable.addAnimation("attacked", [1, 2]);
 
         // define a standing animation (using the frame)
@@ -78,11 +76,18 @@ game.cCity = game.playerObject.extend({
     },
 
     callTraining : function (x,y,string) {
-        this.trainx = x;
-        this.trainy = y;
-        this.trainType = string;
-        this.training = true;
-        this.trainTime = 0;
+		if (string === "builderComputer") {
+            if(game.data.goldCounter_comp >= 100 && game.data.foodCounter_comp >= 50) {
+                this.trainx = x;
+                this.trainy = y;
+                this.trainType = string;
+                this.training = true;
+                this.trainTime = 0;
+                game.data.goldCounter_comp -= 100;
+                game.data.foodCounter_comp -= 50;
+            }
+
+        }
     },
 
     trainPlayer : function () {

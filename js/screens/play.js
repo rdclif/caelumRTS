@@ -21,7 +21,6 @@ game.PlayScreen = me.ScreenObject.extend({
         this.menu = new game.HUD.menuPanel(0,0, 50, 50);
         me.game.world.addChild(this.menu, Infinity);
 
-
         if (game.data.loadSave) {
             this.loadSave();
 
@@ -30,7 +29,7 @@ game.PlayScreen = me.ScreenObject.extend({
             me.game.world.addChild(me.pool.pull("knightPlayer", 300, 300));
             me.game.world.addChild(me.pool.pull("cityObject", 100, 150));
 
-            //load computer player
+            //load computer player units
             var level  = me.levelDirector.getCurrentLevel();
 
             me.game.world.addChild(me.pool.pull("knightComputer", level.width-300, level.height-100));
@@ -42,8 +41,14 @@ game.PlayScreen = me.ScreenObject.extend({
             game.data.score = 0;
             game.data.foodCounter = 500;
             game.data.goldCounter = 1000;
-
+            game.data.foodCounter_comp = 500;
+            game.data.goldCounter_comp = 1000;
+			
         }
+		
+		//Load computer player logic
+		this.AI_logic = new game.AI_main();
+		me.game.world.addChild(this.AI_logic);
 
     },
     keyPressed: function (action /*, keyCode, edge */) {

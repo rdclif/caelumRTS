@@ -1,0 +1,67 @@
+
+//Arbitrary choice of Entity to hold game logic, don't actually need to render it 
+game.AI_main = me.Entity.extend({
+	/**
+     * constructor
+     */
+    init: function () {
+
+        this._super(me.Entity, "init", [0, 0, {
+            name: "cpu_1",
+            width: 0,
+            height: 0
+        }]);
+
+		this.alpha = 0;
+		this.counter = 0;
+		this.alwaysUpdate = true;
+		this.food = game.data.foodCounter_comp;
+        this.gold = game.data.goldCounter_comp;
+		this.act = false;
+		
+		//Only has default numbers for unit/building counts, need to modify for loading files later on 
+		this.numUnits = {builder: 0, knight: 1, catapult: 0};
+		this.numBuildings = {city: 1, farm: 0, mine: 0};
+		
+    },
+	
+
+	onDestroyEvent : function() {
+		alert("Making sure cpu dies when game ends");
+    },
+	
+    update : function (dt) {
+
+		//Arbitrary limit on computer thinking speed to avoid bogging down the system
+        this.counter += 1;
+        if (this.counter == 0 || this.counter >= 20) {
+            this.act = true;
+            this.counter = 0;
+        }
+		
+		if(this.act)
+		{
+			//Try just creating up to 3 builders
+			if(this.numUnits.builder < 3)
+			{
+				//Get the city and instruct it to build more builders
+				//Assumption is that there is only 1 city (by game design)
+				var city = me.game.world.getChildByName("cCity");
+				console.log(city);
+				if ( city.length > 0 )
+				{
+					city = city[0];
+					console.log(city);
+					var spawnLocation_x = city.pos.x;
+					var spawnLocation_y = city.pos.y;
+					city.callTraining(spawnLocation_x, spawnLocation_y, "builderComputer");
+				}
+			}
+			
+			//Try moving a unit somewhere
+		}
+	
+	}
+
+	
+});
