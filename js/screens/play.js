@@ -21,6 +21,8 @@ game.PlayScreen = me.ScreenObject.extend({
         this.menu = new game.HUD.menuPanel(0,0, 50, 50);
         me.game.world.addChild(this.menu, Infinity);
 
+
+        // For loading save or loading new game
         if (game.data.loadSave) {
             this.loadSave();
 
@@ -37,10 +39,10 @@ game.PlayScreen = me.ScreenObject.extend({
 
 
 
-            // reset the score
+            // reset the score - temp increase for testing
             game.data.score = 0;
-            game.data.foodCounter = 500;
-            game.data.goldCounter = 1000;
+            game.data.foodCounter = 5000;
+            game.data.goldCounter = 10000;
             game.data.foodCounter_comp = 500;
             game.data.goldCounter_comp = 1000;
 			

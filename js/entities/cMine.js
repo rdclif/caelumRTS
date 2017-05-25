@@ -9,9 +9,10 @@ game.cMine = game.playerObject.extend({
             image: "cMine",
             name: "cMine",
             pool: "",
-            width: 100,
-            height: 100,
-            framewidth: 100
+            width: 90,
+            height: 90,
+            framewidth: 100,
+            frameheight : 100,
         }]);
 
 
@@ -30,6 +31,8 @@ game.cMine = game.playerObject.extend({
 
         this.maxHP = 400;
         this.hp = 400;
+
+        this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
         this.setId();
 
@@ -53,6 +56,9 @@ game.cMine = game.playerObject.extend({
 
     onClick : function (event) {
         //alert(this.name);
+
+        //clear hud
+        me.game.world.getChildByName("UIPanel")[0].remove();
 
         //hp bar stuff
         var hp = me.game.world.getChildByName("hpBar")[0];

@@ -9,9 +9,10 @@ game.Barracks = game.playerObject.extend({
             image: "barracks",
             name: "Barracks",
             pool: "",
-            width: 100,
-            height: 100,
+            width: 90,
+            height: 90,
             framewidth: 100,
+            frameheight : 100,
             training: false,
             trainx: 0,
             trainy: 0,
@@ -35,6 +36,10 @@ game.Barracks = game.playerObject.extend({
         this.hp = 600;
 
         this.setId();
+
+        this.body.collisionType = me.collision.types.PLAYER_OBJECT;
+
+
 
         this.pool = "barracksObject";
 
@@ -141,8 +146,15 @@ game.Barracks = game.playerObject.extend({
         }
         this.trainTime += 1;
         if (this.trainTime >= timeToTrain) {
-            //TODO: move spawn loacation if space is occupied
-            me.game.world.addChild(me.pool.pull(this.trainType, this.trainx+50, this.trainy+90));
+            //move spawn loacation if space is occupied
+            var xLoc = this.trainx+60;
+            var yLoc = this.trainy+90;
+
+            //move right if occupied
+            while(this.isSpaceOccupied(xLoc, yLoc)) {
+                xLoc += 40;
+            };
+            me.game.world.addChild(me.pool.pull(this.trainType, xLoc, yLoc));
             this.trainTime = 0;
             this.training = false;
             this.trainType = "";

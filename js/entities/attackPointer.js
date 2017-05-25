@@ -17,6 +17,9 @@ game.attackIcon = me.Entity.extend({
         this.anchorPoint.set(0, 0);
         this.float = true;
 
+        this.body.collisionType = me.collision.types.ACTION_OBJECT;
+        this.collisionBool = true;
+
     },
     onActivateEvent: function () {
         //register on mouse/touch event
@@ -48,7 +51,25 @@ game.attackIcon = me.Entity.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
-        return false;
+        switch (response.b.body.collisionType) {
+            case me.collision.types.PLAYER_OBJECT:
+                this.collisionBool = false;
+                console.log("player");
+                return false;
+            case me.collision.types.ENEMY_OBJECT:
+                this.collisionBool = false;
+                console.log("enemy");
+                return false;
+            case me.collision.types.WORLD_SHAPE:
+                this.collisionBool = false;
+                console.log("world");
+                return false;
+            case me.collision.types.ACTION_OBJECT:
+                return false;
+            default:
+                console.log("other");
+                return false;
+        }
     }
 
 });

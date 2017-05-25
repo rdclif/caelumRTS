@@ -9,9 +9,10 @@ game.Builder = game.playerObject.extend({
             image: "builder",
             name: "Builder",
             pool : "",
-            width: 36,
-            height: 48,
-            framewidth: 36,
+            width : 25,
+            height : 35,
+            framewidth : 36,
+            frameheight: 48,
             newX: 0,
             newY: 0,
             direction: "stand",
@@ -39,10 +40,19 @@ game.Builder = game.playerObject.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
 
+        this.body.collisionType = me.collision.types.PLAYER_OBJECT;
+
         this.pool = "builderPlayer";
 
         this.maxHP = 100;
         this.hp = 100;
+
+        this.collision = false;
+        this.collisionX = x;
+        this.collisionY = y;
+
+        this.site = {};
+
 
         this.setId();
 
@@ -54,14 +64,36 @@ game.Builder = game.playerObject.extend({
      * update the player pos
      */
     update : function (dt) {
+        if (this.collision === true && this.walk === false) {
+            this.newX = this.collisionX;
+            this.newY = this.collisionY;
+            this.collision = false;
+            this.collisionCounter = 0;
+            this.walk = true
+        }
+
+        if (this.collisionCounter > 5) {
+            this.walk = false;
+            this.collision = false;
+            this.newX = this.pos.x;
+            this.newY = this.pos.y;
+            this.collisionCounter = 0;
+        }
 
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
 
+
         if (Math.abs(distx) > this.width / 4 || Math.abs(disty) > this.height / 4) {
-            this.moveObject(distx, disty);
-            if (!this.renderable.isCurrentAnimation(this.direction)) {
-                this.renderable.setCurrentAnimation(this.direction);
+            if (!(this.isSpaceOccupied(this.newX, this.newY))) {
+                this.moveObject(distx, disty);
+                if (!this.renderable.isCurrentAnimation(this.direction)) {
+                    this.renderable.setCurrentAnimation(this.direction);
+                }
+            } else {
+                this.walk = false;
+                this.body.vel.x = 0;
+                this.body.vel.y = 0;
             }
         } else {
             this.walk = false;
@@ -94,7 +126,12 @@ game.Builder = game.playerObject.extend({
     buildBuilding : function () {
         //TODO: add different times for building type
         this.buildTime += 1;
+        if (this.buildTime === 1) {
+            this.site = new game.buildingSite(this.buildx-50, this.buildy-50);
+            me.game.world.addChild(this.site);
+        }
         if (this.buildTime >= 1000) {
+            me.game.world.removeChild(this.site);
             me.game.world.addChild(me.pool.pull(this.buildType, this.buildx-50, this.buildy-50));
             this.buildTime = 0;
             this.building = false;
@@ -106,6 +143,7 @@ game.Builder = game.playerObject.extend({
     movePlayerTo :function (x, y) {
         this.newX = Math.round(x);
         this.newY = Math.round(y);
+        this.collision = false;
         this.walk = true;
     },
 
@@ -126,6 +164,7 @@ game.Builder = game.playerObject.extend({
 
     buildSomething : function (x, y, string) {
         var menu = me.game.world.getChildByName("menuPanel")[0];
+        var hud =  me.game.world.getChildByName("UIPanel")[0];
         if (string === "barracksObject") {
             if (game.data.goldCounter >= 1000) {
                 this.buildx = x;
@@ -134,6 +173,7 @@ game.Builder = game.playerObject.extend({
                 this.building = true;
                 this.buildTime = 0;
                 game.data.goldCounter -= 1000;
+                hud.remove();
             }
             else {
                 menu.alert("You do not have enough gold.");
@@ -147,6 +187,7 @@ game.Builder = game.playerObject.extend({
                 this.building = true;
                 this.buildTime = 0;
                 game.data.goldCounter -= 200;
+                hud.remove();
             }
             else {
                 menu.alert("You do not have enough gold.");
@@ -160,6 +201,7 @@ game.Builder = game.playerObject.extend({
                 this.building = true;
                 this.buildTime = 0;
                 game.data.goldCounter -= 200;
+                hud.remove();
             }
             else {
                 menu.alert("You do not have enough gold.");
@@ -170,7 +212,10 @@ game.Builder = game.playerObject.extend({
     onClick : function (event) {
         //alert(this.name);
        var hud =  me.game.world.getChildByName("UIPanel")[0];
-       hud.builderPanel(this);
+       hud.remove();
+       if (!(this.building) ) {
+           hud.builderPanel(this);
+       }
 
         //hp bar stuff
         var hp = me.game.world.getChildByName("hpBar")[0];
@@ -185,6 +230,7 @@ game.Builder = game.playerObject.extend({
 
     },
 
+
     onDestroyEvent : function() {
         me.input.releasePointerEvent("pointerdown", this);
         me.input.releasePointerEvent("pointerup", this);
@@ -197,8 +243,48 @@ game.Builder = game.playerObject.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
-        //Turning off collisions for now
-        return false;
+        if (response.a == this) {
+            switch (response.b.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    this.collisionEvent(response.b);
+                    this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    this.collisionEvent(response.b);
+                    this.walk = true;
+                    //console.log("enemy");
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    this.collisionEvent(response.b);
+                    //console.log("world");
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        } else {
+            switch (response.a.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    this.walk = true;
+                    //console.log("enemy");
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    //console.log("world");
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        }
     }
 
 });

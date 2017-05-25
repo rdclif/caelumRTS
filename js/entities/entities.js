@@ -36,32 +36,31 @@ game.playerObject = me.Entity.extend({
      * pointermove function
      */
     pointerMove: function (event) {
-        this.hover = false;
+            this.hover = false;
+            // move event is global (relative to the viewport)
+            if (this.getBounds().containsPoint(event.gameX, event.gameY)) {
+                // calculate the final coordinates
+                var parentPos = this.ancestor.getBounds().pos;
+                var x = event.gameX - this.pos.x - parentPos.x;
+                var y = event.gameY - this.pos.y - parentPos.y;
 
-        // move event is global (relative to the viewport)
-        if (this.getBounds().containsPoint(event.gameX, event.gameY)) {
-            // calculate the final coordinates
-            var parentPos = this.ancestor.getBounds().pos;
-            var x = event.gameX - this.pos.x - parentPos.x;
-            var y = event.gameY - this.pos.y - parentPos.y;
-
-            // the pointer event system will use the object bounding rect, check then with with all defined shapes
-            for (var i = this.body.shapes.length, shape; i--, (shape = this.body.shapes[i]);) {
-                if (shape.containsPoint(x, y)) {
-                    this.hover = true;
-                    break;
+                // the pointer event system will use the object bounding rect, check then with with all defined shapes
+                for (var i = this.body.shapes.length, shape; i--, (shape = this.body.shapes[i]);) {
+                    if (shape.containsPoint(x, y)) {
+                        this.hover = true;
+                        break;
+                    }
                 }
             }
-        }
 
-        if (this.selected) {
+            if (this.selected) {
+                return false;
+            }
 
-            return false;
-        }
     },
     // mouse down function
     onSelect : function (event) {
-        if (this.hover === true) {
+        if (this.hover === true && (!(game.data.pointerBusy))) {
             this.onClick(this);
             me.game.repaint();
         }
@@ -71,7 +70,7 @@ game.playerObject = me.Entity.extend({
 
     // mouse up function
     onRelease : function (/*event*/) {
-        //this.selected = false;
+        this.selected = false;
         return false;
     },
 
@@ -84,7 +83,123 @@ game.playerObject = me.Entity.extend({
 
     loadHP : function (amt) {
         this.hp = amt;
-    }
+    },
+
+    //scan world objects for conflict
+    isSpaceOccupied : function (x, y) {
+        //var coord = me.game.viewport.localToWorld(x, y);
+        for (var i in me.game.world.children) {
+            if (me.game.world.children[i].sId || me.game.world.children[i].id) {
+                if (me.game.world.children[i].containsPoint(x, y)) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+    },
+
+
+    //This is bad right now... All the bugs!
+    collisionEvent : function (object) {
+        var height = object.getBounds().height;
+        var width = object.getBounds().width;
+        var loc = object.getBounds().pos;
+        if (object.walk) {
+            //TODO
+
+        } else {
+            if (width <= 50) {
+                width = width * 2;
+            }
+            if (height <= this.height) {
+                height = height * 2;
+            }
+            if (!(this.collision)) {
+                this.collisionCounter = 0;
+                this.collisionX = this.newX;
+                this.collisionY = this.newY;
+            }
+            this.collision = true;
+            this.collisionCounter += 1;
+
+            if (this.direction === "right") {
+                if ((loc.y + (height / 2)) > this.pos.y) {
+                    if ((Math.abs(this.newY - this.pos.y)) > height) {
+                        this.newY = this.pos.y - height / 2;
+                        this.newX = this.pos.x - 5;
+                    } else {
+                        this.newY = this.pos.y - height / 2;
+                        this.newX = this.pos.x - 5;
+                    }
+                } else {
+                    if ((Math.abs(this.newY - this.pos.y)) > height) {
+                        this.newY = this.pos.y + height / 2;
+                        this.newX = this.pos.x - 5;
+
+                    } else {
+                        this.newY = this.pos.y + height / 2;
+                        this.newX = this.pos.x - 5;
+                    }
+                }
+            } else if (this.direction === "left") {
+                if ((loc.y + (height / 2)) > this.pos.y) {
+                    if ((Math.abs(this.newY - this.pos.y)) > height) {
+                        this.newY = this.pos.y - height / 2;
+                        this.newX = this.pos.x + 5;
+                    } else {
+                        this.newY = this.pos.y - height / 2;
+                        this.newX = this.pos.x + 5;
+                    }
+                } else {
+                    if ((Math.abs(this.newY - this.pos.y)) > height) {
+                        this.newY = this.pos.y + height / 2;
+                        this.newX = this.pos.x + 5;
+                    } else {
+                        this.newY = this.pos.y + height / 2;
+                        this.newX = this.pos.x + 5;
+                    }
+                }
+            } else if (this.direction === "up") {
+                if ((loc.x + (width / 2)) > this.pos.x) {
+                    if ((Math.abs(this.newX - this.pos.x)) > width) {
+                        this.newY = this.pos.y + 5;
+                        this.newX = this.pos.x - width / 2;
+                    } else {
+                        this.newY = this.pos.y + 5;
+                        this.newX = this.pos.x - width / 2;
+                    }
+                } else {
+                    if ((Math.abs(this.newX - this.pos.x)) > width) {
+                        this.newY = this.pos.y + 5;
+                        this.newX = this.pos.x - width / 2;
+                    } else {
+                        this.newY = this.pos.y + 5;
+                        this.newX = this.pos.x + width / 2;
+                    }
+                }
+            } else {
+                if ((loc.x + (width / 2)) > this.pos.x) {
+                    if ((Math.abs(this.newX - this.pos.x)) > width) {
+                        this.newY = this.pos.y - 5;
+                        this.newX = this.pos.x - width / 2;
+                    } else {
+                        this.newY = this.pos.y - 5;
+                        this.newX = this.pos.x - width / 2;
+                    }
+                } else {
+                    if ((Math.abs(this.newX - this.pos.x)) > width) {
+                        this.newY = this.pos.y - 5;
+                        this.newX = this.pos.x - width / 2;
+                    } else {
+                        this.newY = this.pos.y - 5;
+                        this.newX = this.pos.x + width / 2;
+                    }
+
+                }
+            }
+        }
+    },
 
 
 });

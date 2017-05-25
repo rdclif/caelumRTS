@@ -9,9 +9,10 @@ game.City = game.playerObject.extend({
             image: "city",
             name: "city",
             pool: "",
-            width: 128,
-            height: 128,
+            width: 110,
+            height: 110,
             framewidth: 128,
+            frameheight: 128,
             training: false,
             trainx: 0,
             trainy: 0,
@@ -34,6 +35,8 @@ game.City = game.playerObject.extend({
         this.renderable.setCurrentAnimation("idle");
 
         this.pool = "cityObject";
+
+        this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 
         this.maxHP = 1000;
         this.hp = 1000;
@@ -114,8 +117,16 @@ game.City = game.playerObject.extend({
         }
         this.trainTime += 1;
         if (this.trainTime >= timeToTrain) {
-            //TODO: move spawn loacation if space is occupied
-            me.game.world.addChild(me.pool.pull(this.trainType, this.trainx+60, this.trainy+110));
+            //move spawn loacation if space is occupied
+            var xLoc = this.trainx+60;
+            var yLoc = this.trainy+120;
+
+            //move right if occupied
+            while(this.isSpaceOccupied(xLoc, yLoc)) {
+                xLoc += 40;
+            };
+
+            me.game.world.addChild(me.pool.pull(this.trainType, xLoc, yLoc));
             this.trainTime = 0;
             this.training = false;
             this.trainType = "";
@@ -133,7 +144,6 @@ game.City = game.playerObject.extend({
      * (called when colliding with other objects)
      */
     onCollision: function (response, other) {
-        //if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
 
         return false;
     }

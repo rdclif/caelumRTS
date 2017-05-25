@@ -1,26 +1,25 @@
 
-game.Mine = game.playerObject.extend({
+game.buildingSite = game.playerObject.extend({
     /**
      * constructor
      */
     init : function (x, y ) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image: "mine",
-            name: "Mine",
+            image: "buildingSite",
+            name: "buildingSite",
             pool: "",
             width: 90,
-            height: 90,
+            height: 80,
             framewidth: 100,
             frameheight : 100,
-            counter: 0
+            counter:  0
         }]);
 
 
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
 
-        this.renderable.addAnimation("attacked", [1, 2]);
 
         // define a standing animation (using the frame)
         this.renderable.addAnimation("idle", [0]);
@@ -28,10 +27,9 @@ game.Mine = game.playerObject.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
 
-        this.pool = "mineObject";
+        this.pool = "buildingSite";
 
         this.body.collisionType = me.collision.types.PLAYER_OBJECT;
-
 
         this.counter = 0;
 
@@ -48,13 +46,6 @@ game.Mine = game.playerObject.extend({
     update: function (dt) {
 
 
-        //player earns gold
-        this.counter += 1;
-        if (this.counter >= 200) {
-            game.data.goldCounter += 1;
-            this.counter = 0;
-        };
-
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 
@@ -66,16 +57,6 @@ game.Mine = game.playerObject.extend({
     },
 
     onClick : function (event) {
-        //alert(this.name);
-        var hud = me.game.world.getChildByName("UIPanel")[0];
-        hud.minePanel(this);
-
-        //hp bar stuff
-        var hp = me.game.world.getChildByName("hpBar")[0];
-        if (hp) {
-            me.game.world.removeChild(hp);
-        }
-        me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
 
 		//Create selection box around newly selected object
 		removeFromWorld("selectBox");

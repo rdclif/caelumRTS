@@ -8,9 +8,10 @@ game.cCatapult = game.playerObject.extend({
             image : "cCatapult",
             name : "cCatapult",
             pool : "",
-            width : 72,
-            height : 72,
+            width : 50,
+            height : 50,
             framewidth : 72,
+            frameheight : 72,
             newX : 0,
             newY : 0,
             direction : "stand",
@@ -40,6 +41,8 @@ game.cCatapult = game.playerObject.extend({
         this.maxHP = 100;
         this.hp = 100;
 
+        this.body.collisionType = me.collision.types.ENEMY_OBJECT;
+
         this.setId();
 
     },
@@ -49,19 +52,25 @@ game.cCatapult = game.playerObject.extend({
         var disty = this.newY - this.pos.y;
 
         if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
-            this.moveObject(distx, disty);
-            if (this.direction == "left"){
-                this.renderable.flipX(true);
-                this.direction = "right";
-                if (!this.renderable.isCurrentAnimation(this.direction)) {
-                    this.renderable.setCurrentAnimation(this.direction);
+            if (!(this.isSpaceOccupied(this.newX, this.newY))) {
+                this.moveObject(distx, disty);
+                if (this.direction == "left") {
+                    this.renderable.flipX(true);
+                    this.direction = "right";
+                    if (!this.renderable.isCurrentAnimation(this.direction)) {
+                        this.renderable.setCurrentAnimation(this.direction);
+                    }
                 }
-            }
-            else {
-                this.renderable.flipX(false);
-                if (!this.renderable.isCurrentAnimation(this.direction)) {
-                    this.renderable.setCurrentAnimation(this.direction);
+                else {
+                    this.renderable.flipX(false);
+                    if (!this.renderable.isCurrentAnimation(this.direction)) {
+                        this.renderable.setCurrentAnimation(this.direction);
+                    }
                 }
+            } else  {
+                this.walk = false;
+                this.body.vel.x = 0;
+                this.body.vel.y = 0;
             }
         } else  {
             this.walk = false;
@@ -101,6 +110,9 @@ game.cCatapult = game.playerObject.extend({
 
     onClick : function (event) {
 	    //alert(this.name);
+
+        //clear hud
+        me.game.world.getChildByName("UIPanel")[0].remove();
 
         //hp bar stuff
         var hp = me.game.world.getChildByName("hpBar")[0];

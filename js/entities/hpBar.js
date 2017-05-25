@@ -38,6 +38,8 @@ game.hpBar = me.Entity.extend({
 
         this.finish = sprite.maxHP;
 
+        this.body.collisionType = me.collision.types.NO_OBJECT;
+
         //console.log(this);
 
     },
@@ -50,10 +52,11 @@ game.hpBar = me.Entity.extend({
         //hp bar position
         if (this.sprite.width > 80) {
             this.pos.x = this.sprite.pos.x + (this.sprite.width/2-15);
+            this.pos.y = this.sprite.pos.y+this.offset+15;
         } else {
-            this.pos.x = this.sprite.pos.x - 5;
+            this.pos.x = this.sprite.pos.x - 10;
+            this.pos.y = this.sprite.pos.y+this.offset+10;
         }
-        this.pos.y = this.sprite.pos.y+this.offset+10;
 
         //hp bar level
         if (this.sprite.hp <= 0 ) {

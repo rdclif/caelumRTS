@@ -60,7 +60,12 @@ game.UI.cancelButton = me.GUI_Object.extend({
         if (hp) {
             me.game.world.removeChild(hp);
         }
-	
+	    removeFromWorld("buildmineIcon");
+        removeFromWorld("moveIcon");
+        removeFromWorld("buildFarmIcon");
+        removeFromWorld("buildBarracksIcon");
+
+
 		//Function in utils.js
 		removeFromWorld("selectBox");
 

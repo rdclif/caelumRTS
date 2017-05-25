@@ -8,9 +8,10 @@ game.Catapult = game.playerObject.extend({
             image : "catapult",
             name : "Catapult",
             pool : "",
-            width : 72,
-            height : 72,
+            width : 50,
+            height : 50,
             framewidth : 72,
+            frameheight : 72,
             newX : 0,
             newY : 0,
             direction : "stand",
@@ -40,28 +41,58 @@ game.Catapult = game.playerObject.extend({
         this.maxHP = 100;
         this.hp = 100;
 
+
+        this.collision = false;
+        this.collisionX = x;
+        this.collisionY = y;
+
+        this.direction = "down";
+
         this.setId();
 
     },
 
     update : function (dt) {
+
+        if (this.collision === true && this.walk === false) {
+            this.newX = this.collisionX;
+            this.newY = this.collisionY;
+            this.collision = false;
+            this.collisionCounter = 0;
+            this.walk = true
+        }
+
+        if (this.collisionCounter > 5) {
+            this.walk = false;
+            this.collision = false;
+            this.newX = this.pos.x;
+            this.newY = this.pos.y;
+            this.collisionCounter = 0;
+        }
+
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
 
         if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
-            this.moveObject(distx, disty);
-            if (this.direction == "left"){
-                this.renderable.flipX(true);
-                this.direction = "right";
-                if (!this.renderable.isCurrentAnimation(this.direction)) {
-                    this.renderable.setCurrentAnimation(this.direction);
+            if (!(this.isSpaceOccupied(this.newX, this.newY))) {
+                this.moveObject(distx, disty);
+                if (this.direction == "left") {
+                    this.renderable.flipX(true);
+                    this.direction = "right";
+                    if (!this.renderable.isCurrentAnimation(this.direction)) {
+                        this.renderable.setCurrentAnimation(this.direction);
+                    }
                 }
-            }
-            else {
-                this.renderable.flipX(false);
-                if (!this.renderable.isCurrentAnimation(this.direction)) {
-                    this.renderable.setCurrentAnimation(this.direction);
+                else {
+                    this.renderable.flipX(false);
+                    if (!this.renderable.isCurrentAnimation(this.direction)) {
+                        this.renderable.setCurrentAnimation(this.direction);
+                    }
                 }
+            } else  {
+                this.walk = false;
+                this.body.vel.x = 0;
+                this.body.vel.y = 0;
             }
         } else  {
             this.walk = false;
@@ -81,6 +112,7 @@ game.Catapult = game.playerObject.extend({
     movePlayerTo :function (x, y) {
         this.newX = Math.round(x);
         this.newY = Math.round(y);
+        this.collision = false;
         this.walk = true;
     },
 
@@ -120,6 +152,7 @@ game.Catapult = game.playerObject.extend({
 
     },
 
+
     onDestroyEvent : function() {
         me.input.releasePointerEvent("pointerdown", this);
         me.input.releasePointerEvent("pointerup", this);
@@ -132,7 +165,48 @@ game.Catapult = game.playerObject.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
-        return false;
+        if (response.a == this) {
+            switch (response.b.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    this.collisionEvent(response.b);
+                    this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    this.collisionEvent(response.b);
+                    this.walk = true;
+                    //console.log("enemy");
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    this.collisionEvent(response.b);
+                    //console.log("world");
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        } else {
+            switch (response.a.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    this.walk = true;
+                    //console.log("enemy");
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    //console.log("world");
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        }
     }
 
 });

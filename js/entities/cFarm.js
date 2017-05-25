@@ -9,9 +9,10 @@ game.cFarm = game.playerObject.extend({
             image: "cFarm",
             name: "cFarm",
             pool: "",
-            width: 100,
-            height: 100,
-            framewidth: 100
+            width: 90,
+            height: 90,
+            framewidth: 100,
+            frameheight : 100
         }]);
 
 
@@ -30,6 +31,8 @@ game.cFarm = game.playerObject.extend({
 
         this.maxHP = 300;
         this.hp = 300;
+
+        this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
         this.setId();
 
@@ -59,6 +62,9 @@ game.cFarm = game.playerObject.extend({
 
     onClick : function (event) {
         //alert(this.name);
+
+        //clear hud
+        me.game.world.getChildByName("UIPanel")[0].remove();
 
 
         //hp bar stuff

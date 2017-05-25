@@ -8,9 +8,10 @@ game.cSoldier = game.playerObject.extend({
             image : "cSoldier",
             name : "cSoldier",
             pool : "",
-            width : 36,
-            height : 48,
+            width : 25,
+            height : 35,
             framewidth : 36,
+            frameheight: 48,
             newX : 0,
             newY : 0,
             direction : "stand",
@@ -38,6 +39,8 @@ game.cSoldier = game.playerObject.extend({
         this.maxHP = 100;
         this.hp = 100;
 
+        this.body.collisionType = me.collision.types.ENEMY_OBJECT;
+
         this.setId();
 
     },
@@ -47,9 +50,15 @@ game.cSoldier = game.playerObject.extend({
         var disty = this.newY - this.pos.y;
 
         if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
-            this.moveObject(distx, disty);
-            if (!this.renderable.isCurrentAnimation(this.direction)) {
-                this.renderable.setCurrentAnimation(this.direction);
+            if (!(this.isSpaceOccupied(this.newX, this.newY))) {
+                this.moveObject(distx, disty);
+                if (!this.renderable.isCurrentAnimation(this.direction)) {
+                    this.renderable.setCurrentAnimation(this.direction);
+                }
+            } else {
+                this.walk = false;
+                this.body.vel.x = 0;
+                this.body.vel.y = 0;
             }
         } else  {
             this.walk = false;
@@ -89,7 +98,10 @@ game.cSoldier = game.playerObject.extend({
 
     onClick : function (event) {
 	    //alert(this.name);
-        
+
+        //clear hud
+        me.game.world.getChildByName("UIPanel")[0].remove();
+
         //hp bar stuff
         var hp = me.game.world.getChildByName("hpBar")[0];
         if (hp) {

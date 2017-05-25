@@ -8,9 +8,10 @@ game.Knight = game.playerObject.extend({
             image : "knight",
             name : "Knight",
             pool : "",
-            width : 36,
-            height : 48,
+            width : 25,
+            height : 35,
             framewidth : 36,
+            frameheight: 48,
             newX : 0,
             newY : 0,
             direction : "stand",
@@ -34,19 +35,45 @@ game.Knight = game.playerObject.extend({
         this.newX = x;
         this.newY = y;
 
+        this.collisionX = x;
+        this.collisionY = y;
+
         this.maxHP = 100;
         this.hp = 100;
 
         this.pool = "knightPlayer";
 
-        this.setId();
+        this.direction = "down";
 
+        this.collision = false;
+        this.collisionCounter = 0;
+        this.collisionX = x;
+        this.collisionY = y;
+
+        this.body.collisionType = me.collision.types.PLAYER_OBJECT;
+
+        this.setId();
     },
 
     update : function (dt) {
+        if (this.collision === true && this.walk === false) {
+            this.newX = this.collisionX;
+            this.newY = this.collisionY;
+            this.collision = false;
+            this.collisionCounter = 0;
+            this.walk = true
+        }
+        //real stuck check - stop trying
+        if (this.collisionCounter > 5) {
+            this.walk = false;
+            this.collision = false;
+            this.newX = this.pos.x;
+            this.newY = this.pos.y;
+            this.collisionCounter = 0;
+        }
+
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
-
         if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
             this.moveObject(distx, disty);
             if (!this.renderable.isCurrentAnimation(this.direction)) {
@@ -70,12 +97,14 @@ game.Knight = game.playerObject.extend({
     movePlayerTo :function (x, y) {
         this.newX = Math.round(x);
         this.newY = Math.round(y);
+        this.collision = false;
         this.walk = true;
     },
 
     moveObject : function(distx, disty){
-        if (this.walk) {
+        if (this.walk){
             var angle = Math.atan2(disty, distx);
+
             this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
             this.body.vel.y = Math.sin(angle) * this.body.accel.y * me.timer.tick;
 
@@ -86,6 +115,7 @@ game.Knight = game.playerObject.extend({
                 this.direction = ( disty > 0) ? "down" : "up";
             }
         }
+
     },
 
     onClick : function (event) {
@@ -107,6 +137,8 @@ game.Knight = game.playerObject.extend({
 
     },
 
+
+
     onDestroyEvent : function() {
         me.input.releasePointerEvent("pointerdown", this);
         me.input.releasePointerEvent("pointerup", this);
@@ -119,7 +151,50 @@ game.Knight = game.playerObject.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
-        return false;
+        if (response.a == this) {
+            switch (response.b.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    this.collisionEvent(response.b);
+                    this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    this.collisionEvent(response.b);
+                    this.walk = true;
+                    //console.log("enemy");
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    this.collisionEvent(response.b);
+                    //console.log("world");
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        } else {
+            switch (response.a.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    this.walk = true;
+                    //console.log("enemy");
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    //console.log("world");
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        }
+
+
     }
 
 });

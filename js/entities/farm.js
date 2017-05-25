@@ -9,9 +9,10 @@ game.Farm = game.playerObject.extend({
             image: "farm",
             name: "Farm",
             pool: "",
-            width: 100,
-            height: 100,
+            width: 90,
+            height: 90,
             framewidth: 100,
+            frameheight : 100,
             counter:  0
         }]);
 
@@ -28,6 +29,9 @@ game.Farm = game.playerObject.extend({
         this.renderable.setCurrentAnimation("idle");
 
         this.pool = "farmObject";
+
+        this.body.collisionType = me.collision.types.PLAYER_OBJECT;
+
 
         this.counter = 0;
 
