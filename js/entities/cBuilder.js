@@ -68,6 +68,8 @@ game.cBuilder = game.playerObject.extend({
                     this.renderable.setCurrentAnimation(this.direction);
                 }
             } else {
+                //space occupied, can't walk to or build here
+                this.build = false;
                 this.walk = false;
                 this.body.vel.x = 0;
                 this.body.vel.y = 0;
@@ -142,19 +144,20 @@ game.cBuilder = game.playerObject.extend({
     },
 
     buildSomething : function (x, y, string) {
-	
-		if (string === "farmComputerObject") {
-			console.log(game.data.goldCounter_comp);
-            if (game.data.goldCounter_comp >= 200) {
-                this.buildx = x;
-                this.buildy = y;
-                this.buildType = string;
-                this.building = true;
-                this.buildTime = 0;
-                game.data.goldCounter_comp -= 200;
+        //check if something there first
+	    if (!(this.isSpaceOccupied(x,y))) {
+            if (string === "farmComputerObject") {
+                console.log(game.data.goldCounter_comp);
+                if (game.data.goldCounter_comp >= 200) {
+                    this.buildx = x;
+                    this.buildy = y;
+                    this.buildType = string;
+                    this.building = true;
+                    this.buildTime = 0;
+                    game.data.goldCounter_comp -= 200;
+                }
             }
         }
-		
     },
 
     onClick : function (event) {

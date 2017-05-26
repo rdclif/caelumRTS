@@ -53,6 +53,8 @@ game.Builder = game.playerObject.extend({
 
         this.site = {};
 
+        this.menu = me.game.world.getChildByName("menuPanel")[0];
+        this.hud = me.game.world.getChildByName("UIPanel")[0];
 
         this.setId();
 
@@ -68,16 +70,7 @@ game.Builder = game.playerObject.extend({
             this.newX = this.collisionX;
             this.newY = this.collisionY;
             this.collision = false;
-            this.collisionCounter = 0;
             this.walk = true
-        }
-
-        if (this.collisionCounter > 5) {
-            this.walk = false;
-            this.collision = false;
-            this.newX = this.pos.x;
-            this.newY = this.pos.y;
-            this.collisionCounter = 0;
         }
 
         var distx = this.newX - this.pos.x;
@@ -91,6 +84,8 @@ game.Builder = game.playerObject.extend({
                     this.renderable.setCurrentAnimation(this.direction);
                 }
             } else {
+                //something is in the way
+                this.build = false;
                 this.walk = false;
                 this.body.vel.x = 0;
                 this.body.vel.y = 0;
@@ -163,58 +158,60 @@ game.Builder = game.playerObject.extend({
     },
 
     buildSomething : function (x, y, string) {
-        var menu = me.game.world.getChildByName("menuPanel")[0];
-        var hud =  me.game.world.getChildByName("UIPanel")[0];
-        if (string === "barracksObject") {
-            if (game.data.goldCounter >= 1000) {
-                this.buildx = x;
-                this.buildy = y;
-                this.buildType = string;
-                this.building = true;
-                this.buildTime = 0;
-                game.data.goldCounter -= 1000;
-                hud.remove();
+        //check if something there --
+        if (!(this.isSpaceOccupied(x,y))) {
+            if (string === "barracksObject") {
+                if (game.data.goldCounter >= 1000) {
+                    this.buildx = x;
+                    this.buildy = y;
+                    this.buildType = string;
+                    this.building = true;
+                    this.buildTime = 0;
+                    game.data.goldCounter -= 1000;
+                    this.hud.remove();
+                }
+                else {
+                    this.menu.alert("You do not have enough gold.");
+                }
             }
-            else {
-                menu.alert("You do not have enough gold.");
+            if (string === "farmObject") {
+                if (game.data.goldCounter >= 200) {
+                    this.buildx = x;
+                    this.buildy = y;
+                    this.buildType = string;
+                    this.building = true;
+                    this.buildTime = 0;
+                    game.data.goldCounter -= 200;
+                    this.hud.remove();
+                }
+                else {
+                    menu.alert("You do not have enough gold.");
+                }
             }
-        }
-        if (string === "farmObject") {
-            if (game.data.goldCounter >= 200) {
-                this.buildx = x;
-                this.buildy = y;
-                this.buildType = string;
-                this.building = true;
-                this.buildTime = 0;
-                game.data.goldCounter -= 200;
-                hud.remove();
+            if (string === "mineObject") {
+                if (game.data.goldCounter >= 200) {
+                    this.buildx = x;
+                    this.buildy = y;
+                    this.buildType = string;
+                    this.building = true;
+                    this.buildTime = 0;
+                    game.data.goldCounter -= 200;
+                    this.hud.remove();
+                }
+                else {
+                    this.menu.alert("You do not have enough gold.");
+                }
             }
-            else {
-                menu.alert("You do not have enough gold.");
-            }
-        }
-        if (string === "mineObject") {
-            if (game.data.goldCounter >= 200) {
-                this.buildx = x;
-                this.buildy = y;
-                this.buildType = string;
-                this.building = true;
-                this.buildTime = 0;
-                game.data.goldCounter -= 200;
-                hud.remove();
-            }
-            else {
-                menu.alert("You do not have enough gold.");
-            }
+        }else {
+            this.menu.alert("Can't build there, something is in the way!");
         }
     },
 
     onClick : function (event) {
         //alert(this.name);
-       var hud =  me.game.world.getChildByName("UIPanel")[0];
-       hud.remove();
+       this.hud.remove();
        if (!(this.building) ) {
-           hud.builderPanel(this);
+           this.hud.builderPanel(this);
        }
 
         //hp bar stuff
@@ -246,8 +243,10 @@ game.Builder = game.playerObject.extend({
         if (response.a == this) {
             switch (response.b.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
-                    this.collisionEvent(response.b);
-                    this.walk = true;
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
+                    //this.walk = true;
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
@@ -268,7 +267,7 @@ game.Builder = game.playerObject.extend({
         } else {
             switch (response.a.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
-                    this.walk = true;
+                    //this.walk = true;
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:

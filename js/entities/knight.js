@@ -43,6 +43,9 @@ game.Knight = game.playerObject.extend({
 
         this.pool = "knightPlayer";
 
+        this.menu = me.game.world.getChildByName("menuPanel")[0];
+        this.hud = me.game.world.getChildByName("UIPanel")[0];
+
         this.direction = "down";
 
         this.collision = false;
@@ -120,8 +123,7 @@ game.Knight = game.playerObject.extend({
 
     onClick : function (event) {
 
-	    var hud = me.game.world.getChildByName("UIPanel")[0];
-	    hud.knightPanel(this);
+	    this.hud.knightPanel(this);
 
         //hp bar stuff
         var hp = me.game.world.getChildByName("hpBar")[0];
@@ -154,8 +156,9 @@ game.Knight = game.playerObject.extend({
         if (response.a == this) {
             switch (response.b.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
-                    this.collisionEvent(response.b);
-                    this.walk = true;
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
@@ -176,7 +179,7 @@ game.Knight = game.playerObject.extend({
         } else {
             switch (response.a.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
-                    this.walk = true;
+                    //this.walk = true;
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:

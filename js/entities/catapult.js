@@ -48,6 +48,9 @@ game.Catapult = game.playerObject.extend({
 
         this.direction = "down";
 
+        this.menu = me.game.world.getChildByName("menuPanel")[0];
+        this.hud = me.game.world.getChildByName("UIPanel")[0];
+
         this.setId();
 
     },
@@ -58,16 +61,7 @@ game.Catapult = game.playerObject.extend({
             this.newX = this.collisionX;
             this.newY = this.collisionY;
             this.collision = false;
-            this.collisionCounter = 0;
             this.walk = true
-        }
-
-        if (this.collisionCounter > 5) {
-            this.walk = false;
-            this.collision = false;
-            this.newX = this.pos.x;
-            this.newY = this.pos.y;
-            this.collisionCounter = 0;
         }
 
         var distx = this.newX - this.pos.x;
@@ -133,8 +127,7 @@ game.Catapult = game.playerObject.extend({
 
     onClick : function (event) {
 	    //alert(this.name);
-	    var hud = me.game.world.getChildByName("UIPanel")[0];
-	    hud.catapultPanel(this);
+	    this.hud.catapultPanel(this);
 
 	    //me.game.world.addChild(new game.selectIcon(this.pos.x, this.pos.y, 36));
 	    //me.game.world.addChild(new game.selectIcon(this.pos.x + 26, this.pos.y + 55, 36));
@@ -190,7 +183,9 @@ game.Catapult = game.playerObject.extend({
         } else {
             switch (response.a.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
-                    this.walk = true;
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:

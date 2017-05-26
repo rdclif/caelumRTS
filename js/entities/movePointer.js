@@ -77,20 +77,20 @@ game.moveIcon = game.playerObject.extend({
         switch (response.b.body.collisionType) {
             case me.collision.types.PLAYER_OBJECT:
                 this.collisionBool = false;
-                console.log("player");
+                //console.log("player");
                 return false;
             case me.collision.types.ENEMY_OBJECT:
                 this.collisionBool = false;
-                console.log("enemy");
+                //console.log("enemy");
                 return false;
             case me.collision.types.WORLD_SHAPE:
                 this.collisionBool = false;
-                console.log("world");
+                //console.log("world");
                 return false;
             case me.collision.types.ACTION_OBJECT:
                 return false;
             default:
-                console.log("other");
+                //console.log("other");
                 return false;
         }
     }
