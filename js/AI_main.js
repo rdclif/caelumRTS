@@ -23,8 +23,8 @@ game.AI_main = me.Entity.extend({
 		this.numTimes = 0;
 		
 		//Only has default numbers for unit/building counts, need to modify for loading files later on 
-		this.numUnits = {builder: 0, knight: 1, catapult: 0};
-		this.numBuildings = {city: 1, farm: 0, mine: 0};
+		this.numUnits = {Builder: 0, Knight: 1, Catapult: 0};
+		this.numBuildings = {Barracks: 0, City: 1, Farm: 0, Mine: 0};
 		
     },
 	
@@ -41,12 +41,18 @@ game.AI_main = me.Entity.extend({
             this.act = true;
             this.counter = 0;
         }
-		
-		
+
 		if(this.act)
 		{
+			//console.log("Before");
+			//console.log(this.numUnits);
+			checkComputerRoster(this);
+			//console.log("After");
+			//console.log(this.numUnits);
+			console.log(this.numBuildings);
+		
 			//Try just creating up to 3 builders (right now unit numbers list is not incremented, so always stays at 0)
-			if(this.numUnits.builder < 3)
+			if(this.numUnits.Builder < 3)
 			{
 				//Get the city and instruct it to build more builders
 				//Assumption is that there is only 1 city (by game design)
@@ -58,7 +64,7 @@ game.AI_main = me.Entity.extend({
 					//console.log(city);
 					var spawnLocation_x = city.pos.x;
 					var spawnLocation_y = city.pos.y;
-					city.callTraining(spawnLocation_x, spawnLocation_y, "builderComputer");
+					city.callTraining(spawnLocation_x, spawnLocation_y, "builderComputer", this);
 				}
 			}
 			

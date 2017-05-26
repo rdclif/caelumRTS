@@ -9,10 +9,9 @@ game.cCity = game.playerObject.extend({
             image: "cCity",
             name: "cCity",
             pool: "",
-            width: 110,
-            height: 110,
+            width: 128,
+            height: 128,
             framewidth: 128,
-            frameheight: 128,
             training: false,
             trainx: 0,
             trainy: 0,
@@ -37,8 +36,6 @@ game.cCity = game.playerObject.extend({
         this.maxHP = 1000;
         this.hp = 1000;
 
-        this.body.collisionType = me.collision.types.ENEMY_OBJECT;
-
         this.setId();
 
     },
@@ -49,7 +46,7 @@ game.cCity = game.playerObject.extend({
     update: function (dt) {
 
         if (this.training) {
-            this.trainPlayer()
+            this.trainPlayer(this.player)
         }
 
         // apply physics to the body (this moves the entity)
@@ -65,9 +62,6 @@ game.cCity = game.playerObject.extend({
     onClick : function (event) {
         //alert(this.name);
 
-        //clear hud
-        me.game.world.getChildByName("UIPanel")[0].remove();
-
         //hp bar stuff
         var hp = me.game.world.getChildByName("hpBar")[0];
         if (hp) {
@@ -81,7 +75,7 @@ game.cCity = game.playerObject.extend({
 		
     },
 
-    callTraining : function (x,y,string) {
+    callTraining : function (x, y, string, player) {
 		//Can only start training units when not busy
 		if(!this.training)
 		{
@@ -92,6 +86,7 @@ game.cCity = game.playerObject.extend({
 					this.trainType = string;
 					this.training = true;
 					this.trainTime = 0;
+					this.player = player;
 					game.data.goldCounter_comp -= 100;
 					game.data.foodCounter_comp -= 50;
 				}
@@ -100,18 +95,20 @@ game.cCity = game.playerObject.extend({
 		}
     },
 
-    trainPlayer : function () {
+    trainPlayer : function (player) {
         var timeToTrain = 200;
-        //var progress =  me.game.world.getChildByName("progressBar")[0];
-        //if (progress) {
-            //progress.updateProgress(1, timeToTrain);
-        //}
+        var progress =  me.game.world.getChildByName("progressBar")[0];
+        if (progress) {
+            progress.updateProgress(1, timeToTrain);
+        }
         this.trainTime += 1;
         if (this.trainTime >= timeToTrain) {
             //TODO: move spawn loacation if space is occupied
             me.game.world.addChild(me.pool.pull(this.trainType, this.trainx+60, this.trainy+110));
             this.trainTime = 0;
             this.training = false;
+			//Probably will be removed - alternate implementation
+			//incrementComputerUnitList(player, this.trainType);
             this.trainType = "";
         }
     },

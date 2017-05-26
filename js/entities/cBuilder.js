@@ -87,7 +87,6 @@ game.cBuilder = game.playerObject.extend({
 
 
         if (this.building && this.walk==false) {
-			console.log("building");
             this.buildBuilding();
             if (!this.renderable.isCurrentAnimation("build")) {
                 this.renderable.setCurrentAnimation("build");
