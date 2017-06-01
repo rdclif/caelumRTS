@@ -36,8 +36,8 @@ game.AI_main = me.Entity.extend({
     update : function (dt) {
 
 		//Arbitrary limit on computer thinking speed to avoid bogging down the system
-        this.counter += 1;
-        if (this.counter == 0 || this.counter >= 100) {
+        //this.counter += 1;
+        if (this.counter == 10 || this.counter >= 100) {
             this.act = true;
             this.counter = 0;
         }
@@ -49,7 +49,7 @@ game.AI_main = me.Entity.extend({
 			checkComputerRoster(this);
 			//console.log("After");
 			//console.log(this.numUnits);
-			console.log(this.numBuildings);
+			//console.log(this.numBuildings);
 		
 			//Try just creating up to 3 builders (right now unit numbers list is not incremented, so always stays at 0)
 			if(this.numUnits.Builder < 3)
@@ -74,10 +74,12 @@ game.AI_main = me.Entity.extend({
 			if ( knight.length > 0 )
 			{
 				knight = knight[0];
-				//console.log(knight);
-				var destinationX = 50;
-				var destinationY = 50;
-				knight.movePlayerTo(destinationX, destinationY);
+				if (!(knight.walk)) {
+                    //console.log(knight);
+                    var destinationX = 50;
+                    var destinationY = 50;
+                    knight.movePlayerTo(destinationX, destinationY);
+                }
 			}
 
 			

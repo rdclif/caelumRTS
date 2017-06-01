@@ -35,9 +35,6 @@ game.Knight = game.playerObject.extend({
         this.newX = x;
         this.newY = y;
 
-        this.collisionX = x;
-        this.collisionY = y;
-
         this.maxHP = 100;
         this.hp = 100;
 
@@ -49,7 +46,6 @@ game.Knight = game.playerObject.extend({
         this.direction = "down";
 
         this.collision = false;
-        this.collisionCounter = 0;
         this.collisionX = x;
         this.collisionY = y;
 
@@ -63,16 +59,7 @@ game.Knight = game.playerObject.extend({
             this.newX = this.collisionX;
             this.newY = this.collisionY;
             this.collision = false;
-            this.collisionCounter = 0;
             this.walk = true
-        }
-        //real stuck check - stop trying
-        if (this.collisionCounter > 5) {
-            this.walk = false;
-            this.collision = false;
-            this.newX = this.pos.x;
-            this.newY = this.pos.y;
-            this.collisionCounter = 0;
         }
 
         var distx = this.newX - this.pos.x;
@@ -159,16 +146,18 @@ game.Knight = game.playerObject.extend({
                     if (this.walk) {
                         this.collisionEvent(response.b);
                     }
+                    //this.walk = true;
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
-                    this.collisionEvent(response.b);
-                    this.walk = true;
-                    //console.log("enemy");
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
                     return true;
                 case me.collision.types.WORLD_SHAPE:
-                    this.collisionEvent(response.b);
-                    //console.log("world");
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
                     return true;
                 case me.collision.types.ACTION_OBJECT:
                     return false;
@@ -196,8 +185,5 @@ game.Knight = game.playerObject.extend({
                     return false;
             }
         }
-
-
     }
-
 });

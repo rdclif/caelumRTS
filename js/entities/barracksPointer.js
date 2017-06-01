@@ -54,15 +54,21 @@ game.buildBarracksIcon = game.playerObject.extend({
     },
     onClick : function (event) {
         var barracksButton = me.game.world.getChildByName("barracksButton")[0];
-        var x = me.game.viewport.localToWorld(me.input.pointer.pos.x,me.input.pointer.pos.y);
+        var x = me.game.viewport.localToWorld(me.input.pointer.pos.x, me.input.pointer.pos.y);
         //not sure why but melon likes it better when I pass these as variables
         var xvar = x.x;
         var yvar = x.y;
-        barracksButton.moveToBuild(xvar, yvar)
-        me.game.world.removeChild(this);
-        me.game.repaint();
-
+        if (!(this.isThisSpaceOccupied())) {
+            barracksButton.moveToBuild(xvar, yvar);
+            me.game.world.removeChild(this);
+            me.game.repaint();
+        } else {
+            me.game.world.getChildByName("menuPanel")[0].alert("Can't build here, somthing is in the way!");
+            me.game.world.removeChild(this);
+            me.game.repaint();
+        }
     },
+
     onDestroyEvent : function() {
         game.data.pointerBusy = false;
         me.game.world.updateChildBounds();

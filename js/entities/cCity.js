@@ -97,14 +97,20 @@ game.cCity = game.playerObject.extend({
 
     trainPlayer : function (player) {
         var timeToTrain = 200;
-        var progress =  me.game.world.getChildByName("progressBar")[0];
-        if (progress) {
-            progress.updateProgress(1, timeToTrain);
-        }
+
         this.trainTime += 1;
         if (this.trainTime >= timeToTrain) {
             //TODO: move spawn loacation if space is occupied
-            me.game.world.addChild(me.pool.pull(this.trainType, this.trainx+60, this.trainy+110));
+            //move spawn loacation if space is occupied
+            var xLoc = this.trainx+60;
+            var yLoc = this.trainy+120;
+
+            //move right if occupied
+            while(this.isSpaceOccupied(xLoc, yLoc)) {
+                xLoc += 40;
+            };
+
+            me.game.world.addChild(me.pool.pull(this.trainType, xLoc, yLoc));
             this.trainTime = 0;
             this.training = false;
 			//Probably will be removed - alternate implementation

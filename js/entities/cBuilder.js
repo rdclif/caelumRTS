@@ -42,6 +42,10 @@ game.cBuilder = game.playerObject.extend({
 
         this.pool = "builderComputer";
 
+        this.collision = false;
+        this.collisionX = x;
+        this.collisionY = y;
+
         this.maxHP = 100;
         this.hp = 100;
 
@@ -57,6 +61,12 @@ game.cBuilder = game.playerObject.extend({
      * update the player pos
      */
     update : function (dt) {
+        if (this.collision === true && this.walk === false) {
+            this.newX = this.collisionX;
+            this.newY = this.collisionY;
+            this.collision = false;
+            this.walk = true
+        }
 
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
@@ -86,7 +96,7 @@ game.cBuilder = game.playerObject.extend({
         }
 
 
-        if (this.building && this.walk==false) {
+        if (this.building && this.walk==false && this.collision ==false) {
             this.buildBuilding();
             if (!this.renderable.isCurrentAnimation("build")) {
                 this.renderable.setCurrentAnimation("build");
@@ -156,6 +166,9 @@ game.cBuilder = game.playerObject.extend({
                     game.data.goldCounter_comp -= 200;
                 }
             }
+        } else {
+	        console.log("builder space occupied");
+	        this.walk = false;
         }
     },
 
@@ -190,8 +203,52 @@ game.cBuilder = game.playerObject.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
-        //Turning off collisions for now
-        return false;
+        if (response.a == this) {
+            switch (response.b.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    if (this.walk) {
+                        console.log(this);
+                        this.collisionEvent(response.b);
+                    }
+                    //this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        } else {
+            switch (response.a.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    //this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    //this.walk = true;
+                    //console.log("enemy");
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    //console.log("world");
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        }
     }
 
 });

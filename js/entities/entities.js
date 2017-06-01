@@ -85,15 +85,41 @@ game.playerObject = me.Entity.extend({
         this.hp = amt;
     },
 
+
     //scan world objects for conflict
-    isSpaceOccupied : function (x, y) {
+    //works from input x & y
+    isSpaceOccupied : function (x,y) {
         //var coord = me.game.viewport.localToWorld(x, y);
-        for (var i in me.game.world.children) {
-            if (me.game.world.children[i].sId || me.game.world.children[i].id) {
-                if (me.game.world.children[i].containsPoint(x, y)) {
-                    return true;
+
+                for (var i in me.game.world.children) {
+                    if (me.game.world.children[i].sId || me.game.world.children[i].id) {
+                        if (me.game.world.children[i].containsPoint(x, y)) {
+                            //console.log(me.game.world.children[i]);
+                            return true;
+                        }
+
+                    }
                 }
 
+        return false;
+    },
+
+    //scan world objects for conflict
+    //works on this centered this.x and this.y
+    isThisSpaceOccupied : function () {
+        console.log(this.pos.x);
+        var co = me.game.viewport.localToWorld(this.pos.x, this.pos.y);
+        for (var x = (co.x-(this.width/2)); x < (co.x + this.width); x+=1) {
+            for (var y = (co.y-(this.height/2)); y < (co.y + this.height); y += 1) {
+                for (var i in me.game.world.children) {
+                    if (me.game.world.children[i].sId || me.game.world.children[i].id) {
+                        if (me.game.world.children[i].containsPoint(x, y)) {
+                            //console.log(me.game.world.children[i]);
+                            return true;
+                        }
+
+                    }
+                }
             }
         }
         return false;
@@ -106,15 +132,15 @@ game.playerObject = me.Entity.extend({
         var width = object.getBounds().width;
         var loc = object.getBounds().pos;
         if (object.walk === true ){
-            console.log("moving object");
+            console.log("both objects walking");
 
         }else {
 
             if (width <= 50) {
-                width = width * 6;
+                width = width * 2;
             }
             if (height <= this.height) {
-                height = height * 6;
+                height = height * 4;
             }
             if (!(this.collision)) {
                 this.collisionX = this.newX;

@@ -101,7 +101,7 @@ game.Builder = game.playerObject.extend({
             this.renderable.setCurrentAnimation("stand");
         }
 
-        if (this.building && this.walk==false) {
+        if (this.building && this.walk==false && this.collision ==false) {
             this.buildBuilding();
             if (!this.renderable.isCurrentAnimation("build")) {
                 this.renderable.setCurrentAnimation("build");
@@ -203,6 +203,7 @@ game.Builder = game.playerObject.extend({
                 }
             }
         }else {
+            this.walk = false;
             this.menu.alert("Can't build there, something is in the way!");
         }
     },
@@ -250,13 +251,14 @@ game.Builder = game.playerObject.extend({
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
-                    this.collisionEvent(response.b);
-                    this.walk = true;
-                    //console.log("enemy");
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
                     return true;
                 case me.collision.types.WORLD_SHAPE:
-                    this.collisionEvent(response.b);
-                    //console.log("world");
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
                     return true;
                 case me.collision.types.ACTION_OBJECT:
                     return false;

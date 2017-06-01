@@ -161,18 +161,21 @@ game.Catapult = game.playerObject.extend({
         if (response.a == this) {
             switch (response.b.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
-                    this.collisionEvent(response.b);
-                    this.walk = true;
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
+                    //this.walk = true;
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
-                    this.collisionEvent(response.b);
-                    this.walk = true;
-                    //console.log("enemy");
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
                     return true;
                 case me.collision.types.WORLD_SHAPE:
-                    this.collisionEvent(response.b);
-                    //console.log("world");
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
                     return true;
                 case me.collision.types.ACTION_OBJECT:
                     return false;
@@ -183,9 +186,7 @@ game.Catapult = game.playerObject.extend({
         } else {
             switch (response.a.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
-                    if (this.walk) {
-                        this.collisionEvent(response.b);
-                    }
+                    //this.walk = true;
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:

@@ -60,9 +60,16 @@ game.buildMineIcon = game.playerObject.extend({
             //not sure why but melon likes it better when I pass these as variables
             var xvar = x.x;
             var yvar = x.y;
-            mineButton.moveToBuild(xvar, yvar)
-            me.game.world.removeChild(this);
-            me.game.repaint();
+            if (!(this.isThisSpaceOccupied())) {
+                mineButton.moveToBuild(xvar, yvar);
+                me.game.world.removeChild(this);
+                me.game.repaint();
+            } else {
+                me.game.world.getChildByName("menuPanel")[0].alert("Can't build here, somthing is in the way!");
+                me.game.world.removeChild(this);
+                me.game.repaint();
+            }
+
         }
     },
     onDestroyEvent : function() {

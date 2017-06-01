@@ -119,7 +119,7 @@ game.City = game.playerObject.extend({
         if (this.trainTime >= timeToTrain) {
             //move spawn loacation if space is occupied
             var xLoc = this.trainx+60;
-            var yLoc = this.trainy+120;
+            var yLoc = this.trainy+125;
 
             //move right if occupied
             while(this.isSpaceOccupied(xLoc, yLoc)) {

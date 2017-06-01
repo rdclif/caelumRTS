@@ -38,6 +38,10 @@ game.cCatapult = game.playerObject.extend({
 
         this.pool = "catapultComputer";
 
+        this.collision = false;
+        this.collisionX = x;
+        this.collisionY = y;
+
         this.maxHP = 100;
         this.hp = 100;
 
@@ -48,6 +52,13 @@ game.cCatapult = game.playerObject.extend({
     },
 
     update : function (dt) {
+        if (this.collision === true && this.walk === false) {
+            this.newX = this.collisionX;
+            this.newY = this.collisionY;
+            this.collision = false;
+            this.walk = true
+        }
+
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
 
@@ -136,7 +147,51 @@ game.cCatapult = game.playerObject.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
-        return false;
+        if (response.a == this) {
+            switch (response.b.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
+                    //this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    if (this.walk) {
+                        this.collisionEvent(response.b);
+                    }
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        } else {
+            switch (response.a.body.collisionType) {
+                case me.collision.types.PLAYER_OBJECT:
+                    //this.walk = true;
+                    //console.log("player");
+                    return true;
+                case me.collision.types.ENEMY_OBJECT:
+                    //this.walk = true;
+                    //console.log("enemy");
+                    return true;
+                case me.collision.types.WORLD_SHAPE:
+                    //console.log("world");
+                    return true;
+                case me.collision.types.ACTION_OBJECT:
+                    return false;
+                default:
+                    //console.log("other");
+                    return false;
+            }
+        }
     }
 
 });
