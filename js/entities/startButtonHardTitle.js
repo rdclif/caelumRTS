@@ -3,7 +3,7 @@ game.UI = game.UI || {};
 /**
  * a basic button control
  */
-game.UI.startButton = me.GUI_Object.extend({
+game.UI.startButtonHard = me.GUI_Object.extend({
     /**
      * constructor
      */
@@ -28,7 +28,7 @@ game.UI.startButton = me.GUI_Object.extend({
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "New Game";
+        this.label = "New Game: Hard";
 		
 		this.active = false;
 
@@ -44,7 +44,6 @@ game.UI.startButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
-        
         //console.log(this);
         return false;
     },
@@ -58,7 +57,7 @@ game.UI.startButton = me.GUI_Object.extend({
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
         me.state.change(me.state.PLAY);
-        game.data.hardMode = false;
+        game.data.hardMode = true;
         return false;
     },
 

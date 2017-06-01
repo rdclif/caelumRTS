@@ -16,7 +16,8 @@ game.TitleScreen = me.ScreenObject.extend({
 
 	// add buttons
 	me.game.world.addChild(new game.UI.startButton(me.game.viewport.width/2-100, me.game.viewport.height/2));
-	me.game.world.addChild(new game.UI.loadButton(me.game.viewport.width/2-100, me.game.viewport.height/2+55));
+	me.game.world.addChild(new game.UI.startButtonHard(me.game.viewport.width/2-100, me.game.viewport.height/2+55));
+	me.game.world.addChild(new game.UI.loadButton(me.game.viewport.width/2-100, me.game.viewport.height/2+110));
 
 
 	// add a new renderable component with the scrolling text

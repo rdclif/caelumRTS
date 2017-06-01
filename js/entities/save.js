@@ -14,6 +14,7 @@ game.save.object.prototype.removeSave = function () {
     me.save.remove("Gold");
     me.save.remove("Food");
     me.save.remove("sprites");
+    me.save.remove("Hard");
 };
 
 game.save.object.prototype.saveAll = function () {
@@ -27,6 +28,7 @@ game.save.object.prototype.saveAll = function () {
     me.save.add({"idCounter": game.data.idCounter});
     me.save.add({"Gold": game.data.goldCounter});
     me.save.add({"Food": game.data.foodCounter});
+    me.save.add({"Hard": game.data.hardMode});
 
     //save important data
     for (var x in me.game.world.children) {

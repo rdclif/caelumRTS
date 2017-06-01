@@ -14,7 +14,9 @@ var game = {
 
         //loadSave is used in the play onReset function
         loadSave : 0,
+        hardMode: false,
         pointerBusy : false
+
     },
 
 
