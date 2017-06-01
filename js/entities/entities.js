@@ -133,6 +133,113 @@ game.playerObject = me.Entity.extend({
         var loc = object.getBounds().pos;
         if (object.walk === true ){
             console.log("both objects walking");
+            if (!(this.collision)) {
+                this.collisionX = this.newX;
+                this.collisionY = this.newY;
+            }
+            this.collision = true;
+
+            if (this.direction === "right") {
+                if ((loc.y + (height / 2)) > this.pos.y) {
+                    //walking right and hit upper part of object
+                    if((loc.y+height) <= this.newY) {
+                        //if the walk-to-point is lower then the object go down and around
+                        this.newY = this.pos.y + height;
+                        this.newX = this.pos.x - 5;
+                    } else {
+                        //else go up and around
+                        this.newY = this.pos.y - height;
+                        this.newX = this.pos.x - 5;
+                    }
+                } else {
+                    //walking right and hit lower part of object
+                    if(loc.y >= this.newY) {
+                        //if the walk-to-point is higher then the object go up and around
+                        this.newY = this.pos.y - height;
+                        this.newX = this.pos.x + 5;
+                    } else {
+                        //else go down and around
+                        this.newY = this.pos.y + height;
+                        this.newX = this.pos.x - 5;
+                    }
+                }
+            } else if (this.direction === "left") {
+                if ((loc.y + (height / 2)) > this.pos.y) {
+                    //walking left and hit upper half of object
+                    if((loc.y+height) <= this.newY) {
+                        //if the walk-to-point is lower then the object go down and around
+                        this.newY = this.pos.y + height;
+                        this.newX = this.pos.x + 5;
+                    } else {
+                        //else go up and around
+                        this.newY = this.pos.y - height;
+                        this.newX = this.pos.x + 5;
+                    }
+
+                } else {
+                    //walking left and hit lower half of object
+                    if(loc.y >= this.newY) {
+                        //if the walk-to-point is higher then the object go up and around
+                        this.newY = this.pos.y - height;
+                        this.newX = this.pos.x + 5;
+                    } else {
+                        //else go down and around
+                        this.newY = this.pos.y + height;
+                        this.newX = this.pos.x + 5;
+                    }
+                }
+            } else if (this.direction === "up") {
+                if ((loc.x + (width / 2)) > this.pos.x) {
+                    //walking up and hit left side of object
+                    if ((loc.x + width) <= this.newX) {
+                        //if the walk-to-point is further right then the object go right and around
+                        this.newY = this.pos.y + 5;
+                        this.newX = this.pos.x + width;
+                    } else {
+                        //else go left and around
+                        this.newY = this.pos.y + 5;
+                        this.newX = this.pos.x - width;
+                    }
+                } else {
+                    //walking up and hit right side of object
+                    if ((loc.x) >= this.newX) {
+                        //if the walk-to-point is further left then the object go left and around
+                        this.newY = this.pos.y + 5;
+                        this.newX = this.pos.x - width;
+                    } else {
+                        //else go right and around
+                        this.newY = this.pos.y + 5;
+                        this.newX = this.pos.x + width;
+                    }
+
+                }
+            } else {
+                if ((loc.x + (width / 2)) > this.pos.x) {
+                    //walking down and hit left side of object
+                    if ((loc.x + width) <= this.newX) {
+                        //if the walk-to-point is further right then the object go right and around
+                        this.newY = this.pos.y - 5;
+                        this.newX = this.pos.x + width;
+                    } else {
+                        //else go left and around
+                        this.newY = this.pos.y - 5;
+                        this.newX = this.pos.x - width;
+                    }
+
+                } else {
+                    //walking down and hit right side of object
+                    if ((loc.x) >= this.newX) {
+                        //if the walk-to-point is further left then the object go left and around
+                        this.newY = this.pos.y - 5;
+                        this.newX = this.pos.x - width;
+                    } else {
+                        //else go right and around
+                        this.newY = this.pos.y - 5;
+                        this.newX = this.pos.x + width;
+                    }
+                }
+            }
+
 
         }else {
 

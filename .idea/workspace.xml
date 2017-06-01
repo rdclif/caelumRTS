@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7821a996-d1bc-4730-8af4-f1b6f7a59dfc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/AI_main.js" afterPath="$PROJECT_DIR$/js/AI_main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/barracksPointer.js" afterPath="$PROJECT_DIR$/js/entities/barracksPointer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/builder.js" afterPath="$PROJECT_DIR$/js/entities/builder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cBuilder.js" afterPath="$PROJECT_DIR$/js/entities/cBuilder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cCatapult.js" afterPath="$PROJECT_DIR$/js/entities/cCatapult.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cCity.js" afterPath="$PROJECT_DIR$/js/entities/cCity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cKnight.js" afterPath="$PROJECT_DIR$/js/entities/cKnight.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cSoldier.js" afterPath="$PROJECT_DIR$/js/entities/cSoldier.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/catapult.js" afterPath="$PROJECT_DIR$/js/entities/catapult.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/city.js" afterPath="$PROJECT_DIR$/js/entities/city.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/entities.js" afterPath="$PROJECT_DIR$/js/entities/entities.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/farmPointer.js" afterPath="$PROJECT_DIR$/js/entities/farmPointer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/knight.js" afterPath="$PROJECT_DIR$/js/entities/knight.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/minePointer.js" afterPath="$PROJECT_DIR$/js/entities/minePointer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/soldier.js" afterPath="$PROJECT_DIR$/js/entities/soldier.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,8 +20,8 @@
       <file leaf-file-name="entities.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="96" column="30" lean-forward="false" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
+            <state relative-caret-position="321">
+              <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -518,15 +503,15 @@
       <workItem from="1495665905317" duration="1876000" />
       <workItem from="1495756301259" duration="8689000" />
       <workItem from="1496099405161" duration="275000" />
-      <workItem from="1496343547807" duration="8224000" />
+      <workItem from="1496343547807" duration="8766000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="274144000" />
+    <option name="totallyTimeSpent" value="274686000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="136" y="23" width="1532" height="812" extended-state="1" />
+    <frame x="136" y="23" width="1532" height="812" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23163468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -959,8 +944,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="96" column="30" lean-forward="false" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
+        <state relative-caret-position="321">
+          <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
           <folding />
         </state>
       </provider>
