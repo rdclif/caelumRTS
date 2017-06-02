@@ -85,56 +85,60 @@ game.Barracks = game.playerObject.extend({
 
     callTraining : function (x,y,string) {
         var menu = me.game.world.getChildByName("menuPanel")[0];
-        if (string === "soldierPlayer") {
-            if (game.data.goldCounter >= 200 && game.data.foodCounter >= 100) {
-                this.trainx = x;
-                this.trainy = y;
-                this.trainType = string;
-                this.training = true;
-                this.trainTime = 0;
-                game.data.goldCounter -= 200;
-                game.data.foodCounter -= 100;
-            } else {
-                if (game.data.goldCounter < 200) {
-                    menu.alert("You do not have enough gold.");
+        if (!(this.training)) {
+            if (string === "soldierPlayer") {
+                if (game.data.goldCounter >= 200 && game.data.foodCounter >= 100) {
+                    this.trainx = x;
+                    this.trainy = y;
+                    this.trainType = string;
+                    this.training = true;
+                    this.trainTime = 0;
+                    game.data.goldCounter -= 200;
+                    game.data.foodCounter -= 100;
                 } else {
-                    menu.alert("You do not have enough food.");
+                    if (game.data.goldCounter < 200) {
+                        menu.alert("You do not have enough gold.");
+                    } else {
+                        menu.alert("You do not have enough food.");
+                    }
                 }
             }
-        }
-        if (string === "knightPlayer") {
-            if (game.data.goldCounter >= 500 && game.data.foodCounter >= 200) {
-                this.trainx = x;
-                this.trainy = y;
-                this.trainType = string;
-                this.training = true;
-                this.trainTime = 0;
-                game.data.goldCounter -= 500;
-                game.data.foodCounter -= 200;
-            } else {
-                if (game.data.goldCounter < 500) {
-                    menu.alert("You do not have enough gold.");
+            if (string === "knightPlayer") {
+                if (game.data.goldCounter >= 500 && game.data.foodCounter >= 200) {
+                    this.trainx = x;
+                    this.trainy = y;
+                    this.trainType = string;
+                    this.training = true;
+                    this.trainTime = 0;
+                    game.data.goldCounter -= 500;
+                    game.data.foodCounter -= 200;
                 } else {
-                    menu.alert("You do not have enough food.");
+                    if (game.data.goldCounter < 500) {
+                        menu.alert("You do not have enough gold.");
+                    } else {
+                        menu.alert("You do not have enough food.");
+                    }
                 }
             }
-        }
-        if (string === "catapultPlayer") {
-            if (game.data.goldCounter >= 1000 && game.data.foodCounter >= 500) {
-                this.trainx = x;
-                this.trainy = y;
-                this.trainType = string;
-                this.training = true;
-                this.trainTime = 0;
-                game.data.goldCounter -= 1000;
-                game.data.foodCounter -= 500;
-            } else {
-                if (game.data.goldCounter < 1000) {
-                    menu.alert("You do not have enough gold.");
+            if (string === "catapultPlayer") {
+                if (game.data.goldCounter >= 1000 && game.data.foodCounter >= 500) {
+                    this.trainx = x;
+                    this.trainy = y;
+                    this.trainType = string;
+                    this.training = true;
+                    this.trainTime = 0;
+                    game.data.goldCounter -= 1000;
+                    game.data.foodCounter -= 500;
                 } else {
-                    menu.alert("You do not have enough food.");
+                    if (game.data.goldCounter < 1000) {
+                        menu.alert("You do not have enough gold.");
+                    } else {
+                        menu.alert("You do not have enough food.");
+                    }
                 }
             }
+        } else {
+            menu.alert("Already training");
         }
     },
 
@@ -148,7 +152,7 @@ game.Barracks = game.playerObject.extend({
         if (this.trainTime >= timeToTrain) {
             //move spawn loacation if space is occupied
             var xLoc = this.trainx+60;
-            var yLoc = this.trainy+90;
+            var yLoc = this.trainy+100;
 
             //move right if occupied
             while(this.isSpaceOccupied(xLoc, yLoc)) {

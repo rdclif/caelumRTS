@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7821a996-d1bc-4730-8af4-f1b6f7a59dfc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/entities/startButtonHardTitle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/save.js" afterPath="$PROJECT_DIR$/js/entities/save.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/startButtonTitle.js" afterPath="$PROJECT_DIR$/js/entities/startButtonTitle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game.js" afterPath="$PROJECT_DIR$/js/game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/AI_main.js" afterPath="$PROJECT_DIR$/js/AI_main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/barracks.js" afterPath="$PROJECT_DIR$/js/entities/barracks.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/catapult.js" afterPath="$PROJECT_DIR$/js/entities/catapult.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/city.js" afterPath="$PROJECT_DIR$/js/entities/city.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/entities.js" afterPath="$PROJECT_DIR$/js/entities/entities.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/knight.js" afterPath="$PROJECT_DIR$/js/entities/knight.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/menuButton.js" afterPath="$PROJECT_DIR$/js/entities/menuButton.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/soldier.js" afterPath="$PROJECT_DIR$/js/entities/soldier.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/screens/play.js" afterPath="$PROJECT_DIR$/js/screens/play.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/screens/title.js" afterPath="$PROJECT_DIR$/js/screens/title.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,88 +29,78 @@
       <file leaf-file-name="entities.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2641">
-              <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+            <state relative-caret-position="4022">
+              <caret line="358" column="5" lean-forward="true" selection-start-line="358" selection-start-column="5" selection-end-line="358" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="title.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/screens/title.js">
+      <file leaf-file-name="city.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/city.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="43">
+              <caret line="111" column="43" lean-forward="false" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="startButtonTitle.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/entities/startButtonTitle.js">
+      <file leaf-file-name="barracks.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/barracks.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="67" column="55" lean-forward="false" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
+            <state relative-caret-position="1017">
+              <caret line="86" column="64" lean-forward="false" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="startButtonHardTitle.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/entities/startButtonHardTitle.js">
+      <file leaf-file-name="AI_main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/AI_main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="60" column="21" lean-forward="true" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
+            <state relative-caret-position="41">
+              <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="play.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cSoldier.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/cSoldier.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1744">
+              <caret line="174" column="22" lean-forward="false" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="play.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/screens/play.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="89" column="40" lean-forward="true" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+            <state relative-caret-position="1221">
+              <caret line="85" column="29" lean-forward="false" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="save.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/entities/save.js">
+      <file leaf-file-name="menuButton.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/menuButton.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+            <state relative-caret-position="1004">
+              <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="barracksPointer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/entities/barracksPointer.js">
+      <file leaf-file-name="HUD.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/HUD.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="farmPointer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/entities/farmPointer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="minePointer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/entities/minePointer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="74" column="33" lean-forward="true" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+            <state relative-caret-position="1366">
+              <caret line="252" column="5" lean-forward="true" selection-start-line="252" selection-start-column="5" selection-end-line="252" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -178,7 +170,6 @@
         <option value="$PROJECT_DIR$/js/entities/soundVolumeDownButton.js" />
         <option value="$PROJECT_DIR$/js/entities/soundMuteButton.js" />
         <option value="$PROJECT_DIR$/js/entities/alertBox.js" />
-        <option value="$PROJECT_DIR$/js/entities/menuButton.js" />
         <option value="$PROJECT_DIR$/js/entities/menuDebugButton.js" />
         <option value="$PROJECT_DIR$/js/entities/menuQuitButton.js" />
         <option value="$PROJECT_DIR$/js/entities/HUD.js" />
@@ -189,34 +180,35 @@
         <option value="$PROJECT_DIR$/js/entities/cMine.js" />
         <option value="$PROJECT_DIR$/js/entities/cancelButton.js" />
         <option value="$PROJECT_DIR$/js/entities/attackPointer.js" />
-        <option value="$PROJECT_DIR$/js/entities/barracks.js" />
         <option value="$PROJECT_DIR$/js/entities/farm.js" />
         <option value="$PROJECT_DIR$/js/entities/mine.js" />
         <option value="$PROJECT_DIR$/js/entities/buildingSite.js" />
         <option value="$PROJECT_DIR$/js/entities/hpBar.js" />
         <option value="$PROJECT_DIR$/js/entities/movePointer.js" />
-        <option value="$PROJECT_DIR$/js/entities/knight.js" />
-        <option value="$PROJECT_DIR$/js/entities/soldier.js" />
-        <option value="$PROJECT_DIR$/js/entities/catapult.js" />
         <option value="$PROJECT_DIR$/js/entities/cSoldier.js" />
         <option value="$PROJECT_DIR$/js/entities/cCatapult.js" />
         <option value="$PROJECT_DIR$/js/entities/cKnight.js" />
-        <option value="$PROJECT_DIR$/js/AI_main.js" />
         <option value="$PROJECT_DIR$/js/entities/builder.js" />
         <option value="$PROJECT_DIR$/js/entities/cBuilder.js" />
         <option value="$PROJECT_DIR$/js/entities/cCity.js" />
-        <option value="$PROJECT_DIR$/js/entities/city.js" />
         <option value="$PROJECT_DIR$/js/entities/minePointer.js" />
         <option value="$PROJECT_DIR$/js/entities/farmPointer.js" />
         <option value="$PROJECT_DIR$/js/entities/barracksPointer.js" />
-        <option value="$PROJECT_DIR$/js/entities/entities.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/screens/title.js" />
         <option value="$PROJECT_DIR$/js/game.js" />
         <option value="$PROJECT_DIR$/js/entities/startButtonHardTitle.js" />
         <option value="$PROJECT_DIR$/js/entities/startButtonTitle.js" />
         <option value="$PROJECT_DIR$/js/entities/save.js" />
+        <option value="$PROJECT_DIR$/js/entities/city.js" />
+        <option value="$PROJECT_DIR$/js/entities/barracks.js" />
+        <option value="$PROJECT_DIR$/js/entities/soldier.js" />
+        <option value="$PROJECT_DIR$/js/entities/knight.js" />
+        <option value="$PROJECT_DIR$/js/entities/catapult.js" />
+        <option value="$PROJECT_DIR$/js/entities/entities.js" />
         <option value="$PROJECT_DIR$/js/screens/play.js" />
+        <option value="$PROJECT_DIR$/js/entities/menuButton.js" />
+        <option value="$PROJECT_DIR$/js/AI_main.js" />
       </list>
     </option>
   </component>
@@ -285,8 +277,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="47" />
+    <option name="x" value="122" />
+    <option name="y" value="136" />
     <option name="width" value="1532" />
     <option name="height" value="812" />
   </component>
@@ -305,6 +297,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -383,8 +377,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -561,14 +553,16 @@
       <workItem from="1495756301259" duration="8689000" />
       <workItem from="1496099405161" duration="275000" />
       <workItem from="1496343547807" duration="10005000" />
+      <workItem from="1496424196713" duration="4303000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275925000" />
+    <option name="totallyTimeSpent" value="280228000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="47" width="1532" height="812" extended-state="0" />
+    <frame x="122" y="136" width="1532" height="812" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23163468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -620,7 +614,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/entities/city.js</url>
-          <line>120</line>
+          <line>124</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -629,13 +623,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/entities/soundVolumeUpButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="67" column="23" lean-forward="true" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/soundMuteButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -671,13 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/HUD.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/menuSoundButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -689,13 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="64" column="26" lean-forward="false" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/menuButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-35">
-          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -769,13 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/barracks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/buildingSite.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -808,31 +774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1380">
           <caret line="92" column="18" lean-forward="false" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cSoldier.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="174" column="22" lean-forward="false" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/catapult.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="205" column="5" lean-forward="false" selection-start-line="205" selection-start-column="5" selection-end-line="205" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/soldier.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="190" column="5" lean-forward="false" selection-start-line="190" selection-start-column="5" selection-end-line="190" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -840,14 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="60" column="61" lean-forward="true" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cCatapult.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="181" column="22" lean-forward="false" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -864,15 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-717">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/AI_main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -884,49 +808,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cCity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="110" column="14" lean-forward="true" selection-start-line="110" selection-start-column="14" selection-end-line="110" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/builderButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1013">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/city.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="121" column="38" lean-forward="false" selection-start-line="121" selection-start-column="38" selection-end-line="121" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/builder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-371">
-          <caret line="103" column="71" lean-forward="true" selection-start-line="103" selection-start-column="45" selection-end-line="103" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/knight.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="42" column="65" lean-forward="true" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/minePointer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
+        <state relative-caret-position="1110">
           <caret line="74" column="33" lean-forward="true" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
           <folding />
         </state>
@@ -934,7 +825,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/farmPointer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
+        <state relative-caret-position="1050">
           <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
           <folding />
         </state>
@@ -943,30 +834,14 @@
     <entry file="file://$PROJECT_DIR$/js/entities/barracksPointer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
-          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/screens/title.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2641">
-          <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/startButtonTitle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="1005">
           <caret line="67" column="55" lean-forward="false" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
           <folding />
         </state>
@@ -976,7 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
           <caret line="45" column="72" lean-forward="true" selection-start-line="45" selection-start-column="72" selection-end-line="45" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -990,24 +864,144 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/save.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+        <state relative-caret-position="450">
+          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/startButtonHardTitle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="60" column="21" lean-forward="true" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
+        <state relative-caret-position="900">
+          <caret line="60" column="21" lean-forward="false" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/screens/title.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/buttons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/builder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="94" column="16" lean-forward="false" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/soldier.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="82" column="9" lean-forward="true" selection-start-line="66" selection-start-column="12" selection-end-line="82" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cCatapult.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2348">
+          <caret line="181" column="22" lean-forward="false" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cCity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="110" column="14" lean-forward="true" selection-start-line="110" selection-start-column="14" selection-end-line="110" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/knight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1042">
+          <caret line="66" column="80" lean-forward="false" selection-start-line="66" selection-start-column="80" selection-end-line="66" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4022">
+          <caret line="358" column="5" lean-forward="true" selection-start-line="358" selection-start-column="5" selection-end-line="358" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/catapult.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="183" column="31" lean-forward="true" selection-start-line="183" selection-start-column="31" selection-end-line="183" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/menuButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1004">
+          <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/HUD.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1366">
+          <caret line="252" column="5" lean-forward="true" selection-start-line="252" selection-start-column="5" selection-end-line="252" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cSoldier.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1744">
+          <caret line="174" column="22" lean-forward="false" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/screens/play.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="89" column="40" lean-forward="true" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+        <state relative-caret-position="1221">
+          <caret line="85" column="29" lean-forward="false" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/barracks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1017">
+          <caret line="86" column="64" lean-forward="false" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/city.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="111" column="43" lean-forward="false" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/AI_main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
           <folding />
         </state>
       </provider>

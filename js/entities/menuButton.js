@@ -48,18 +48,6 @@ game.UI.menuButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
-
-		if (this.active)
-		{
-			this.active = false;
-			this.container.remove();
-		}
-		else
-		{
-			this.active = true;
-			this.container.menu();
-		}
-        
         //console.log(this);
         return false;
     },
@@ -72,6 +60,16 @@ game.UI.menuButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
+        if (this.active)
+        {
+            this.active = false;
+            this.container.remove();
+        }
+        else
+        {
+            this.active = true;
+            this.container.menu();
+        }
 
         return false;
     },

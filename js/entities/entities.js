@@ -356,7 +356,7 @@ game.playerObject = me.Entity.extend({
                 }
             }
         }
-    },
+    }
 
 
 });

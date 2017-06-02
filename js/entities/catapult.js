@@ -51,6 +51,8 @@ game.Catapult = game.playerObject.extend({
         this.menu = me.game.world.getChildByName("menuPanel")[0];
         this.hud = me.game.world.getChildByName("UIPanel")[0];
 
+        this.body.collisionType = me.collision.types.PLAYER_OBJECT;
+
         this.setId();
 
     },
@@ -85,6 +87,7 @@ game.Catapult = game.playerObject.extend({
                 }
             } else  {
                 this.walk = false;
+                this.renderable.setCurrentAnimation( "stand" );
                 this.body.vel.x = 0;
                 this.body.vel.y = 0;
             }
@@ -190,7 +193,7 @@ game.Catapult = game.playerObject.extend({
                     //console.log("player");
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
-                    this.walk = true;
+                    //this.walk = true;
                     //console.log("enemy");
                     return true;
                 case me.collision.types.WORLD_SHAPE:

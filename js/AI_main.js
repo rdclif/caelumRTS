@@ -31,6 +31,7 @@ game.AI_main = me.Entity.extend({
 
 	onDestroyEvent : function() {
 		alert("Making sure cpu dies when game ends");
+
     },
 	
     update : function (dt) {

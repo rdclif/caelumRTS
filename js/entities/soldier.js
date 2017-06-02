@@ -71,6 +71,7 @@ game.Soldier = game.playerObject.extend({
                 }
             } else {
                 this.walk = false;
+                this.renderable.setCurrentAnimation( "stand" );
                 this.body.vel.x = 0;
                 this.body.vel.y = 0;
             }

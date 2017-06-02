@@ -65,9 +65,16 @@ game.Knight = game.playerObject.extend({
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
         if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
-            this.moveObject(distx, disty);
-            if (!this.renderable.isCurrentAnimation(this.direction)) {
-                this.renderable.setCurrentAnimation(this.direction);
+            if (!(this.isSpaceOccupied(this.newX, this.newY))) {
+                this.moveObject(distx, disty);
+                if (!this.renderable.isCurrentAnimation(this.direction)) {
+                    this.renderable.setCurrentAnimation(this.direction);
+                }
+            } else {
+                this.walk = false;
+                this.renderable.setCurrentAnimation( "stand" );
+                this.body.vel.x = 0;
+                this.body.vel.y = 0;
             }
         } else  {
             this.walk = false;
