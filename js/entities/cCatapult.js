@@ -151,21 +151,25 @@ game.cCatapult = game.playerObject.extend({
             switch (response.b.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (this.walk) {
-                        this.collisionEvent(response.b);
+                        console.log(this.sId);
+                        return this.collisionEvent(response.b);
+                    } else {
+                        return true;
                     }
-                    //this.walk = true;
-                    //console.log("player");
-                    return true;
                 case me.collision.types.ENEMY_OBJECT:
                     if (this.walk) {
-                        this.collisionEvent(response.b);
+                        console.log(this.sId);
+                        return this.collisionEvent(response.b);
+                    } else {
+                        return true;
                     }
-                    return true;
                 case me.collision.types.WORLD_SHAPE:
                     if (this.walk) {
-                        this.collisionEvent(response.b);
+                        console.log(this.sId);
+                        return this.collisionEvent(response.b);
+                    } else {
+                        return true;
                     }
-                    return true;
                 case me.collision.types.ACTION_OBJECT:
                     return false;
                 default:
@@ -175,16 +179,20 @@ game.cCatapult = game.playerObject.extend({
         } else {
             switch (response.a.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
-                    //this.walk = true;
-                    //console.log("player");
+                    if (response.a.walk){
+                        console.log(this.sId);
+                        return false;
+                    }
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
-                    //this.walk = true;
-                    //console.log("enemy");
+                    if (response.a.walk){
+                        console.log(this.sId);
+                        return false;
+                    }
                     return true;
                 case me.collision.types.WORLD_SHAPE:
                     //console.log("world");
-                    return true;
+                    return false;
                 case me.collision.types.ACTION_OBJECT:
                     return false;
                 default:

@@ -132,7 +132,7 @@ game.playerObject = me.Entity.extend({
         var width = object.getBounds().width;
         var loc = object.getBounds().pos;
         if (object.walk === true ){
-            console.log("both objects walking");
+            //console.log("both objects walking");
             if (!(this.collision)) {
                 this.collisionX = this.newX;
                 this.collisionY = this.newY;
@@ -242,13 +242,14 @@ game.playerObject = me.Entity.extend({
 
 
         }else {
-
+            //only this object walking
             if (width <= 50) {
                 width = width * 2;
             }
             if (height <= this.height) {
                 height = height * 4;
             }
+            console.log(this);
             if (!(this.collision)) {
                 this.collisionX = this.newX;
                 this.collisionY = this.newY;
@@ -356,6 +357,7 @@ game.playerObject = me.Entity.extend({
                 }
             }
         }
+        return true;
     }
 
 
