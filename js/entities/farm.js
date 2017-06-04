@@ -49,7 +49,7 @@ game.Farm = game.playerObject.extend({
 
         //player earns food
         this.counter += 1;
-        if (this.counter >= TIMETHRESHOLD_FOOD) {
+        if (this.counter >= TIMETHRESHOLD_RESOURCES) {
             game.data.foodCounter += FOODPERTICK;
             this.counter = 0;
         }

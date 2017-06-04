@@ -17,6 +17,7 @@ game.AI_main = me.Entity.extend({
 		this.alwaysUpdate = true;
 		this.food = game.data.foodCounter_comp;
         this.gold = game.data.goldCounter_comp;
+		console.log(game.data.goldCounter_comp);
 		this.act = false;
 		
 		
@@ -46,28 +47,26 @@ game.AI_main = me.Entity.extend({
 
 		if(this.act)
 		{
-			//console.log("Before");
-			//console.log(this.numUnits);
 			checkComputerRoster(this);
-			//console.log("After");
-			//console.log(this.numUnits);
-			//console.log(this.numBuildings);
-		
+			
+			//City position is used as a reference for all other building placement
+			//Assumption is that there is only 1 city (by game design)
+			var city = me.game.world.getChildByName("cCity")[0];
+			
+			//Enemy city position is used as a reference for all movement
+			//Assumption is that there is only 1 enemy city (by game design)
+			var enemyCity = me.game.world.getChildByName("City")[0];
+
 			//Try just creating up to 3 builders (right now unit numbers list is not incremented, so always stays at 0)
 			if(this.numUnits.Builder < 3)
 			{
 				//Get the city and instruct it to build more builders
-				//Assumption is that there is only 1 city (by game design)
-				var city = me.game.world.getChildByName("cCity");
+
 				//console.log(city);
-				if ( city.length > 0 )
-				{
-					city = city[0];
-					//console.log(city);
-					var spawnLocation_x = city.pos.x;
-					var spawnLocation_y = city.pos.y;
-					city.callTraining(spawnLocation_x, spawnLocation_y, "builderComputer", this);
-				}
+				var spawnLocation_x = city.pos.x;
+				var spawnLocation_y = city.pos.y;
+				city.callTraining(spawnLocation_x, spawnLocation_y, "builderComputer", this);
+				
 			}
 			
 			//Try moving a unit somewhere (starting knight)
@@ -86,19 +85,42 @@ game.AI_main = me.Entity.extend({
 
 			
 			var builder = me.game.world.getChildByName("cBuilder");
-			//console.log(builder);
-			if ( builder.length > 0 )
+			if (this.foodIncome < FOODPERTICK * 4 || this.goldIncome < GOLDPERTICK * 4)
 			{
-				builder = builder[builder.length - 1];
-				if(!builder.busy)
+				if (this.foodIncome < this.goldIncome)
 				{
-					//console.log(builder);
-					var buildLocation_x = Math.floor(Math.random() * (1400 - 100)) + 100;
-					var buildLocation_y = Math.floor(Math.random() * (1400 - 100)) + 100;
-					builder.busy = true;
-					builder.movePlayerTo(buildLocation_x, buildLocation_y+25);
-					builder.buildSomething(buildLocation_x, buildLocation_y, "farmComputerObject");
+				
+					//console.log(this.foodIncome);
+					buildBuilding("farmComputerObject");
 				}
+				else
+				{
+					buildBuilding("mineComputerObject");					
+				}
+				/*
+				if ( builder.length > 0 )
+				{
+					builder = builder[builder.length - 1];
+					if(!builder.busy)
+					{
+							
+						//var buildLocation_x = Math.floor(Math.random() * (1400 - 100)) + 100;
+						//var buildLocation_y = Math.floor(Math.random() * (1400 - 100)) + 100;
+						var buildLocation_x = city.pos.x - Math.floor(Math.random() * (200)) - 50;
+						var buildLocation_y = city.pos.y - Math.floor(Math.random() * (200)) - 50;
+						
+						while ((builder.isSpaceOccupied(buildLocation_x, buildLocation_y)))
+						{
+							buildLocation_x = city.pos.x - Math.floor(Math.random() * (200)) - 50;
+							buildLocation_y = city.pos.y - Math.floor(Math.random() * (200)) - 50;							
+						}							
+						
+						builder.busy = true;
+						builder.movePlayerTo(buildLocation_x, buildLocation_y+25);
+						builder.buildSomething(buildLocation_x, buildLocation_y, "farmComputerObject");
+					}
+				}
+				*/
 			}
 			
 		}

@@ -43,8 +43,8 @@ game.PlayScreen = me.ScreenObject.extend({
             game.data.score = 0;
             game.data.foodCounter = 5000;
             game.data.goldCounter = 10000;
-            game.data.foodCounter_comp = 500;
-            game.data.goldCounter_comp = 1000;
+            game.data.foodCounter_comp = 5000;
+            game.data.goldCounter_comp = 10000;
 			
         }
 		

@@ -121,3 +121,53 @@ function checkComputerRoster(player)
 	player.foodIncome = player.numBuildings["Farm"] * FOODPERTICK;
 	player.goldIncome = player.numBuildings["Mine"] * GOLDPERTICK;
 }
+
+function buildBuilding(buildingName)
+{
+	//City position is used as a reference for all other building placement
+	//Assumption is that there is only 1 city (by game design)
+	var city = me.game.world.getChildByName("cCity")[0];
+	
+	var builder = me.game.world.getChildByName("cBuilder");
+	var idleBuilder = false;
+	if ( builder.length > 0 )
+	{
+		for (x = 0; x < builder.length; x++)
+		{
+			if ( !builder[x].busy )
+			{
+				builder = builder[x];
+				idleBuilder = true;
+				break;
+			}
+		}
+		//builder = builder[builder.length - 1];
+		//console.log(builder);
+		//if(!builder.busy)
+		//{
+		//console.log("IDLES: " + idleBuilder);
+		if(!idleBuilder)
+		{
+			return;
+		}
+							
+		//var buildLocation_x = Math.floor(Math.random() * (1400 - 100)) + 100;
+		//var buildLocation_y = Math.floor(Math.random() * (1400 - 100)) + 100;
+		var buildLocation_x = city.pos.x - Math.floor(Math.random() * (700)) - 50;
+		var buildLocation_y = city.pos.y - Math.floor(Math.random() * (700)) - 50;
+						
+		while ((builder.isSpaceOccupied(buildLocation_x, buildLocation_y)))
+		{
+			buildLocation_x = city.pos.x - Math.floor(Math.random() * (700)) - 50;
+			buildLocation_y = city.pos.y - Math.floor(Math.random() * (700)) - 50;							
+		}							
+		
+		console.log("New Assignment");
+		console.log(game.data.goldCounter_comp);
+		builder.busy = true;
+		builder.movePlayerTo(buildLocation_x, buildLocation_y+25);
+		console.log("X: " + buildLocation_x + " Y: " + buildLocation_y);
+		builder.buildSomething(buildLocation_x, buildLocation_y, buildingName);
+		
+	}
+}

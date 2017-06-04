@@ -249,7 +249,7 @@ game.playerObject = me.Entity.extend({
             if (height <= this.height) {
                 height = height * 4;
             }
-            console.log(this);
+            //console.log(this);
             if (!(this.collision)) {
                 this.collisionX = this.newX;
                 this.collisionY = this.newY;

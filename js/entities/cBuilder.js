@@ -121,11 +121,12 @@ game.cBuilder = game.playerObject.extend({
             me.game.world.addChild(this.site);
         }
 
-        if (this.buildTime >= 1000) {
+        if (this.buildTime >= 10) {
             me.game.world.removeChild(this.site);
             me.game.world.addChild(me.pool.pull(this.buildType, this.buildx-50, this.buildy-50));
             this.buildTime = 0;
             this.building = false;
+			this.busy = false;
             this.buildType = "";
         }
 
@@ -163,12 +164,11 @@ game.cBuilder = game.playerObject.extend({
                     this.building = true;
                     this.buildTime = 0;
                     game.data.goldCounter_comp -= BARRACKS_COST_GOLD;
-                    this.hud.remove();
+                    //this.hud.remove();
                 }
             }
             if (string === "farmComputerObject") {
                 //console.log(game.data.goldCounter_comp);
-				if (string === "farmComputerObject") {
 					//console.log(game.data.goldCounter_comp);
 					if (game.data.goldCounter_comp >= FARM_COST_GOLD) {
 						this.buildx = x;
@@ -178,7 +178,6 @@ game.cBuilder = game.playerObject.extend({
 						this.buildTime = 0;
 						game.data.goldCounter_comp -= FARM_COST_GOLD;
 					}
-				}
             }
 			if (string === "mineComputerObject") {
                 if (game.data.goldCounter >= MINE_COST_GOLD) {
@@ -188,7 +187,7 @@ game.cBuilder = game.playerObject.extend({
                     this.building = true;
                     this.buildTime = 0;
                     game.data.goldCounter_comp -= MINE_COST_GOLD;
-                    this.hud.remove();
+                    //this.hud.remove();
                 }
             }
         } 
@@ -233,21 +232,21 @@ game.cBuilder = game.playerObject.extend({
             switch (response.b.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (this.walk) {
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
                     }
                 case me.collision.types.ENEMY_OBJECT:
                     if (this.walk) {
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
                     }
                 case me.collision.types.WORLD_SHAPE:
                     if (this.walk) {
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
@@ -262,13 +261,13 @@ game.cBuilder = game.playerObject.extend({
             switch (response.a.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (response.a.walk){
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return false;
                     }
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
                     if (response.a.walk){
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return false;
                     }
                     return true;
