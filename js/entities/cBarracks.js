@@ -32,8 +32,8 @@ game.cBarracks = game.playerObject.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
 
-        this.maxHP = 600;
-        this.hp = 600;
+        this.maxHP = BARRACKS_HP;
+        this.hp = BARRACKS_HP;
 
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
@@ -81,15 +81,65 @@ game.cBarracks = game.playerObject.extend({
     },
 
     callTraining : function (x,y,string) {
-        this.trainx = x;
-        this.trainy = y;
-        this.trainType = string;
-        this.training = true;
-        this.trainTime = 0;
+		if (string === "soldierComputer") {
+            if (game.data.goldCounter >= SOLDIER_COST_GOLD && game.data.foodCounter >= SOLDIER_COST_FOOD) {
+                this.trainx = x;
+                this.trainy = y;
+                this.trainType = string;
+                this.training = true;
+                this.trainTime = 0;
+                game.data.goldCounter -= SOLDIER_COST_GOLD;
+                game.data.foodCounter -= SOLDIER_COST_FOOD;
+            } else {
+                if (game.data.goldCounter < SOLDIER_COST_GOLD) {
+                    menu.alert("You do not have enough gold.");
+                } else {
+                    menu.alert("You do not have enough food.");
+                }
+            }
+        }
+        if (string === "knightComputer") {
+            if (game.data.goldCounter >= KNIGHT_COST_GOLD && game.data.foodCounter >= KNIGHT_COST_FOOD) {
+                this.trainx = x;
+                this.trainy = y;
+                this.trainType = string;
+                this.training = true;
+                this.trainTime = 0;
+                game.data.goldCounter -= KNIGHT_COST_GOLD;
+                game.data.foodCounter -= KNIGHT_COST_FOOD;
+            } else {
+                if (game.data.goldCounter < KNIGHT_COST_GOLD) {
+                    menu.alert("You do not have enough gold.");
+                } else {
+                    menu.alert("You do not have enough food.");
+                }
+            }
+        }
+        if (string === "catapultComputer") {
+            if (game.data.goldCounter >= CATAPULT_COST_GOLD && game.data.foodCounter >= CATAPULT_COST_FOOD) {
+                this.trainx = x;
+                this.trainy = y;
+                this.trainType = string;
+                this.training = true;
+                this.trainTime = 0;
+                game.data.goldCounter -= CATAPULT_COST_GOLD;
+                game.data.foodCounter -= CATAPULT_COST_FOOD;
+            } else {
+                if (game.data.goldCounter < CATAPULT_COST_GOLD) {
+                    menu.alert("You do not have enough gold.");
+                } else {
+                    menu.alert("You do not have enough food.");
+                }
+            }
+        } 
     },
 
     trainPlayer : function () {
         var timeToTrain = 200;
+        //var progress =  me.game.world.getChildByName("progressBar")[0];
+        //if (progress) {
+        //    progress.updateProgress(1, timeToTrain);
+        //}
         this.trainTime += 1;
         if (this.trainTime >= timeToTrain) {
             //move spawn loacation if space is occupied

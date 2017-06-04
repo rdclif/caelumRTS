@@ -35,8 +35,8 @@ game.Farm = game.playerObject.extend({
 
         this.counter = 0;
 
-        this.maxHP = 300;
-        this.hp = 300;
+        this.maxHP = FARM_HP;
+        this.hp = FARM_HP;
 
         this.setId();
 
@@ -47,11 +47,10 @@ game.Farm = game.playerObject.extend({
      */
     update: function (dt) {
 
-
         //player earns food
-        this.counter += FOODPERTICK;
-        if (this.counter >= TIMEPERTICK_FOOD) {
-            game.data.foodCounter += 1;
+        this.counter += 1;
+        if (this.counter >= TIMETHRESHOLD_FOOD) {
+            game.data.foodCounter += FOODPERTICK;
             this.counter = 0;
         }
 

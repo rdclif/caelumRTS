@@ -1,15 +1,3 @@
-//Probably should put these constants in another file, to separate game logic and unit stat balance
-
-//Constants stored here - Not actually constants to avoid potential older browser issues with const
-//Just don't change the values
-
-//Resources
-var TIMEPERTICK_FOOD 	= 200;
-var FOODPERTICK			= 1;
-
-
-
-
 
 function removeFromWorld( itemName )
 {
@@ -127,6 +115,9 @@ function checkComputerRoster(player)
 
 		player.numBuildings[buildingName[x]] = me.game.world.getChildByName("c" + buildingName[x]).length;
 	}
-	
-	
+
+	player.food = game.data.foodCounter_comp;
+    player.gold = game.data.goldCounter_comp;
+	player.foodIncome = player.numBuildings["Farm"] * FOODPERTICK;
+	player.goldIncome = player.numBuildings["Mine"] * GOLDPERTICK;
 }

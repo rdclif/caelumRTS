@@ -35,8 +35,8 @@ game.Knight = game.playerObject.extend({
         this.newX = x;
         this.newY = y;
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = KNIGHT_HP;
+        this.hp = KNIGHT_HP;
 
         this.pool = "knightPlayer";
 

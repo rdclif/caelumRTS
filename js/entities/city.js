@@ -38,8 +38,8 @@ game.City = game.playerObject.extend({
 
         this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 
-        this.maxHP = 1000;
-        this.hp = 1000;
+        this.maxHP = CITY_HP;
+        this.hp = CITY_HP;
 
         this.setId();
 
@@ -90,25 +90,24 @@ game.City = game.playerObject.extend({
     callTraining : function (x,y,string) {
         var menu = me.game.world.getChildByName("menuPanel")[0];
         if (!(this.training)) {
-            if (string === "builderPlayer") {
-                if (game.data.goldCounter >= 100 && game.data.foodCounter >= 50) {
+            if(game.data.goldCounter >= BUILDER_COST_GOLD && game.data.foodCounter >= BUILDER_COST_FOOD) {
                     this.trainx = x;
                     this.trainy = y;
                     this.trainType = string;
                     this.training = true;
                     this.trainTime = 0;
-                    game.data.goldCounter -= 100;
-                    game.data.foodCounter -= 50;
-                }
-                else {
-                    if (game.data.goldCounter < 100) {
-                        menu.alert("You do not have enough gold.");
-                    } else {
-                        menu.alert("You do not have enough food.");
-                    }
+                    game.data.goldCounter -= BUILDER_COST_GOLD;
+                    game.data.foodCounter -= BUILDER_COST_FOOD;
+            }
+            else {
+                if (game.data.goldCounter < 100) {
+                    menu.alert("You do not have enough gold.");
+                } else {
+                    menu.alert("You do not have enough food.");
                 }
             }
-        } else {
+        } 
+		else {
             menu.alert("Already training");
         }
     },

@@ -41,8 +41,8 @@ game.cKnight = game.playerObject.extend({
         this.collisionX = x;
         this.collisionY = y;
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = KNIGHT_HP;
+        this.hp = KNIGHT_HP;
 
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 

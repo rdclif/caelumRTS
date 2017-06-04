@@ -44,8 +44,8 @@ game.Builder = game.playerObject.extend({
 
         this.pool = "builderPlayer";
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = BUILDER_HP;
+        this.hp = BUILDER_HP;
 
         this.collision = false;
         this.collisionX = x;
@@ -58,7 +58,7 @@ game.Builder = game.playerObject.extend({
 
         this.setId();
 
-        console.log(me.game.viewport);
+        //console.log(me.game.viewport);
 
     },
 
@@ -161,13 +161,13 @@ game.Builder = game.playerObject.extend({
         //check if something there --
         if (!(this.isSpaceOccupied(x,y))) {
             if (string === "barracksObject") {
-                if (game.data.goldCounter >= 1000) {
+                if (game.data.goldCounter >= BARRACKS_COST_GOLD) {
                     this.buildx = x;
                     this.buildy = y;
                     this.buildType = string;
                     this.building = true;
                     this.buildTime = 0;
-                    game.data.goldCounter -= 1000;
+                    game.data.goldCounter -= BARRACKS_COST_GOLD;
                     this.hud.remove();
                 }
                 else {
@@ -175,13 +175,13 @@ game.Builder = game.playerObject.extend({
                 }
             }
             if (string === "farmObject") {
-                if (game.data.goldCounter >= 200) {
+                if (game.data.goldCounter >= FARM_COST_GOLD) {
                     this.buildx = x;
                     this.buildy = y;
                     this.buildType = string;
                     this.building = true;
                     this.buildTime = 0;
-                    game.data.goldCounter -= 200;
+                    game.data.goldCounter -= FARM_COST_GOLD;
                     this.hud.remove();
                 }
                 else {
@@ -189,13 +189,13 @@ game.Builder = game.playerObject.extend({
                 }
             }
             if (string === "mineObject") {
-                if (game.data.goldCounter >= 200) {
+                if (game.data.goldCounter >= MINE_COST_GOLD) {
                     this.buildx = x;
                     this.buildy = y;
                     this.buildType = string;
                     this.building = true;
                     this.buildTime = 0;
-                    game.data.goldCounter -= 200;
+                    game.data.goldCounter -= MINE_COST_GOLD;
                     this.hud.remove();
                 }
                 else {

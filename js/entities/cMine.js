@@ -29,8 +29,8 @@ game.cMine = game.playerObject.extend({
 
         this.pool = "mineComputerObject";
 
-        this.maxHP = 400;
-        this.hp = 400;
+        this.maxHP = MINE_HP;
+        this.hp = MINE_HP;
 
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
@@ -43,7 +43,13 @@ game.cMine = game.playerObject.extend({
      */
     update: function (dt) {
 
-
+		//computer earns food
+        this.counter += 1;
+        if (this.counter >= TIMETHRESHOLD_RESOURCES) {
+            game.data.goldCounter_comp += GOLDPERTICK;
+            this.counter = 0;
+        }
+	
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 

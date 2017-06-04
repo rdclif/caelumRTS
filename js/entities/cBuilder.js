@@ -46,8 +46,8 @@ game.cBuilder = game.playerObject.extend({
         this.collisionX = x;
         this.collisionY = y;
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = BUILDER_HP;
+        this.hp = BUILDER_HP;
 
         this.site = {};
 
@@ -155,18 +155,44 @@ game.cBuilder = game.playerObject.extend({
     buildSomething : function (x, y, string) {
         //check if something there first
 	    if (!(this.isSpaceOccupied(x,y))) {
-            if (string === "farmComputerObject") {
-                console.log(game.data.goldCounter_comp);
-                if (game.data.goldCounter_comp >= 200) {
+			if (string === "barracksComputerObject") {
+                if (game.data.goldCounter >= BARRACKS_COST_GOLD) {
                     this.buildx = x;
                     this.buildy = y;
                     this.buildType = string;
                     this.building = true;
                     this.buildTime = 0;
-                    game.data.goldCounter_comp -= 200;
+                    game.data.goldCounter_comp -= BARRACKS_COST_GOLD;
+                    this.hud.remove();
                 }
             }
-        } else {
+            if (string === "farmComputerObject") {
+                //console.log(game.data.goldCounter_comp);
+				if (string === "farmComputerObject") {
+					//console.log(game.data.goldCounter_comp);
+					if (game.data.goldCounter_comp >= FARM_COST_GOLD) {
+						this.buildx = x;
+						this.buildy = y;
+						this.buildType = string;
+						this.building = true;
+						this.buildTime = 0;
+						game.data.goldCounter_comp -= FARM_COST_GOLD;
+					}
+				}
+            }
+			if (string === "mineComputerObject") {
+                if (game.data.goldCounter >= MINE_COST_GOLD) {
+                    this.buildx = x;
+                    this.buildy = y;
+                    this.buildType = string;
+                    this.building = true;
+                    this.buildTime = 0;
+                    game.data.goldCounter_comp -= MINE_COST_GOLD;
+                    this.hud.remove();
+                }
+            }
+        } 
+		else {
 	        console.log("builder space occupied");
 	        this.walk = false;
         }

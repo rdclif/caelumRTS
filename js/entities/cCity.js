@@ -33,8 +33,8 @@ game.cCity = game.playerObject.extend({
 
         this.pool = "cityComputerObject";
 
-        this.maxHP = 1000;
-        this.hp = 1000;
+        this.maxHP = CITY_HP;
+        this.hp = CITY_HP;
 
         this.setId();
 

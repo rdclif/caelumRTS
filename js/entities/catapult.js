@@ -38,8 +38,8 @@ game.Catapult = game.playerObject.extend({
 
         this.pool = "catapultPlayer";
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = CATAPULT_HP;
+        this.hp = CATAPULT_HP;
 
 
         this.collision = false;

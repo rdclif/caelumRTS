@@ -25,7 +25,8 @@ game.AI_main = me.Entity.extend({
 		//Only has default numbers for unit/building counts, need to modify for loading files later on 
 		this.numUnits = {Builder: 0, Knight: 1, Catapult: 0};
 		this.numBuildings = {Barracks: 0, City: 1, Farm: 0, Mine: 0};
-		
+		this.foodIncome = 0;
+		this.goldIncome = 0;							  
     },
 	
 
@@ -37,8 +38,8 @@ game.AI_main = me.Entity.extend({
     update : function (dt) {
 
 		//Arbitrary limit on computer thinking speed to avoid bogging down the system
-        //this.counter += 1;
-        if (this.counter == 10 || this.counter >= 100) {
+        this.counter += 1;
+        if (this.counter >= 100) {
             this.act = true;
             this.counter = 0;
         }

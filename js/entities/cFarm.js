@@ -9,10 +9,9 @@ game.cFarm = game.playerObject.extend({
             image: "cFarm",
             name: "cFarm",
             pool: "",
-            width: 90,
-            height: 90,
-            framewidth: 100,
-            frameheight : 100
+            width: 100,
+            height: 100,
+            framewidth: 100
         }]);
 
 
@@ -29,10 +28,8 @@ game.cFarm = game.playerObject.extend({
 
         this.pool = "farmComputerObject";
 
-        this.maxHP = 300;
-        this.hp = 300;
-
-        this.body.collisionType = me.collision.types.ENEMY_OBJECT;
+        this.maxHP = FARM_HP;
+        this.hp = FARM_HP;
 
         this.setId();
 
@@ -43,10 +40,10 @@ game.cFarm = game.playerObject.extend({
      */
     update: function (dt) {
 
-	    //player earns food
-        this.counter += FOODPERTICK;
-        if (this.counter >= TIMEPERTICK_FOOD) {
-            game.data.foodCounter_comp += 1;
+	    //computer earns food
+        this.counter += 1;
+        if (this.counter >= TIMETHRESHOLD_RESOURCES) {
+            game.data.foodCounter_comp += FOODPERTICK;
             this.counter = 0;
         }
 
@@ -62,9 +59,6 @@ game.cFarm = game.playerObject.extend({
 
     onClick : function (event) {
         //alert(this.name);
-
-        //clear hud
-        me.game.world.getChildByName("UIPanel")[0].remove();
 
 
         //hp bar stuff

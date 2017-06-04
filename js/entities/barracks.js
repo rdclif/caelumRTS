@@ -32,8 +32,8 @@ game.Barracks = game.playerObject.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("idle");
 
-        this.maxHP = 600;
-        this.hp = 600;
+        this.maxHP = BARRACKS_HP;
+        this.hp = BARRACKS_HP;
 
         this.setId();
 
@@ -87,16 +87,16 @@ game.Barracks = game.playerObject.extend({
         var menu = me.game.world.getChildByName("menuPanel")[0];
         if (!(this.training)) {
             if (string === "soldierPlayer") {
-                if (game.data.goldCounter >= 200 && game.data.foodCounter >= 100) {
-                    this.trainx = x;
-                    this.trainy = y;
-                    this.trainType = string;
-                    this.training = true;
-                    this.trainTime = 0;
-                    game.data.goldCounter -= 200;
-                    game.data.foodCounter -= 100;
+				if (game.data.goldCounter >= SOLDIER_COST_GOLD && game.data.foodCounter >= SOLDIER_COST_FOOD) {
+					this.trainx = x;
+					this.trainy = y;
+					this.trainType = string;
+					this.training = true;
+					this.trainTime = 0;
+					game.data.goldCounter -= SOLDIER_COST_GOLD;
+					game.data.foodCounter -= SOLDIER_COST_FOOD;
                 } else {
-                    if (game.data.goldCounter < 200) {
+                    if (game.data.goldCounter < SOLDIER_COST_GOLD) {
                         menu.alert("You do not have enough gold.");
                     } else {
                         menu.alert("You do not have enough food.");
@@ -121,16 +121,16 @@ game.Barracks = game.playerObject.extend({
                 }
             }
             if (string === "catapultPlayer") {
-                if (game.data.goldCounter >= 1000 && game.data.foodCounter >= 500) {
-                    this.trainx = x;
-                    this.trainy = y;
-                    this.trainType = string;
-                    this.training = true;
-                    this.trainTime = 0;
-                    game.data.goldCounter -= 1000;
-                    game.data.foodCounter -= 500;
+				if (game.data.goldCounter >= CATAPULT_COST_GOLD && game.data.foodCounter >= CATAPULT_COST_FOOD) {
+					this.trainx = x;
+					this.trainy = y;
+					this.trainType = string;
+					this.training = true;
+					this.trainTime = 0;
+					game.data.goldCounter -= CATAPULT_COST_GOLD;
+					game.data.foodCounter -= CATAPULT_COST_FOOD;
                 } else {
-                    if (game.data.goldCounter < 1000) {
+                    if (game.data.goldCounter < CATAPULT_COST_GOLD) {
                         menu.alert("You do not have enough gold.");
                     } else {
                         menu.alert("You do not have enough food.");

@@ -35,8 +35,8 @@ game.Soldier = game.playerObject.extend({
         this.newX = x;
         this.newY = y;
 
-        this.maxHP = 100;
-        this.hp = 100;
+        this.maxHP = SOLDIER_HP;
+        this.hp = SOLDIER_HP;
 
         this.collision = false;
         this.collisionX = x;

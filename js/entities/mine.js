@@ -35,8 +35,8 @@ game.Mine = game.playerObject.extend({
 
         this.counter = 0;
 
-        this.maxHP = 300;
-        this.hp = 300;
+        this.maxHP = MINE_HP;
+        this.hp = MINE_HP;
 
         this.setId();
 
@@ -47,11 +47,10 @@ game.Mine = game.playerObject.extend({
      */
     update: function (dt) {
 
-
         //player earns gold
         this.counter += 1;
-        if (this.counter >= 200) {
-            game.data.goldCounter += 1;
+        if (this.counter >= TIMETHRESHOLD_RESOURCES) {
+            game.data.goldCounter += GOLDPERTICK;
             this.counter = 0;
         };
 
