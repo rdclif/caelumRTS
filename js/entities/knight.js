@@ -33,10 +33,12 @@ game.Knight = game.playerObject.extend({
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
         this.newX = x;
-        this.newY = y;
+        this.newY = y;	
 
-        this.maxHP = KNIGHT_HP;
-        this.hp = KNIGHT_HP;
+        this.maxHP = 100;
+        this.hp = 100;
+		this.range = 20;
+		this.attack = false;
 
         this.pool = "knightPlayer";
 
@@ -44,6 +46,7 @@ game.Knight = game.playerObject.extend({
         this.hud = me.game.world.getChildByName("UIPanel")[0];
 
         this.direction = "down";
+		this.lastdirection = "down";
 
         this.collision = false;
         this.collisionX = x;
@@ -55,6 +58,7 @@ game.Knight = game.playerObject.extend({
     },
 
     update : function (dt) {
+
         if (this.collision === true && this.walk === false) {
             this.newX = this.collisionX;
             this.newY = this.collisionY;
@@ -64,7 +68,32 @@ game.Knight = game.playerObject.extend({
 
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
-        if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
+		if (this.attack == true ){
+            if ((Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4)){
+				if (!(this.isSpaceOccupied(this.newX, this.newY))) {
+					this.moveObject(distx, disty);
+					if (!this.renderable.isCurrentAnimation(this.direction)) {
+						this.renderable.setCurrentAnimation(this.direction);
+					}	
+				}					
+			}
+			else {
+				this.walk = false;
+				this.body.vel.x = 0;
+				this.body.vel.y = 0;
+			}
+			
+			if ((this.body.vel.x == 0)&&(this.body.vel.y==0))
+			{		
+				if (!this.renderable.isCurrentAnimation("attack")) {
+                    this.renderable.setCurrentAnimation("attack");
+			
+                }
+			
+			}
+		}		
+		
+        else if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
             if (!(this.isSpaceOccupied(this.newX, this.newY))) {
                 this.moveObject(distx, disty);
                 if (!this.renderable.isCurrentAnimation(this.direction)) {
@@ -83,6 +112,9 @@ game.Knight = game.playerObject.extend({
             this.body.vel.y = 0;
         }
 
+
+
+
         this.body.update(dt);
         // handle collisions against other shapes
         me.collision.check(this);
@@ -96,12 +128,32 @@ game.Knight = game.playerObject.extend({
         this.newY = Math.round(y);
         this.collision = false;
         this.walk = true;
+        this.walk = true;
+		this.attack = false;
+
+
     },
+	
+    movePlayerToAttack :function (x, y) {
+        this.newX = Math.round(x);
+        this.newY = Math.round(y);
+        this.collision = false;
+        this.walk = true;
+		this.walk = true;
+		this.attack = true;
+
+
+
+
+		
+    },
+	
 
     moveObject : function(distx, disty){
-        if (this.walk){
+        if (this.walk && this.attack){
             var angle = Math.atan2(disty, distx);
-
+			console.log(8);
+            this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
             this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
             this.body.vel.y = Math.sin(angle) * this.body.accel.y * me.timer.tick;
 
@@ -109,9 +161,30 @@ game.Knight = game.playerObject.extend({
                 this.direction = ( distx > 0) ? "right" : "left";
 
             } else {
-                this.direction = ( disty > 0) ? "down" : "up";
+                this.direction = ( disty > 0) ? "up" : "down";
             }
+		
+			
+			
         }
+		else if (this.walk){
+            var angle = Math.atan2(disty, distx);
+			console.log(7);
+
+            this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
+            this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
+            this.body.vel.y = Math.sin(angle) * this.body.accel.y * me.timer.tick;
+
+            if (Math.abs(distx) > Math.abs(disty)) {
+                this.direction = ( distx > 0) ? "right" : "left";
+
+            } else {
+                this.direction = ( disty > 0) ? "up" : "down";
+            }
+        }	
+		
+
+		
 
     },
 

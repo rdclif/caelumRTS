@@ -60,6 +60,14 @@ game.UI.attackButton = me.GUI_Object.extend({
         // don't propagate the event
         return false;
     },
+	
+	    //movePointer calls this function - passes mouse x y back so this can call player movePlayerTo function
+    movePlayerAttack : function (x, y) {
+        //melon likes it better when I create new vars to pass
+        var newx = x;
+        var newy = y;
+        this.player.movePlayerToAttack(newx,newy);
+    },
 
     draw: function(renderer) {
         this._super(me.GUI_Object, "draw", [ renderer ]);
