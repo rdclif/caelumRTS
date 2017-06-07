@@ -75,7 +75,7 @@ game.cKnight = game.playerObject.extend({
                     this.renderable.setCurrentAnimation(this.direction);
                 }
             } else {
-				console.log("No more walking");
+				//console.log("No more walking");
                 this.walk = false;
                 if (!this.renderable.isCurrentAnimation("stand")) {
                     this.renderable.setCurrentAnimation("stand");

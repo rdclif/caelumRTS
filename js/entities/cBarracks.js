@@ -97,6 +97,7 @@ game.cBarracks = game.playerObject.extend({
 					//console.log("Building soldier");
 					game.data.goldCounter_comp -= SOLDIER_COST_GOLD;
 					game.data.foodCounter_comp -= SOLDIER_COST_FOOD;
+					this.player.inProgress_Units.Soldier += 1;
 				}
 				
 				return;
@@ -111,6 +112,7 @@ game.cBarracks = game.playerObject.extend({
 					//console.log("Building knight");
 					game.data.goldCounter_comp -= KNIGHT_COST_GOLD;
 					game.data.foodCounter_comp -= KNIGHT_COST_FOOD;
+					this.player.inProgress_Units.Knight += 1;
 				}
 				
 				return;
@@ -124,6 +126,7 @@ game.cBarracks = game.playerObject.extend({
 					this.trainTime = 0;
 					game.data.goldCounter_comp -= CATAPULT_COST_GOLD;
 					game.data.foodCounter_comp -= CATAPULT_COST_FOOD;
+					this.player.inProgress_Units.Catapult += 1;
 				}
 				
 				return;

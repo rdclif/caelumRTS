@@ -36,7 +36,7 @@ game.AI_main = me.Entity.extend({
 	
 
 	onDestroyEvent : function() {
-		alert("Making sure cpu dies when game ends");
+		//alert("Making sure cpu dies when game ends");
 
     },
 	
@@ -59,7 +59,7 @@ game.AI_main = me.Entity.extend({
 	
 		//Arbitrary limit on computer thinking speed to avoid bogging down the system
         this.counter += 1;
-		console.log(this.counter);
+		//console.log(this.counter);
         if (this.counter >= AI_ACTION_INTERVAL) 
 		{
             this.act = true;
@@ -169,17 +169,17 @@ game.AI_main = me.Entity.extend({
 				
 				//console.log("Knights: " + this.numUnits.Knight);
 				//console.log("Soldiers: " + this.numUnits.Soldier);
-				if(this.numUnits.Knight < 3)
+				if(this.numUnits.Knight < AI_TARGET_KNIGHT)
 				{
 					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "knightComputer");
 					this.inProgress_Units.Knight += 1;
 				}
-				else if(this.numUnits.Soldier < 3)
+				else if(this.numUnits.Soldier < AI_TARGET_SOLDIER)
 				{
 					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "soldierComputer");
 					this.inProgress_Units.Soldier += 1;
 				}
-				else if(this.numUnits.Catapult < 3)
+				else if(this.numUnits.Catapult < AI_TARGET_CATAPULT)
 				{
 					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "catapultComputer");
 					this.inProgress_Units.Catapult += 1;
