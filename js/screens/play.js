@@ -5,7 +5,7 @@ game.PlayScreen = me.ScreenObject.extend({
     onResetEvent: function() {
 
         //load map
-        me.levelDirector.loadLevel("Map2");
+        me.levelDirector.loadLevel("Map3");
 		me.audio.playTrack("bensound-acousticbreeze");
         this.handle = me.event.subscribe(me.event.KEYDOWN, this.keyPressed.bind(this));
         // Add our HUD to the game world, add it last so that this is on top of the rest.
