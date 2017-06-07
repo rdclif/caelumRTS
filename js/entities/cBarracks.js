@@ -82,9 +82,9 @@ game.cBarracks = game.playerObject.extend({
     },
 
     callTraining : function (x,y,string) {
-		console.log("Inside callTraining");
-		console.log("Gold: " + game.data.goldCounter_comp);
-		console.log("Food: " + game.data.foodCounter_comp);
+		//console.log("Inside callTraining");
+		//console.log("Gold: " + game.data.goldCounter_comp);
+		//console.log("Food: " + game.data.foodCounter_comp);
 		if (!this.training)
 		{
 			if (string === "soldierComputer") {
@@ -94,7 +94,7 @@ game.cBarracks = game.playerObject.extend({
 					this.trainType = string;
 					this.training = true;
 					this.trainTime = 0;
-					console.log("Building soldier");
+					//console.log("Building soldier");
 					game.data.goldCounter_comp -= SOLDIER_COST_GOLD;
 					game.data.foodCounter_comp -= SOLDIER_COST_FOOD;
 				}
@@ -108,7 +108,7 @@ game.cBarracks = game.playerObject.extend({
 					this.trainType = string;
 					this.training = true;
 					this.trainTime = 0;
-					console.log("Building knight");
+					//console.log("Building knight");
 					game.data.goldCounter_comp -= KNIGHT_COST_GOLD;
 					game.data.foodCounter_comp -= KNIGHT_COST_FOOD;
 				}

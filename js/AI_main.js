@@ -28,6 +28,7 @@ game.AI_main = me.Entity.extend({
 		
 		this.inProgress_Units = {Builder: 0, Knight: 0, Soldier: 0, Catapult: 0};
 		this.inProgress_Buildings = {Barracks: 0, City: 0, Farm: 0, Mine: 0};
+		this.inProgress_Locations = new Array();
 		
 		this.foodIncome = 0;
 		this.goldIncome = 0;							  
@@ -41,8 +42,24 @@ game.AI_main = me.Entity.extend({
 	
     update : function (dt) {
 
+		//Check victory conditions
+		var city = me.game.world.getChildByName("cCity");
+		var enemyCity = me.game.world.getChildByName("city");
+	
+		//If player city is destroyed, go to defeat screen
+		if(city.length < 1)
+		{
+			me.state.change(me.state.GAME_END);		
+		}
+		if(enemyCity.length < 1)
+		{
+			me.state.change(me.state.GAMEOVER);
+		}
+	
+	
 		//Arbitrary limit on computer thinking speed to avoid bogging down the system
         this.counter += 1;
+		console.log(this.counter);
         if (this.counter >= AI_ACTION_INTERVAL) 
 		{
             this.act = true;
@@ -55,17 +72,16 @@ game.AI_main = me.Entity.extend({
 			
 			//City position is used as a reference for all other building placement
 			//Assumption is that there is only 1 city (by game design)
-			var city = me.game.world.getChildByName("cCity")[0];
+			city = me.game.world.getChildByName("cCity")[0];
 			
 			//Enemy city position is used as a reference for all movement
 			//Assumption is that there is only 1 enemy city (by game design)
-			var enemyCity = me.game.world.getChildByName("city")[0];
+			enemyCity = me.game.world.getChildByName("city")[0];
 
-			//Try just creating up to 3 builders (right now unit numbers list is not incremented, so always stays at 0)
-			if(this.numUnits.Builder < 3)
+			//Build some builders to construct rest of infrastructure
+			if(this.numUnits.Builder < AI_TARGET_BUILDER)
 			{
 				//Get the city and instruct it to build more builders
-
 				var spawnLocation_x = city.pos.x;
 				var spawnLocation_y = city.pos.y;
 				city.callTraining(spawnLocation_x, spawnLocation_y, "builderComputer", this);
@@ -122,33 +138,27 @@ game.AI_main = me.Entity.extend({
 			var dest_x = enemyCity.pos.x;
 			var dest_y = enemyCity.pos.y;
 			//moveUnit("cKnight", 50, 50);
-			moveUnit("cKnight", dest_x, dest_y);
+			//moveUnit("cKnight", dest_x, dest_y);
+			attackWithUnit("cKnight", enemyCity);
 			moveUnit("cSoldier", dest_x, dest_y);
 			moveUnit("cCatapult", dest_x, dest_y);
 			
-			//var builder = me.game.world.getChildByName("cBuilder");
 			//Build up economy first
-			if (this.foodIncome < FOODPERTICK * 1 || this.goldIncome < GOLDPERTICK * 1)
+			//if (this.foodIncome < FOODPERTICK * 1 || this.goldIncome < GOLDPERTICK * 1)
+			if( (this.numBuildings.Mine + this.inProgress_Buildings.Mine) < AI_TARGET_MINE )
 			{
-
-				if (this.foodIncome < this.goldIncome)
-				{
-					//console.log(this.foodIncome);
-					buildBuilding("farmComputerObject");
-				}
-				else
-				{
-					buildBuilding("mineComputerObject");					
-				}
-
+				buildBuilding("mineComputerObject", this);
 			}
-
 			
+			else if( (this.numBuildings.Farm + this.inProgress_Buildings.Farm) < AI_TARGET_FARM )
+			{
+				buildBuilding("farmComputerObject", this);
+			}
 			
 			//Prioritize production structures next
-			else if (this.numBuildings.Barracks < 1)
+			else if ( (this.numBuildings.Barracks + this.inProgress_Buildings.Barracks) < 1)
 			{
-				buildBuilding("barracksComputerObject");
+				buildBuilding("barracksComputerObject", this);
 			}
 			
 			if (this.numBuildings.Barracks >= 1)
@@ -161,13 +171,11 @@ game.AI_main = me.Entity.extend({
 				//console.log("Soldiers: " + this.numUnits.Soldier);
 				if(this.numUnits.Knight < 3)
 				{
-					//console.log("Training knight");
 					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "knightComputer");
 					this.inProgress_Units.Knight += 1;
 				}
 				else if(this.numUnits.Soldier < 3)
 				{
-					//console.log("Training soldier");
 					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "soldierComputer");
 					this.inProgress_Units.Soldier += 1;
 				}
@@ -178,8 +186,13 @@ game.AI_main = me.Entity.extend({
 				}
 			}
 			
+			
+			this.act = false;
 		}
-	
+		
+		
+		
+
 	}
 
 	
