@@ -41,10 +41,10 @@ game.PlayScreen = me.ScreenObject.extend({
 
             // reset the score - temp increase for testing
             game.data.score = 0;
-            game.data.foodCounter = 5000;
-            game.data.goldCounter = 10000;
-            game.data.foodCounter_comp = 5000;
-            game.data.goldCounter_comp = 10000;
+            game.data.foodCounter = PLAYER_START_FOOD;
+            game.data.goldCounter = PLAYER_START_GOLD;
+            game.data.foodCounter_comp = COMPUTER_START_FOOD;
+            game.data.goldCounter_comp = COMPUTER_START_GOLD;
 			
         }
 		

@@ -24,6 +24,8 @@ game.cBuilder = game.playerObject.extend({
             buildTime: 1
         }]);
 
+		this.player = me.game.world.getChildByName("cpu")[0];
+		
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
 
@@ -48,6 +50,7 @@ game.cBuilder = game.playerObject.extend({
 
         this.maxHP = BUILDER_HP;
         this.hp = BUILDER_HP;
+
 
         this.site = {};
 
@@ -121,7 +124,7 @@ game.cBuilder = game.playerObject.extend({
             me.game.world.addChild(this.site);
         }
 
-        if (this.buildTime >= 10) {
+        if (this.buildTime >= BUILDING_BUILD_TIME) {
             me.game.world.removeChild(this.site);
             me.game.world.addChild(me.pool.pull(this.buildType, this.buildx-50, this.buildy-50));
             this.buildTime = 0;
@@ -154,6 +157,7 @@ game.cBuilder = game.playerObject.extend({
     },
 
     buildSomething : function (x, y, string) {
+		console.log(this.player.numUnits.Builder);
         //check if something there first
 	    if (!(this.isSpaceOccupied(x,y))) {
 			if (string === "barracksComputerObject") {
@@ -164,7 +168,7 @@ game.cBuilder = game.playerObject.extend({
                     this.building = true;
                     this.buildTime = 0;
                     game.data.goldCounter_comp -= BARRACKS_COST_GOLD;
-                    //this.hud.remove();
+					
                 }
             }
             if (string === "farmComputerObject") {
@@ -187,7 +191,6 @@ game.cBuilder = game.playerObject.extend({
                     this.building = true;
                     this.buildTime = 0;
                     game.data.goldCounter_comp -= MINE_COST_GOLD;
-                    //this.hud.remove();
                 }
             }
         } 

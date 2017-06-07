@@ -7,7 +7,7 @@ game.AI_main = me.Entity.extend({
     init: function () {
 
         this._super(me.Entity, "init", [0, 0, {
-            name: "cpu_1",
+            name: "cpu",
             width: 0,
             height: 0
         }]);
@@ -17,15 +17,18 @@ game.AI_main = me.Entity.extend({
 		this.alwaysUpdate = true;
 		this.food = game.data.foodCounter_comp;
         this.gold = game.data.goldCounter_comp;
-		console.log(game.data.goldCounter_comp);
+		
 		this.act = false;
 		
 		
 		this.numTimes = 0;
 		
-		//Only has default numbers for unit/building counts, need to modify for loading files later on 
-		this.numUnits = {Builder: 0, Knight: 1, Catapult: 0};
+		this.numUnits = {Builder: 0, Knight: 1, Soldier: 0, Catapult: 0};
 		this.numBuildings = {Barracks: 0, City: 1, Farm: 0, Mine: 0};
+		
+		this.inProgress_Units = {Builder: 0, Knight: 0, Soldier: 0, Catapult: 0};
+		this.inProgress_Buildings = {Barracks: 0, City: 0, Farm: 0, Mine: 0};
+		
 		this.foodIncome = 0;
 		this.goldIncome = 0;							  
     },
@@ -40,7 +43,8 @@ game.AI_main = me.Entity.extend({
 
 		//Arbitrary limit on computer thinking speed to avoid bogging down the system
         this.counter += 1;
-        if (this.counter >= 100) {
+        if (this.counter >= AI_ACTION_INTERVAL) 
+		{
             this.act = true;
             this.counter = 0;
         }
@@ -55,41 +59,80 @@ game.AI_main = me.Entity.extend({
 			
 			//Enemy city position is used as a reference for all movement
 			//Assumption is that there is only 1 enemy city (by game design)
-			var enemyCity = me.game.world.getChildByName("City")[0];
+			var enemyCity = me.game.world.getChildByName("city")[0];
 
 			//Try just creating up to 3 builders (right now unit numbers list is not incremented, so always stays at 0)
 			if(this.numUnits.Builder < 3)
 			{
 				//Get the city and instruct it to build more builders
 
-				//console.log(city);
 				var spawnLocation_x = city.pos.x;
 				var spawnLocation_y = city.pos.y;
 				city.callTraining(spawnLocation_x, spawnLocation_y, "builderComputer", this);
 				
 			}
 			
+			/*
 			//Try moving a unit somewhere (starting knight)
-			var knight = me.game.world.getChildByName("cKnight");
+			var knightList = me.game.world.getChildByName("cKnight");
 			//console.log(knight);
-			if ( knight.length > 0 )
+			if ( knightList.length > 0 )
 			{
-				knight = knight[0];
-				if (!(knight.walk)) {
-                    //console.log(knight);
-                    var destinationX = 50;
-                    var destinationY = 50;
-                    knight.movePlayerTo(destinationX, destinationY);
-                }
+				for(x = 0; x < knightList.length; x++)
+				{
+					knight = knightList[x];
+					if (!(knight.walk)) {
+						//console.log(knight);
+						var destinationX = 50;
+						var destinationY = 50;
+						knight.movePlayerTo(destinationX, destinationY);
+					}
+				}
+			}
+			
+			var soldierList = me.game.world.getChildByName("cSoldier");
+			if ( soldierList.length > 0 )
+			{
+				for(x = 0; x < soldierList.length; x++)
+				{
+					soldier = soldierList[x];
+					if (!(soldier.walk)) {
+						var destinationX = 50;
+						var destinationY = 50;
+						soldier.movePlayerTo(destinationX, destinationY);
+					}
+				}
 			}
 
-			
-			var builder = me.game.world.getChildByName("cBuilder");
-			if (this.foodIncome < FOODPERTICK * 4 || this.goldIncome < GOLDPERTICK * 4)
+			var soldierList = me.game.world.getChildByName("cSoldier");
+			if ( soldierList.length > 0 )
 			{
+				for(x = 0; x < soldierList.length; x++)
+				{
+					soldier = soldierList[x];
+					if (!(soldier.walk)) {
+						var destinationX = 50;
+						var destinationY = 50;
+						soldier.movePlayerTo(destinationX, destinationY);
+					}
+				}
+			}
+			*/
+
+			var dest_x = enemyCity.pos.x;
+			var dest_y = enemyCity.pos.y;
+			//moveUnit("cKnight", 50, 50);
+			moveUnit("cKnight", dest_x, dest_y);
+			moveUnit("cSoldier", dest_x, dest_y);
+			moveUnit("cCatapult", dest_x, dest_y);
+			
+			//var builder = me.game.world.getChildByName("cBuilder");
+			//Build up economy first
+			if (this.foodIncome < FOODPERTICK * 1 || this.goldIncome < GOLDPERTICK * 1)
+			{
+
 				if (this.foodIncome < this.goldIncome)
 				{
-				
 					//console.log(this.foodIncome);
 					buildBuilding("farmComputerObject");
 				}
@@ -97,30 +140,42 @@ game.AI_main = me.Entity.extend({
 				{
 					buildBuilding("mineComputerObject");					
 				}
-				/*
-				if ( builder.length > 0 )
+
+			}
+
+			
+			
+			//Prioritize production structures next
+			else if (this.numBuildings.Barracks < 1)
+			{
+				buildBuilding("barracksComputerObject");
+			}
+			
+			if (this.numBuildings.Barracks >= 1)
+			{
+				var barracks = me.game.world.getChildByName("cBarracks")[0];
+				var bar_spawnLocation_x = barracks.pos.x;
+				var bar_spawnLocation_y = barracks.pos.y;
+				
+				//console.log("Knights: " + this.numUnits.Knight);
+				//console.log("Soldiers: " + this.numUnits.Soldier);
+				if(this.numUnits.Knight < 3)
 				{
-					builder = builder[builder.length - 1];
-					if(!builder.busy)
-					{
-							
-						//var buildLocation_x = Math.floor(Math.random() * (1400 - 100)) + 100;
-						//var buildLocation_y = Math.floor(Math.random() * (1400 - 100)) + 100;
-						var buildLocation_x = city.pos.x - Math.floor(Math.random() * (200)) - 50;
-						var buildLocation_y = city.pos.y - Math.floor(Math.random() * (200)) - 50;
-						
-						while ((builder.isSpaceOccupied(buildLocation_x, buildLocation_y)))
-						{
-							buildLocation_x = city.pos.x - Math.floor(Math.random() * (200)) - 50;
-							buildLocation_y = city.pos.y - Math.floor(Math.random() * (200)) - 50;							
-						}							
-						
-						builder.busy = true;
-						builder.movePlayerTo(buildLocation_x, buildLocation_y+25);
-						builder.buildSomething(buildLocation_x, buildLocation_y, "farmComputerObject");
-					}
+					//console.log("Training knight");
+					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "knightComputer");
+					this.inProgress_Units.Knight += 1;
 				}
-				*/
+				else if(this.numUnits.Soldier < 3)
+				{
+					//console.log("Training soldier");
+					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "soldierComputer");
+					this.inProgress_Units.Soldier += 1;
+				}
+				else if(this.numUnits.Catapult < 3)
+				{
+					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "catapultComputer");
+					this.inProgress_Units.Catapult += 1;
+				}
 			}
 			
 		}

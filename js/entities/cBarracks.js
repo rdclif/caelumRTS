@@ -20,6 +20,7 @@ game.cBarracks = game.playerObject.extend({
             trainTime: 0
         }]);
 
+		this.player = me.game.world.getChildByName("cpu")[0];
 
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
@@ -81,61 +82,57 @@ game.cBarracks = game.playerObject.extend({
     },
 
     callTraining : function (x,y,string) {
-		if (string === "soldierComputer") {
-            if (game.data.goldCounter >= SOLDIER_COST_GOLD && game.data.foodCounter >= SOLDIER_COST_FOOD) {
-                this.trainx = x;
-                this.trainy = y;
-                this.trainType = string;
-                this.training = true;
-                this.trainTime = 0;
-                game.data.goldCounter -= SOLDIER_COST_GOLD;
-                game.data.foodCounter -= SOLDIER_COST_FOOD;
-            } else {
-                if (game.data.goldCounter < SOLDIER_COST_GOLD) {
-                    menu.alert("You do not have enough gold.");
-                } else {
-                    menu.alert("You do not have enough food.");
-                }
-            }
-        }
-        if (string === "knightComputer") {
-            if (game.data.goldCounter >= KNIGHT_COST_GOLD && game.data.foodCounter >= KNIGHT_COST_FOOD) {
-                this.trainx = x;
-                this.trainy = y;
-                this.trainType = string;
-                this.training = true;
-                this.trainTime = 0;
-                game.data.goldCounter -= KNIGHT_COST_GOLD;
-                game.data.foodCounter -= KNIGHT_COST_FOOD;
-            } else {
-                if (game.data.goldCounter < KNIGHT_COST_GOLD) {
-                    menu.alert("You do not have enough gold.");
-                } else {
-                    menu.alert("You do not have enough food.");
-                }
-            }
-        }
-        if (string === "catapultComputer") {
-            if (game.data.goldCounter >= CATAPULT_COST_GOLD && game.data.foodCounter >= CATAPULT_COST_FOOD) {
-                this.trainx = x;
-                this.trainy = y;
-                this.trainType = string;
-                this.training = true;
-                this.trainTime = 0;
-                game.data.goldCounter -= CATAPULT_COST_GOLD;
-                game.data.foodCounter -= CATAPULT_COST_FOOD;
-            } else {
-                if (game.data.goldCounter < CATAPULT_COST_GOLD) {
-                    menu.alert("You do not have enough gold.");
-                } else {
-                    menu.alert("You do not have enough food.");
-                }
-            }
-        } 
+		console.log("Inside callTraining");
+		console.log("Gold: " + game.data.goldCounter_comp);
+		console.log("Food: " + game.data.foodCounter_comp);
+		if (!this.training)
+		{
+			if (string === "soldierComputer") {
+				if (game.data.goldCounter_comp >= SOLDIER_COST_GOLD && game.data.foodCounter_comp >= SOLDIER_COST_FOOD) {
+					this.trainx = x;
+					this.trainy = y;
+					this.trainType = string;
+					this.training = true;
+					this.trainTime = 0;
+					console.log("Building soldier");
+					game.data.goldCounter_comp -= SOLDIER_COST_GOLD;
+					game.data.foodCounter_comp -= SOLDIER_COST_FOOD;
+				}
+				
+				return;
+			}
+			if (string === "knightComputer") {
+				if (game.data.goldCounter_comp >= KNIGHT_COST_GOLD && game.data.foodCounter_comp >= KNIGHT_COST_FOOD) {
+					this.trainx = x;
+					this.trainy = y;
+					this.trainType = string;
+					this.training = true;
+					this.trainTime = 0;
+					console.log("Building knight");
+					game.data.goldCounter_comp -= KNIGHT_COST_GOLD;
+					game.data.foodCounter_comp -= KNIGHT_COST_FOOD;
+				}
+				
+				return;
+			}
+			if (string === "catapultComputer") {
+				if (game.data.goldCounter_comp >= CATAPULT_COST_GOLD && game.data.foodCounter_comp >= CATAPULT_COST_FOOD) {
+					this.trainx = x;
+					this.trainy = y;
+					this.trainType = string;
+					this.training = true;
+					this.trainTime = 0;
+					game.data.goldCounter_comp -= CATAPULT_COST_GOLD;
+					game.data.foodCounter_comp -= CATAPULT_COST_FOOD;
+				}
+				
+				return;
+			} 	
+		}
     },
 
     trainPlayer : function () {
-        var timeToTrain = 200;
+        var timeToTrain = 20;
         //var progress =  me.game.world.getChildByName("progressBar")[0];
         //if (progress) {
         //    progress.updateProgress(1, timeToTrain);
@@ -143,12 +140,12 @@ game.cBarracks = game.playerObject.extend({
         this.trainTime += 1;
         if (this.trainTime >= timeToTrain) {
             //move spawn loacation if space is occupied
-            var xLoc = this.trainx+60;
+            var xLoc = this.trainx-60;
             var yLoc = this.trainy+120;
 
             //move right if occupied
             while(this.isSpaceOccupied(xLoc, yLoc)) {
-                xLoc += 40;
+                xLoc -= 40;
             };
 
             me.game.world.addChild(me.pool.pull(this.trainType, xLoc, yLoc));

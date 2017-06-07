@@ -125,7 +125,7 @@ game.Builder = game.playerObject.extend({
             this.site = new game.buildingSite(this.buildx-50, this.buildy-50);
             me.game.world.addChild(this.site);
         }
-        if (this.buildTime >= 1000) {
+        if (this.buildTime >= BUILDING_BUILD_TIME) {
             me.game.world.removeChild(this.site);
             me.game.world.addChild(me.pool.pull(this.buildType, this.buildx-50, this.buildy-50));
             this.buildTime = 0;

@@ -75,6 +75,7 @@ game.cKnight = game.playerObject.extend({
                     this.renderable.setCurrentAnimation(this.direction);
                 }
             } else {
+
                 this.walk = false;
                 if (!this.renderable.isCurrentAnimation("stand")) {
                     this.renderable.setCurrentAnimation("stand");
@@ -135,7 +136,7 @@ game.cKnight = game.playerObject.extend({
     },
 
     movePlayerTo :function (x, y) {
-        this.newX = Math.round(x);
+		this.newX = Math.round(x);
         this.newY = Math.round(y);
         this.collision = false;
         this.walk = true;

@@ -62,7 +62,7 @@ game.UI.mineButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-        console.log(this.player);
+        //console.log(this.player);
         me.game.world.addChild(new game.buildMineIcon(100, 100));
         // don't propagate the event
         return false;

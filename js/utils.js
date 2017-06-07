@@ -100,7 +100,7 @@ function incrementComputerUnitList(player, nameStr)
 function checkComputerRoster(player)
 {
 	
-	unitName = ["Builder", "Knight", "Catapult"];
+	unitName = ["Builder", "Knight", "Soldier", "Catapult"];
 	
 	for (x = 0; x < unitName.length; x++)
 	{
@@ -162,12 +162,40 @@ function buildBuilding(buildingName)
 			buildLocation_y = city.pos.y - Math.floor(Math.random() * (700)) - 50;							
 		}							
 		
-		console.log("New Assignment");
-		console.log(game.data.goldCounter_comp);
+
 		builder.busy = true;
 		builder.movePlayerTo(buildLocation_x, buildLocation_y+25);
-		console.log("X: " + buildLocation_x + " Y: " + buildLocation_y);
+
 		builder.buildSomething(buildLocation_x, buildLocation_y, buildingName);
 		
+	}
+}
+
+
+function buildUnit(unitName)
+{
+	var barracks = me.game.world.getChildByName("cBarracks");
+}
+
+function moveUnit(unitName, destinationX, destinationY)
+{
+	var unitList = me.game.world.getChildByName(unitName);
+	if ( unitList.length > 0 )
+	{
+		for(x = 0; x < unitList.length; x++)
+		{
+			unit = unitList[x];
+			if (!(unit.walk)) 
+			{
+				//console.log("Old X: " + destinationX + " Old Y: " + destinationY);
+				while( unit.isSpaceOccupied(destinationX, destinationY) )
+				{
+					destinationX += 10;
+					destinationY += 10;
+				}
+				//console.log("New X: " + destinationX + " New Y: " + destinationY);
+				unit.movePlayerTo(destinationX, destinationY);
+			}
+		}
 	}
 }

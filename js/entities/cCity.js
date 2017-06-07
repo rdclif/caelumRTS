@@ -19,6 +19,8 @@ game.cCity = game.playerObject.extend({
             trainTime: 0
         }]);
 
+		this.player = me.game.world.getChildByName("cpu")[0];
+		
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
         this.trainTime = 0;
@@ -101,12 +103,12 @@ game.cCity = game.playerObject.extend({
         this.trainTime += 1;
         if (this.trainTime >= timeToTrain) {
             //move spawn loacation if space is occupied
-            var xLoc = this.trainx+60;
+            var xLoc = this.trainx-60;
             var yLoc = this.trainy+120;
 
             //move right if occupied
             while(this.isSpaceOccupied(xLoc, yLoc)) {
-                xLoc += 40;
+                xLoc -= 40;
             };
 
             me.game.world.addChild(me.pool.pull(this.trainType, xLoc, yLoc));
