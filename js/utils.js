@@ -12,6 +12,33 @@ function removeFromWorld( itemName )
 		
 }
 
+function setHardMode()
+{
+	if (game.data.hardMode)
+	{
+		//console.log("Hard Mode set");
+		AI_ACTION_INTERVAL	= HARD_ACTION_INTERVAL;
+		AI_TARGET_KNIGHT	= HARD_TARGET_KNIGHT;
+		AI_TARGET_SOLDIER	= HARD_TARGET_SOLDIER;
+		AI_TARGET_CATAPULT	= HARD_TARGET_CATAPULT;
+		AI_TARGET_BUILDER	= HARD_TARGET_BUILDER;
+		AI_TARGET_FARM		= HARD_TARGET_FARM;
+		AI_TARGET_MINE		= HARD_TARGET_MINE;
+	}
+	else
+	{
+		//console.log("Normal mode");
+		AI_ACTION_INTERVAL	= NORMAL_ACTION_INTERVAL;
+		AI_TARGET_KNIGHT	= NORMAL_TARGET_KNIGHT;
+		AI_TARGET_SOLDIER	= NORMAL_TARGET_SOLDIER;
+		AI_TARGET_CATAPULT	= NORMAL_TARGET_CATAPULT;
+		AI_TARGET_BUILDER	= NORMAL_TARGET_BUILDER;
+		AI_TARGET_FARM		= NORMAL_TARGET_FARM;
+		AI_TARGET_MINE		= NORMAL_TARGET_MINE;
+	}
+}
+
+
 function createSelectionBox( selectedObject )
 {
 	//8 Rectangles total
@@ -122,7 +149,7 @@ function checkComputerRoster(player)
 	player.goldIncome = player.numBuildings["Mine"] * GOLDPERTICK;
 }
 
-function buildBuilding(buildingName)
+function buildBuilding(buildingName, player)
 {
 	//City position is used as a reference for all other building placement
 	//Assumption is that there is only 1 city (by game design)
@@ -141,25 +168,30 @@ function buildBuilding(buildingName)
 				break;
 			}
 		}
-		//builder = builder[builder.length - 1];
-		//console.log(builder);
-		//if(!builder.busy)
-		//{
-		//console.log("IDLES: " + idleBuilder);
+
 		if(!idleBuilder)
 		{
 			return;
 		}
-							
-		//var buildLocation_x = Math.floor(Math.random() * (1400 - 100)) + 100;
-		//var buildLocation_y = Math.floor(Math.random() * (1400 - 100)) + 100;
-		var buildLocation_x = city.pos.x - Math.floor(Math.random() * (700)) - 50;
-		var buildLocation_y = city.pos.y - Math.floor(Math.random() * (700)) - 50;
-						
-		while ((builder.isSpaceOccupied(buildLocation_x, buildLocation_y)))
+		
+		var buildLocation_x = city.pos.x + 100; 
+		var buildLocation_y	= city.pos.y - 100;			
+		while ( 	(builder.isSpaceOccupied(buildLocation_x, buildLocation_y)) 
+				|| 	(checkInProgressSpaceOccupied(player.inProgress_Locations, buildLocation_x, buildLocation_y)) )
 		{
-			buildLocation_x = city.pos.x - Math.floor(Math.random() * (700)) - 50;
-			buildLocation_y = city.pos.y - Math.floor(Math.random() * (700)) - 50;							
+			//buildLocation_x = city.pos.x - Math.floor(Math.random() * (200)) - 50;
+			//buildLocation_y = city.pos.y - Math.floor(Math.random() * (200)) - 50;
+			
+			//Flip a coin, if 0, change the x location, if 1, change the y location
+			var coin = Math.floor(Math.random() * 2);
+			if( coin == 0)
+			{
+				buildLocation_x -= AI_BUILDING_SPACING;
+			}
+			else
+			{
+				buildLocation_y -= AI_BUILDING_SPACING;	
+			}				
 		}							
 		
 
@@ -167,11 +199,26 @@ function buildBuilding(buildingName)
 		builder.movePlayerTo(buildLocation_x, buildLocation_y+25);
 
 		builder.buildSomething(buildLocation_x, buildLocation_y, buildingName);
+		player.inProgress_Locations.push([buildLocation_x, buildLocation_y]);
 		
 	}
 }
 
+function checkInProgressSpaceOccupied(locations, x_pos, y_pos)
+{
+	//Locations is an array storing pairs of (x, y) values of building sites, so two buildings are not built on the same location
+	for(x = 0; x < locations.length; x++)
+	{
+		if(x_pos == locations[x][0] && y_pos == locations[x][1])
+		{
+			return true;
+		}
+	}
+	
+	return false;
+}
 
+//May or may not be necessary
 function buildUnit(unitName)
 {
 	var barracks = me.game.world.getChildByName("cBarracks");
@@ -196,6 +243,21 @@ function moveUnit(unitName, destinationX, destinationY)
 				//console.log("New X: " + destinationX + " New Y: " + destinationY);
 				unit.movePlayerTo(destinationX, destinationY);
 			}
+		}
+	}
+}
+
+function attackWithUnit(unitName, targetUnit)
+{
+	var unitList = me.game.world.getChildByName(unitName);
+	if ( unitList.length > 0 )
+	{
+		for(x = 0; x < unitList.length; x++)
+		{
+			unit = unitList[x];
+			//console.log(unit);
+			//console.log(targetUnit);
+			unit.movePlayerToAttack(targetUnit);
 		}
 	}
 }

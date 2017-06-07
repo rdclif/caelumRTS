@@ -130,6 +130,24 @@ game.cBuilder = game.playerObject.extend({
             this.buildTime = 0;
             this.building = false;
 			this.busy = false;
+			
+			switch (this.buildType)
+			{
+				case "barracksComputerObject":
+					this.player.inProgress_Buildings.Barracks -= 1;
+					break;
+				case "farmComputerObject":
+					this.player.inProgress_Buildings.Farm -= 1;
+					break;
+				case "mineComputerObject":
+					this.player.inProgress_Buildings.Mine -= 1;
+					break;
+				default:
+					break;
+			}
+			
+			
+			
             this.buildType = "";
         }
 
@@ -168,20 +186,21 @@ game.cBuilder = game.playerObject.extend({
                     this.building = true;
                     this.buildTime = 0;
                     game.data.goldCounter_comp -= BARRACKS_COST_GOLD;
-					
+					this.player.inProgress_Buildings.Barracks += 1;
                 }
             }
             if (string === "farmComputerObject") {
                 //console.log(game.data.goldCounter_comp);
-					//console.log(game.data.goldCounter_comp);
-					if (game.data.goldCounter_comp >= FARM_COST_GOLD) {
-						this.buildx = x;
-						this.buildy = y;
-						this.buildType = string;
-						this.building = true;
-						this.buildTime = 0;
-						game.data.goldCounter_comp -= FARM_COST_GOLD;
-					}
+				//console.log(game.data.goldCounter_comp);
+				if (game.data.goldCounter_comp >= FARM_COST_GOLD) {
+					this.buildx = x;
+					this.buildy = y;
+					this.buildType = string;
+					this.building = true;
+					this.buildTime = 0;
+					game.data.goldCounter_comp -= FARM_COST_GOLD;
+					this.player.inProgress_Buildings.Farm += 1;
+				}
             }
 			if (string === "mineComputerObject") {
                 if (game.data.goldCounter >= MINE_COST_GOLD) {
@@ -191,6 +210,7 @@ game.cBuilder = game.playerObject.extend({
                     this.building = true;
                     this.buildTime = 0;
                     game.data.goldCounter_comp -= MINE_COST_GOLD;
+					this.player.inProgress_Buildings.Mine += 1;
                 }
             }
         } 

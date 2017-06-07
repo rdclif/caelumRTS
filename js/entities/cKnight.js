@@ -75,7 +75,7 @@ game.cKnight = game.playerObject.extend({
                     this.renderable.setCurrentAnimation(this.direction);
                 }
             } else {
-
+				console.log("No more walking");
                 this.walk = false;
                 if (!this.renderable.isCurrentAnimation("stand")) {
                     this.renderable.setCurrentAnimation("stand");
@@ -140,6 +140,17 @@ game.cKnight = game.playerObject.extend({
         this.newY = Math.round(y);
         this.collision = false;
         this.walk = true;
+    },
+	
+	movePlayerToAttack :function (sprite) {
+        //console.log("attack called");
+        this.attackObject = sprite;
+        this.newX = Math.round(sprite.pos.x);
+        this.newY = Math.round(sprite.pos.y);
+        this.collision = false;
+        this.walk = true;
+		this.attack = true;
+		
     },
 
     moveObject : function(distx, disty){

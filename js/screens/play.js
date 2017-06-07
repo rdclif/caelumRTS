@@ -45,7 +45,7 @@ game.PlayScreen = me.ScreenObject.extend({
             game.data.goldCounter = PLAYER_START_GOLD;
             game.data.foodCounter_comp = COMPUTER_START_FOOD;
             game.data.goldCounter_comp = COMPUTER_START_GOLD;
-			
+			setHardMode();
         }
 		
 		//Load computer player logic
@@ -96,6 +96,7 @@ game.PlayScreen = me.ScreenObject.extend({
             added.loadHP(sprite.hp);
         }
         game.data.loadSave = 0;
+		setHardMode();
     },
 
     /**
