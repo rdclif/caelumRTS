@@ -42,7 +42,7 @@ game.HUD.Container = me.Container.extend({
 
             draw : function (renderer) {
                 var hud = "Food: " + game.data.foodCounter + "  Gold: " + game.data.goldCounter;
-                this.font.draw(renderer, hud, me.game.viewport.width-150, 8);
+                this.font.draw(renderer, hud, me.game.viewport.width-175, 8);
 
             },
 

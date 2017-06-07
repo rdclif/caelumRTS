@@ -71,6 +71,8 @@ game.UI.cancelButton = me.GUI_Object.extend({
 		//Function in utils.js
 		removeFromWorld("selectBox");
 
+		removeFromWorld("attackIcon");
+
 		if (this.player) {
 		    if (this.player.walk || this.player.attack) {
                 this.player.stopWalkOrFight();

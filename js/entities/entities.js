@@ -103,6 +103,7 @@ game.playerObject = me.Entity.extend({
         this.newY = this.pos.y;
         this.fightTurn = true;
 
+        console.log(sB);
         sB.attackObject = this;
         sB.walk = false;
         sB.fighting = true;
