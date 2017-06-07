@@ -101,7 +101,7 @@ game.Builder = game.playerObject.extend({
             this.renderable.setCurrentAnimation("stand");
         }
 
-        if (this.building && this.walk==false && this.collision ==false) {
+        if (this.building && this.walk===false && this.collision ===false) {
             this.buildBuilding();
             if (!this.renderable.isCurrentAnimation("build")) {
                 this.renderable.setCurrentAnimation("build");

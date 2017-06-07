@@ -44,6 +44,13 @@ game.cSoldier = game.playerObject.extend({
 
         this.maxHP = 100;
         this.hp = 100;
+        this.range = 20;
+        this.attack = false;
+        this.attackObject = {};
+        this.fighting = false;
+        this.fightDirection = "left";
+        this.fightTimer = 0;
+        this.fightTurn = false;
 
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
@@ -52,7 +59,7 @@ game.cSoldier = game.playerObject.extend({
     },
 
     update : function (dt) {
-        if (this.collision === true && this.walk === false) {
+        if (this.collision === true && this.walk === false && this.fighting === false) {
             this.newX = this.collisionX;
             this.newY = this.collisionY;
             this.collision = false;
@@ -61,24 +68,69 @@ game.cSoldier = game.playerObject.extend({
 
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
-
         if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
-            if (!(this.isSpaceOccupied(this.newX, this.newY))) {
+            if (this.attack){
+                this.moveObject(distx, disty);
+                if (!this.renderable.isCurrentAnimation(this.direction)) {
+                    this.renderable.setCurrentAnimation(this.direction);
+                }
+            } else if (!(this.isSpaceOccupied(this.newX, this.newY))) {
                 this.moveObject(distx, disty);
                 if (!this.renderable.isCurrentAnimation(this.direction)) {
                     this.renderable.setCurrentAnimation(this.direction);
                 }
             } else {
                 this.walk = false;
+                if (!this.renderable.isCurrentAnimation("stand")) {
+                    this.renderable.setCurrentAnimation("stand");
+                }
                 this.body.vel.x = 0;
                 this.body.vel.y = 0;
             }
         } else  {
             this.walk = false;
-            this.renderable.setCurrentAnimation( "stand" );
+            //this.renderable.setCurrentAnimation( "stand" );
             this.body.vel.x = 0;
             this.body.vel.y = 0;
         }
+
+        //--
+        if (!(this.walk) && !(this.attack)) {
+            this.renderable.flipX(false);
+            if (!this.renderable.isCurrentAnimation("stand")) {
+                this.renderable.setCurrentAnimation("stand");
+            }
+        }
+        //this is for fighting -- calls fight function in entities
+
+        if (this.attack && this.walk===false && this.fighting) {
+            if (this.fightTimer === 0) {
+                if (!this.renderable.isCurrentAnimation("stand")) {
+                    this.renderable.setCurrentAnimation("stand");
+                }
+            }
+            if (this.fightTurn) {
+                this.fightTimer += 1;
+                if (this.fightTimer % 50 === 0) {
+                    if (this.fightDirection === "right"){
+                        this.renderable.flipX(true);
+                    } else {
+                        this.renderable.flipX(false);
+                    }
+
+                    this.renderable.setCurrentAnimation("attack", "stand");
+                    this.fightHit(this.attackObject, SOLDIER_STRENGTH);
+                }
+            }
+        }
+
+        if (this.hp <= 0) {
+            this.stopWalkOrFight();
+            this.attackObject.stopWalkOrFight();
+            me.game.world.removeChild(this);
+        }
+
+        //--
 
         this.body.update(dt);
         // handle collisions against other shapes

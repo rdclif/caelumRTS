@@ -86,16 +86,82 @@ game.playerObject = me.Entity.extend({
     },
 
 
+    //set up fight stuff
+    attackCollision : function (sB) {
+        if ((sB.pos.x +(sB.width/2)) <= (this.pos.x +(this.width/2))) {
+            this.fightDirection = "left";
+            sB.fightDirection = "right";
+        } else {
+            this.fightDirection = "right";
+            sB.fightDirection = "left"
+        }
+
+        this.walk = false;
+        this.fighting = true;
+        this.fightTimer = 0;
+        this.newX = this.pos.x;
+        this.newY = this.pos.y;
+        this.fightTurn = true;
+
+        sB.attackObject = this;
+        sB.walk = false;
+        sB.fighting = true;
+        sB.attack = true;
+        sB.newX = this.pos.x;
+        sB.newY = this.pos.y;
+        sB.fightTimer = 0;
+        sB.fightTurn = false;
+    },
+
+    //only call on movable objects - called from cancel button
+    stopWalkOrFight :function () {
+        if (this.name === "Builder") {
+            if (this.walk) {
+                this.walk = false;
+                this.building = false;
+                this.newX = this.pos.x;
+                this.newY = this.pos.y;
+            }
+        } else {
+            if (this.attack) {
+                this.walk = false;
+                this.attack = false;
+                this.fighting = false;
+            } else if (this.walk) {
+                this.walk = false;
+                this.attack = false;
+                this.fighting = false;
+                this.newX = this.pos.x;
+                this.newY = this.pos.y;
+            }
+        }
+    },
+
+    //
+    fightHit : function (sprite, mult) {
+        var hit = Math.round((Math.random() * 6) +1);
+        hit = hit * mult;
+        sprite.hp -= hit;
+        this.fightTurn = false;
+        sprite.fightTurn = true;
+    },
+
+
     //scan world objects for conflict
     //works from input x & y
-    isSpaceOccupied : function (x,y) {
+    //if z = true returns the object clicked on or false
+    isSpaceOccupied : function (x,y,z) {
         //var coord = me.game.viewport.localToWorld(x, y);
 
                 for (var i in me.game.world.children) {
                     if (me.game.world.children[i].sId || me.game.world.children[i].id) {
                         if (me.game.world.children[i].containsPoint(x, y)) {
                             //console.log(me.game.world.children[i]);
-                            return true;
+                            if (z) {
+                                return me.game.world.children[i];
+                            } else {
+                                return true;
+                            }
                         }
 
                     }

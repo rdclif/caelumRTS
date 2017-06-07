@@ -7,7 +7,7 @@ game.UI.cancelButton = me.GUI_Object.extend({
     /**
      * constructor
      */
-    init: function(x, y) {
+    init: function(x, y, player) {
         this._super(me.GUI_Object, "init", [ x, y, {
             image: game.texture,
             region : "buttonSquare_blue"
@@ -28,6 +28,8 @@ game.UI.cancelButton = me.GUI_Object.extend({
         this.font.textBaseline = "middle";
 
         this.label = "Cancel";
+
+        this.player = player;
 
         // only the parent container is a floating object
         this.floating = false;
@@ -68,6 +70,12 @@ game.UI.cancelButton = me.GUI_Object.extend({
 
 		//Function in utils.js
 		removeFromWorld("selectBox");
+
+		if (this.player) {
+		    if (this.player.walk || this.player.attack) {
+                this.player.stopWalkOrFight();
+            }
+        }
 
         me.game.repaint();
         return false;

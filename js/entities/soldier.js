@@ -38,7 +38,12 @@ game.Soldier = game.playerObject.extend({
         this.maxHP = 100;
         this.hp = 100;
 		this.range = 20;
-		this.attack = false;
+        this.attack = false;
+        this.attackObject = {};
+        this.fighting = false;
+        this.fightDirection = "left";
+        this.fightTimer = 0;
+        this.fightTurn = false;
 		
 		this.pool = "soldierPlayer";
 		
@@ -59,7 +64,7 @@ game.Soldier = game.playerObject.extend({
 
     update : function (dt) {
 
-        if (this.collision === true && this.walk === false) {
+        if (this.collision === true && this.walk === false && this.fighting === false) {
             this.newX = this.collisionX;
             this.newY = this.collisionY;
             this.collision = false;
@@ -68,52 +73,69 @@ game.Soldier = game.playerObject.extend({
 
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
-		if (this.attack == true ){
-            if ((Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4)){
-				if (!(this.isSpaceOccupied(this.newX, this.newY))) {
-					this.moveObject(distx, disty);
-					if (!this.renderable.isCurrentAnimation(this.direction)) {
-						this.renderable.setCurrentAnimation(this.direction);
-					}	
-				}					
-			}
-			else {
-				this.walk = false;
-				this.body.vel.x = 0;
-				this.body.vel.y = 0;
-			}
-			
-			if ((this.body.vel.x == 0)&&(this.body.vel.y==0))
-			{		
-				if (!this.renderable.isCurrentAnimation("attack")) {
-                    this.renderable.setCurrentAnimation("attack");
-			
+        if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
+            if (this.attack){
+                this.moveObject(distx, disty);
+                if (!this.renderable.isCurrentAnimation(this.direction)) {
+                    this.renderable.setCurrentAnimation(this.direction);
                 }
-			
-			}
-		}		
-		
-        else if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
-            if (!(this.isSpaceOccupied(this.newX, this.newY))) {
+            } else if (!(this.isSpaceOccupied(this.newX, this.newY))) {
                 this.moveObject(distx, disty);
                 if (!this.renderable.isCurrentAnimation(this.direction)) {
                     this.renderable.setCurrentAnimation(this.direction);
                 }
             } else {
                 this.walk = false;
-                this.renderable.setCurrentAnimation( "stand" );
+                if (!this.renderable.isCurrentAnimation("stand")) {
+                    this.renderable.setCurrentAnimation("stand");
+                }
                 this.body.vel.x = 0;
                 this.body.vel.y = 0;
             }
         } else  {
             this.walk = false;
-            this.renderable.setCurrentAnimation( "stand" );
+            //this.renderable.setCurrentAnimation( "stand" );
             this.body.vel.x = 0;
             this.body.vel.y = 0;
         }
 
+        //--
+        if (!(this.walk) && !(this.attack)) {
+            this.renderable.flipX(false);
+            if (!this.renderable.isCurrentAnimation("stand")) {
+                this.renderable.setCurrentAnimation("stand");
+            }
+        }
+        //this is for fighting -- calls fight function in entities
 
+        if (this.attack && this.walk===false && this.fighting) {
+            if (this.fightTimer === 0) {
+                if (!this.renderable.isCurrentAnimation("stand")) {
+                    this.renderable.setCurrentAnimation("stand");
+                }
+            }
+            if (this.fightTurn) {
+                this.fightTimer += 1;
+                if (this.fightTimer % 50 === 0) {
+                    if (this.fightDirection === "right"){
+                        this.renderable.flipX(true);
+                    } else {
+                        this.renderable.flipX(false);
+                    }
 
+                    this.renderable.setCurrentAnimation("attack", "stand");
+                    this.fightHit(this.attackObject, SOLDIER_STRENGTH);
+                }
+            }
+        }
+
+        if (this.hp <= 0) {
+            this.stopWalkOrFight();
+            this.attackObject.stopWalkOrFight();
+            me.game.world.removeChild(this);
+        }
+
+        //--
 
         this.body.update(dt);
         // handle collisions against other shapes
@@ -128,32 +150,28 @@ game.Soldier = game.playerObject.extend({
         this.newY = Math.round(y);
         this.collision = false;
         this.walk = true;
-        this.walk = true;
-		this.attack = false;
+        this.attack = false;
 
 
     },
-	
-    movePlayerToAttack :function (x, y) {
-        this.newX = Math.round(x);
-        this.newY = Math.round(y);
+
+    movePlayerToAttack :function (sprite) {
+        console.log("attack called");
+        this.attackObject = sprite;
+        this.newX = Math.round(sprite.pos.x);
+        this.newY = Math.round(sprite.pos.y);
         this.collision = false;
         this.walk = true;
-		this.walk = true;
-		this.attack = true;
+        this.attack = true;
 
-
-
-
-		
     },
-	
+
 
     moveObject : function(distx, disty){
-        if (this.walk && this.attack){
+        if (this.walk) {
             var angle = Math.atan2(disty, distx);
-			console.log(8);
-            this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
+
+            //this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
             this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
             this.body.vel.y = Math.sin(angle) * this.body.accel.y * me.timer.tick;
 
@@ -161,30 +179,9 @@ game.Soldier = game.playerObject.extend({
                 this.direction = ( distx > 0) ? "right" : "left";
 
             } else {
-                this.direction = ( disty > 0) ? "up" : "down";
+                this.direction = ( disty > 0) ? "down" : "up";
             }
-		
-			
-			
         }
-		else if (this.walk){
-            var angle = Math.atan2(disty, distx);
-			console.log(7);
-
-            this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
-            this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
-            this.body.vel.y = Math.sin(angle) * this.body.accel.y * me.timer.tick;
-
-            if (Math.abs(distx) > Math.abs(disty)) {
-                this.direction = ( distx > 0) ? "right" : "left";
-
-            } else {
-                this.direction = ( disty > 0) ? "up" : "down";
-            }
-        }	
-		
-
-		
 
     },
 
@@ -224,15 +221,19 @@ game.Soldier = game.playerObject.extend({
             switch (response.b.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (this.walk) {
-                        console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
                     }
                 case me.collision.types.ENEMY_OBJECT:
                     if (this.walk) {
-                        console.log(this.sId);
-                        return this.collisionEvent(response.b);
+                        //console.log(this.sId);
+                        if (this.attack && (this.attackObject === response.b)) {
+                            //console.log("I should attack this");
+                            this.attackCollision(response.b);
+                        } else {
+                            return this.collisionEvent(response.b);
+                        }
                     } else {
                         return true;
                     }

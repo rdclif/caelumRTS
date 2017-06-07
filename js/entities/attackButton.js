@@ -62,11 +62,13 @@ game.UI.attackButton = me.GUI_Object.extend({
     },
 	
 	    //movePointer calls this function - passes mouse x y back so this can call player movePlayerTo function
-    movePlayerAttack : function (x, y) {
-        //melon likes it better when I create new vars to pass
-        var newx = x;
-        var newy = y;
-        this.player.movePlayerToAttack(newx,newy);
+    movePlayerAttack : function (sprite) {
+        if (sprite.body.collisionType === me.collision.types.ENEMY_OBJECT || sprite.body.collisionType === me.collision.types.PLAYER_OBJECT) {
+            this.player.movePlayerToAttack(sprite);
+            me.game.world.getChildByName("UIPanel")[0].remove();
+        } else {
+            console.log("can't attack this!");
+        }
     },
 
     draw: function(renderer) {

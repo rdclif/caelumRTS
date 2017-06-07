@@ -102,9 +102,13 @@ game.HUD.UIPanel = me.Container.extend({
 
     builderPanel : function (builder) {
         this.remove();
-        this.addChild(new game.UI.cancelButton(12,80));
-        this.addChild(new game.UI.moveButton(12, 15, builder));
-        this.addChild(new game.UI.buildButton(70, 15, builder));
+        if (builder.walk) {
+            this.addChild(new game.UI.cancelButton(12,80, builder));
+        }else {
+            this.addChild(new game.UI.cancelButton(12, 80));
+            this.addChild(new game.UI.moveButton(12, 15, builder));
+            this.addChild(new game.UI.buildButton(70, 15, builder));
+        }
     },
 
     buildPanel : function (builder) {
@@ -117,9 +121,13 @@ game.HUD.UIPanel = me.Container.extend({
 
     catapultPanel : function (catapult) {
         this.remove();
-        this.addChild(new game.UI.cancelButton(12,80));
-        this.addChild(new game.UI.moveButton(12, 15, catapult));
-        this.addChild(new game.UI.attackButton(70, 15, catapult));
+        if (catapult.attack || catapult.walk) {
+            this.addChild(new game.UI.cancelButton(12,80, catapult));
+        }else {
+            this.addChild(new game.UI.cancelButton(12, 80));
+            this.addChild(new game.UI.moveButton(12, 15, catapult));
+            this.addChild(new game.UI.attackButton(70, 15, catapult));
+        }
     },
 
     cityPanel : function (city) {
@@ -139,9 +147,13 @@ game.HUD.UIPanel = me.Container.extend({
 
     knightPanel : function (knight) {
         this.remove();
-        this.addChild(new game.UI.cancelButton(12,80));
-        this.addChild(new game.UI.moveButton(12, 15, knight));
-        this.addChild(new game.UI.attackButton(70, 15, knight));
+        if (knight.attack || knight.walk) {
+            this.addChild(new game.UI.cancelButton(12,80, knight));
+        }else {
+            this.addChild(new game.UI.cancelButton(12,80));
+            this.addChild(new game.UI.moveButton(12, 15, knight));
+            this.addChild(new game.UI.attackButton(70, 15, knight));
+        }
     },
 
     minePanel : function () {
@@ -151,9 +163,13 @@ game.HUD.UIPanel = me.Container.extend({
 
     soldierPanel : function (soldier) {
         this.remove();
-        this.addChild(new game.UI.cancelButton(12,80));
-        this.addChild(new game.UI.moveButton(12, 15, soldier));
-        this.addChild(new game.UI.attackButton(70, 15, soldier));
+        if (soldier.attack || soldier.walk){
+            this.addChild(new game.UI.cancelButton(12, 80, soldier));
+        }else {
+            this.addChild(new game.UI.cancelButton(12, 80));
+            this.addChild(new game.UI.moveButton(12, 15, soldier));
+            this.addChild(new game.UI.attackButton(70, 15, soldier));
+        }
     },
 
 

@@ -158,7 +158,7 @@ game.Catapult = game.playerObject.extend({
         if (this.walk && this.attack){
             var angle = Math.atan2(disty, distx);
 			console.log(8);
-            this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
+            //this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
             this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
             this.body.vel.y = Math.sin(angle) * this.body.accel.y * me.timer.tick;
 
@@ -176,7 +176,7 @@ game.Catapult = game.playerObject.extend({
             var angle = Math.atan2(disty, distx);
 			console.log(7);
 
-            this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
+            ///this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
             this.body.vel.x = Math.cos(angle) * this.body.accel.x * me.timer.tick;
             this.body.vel.y = Math.sin(angle) * this.body.accel.y * me.timer.tick;
 

@@ -43,6 +43,13 @@ game.cKnight = game.playerObject.extend({
 
         this.maxHP = KNIGHT_HP;
         this.hp = KNIGHT_HP;
+        this.range = 20;
+        this.attack = false;
+        this.attackObject = {};
+        this.fighting = false;
+        this.fightDirection = "left";
+        this.fightTimer = 0;
+        this.fightTurn = false;
 
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
@@ -51,7 +58,7 @@ game.cKnight = game.playerObject.extend({
     },
 
     update : function (dt) {
-        if (this.collision === true && this.walk === false) {
+        if (this.collision === true && this.walk === false && this.fighting === false) {
             this.newX = this.collisionX;
             this.newY = this.collisionY;
             this.collision = false;
@@ -69,15 +76,55 @@ game.cKnight = game.playerObject.extend({
                 }
             } else {
                 this.walk = false;
+                if (!this.renderable.isCurrentAnimation("stand")) {
+                    this.renderable.setCurrentAnimation("stand");
+                }
                 this.body.vel.x = 0;
                 this.body.vel.y = 0;
             }
         } else  {
             this.walk = false;
-            this.renderable.setCurrentAnimation( "stand" );
+            //this.renderable.setCurrentAnimation( "stand" );
             this.body.vel.x = 0;
             this.body.vel.y = 0;
         }
+
+        //--
+        if (!(this.walk) && !(this.attack)) {
+            this.renderable.flipX(false);
+            if (!this.renderable.isCurrentAnimation("stand")) {
+                this.renderable.setCurrentAnimation("stand");
+            }
+        }
+
+        //this is for fighting -- calls fight function in entities
+        if (this.attack && this.walk===false && this.fighting) {
+            if (this.fightTimer === 0) {
+                if (!this.renderable.isCurrentAnimation("stand")) {
+                    this.renderable.setCurrentAnimation("stand");
+                }
+            }
+            if (this.fightTurn) {
+                this.fightTimer += 1;
+                if (this.fightTimer % 50 === 0) {
+                    if (this.fightDirection === "right"){
+                        this.renderable.flipX(true);
+                    } else {
+                        this.renderable.flipX(false);
+                    }
+                    this.renderable.setCurrentAnimation("attack", "stand");
+                    this.fightHit(this.attackObject, KNIGHT_STRENGTH);
+                }
+            }
+        }
+
+        if (this.hp <= 0) {
+            this.stopWalkOrFight();
+            this.attackObject.stopWalkOrFight();
+            me.game.world.removeChild(this);
+        }
+
+        //--
 
         this.body.update(dt);
         // handle collisions against other shapes
