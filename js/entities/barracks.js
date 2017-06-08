@@ -39,9 +39,15 @@ game.Barracks = game.playerObject.extend({
 
         this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 
-
-
         this.pool = "barracksObject";
+
+        this.type = "structure";
+        this.attack = false;
+        this.attackObject = {};
+        this.fighting = false;
+        this.fightDirection = "left";
+        this.fightTimer = 0;
+        this.fightTurn = false;
 
     },
 
@@ -54,6 +60,9 @@ game.Barracks = game.playerObject.extend({
             this.trainPlayer()
         }
 
+        if (this.hp <= 0) {
+            me.game.world.removeChild(this);
+        }
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 

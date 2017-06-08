@@ -2,11 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7821a996-d1bc-4730-8af4-f1b6f7a59dfc" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/entities/projectile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/AI_main.js" afterPath="$PROJECT_DIR$/js/AI_main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/constants.js" afterPath="$PROJECT_DIR$/js/constants.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/attackButton.js" afterPath="$PROJECT_DIR$/js/entities/attackButton.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/barracks.js" afterPath="$PROJECT_DIR$/js/entities/barracks.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cBarracks.js" afterPath="$PROJECT_DIR$/js/entities/cBarracks.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cBuilder.js" afterPath="$PROJECT_DIR$/js/entities/cBuilder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cCatapult.js" afterPath="$PROJECT_DIR$/js/entities/cCatapult.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cCity.js" afterPath="$PROJECT_DIR$/js/entities/cCity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cFarm.js" afterPath="$PROJECT_DIR$/js/entities/cFarm.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cKnight.js" afterPath="$PROJECT_DIR$/js/entities/cKnight.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cMine.js" afterPath="$PROJECT_DIR$/js/entities/cMine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cSoldier.js" afterPath="$PROJECT_DIR$/js/entities/cSoldier.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/catapult.js" afterPath="$PROJECT_DIR$/js/entities/catapult.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/city.js" afterPath="$PROJECT_DIR$/js/entities/city.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/entities.js" afterPath="$PROJECT_DIR$/js/entities/entities.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/farm.js" afterPath="$PROJECT_DIR$/js/entities/farm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/knight.js" afterPath="$PROJECT_DIR$/js/entities/knight.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/mine.js" afterPath="$PROJECT_DIR$/js/entities/mine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/moveButton.js" afterPath="$PROJECT_DIR$/js/entities/moveButton.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/soldier.js" afterPath="$PROJECT_DIR$/js/entities/soldier.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/screens/play.js" afterPath="$PROJECT_DIR$/js/screens/play.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/utils.js" afterPath="$PROJECT_DIR$/js/utils.js" />
     </list>
@@ -23,27 +40,22 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="entities.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="entities.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="108" column="27" lean-forward="false" selection-start-line="108" selection-start-column="27" selection-end-line="108" selection-end-column="27" />
+            <state relative-caret-position="-1180">
+              <caret line="117" column="36" lean-forward="false" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="play.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/screens/play.js">
+      <file leaf-file-name="knight.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/knight.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="85" column="29" lean-forward="false" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
-              <folding>
-                <marker date="1496855059000" expanded="true" signature="130:1842" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="1043:1842" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="3522:3529" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="3536:3613" ph="/** action to perform when leaving this screen (state change) ...*/" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="129" column="8" lean-forward="true" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -51,8 +63,8 @@
       <file leaf-file-name="soldier.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/entities/soldier.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-192">
-              <caret line="95" column="30" lean-forward="true" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="30" />
+            <state relative-caret-position="283">
+              <caret line="128" column="22" lean-forward="false" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -61,28 +73,8 @@
       <file leaf-file-name="cSoldier.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/entities/cSoldier.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="catapult.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/entities/catapult.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1314">
-              <caret line="191" column="9" lean-forward="false" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="knight.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/entities/knight.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="167" column="0" lean-forward="false" selection-start-line="167" selection-start-column="0" selection-end-line="180" selection-end-column="13" />
+            <state relative-caret-position="417">
+              <caret line="121" column="22" lean-forward="false" selection-start-line="121" selection-start-column="22" selection-end-line="121" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -91,38 +83,39 @@
       <file leaf-file-name="cKnight.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/entities/cKnight.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="116" column="68" lean-forward="false" selection-start-line="116" selection-start-column="68" selection-end-line="116" selection-end-column="68" />
-              <folding>
-                <marker date="1496855059000" expanded="true" signature="1781:2499" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="2198:2499" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="2497:2499" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="5064:5070" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="5112:5589" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="5137:5583" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="5407:5489" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="5495:5573" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="5623:6104" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="5831:5885" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="6139:6367" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="6374:6459" ph="/** colision handler ...*/" />
-                <marker date="1496855059000" expanded="true" signature="6539:7679" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="6592:7669" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="6648:6884" ph="..." />
-                <marker date="1496855059000" expanded="true" signature="6684:6818" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="6824:6884" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="6938:7174" ph="..." />
-                <marker date="1496855059000" expanded="true" signature="6974:7108" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="7114:7174" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="7227:7463" ph="..." />
-                <marker date="1496855059000" expanded="true" signature="7263:7397" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="7403:7463" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="7518:7552" ph="..." />
-                <marker date="1496855059000" expanded="true" signature="7577:7655" ph="..." />
-                <marker date="1496855059000" expanded="true" signature="7794:7976" ph="..." />
-                <marker date="1496855059000" expanded="true" signature="7835:7943" ph="{...}" />
-                <marker date="1496855059000" expanded="true" signature="8071:8179" ph="{...}" />
-              </folding>
+            <state relative-caret-position="286">
+              <caret line="123" column="22" lean-forward="false" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="catapult.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/catapult.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="147" column="22" lean-forward="false" selection-start-line="147" selection-start-column="22" selection-end-line="147" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cCatapult.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/cCatapult.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1334">
+              <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="attackButton.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/attackButton.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-279">
+              <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,13 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gui_o</find>
-      <find>me.state.ch</find>
-      <find>asar</find>
-      <find>elec</find>
-      <find>serve</find>
-      <find>sprite</find>
-      <find>var sprite</find>
       <find>progress</find>
       <find>id</find>
       <find>api.response</find>
@@ -163,11 +149,18 @@
       <find>flip</find>
       <find>math.ran</find>
       <find>flipx</find>
-      <find>pause</find>
       <find>setCurrentANimation</find>
       <find>console.</find>
       <find>move</find>
       <find>moveU</find>
+      <find>math.random</find>
+      <find>flash</find>
+      <find>flicker</find>
+      <find>pause</find>
+      <find>animationP</find>
+      <find>stand</find>
+      <find>fighting</find>
+      <find>distance</find>
     </findStrings>
     <replaceStrings>
       <replace>mine</replace>
@@ -179,9 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/entities/loadButtonTitle.js" />
-        <option value="$PROJECT_DIR$/foreverStart" />
-        <option value="$PROJECT_DIR$/foreverStop" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/js/entities/soundVolumeUpButton.js" />
         <option value="$PROJECT_DIR$/js/entities/soundVolumeDownButton.js" />
@@ -191,45 +181,48 @@
         <option value="$PROJECT_DIR$/js/entities/menuQuitButton.js" />
         <option value="$PROJECT_DIR$/js/entities/menuSoundButton.js" />
         <option value="$PROJECT_DIR$/js/entities/menuSaveButton.js" />
-        <option value="$PROJECT_DIR$/js/entities/cFarm.js" />
-        <option value="$PROJECT_DIR$/js/entities/cMine.js" />
-        <option value="$PROJECT_DIR$/js/entities/farm.js" />
-        <option value="$PROJECT_DIR$/js/entities/mine.js" />
         <option value="$PROJECT_DIR$/js/entities/buildingSite.js" />
         <option value="$PROJECT_DIR$/js/entities/hpBar.js" />
         <option value="$PROJECT_DIR$/js/entities/movePointer.js" />
         <option value="$PROJECT_DIR$/js/entities/minePointer.js" />
         <option value="$PROJECT_DIR$/js/entities/farmPointer.js" />
         <option value="$PROJECT_DIR$/js/entities/barracksPointer.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/screens/title.js" />
         <option value="$PROJECT_DIR$/js/game.js" />
         <option value="$PROJECT_DIR$/js/entities/startButtonHardTitle.js" />
         <option value="$PROJECT_DIR$/js/entities/startButtonTitle.js" />
         <option value="$PROJECT_DIR$/js/entities/save.js" />
-        <option value="$PROJECT_DIR$/js/entities/city.js" />
-        <option value="$PROJECT_DIR$/js/entities/barracks.js" />
-        <option value="$PROJECT_DIR$/js/screens/play.js" />
         <option value="$PROJECT_DIR$/js/entities/menuButton.js" />
-        <option value="$PROJECT_DIR$/js/AI_main.js" />
-        <option value="$PROJECT_DIR$/js/entities/cCity.js" />
-        <option value="$PROJECT_DIR$/js/entities/cBarracks.js" />
-        <option value="$PROJECT_DIR$/js/entities/cBuilder.js" />
-        <option value="$PROJECT_DIR$/js/entities/cCatapult.js" />
         <option value="$PROJECT_DIR$/js/entities/builder.js" />
         <option value="$PROJECT_DIR$/js/entities/attackPointer.js" />
         <option value="$PROJECT_DIR$/js/constants.js" />
-        <option value="$PROJECT_DIR$/js/entities/attackButton.js" />
-        <option value="$PROJECT_DIR$/js/entities/cKnight.js" />
         <option value="$PROJECT_DIR$/lib/melonJS.js" />
         <option value="$PROJECT_DIR$/js/entities/selectionBox.js" />
-        <option value="$PROJECT_DIR$/js/entities/knight.js" />
-        <option value="$PROJECT_DIR$/js/entities/cSoldier.js" />
-        <option value="$PROJECT_DIR$/js/entities/soldier.js" />
         <option value="$PROJECT_DIR$/js/entities/HUD.js" />
         <option value="$PROJECT_DIR$/js/entities/cancelButton.js" />
+        <option value="$PROJECT_DIR$/js/screens/play.js" />
+        <option value="$PROJECT_DIR$/js/entities/cBuilder.js" />
+        <option value="$PROJECT_DIR$/js/utils.js" />
+        <option value="$PROJECT_DIR$/js/AI_main.js" />
+        <option value="$PROJECT_DIR$/js/entities/cBarracks.js" />
+        <option value="$PROJECT_DIR$/js/entities/cFarm.js" />
+        <option value="$PROJECT_DIR$/js/entities/cMine.js" />
+        <option value="$PROJECT_DIR$/js/entities/mine.js" />
+        <option value="$PROJECT_DIR$/js/entities/farm.js" />
+        <option value="$PROJECT_DIR$/js/entities/barracks.js" />
+        <option value="$PROJECT_DIR$/js/entities/city.js" />
+        <option value="$PROJECT_DIR$/js/entities/cCity.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/entities/projectile.js" />
+        <option value="$PROJECT_DIR$/js/entities/moveButton.js" />
+        <option value="$PROJECT_DIR$/js/entities/attackButton.js" />
         <option value="$PROJECT_DIR$/js/entities/entities.js" />
+        <option value="$PROJECT_DIR$/js/entities/knight.js" />
+        <option value="$PROJECT_DIR$/js/entities/soldier.js" />
+        <option value="$PROJECT_DIR$/js/entities/cSoldier.js" />
+        <option value="$PROJECT_DIR$/js/entities/cKnight.js" />
         <option value="$PROJECT_DIR$/js/entities/catapult.js" />
+        <option value="$PROJECT_DIR$/js/entities/cCatapult.js" />
       </list>
     </option>
   </component>
@@ -298,8 +291,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="82" />
-    <option name="y" value="73" />
+    <option name="x" value="68" />
+    <option name="y" value="59" />
     <option name="width" value="1532" />
     <option name="height" value="812" />
   </component>
@@ -318,8 +311,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -580,55 +573,37 @@
       <workItem from="1496509829352" duration="2079000" />
       <workItem from="1496596862403" duration="851000" />
       <workItem from="1496770836979" duration="22042000" />
-      <workItem from="1496852751492" duration="2429000" />
+      <workItem from="1496852751492" duration="22147000" />
+      <workItem from="1496942798375" duration="15800000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="311048000" />
+    <option name="totallyTimeSpent" value="346566000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="82" y="73" width="1532" height="812" extended-state="1" />
+    <frame x="68" y="59" width="1532" height="812" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23163468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14861111" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24884182" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1842576" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1842576" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19141324" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1842576" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2538071" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24945612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -641,7 +616,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/entities/city.js</url>
-          <line>124</line>
+          <line>132</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -650,13 +625,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/entities/menuDebugButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/menuSoundButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -675,27 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cFarm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cMine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-96">
-          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/mine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -755,13 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="45" column="72" lean-forward="true" selection-start-line="45" selection-start-column="72" selection-end-line="45" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -804,60 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cBarracks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="721">
-          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cCity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="111" column="77" lean-forward="true" selection-start-line="102" selection-start-column="12" selection-end-line="111" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/barracks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="86" column="64" lean-forward="false" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/city.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="110" column="43" lean-forward="false" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
-          <folding>
-            <marker date="1496596551000" expanded="true" signature="111:1087" ph="{...}" />
-            <marker date="1496596551000" expanded="true" signature="3223:3289" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cCatapult.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="202" column="5" lean-forward="false" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/farm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="7" lean-forward="true" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/moveButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-185">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/movePointer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -866,17 +752,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cBuilder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2373">
-          <caret line="259" column="16" lean-forward="true" selection-start-line="259" selection-start-column="16" selection-end-line="259" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/catapultButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -884,6 +764,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -891,22 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1182">
           <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/melonJS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="10415" column="11" lean-forward="true" selection-start-line="10415" selection-start-column="11" selection-end-line="10415" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/attackButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="67" column="64" lean-forward="false" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
           <folding />
         </state>
       </provider>
@@ -949,30 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="803">
-          <caret line="193" column="39" lean-forward="true" selection-start-line="193" selection-start-column="39" selection-end-line="193" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/AI_main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="124" column="20" lean-forward="false" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="108" column="27" lean-forward="false" selection-start-line="108" selection-start-column="27" selection-end-line="108" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/HUD.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
@@ -983,82 +824,195 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/screens/play.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" column="29" lean-forward="false" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
-          <folding>
-            <marker date="1496855059000" expanded="true" signature="130:1842" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="1043:1842" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="3522:3529" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="3536:3613" ph="/** action to perform when leaving this screen (state change) ...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cKnight.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="116" column="68" lean-forward="false" selection-start-line="116" selection-start-column="68" selection-end-line="116" selection-end-column="68" />
-          <folding>
-            <marker date="1496855059000" expanded="true" signature="1781:2499" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="2198:2499" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="2497:2499" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="5064:5070" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="5112:5589" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="5137:5583" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="5407:5489" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="5495:5573" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="5623:6104" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="5831:5885" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="6139:6367" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="6374:6459" ph="/** colision handler ...*/" />
-            <marker date="1496855059000" expanded="true" signature="6539:7679" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="6592:7669" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="6648:6884" ph="..." />
-            <marker date="1496855059000" expanded="true" signature="6684:6818" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="6824:6884" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="6938:7174" ph="..." />
-            <marker date="1496855059000" expanded="true" signature="6974:7108" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="7114:7174" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="7227:7463" ph="..." />
-            <marker date="1496855059000" expanded="true" signature="7263:7397" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="7403:7463" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="7518:7552" ph="..." />
-            <marker date="1496855059000" expanded="true" signature="7577:7655" ph="..." />
-            <marker date="1496855059000" expanded="true" signature="7794:7976" ph="..." />
-            <marker date="1496855059000" expanded="true" signature="7835:7943" ph="{...}" />
-            <marker date="1496855059000" expanded="true" signature="8071:8179" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cSoldier.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+        <state relative-caret-position="320">
+          <caret line="85" column="10" lean-forward="false" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/catapult.js">
+    <entry file="file://$PROJECT_DIR$/js/entities/cBuilder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1314">
-          <caret line="191" column="9" lean-forward="false" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
+        <state relative-caret-position="1060">
+          <caret line="186" column="39" lean-forward="true" selection-start-line="186" selection-start-column="39" selection-end-line="186" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/soldier.js">
+    <entry file="file://$PROJECT_DIR$/js/entities/cFarm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-192">
-          <caret line="95" column="30" lean-forward="true" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="30" />
+        <state relative-caret-position="142">
+          <caret line="55" column="9" lean-forward="false" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cMine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="58" column="9" lean-forward="false" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cBarracks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="61" column="9" lean-forward="false" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/mine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="62" column="9" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/barracks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="60" column="9" lean-forward="false" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/city.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="62" column="9" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+          <folding>
+            <marker date="1496949025000" expanded="true" signature="111:1087" ph="{...}" />
+            <marker date="1496949025000" expanded="true" signature="3448:3514" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cCity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-687">
+          <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="245" column="9" lean-forward="false" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/AI_main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-89">
+          <caret line="61" column="10" lean-forward="false" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/farm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="62" column="9" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/projectile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/moveButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="64" column="38" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/attackButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-279">
+          <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/melonJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="12470" column="30" lean-forward="false" selection-start-line="12470" selection-start-column="22" selection-end-line="12470" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/knight.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="167" column="0" lean-forward="false" selection-start-line="167" selection-start-column="0" selection-end-line="180" selection-end-column="13" />
+        <state relative-caret-position="180">
+          <caret line="129" column="8" lean-forward="true" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/soldier.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="128" column="22" lean-forward="false" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cSoldier.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="121" column="22" lean-forward="false" selection-start-line="121" selection-start-column="22" selection-end-line="121" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cKnight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="123" column="22" lean-forward="false" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/catapult.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="147" column="22" lean-forward="false" selection-start-line="147" selection-start-column="22" selection-end-line="147" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cCatapult.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1334">
+          <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1180">
+          <caret line="117" column="36" lean-forward="false" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
           <folding />
         </state>
       </provider>

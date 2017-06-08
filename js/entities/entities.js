@@ -86,32 +86,65 @@ game.playerObject = me.Entity.extend({
     },
 
 
-    //set up fight stuff
-    attackCollision : function (sB) {
-        if ((sB.pos.x +(sB.width/2)) <= (this.pos.x +(this.width/2))) {
-            this.fightDirection = "left";
-            sB.fightDirection = "right";
+    movePlayerToAttack :function (sprite) {
+        //console.log("attack called");
+        if (this.attackObject.name){
+            if (this.attackObject === sprite) {
+                console.log("already attacking this");
+            }else {
+                this.attackObject = sprite;
+                this.newX = Math.round(Math.random() * ((sprite.pos.x +sprite.width) - (sprite.pos.x)) + (sprite.pos.x));
+                this.newY = Math.round(Math.random() * ((sprite.pos.y +sprite.height) - (sprite.pos.y)) + (sprite.pos.y));
+                this.collision = false;
+                this.walk = true;
+                this.attack = true;
+                this.fightTimer = 1;
+            }
         } else {
-            this.fightDirection = "right";
-            sB.fightDirection = "left"
+            this.attackObject = sprite;
+            this.newX = Math.round(Math.random() * ((sprite.pos.x + sprite.width) - (sprite.pos.x)) + (sprite.pos.x));
+            this.newY = Math.round(Math.random() * ((sprite.pos.y + sprite.height) - (sprite.pos.y)) + (sprite.pos.y));
+            this.collision = false;
+            this.walk = true;
+            this.attack = true;
+            this.fightTimer = 1;
         }
 
+    },
+
+    attackInRange : function () {
+        if (this.attackObject.name) {
+            var dist = this.distanceTo(this.attackObject);
+            if (dist < this.range) {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    allStop : function () {
         this.walk = false;
-        this.fighting = true;
-        this.fightTimer = 0;
         this.newX = this.pos.x;
         this.newY = this.pos.y;
-        this.fightTurn = true;
+        this.body.vel.x = 0;
+        this.body.vel.y = 0;
+        if (this.type !== "structure") {
+            if (!this.renderable.isCurrentAnimation("stand")) {
+                this.renderable.setCurrentAnimation("stand");
+            }
+        }
+    },
 
-        console.log(sB);
-        sB.attackObject = this;
-        sB.walk = false;
-        sB.fighting = true;
-        sB.attack = true;
-        sB.newX = this.pos.x;
-        sB.newY = this.pos.y;
-        sB.fightTimer = 0;
-        sB.fightTurn = false;
+
+    //set up fight stuff
+    attackCollision : function (sB) {
+        if (sB.name) {
+            if ((sB.pos.x + (sB.width / 2)) <= (this.pos.x + (this.width / 2))) {
+                this.fightDirection = "left";
+            } else {
+                this.fightDirection = "right";
+            }
+        }
     },
 
     //only call on movable objects - called from cancel button
@@ -125,6 +158,7 @@ game.playerObject = me.Entity.extend({
             }
         } else {
             if (this.attack) {
+                this.attackObject = {};
                 this.walk = false;
                 this.attack = false;
                 this.fighting = false;
@@ -140,13 +174,49 @@ game.playerObject = me.Entity.extend({
 
     //
     fightHit : function (sprite, mult) {
-        var hit = Math.round((Math.random() * 6) +1);
+        //console.log(sprite);
+        var hit = Math.round((Math.random() * 6) + 1);
         hit = hit * mult;
         sprite.hp -= hit;
-        this.fightTurn = false;
-        sprite.fightTurn = true;
+        if (sprite.type === "structure") {
+            sprite.renderable.setCurrentAnimation("attacked", "idle");
+        }
+
     },
 
+
+    catFightHit : function (sprite, mult) {
+        //console.log(sprite);
+        if (this.fightDirection === "left") {
+            this.renderable.flipX(true);
+        } else {
+            this.renderable.flipX(false);
+        }
+        this.renderable.setCurrentAnimation("attack-side", "stand");
+        me.game.world.addChild(new game.Rock((this.pos.x+(this.width/2)), (this.pos.y+(this.height/2)), (this.attackObject.pos.x+(this.attackObject.width/2)), (this.attackObject.pos.y+(this.attackObject.height/2)), this.attackObject));
+        var hit = Math.round((Math.random() * 6) + 1);
+        hit = hit * mult;
+        sprite.hp -= hit;
+    },
+
+
+    checkAttackHP : function () {
+        if (this.attackObject.name){
+            if (this.attackObject.hp <= 0) {
+                this.stopWalkOrFight()
+            }
+        }
+    },
+
+    attackSpriteOutRange : function () {
+        if (this.attackObject.name) {
+            if(this.attackObject.type !== "structure"){
+                if (!(this.attackInRange())) {
+                    this.fighting = false;
+                }
+            }
+        }
+    },
 
     //scan world objects for conflict
     //works from input x & y

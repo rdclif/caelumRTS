@@ -83,7 +83,7 @@ game.PlayScreen = me.ScreenObject.extend({
         var food = JSON.parse(localStorage.getItem("me.save.Food"));
         var gold = JSON.parse(localStorage.getItem("me.save.Gold"));
         var hard = JSON.parse(localStorage.getItem("me.save.Hard"));
-        console.log(sprites);
+        //console.log(sprites);
 
         game.data.idCounter = idcounter;
         game.data.goldCounter = gold;

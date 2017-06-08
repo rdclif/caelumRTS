@@ -44,13 +44,14 @@ game.cSoldier = game.playerObject.extend({
 
         this.maxHP = 100;
         this.hp = 100;
-        this.range = 20;
+        this.range = 50;
         this.attack = false;
         this.attackObject = {};
         this.fighting = false;
         this.fightDirection = "left";
-        this.fightTimer = 0;
+        this.fightTimer = 1;
         this.fightTurn = false;
+        this.beingAttacked = false;
 
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
@@ -68,65 +69,59 @@ game.cSoldier = game.playerObject.extend({
 
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
-        if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
-            if (this.attack){
-                this.moveObject(distx, disty);
-                if (!this.renderable.isCurrentAnimation(this.direction)) {
-                    this.renderable.setCurrentAnimation(this.direction);
-                }
-            } else if (!(this.isSpaceOccupied(this.newX, this.newY))) {
-                this.moveObject(distx, disty);
-                if (!this.renderable.isCurrentAnimation(this.direction)) {
-                    this.renderable.setCurrentAnimation(this.direction);
-                }
-            } else {
-                this.walk = false;
-                if (!this.renderable.isCurrentAnimation("stand")) {
-                    this.renderable.setCurrentAnimation("stand");
-                }
+        if (this.attack) {
+            if (this.attackInRange() || this.fighting) {
                 this.body.vel.x = 0;
                 this.body.vel.y = 0;
+                this.attackCollision(this.attackObject);
+                if (this.fightDirection === "right") {
+                    this.renderable.flipX(true);
+                } else {
+                    this.renderable.flipX(false);
+                }
+                if (!this.renderable.isCurrentAnimation("attack")) {
+                    this.renderable.setCurrentAnimation("attack");
+                }
+                this.fightTimer += 1;
+            } else {
+                this.renderable.flipX(false);
+                if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
+                    this.moveObject(distx, disty);
+                    if (!this.renderable.isCurrentAnimation(this.direction)) {
+                        this.renderable.setCurrentAnimation(this.direction);
+                    }
+                } else  {
+                    this.walk = false;
+                    this.body.vel.x = 0;
+                    this.body.vel.y = 0;
+                }
+            }
+        } else if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
+            this.renderable.flipX(false);
+            this.moveObject(distx, disty);
+            if (!this.renderable.isCurrentAnimation(this.direction)) {
+                this.renderable.setCurrentAnimation(this.direction);
             }
         } else  {
             this.walk = false;
-            //this.renderable.setCurrentAnimation( "stand" );
             this.body.vel.x = 0;
             this.body.vel.y = 0;
         }
 
-        //--
         if (!(this.walk) && !(this.attack)) {
             this.renderable.flipX(false);
             if (!this.renderable.isCurrentAnimation("stand")) {
                 this.renderable.setCurrentAnimation("stand");
             }
         }
-        //this is for fighting -- calls fight function in entities
 
-        if (this.attack && this.walk===false && this.fighting) {
-            if (this.fightTimer === 0) {
-                if (!this.renderable.isCurrentAnimation("stand")) {
-                    this.renderable.setCurrentAnimation("stand");
-                }
-            }
-            if (this.fightTurn) {
-                this.fightTimer += 1;
-                if (this.fightTimer % 50 === 0) {
-                    if (this.fightDirection === "right"){
-                        this.renderable.flipX(true);
-                    } else {
-                        this.renderable.flipX(false);
-                    }
-
-                    this.renderable.setCurrentAnimation("attack", "stand");
-                    this.fightHit(this.attackObject, SOLDIER_STRENGTH);
-                }
-            }
+        if (this.fightTimer % 50 === 0) {
+            this.fightHit(this.attackObject, SOLDIER_STRENGTH);
         }
 
+        //check own hp
         if (this.hp <= 0) {
             this.stopWalkOrFight();
-            this.attackObject.stopWalkOrFight();
             me.game.world.removeChild(this);
         }
 
@@ -143,7 +138,9 @@ game.cSoldier = game.playerObject.extend({
     movePlayerTo :function (x, y) {
         this.newX = Math.round(x);
         this.newY = Math.round(y);
+        this.collision = false;
         this.walk = true;
+        this.attack = false;
     },
 
     moveObject : function(distx, disty){
@@ -196,8 +193,14 @@ game.cSoldier = game.playerObject.extend({
             switch (response.b.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (this.walk) {
-                        console.log(this.sId);
-                        return this.collisionEvent(response.b);
+                        if (response.b === this.attackObject){
+                            this.fighting = true;
+                            this.allStop();
+                            return true;
+                        }
+                        else {
+                            return this.collisionEvent(response.b);
+                        }
                     } else {
                         return true;
                     }

@@ -56,6 +56,7 @@ game.UI.attackButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
+        removeFromWorld("moveIcon");
         me.game.world.addChild(new game.attackIcon(100, 100));
         // don't propagate the event
         return false;
@@ -64,10 +65,17 @@ game.UI.attackButton = me.GUI_Object.extend({
 	    //movePointer calls this function - passes mouse x y back so this can call player movePlayerTo function
     movePlayerAttack : function (sprite) {
         if (sprite.body.collisionType === me.collision.types.ENEMY_OBJECT || sprite.body.collisionType === me.collision.types.PLAYER_OBJECT) {
-            this.player.movePlayerToAttack(sprite);
-            me.game.world.getChildByName("UIPanel")[0].remove();
+            if (this.player.body.collisionType !== sprite.body.collisionType) {
+                this.player.movePlayerToAttack(sprite);
+                me.game.world.getChildByName("UIPanel")[0].remove();
+                removeFromWorld("attackIcon");
+            } else {
+                console.log("can't attack own type!");
+            }
         } else {
             console.log("can't attack this!");
+            me.game.world.getChildByName("UIPanel")[0].remove();
+            removeFromWorld("attackIcon");
         }
     },
 

@@ -59,7 +59,7 @@ game.AI_main = me.Entity.extend({
 	
 		//Arbitrary limit on computer thinking speed to avoid bogging down the system
         this.counter += 1;
-		console.log(this.counter);
+		//console.log(this.counter);
         if (this.counter >= AI_ACTION_INTERVAL) 
 		{
             this.act = true;

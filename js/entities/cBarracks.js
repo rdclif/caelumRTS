@@ -42,6 +42,14 @@ game.cBarracks = game.playerObject.extend({
 
         this.pool = "barracksComputerObject";
 
+        this.type = "structure";
+        this.attack = false;
+        this.attackObject = {};
+        this.fighting = false;
+        this.fightDirection = "left";
+        this.fightTimer = 0;
+        this.fightTurn = false;
+
     },
 
     /*
@@ -51,6 +59,10 @@ game.cBarracks = game.playerObject.extend({
 
         if (this.training) {
             this.trainPlayer()
+        }
+
+        if (this.hp <= 0) {
+            me.game.world.removeChild(this);
         }
 
         // apply physics to the body (this moves the entity)

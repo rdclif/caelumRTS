@@ -40,6 +40,14 @@ game.Mine = game.playerObject.extend({
 
         this.setId();
 
+        this.type = "structure";
+        this.attack = false;
+        this.attackObject = {};
+        this.fighting = false;
+        this.fightDirection = "left";
+        this.fightTimer = 0;
+        this.fightTurn = false;
+
     },
 
     /*
@@ -52,7 +60,12 @@ game.Mine = game.playerObject.extend({
         if (this.counter >= TIMETHRESHOLD_RESOURCES) {
             game.data.goldCounter += GOLDPERTICK;
             this.counter = 0;
-        };
+        }
+
+        if (this.hp <= 0) {
+            me.game.world.removeChild(this);
+        }
+
 
         // apply physics to the body (this moves the entity)
         this.body.update(dt);

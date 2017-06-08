@@ -232,7 +232,7 @@ function moveUnit(unitName, destinationX, destinationY)
 		for(x = 0; x < unitList.length; x++)
 		{
 			unit = unitList[x];
-			if (!(unit.walk)) 
+			if (!(unit.walk))
 			{
 				//console.log("Old X: " + destinationX + " Old Y: " + destinationY);
 				while( unit.isSpaceOccupied(destinationX, destinationY) )

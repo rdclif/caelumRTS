@@ -43,6 +43,14 @@ game.City = game.playerObject.extend({
 
         this.setId();
 
+        this.type = "structure";
+        this.attack = false;
+        this.attackObject = {};
+        this.fighting = false;
+        this.fightDirection = "left";
+        this.fightTimer = 0;
+        this.fightTurn = false;
+
     },
 
     /*

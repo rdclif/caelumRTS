@@ -44,6 +44,13 @@ game.cCatapult = game.playerObject.extend({
 
         this.maxHP = 100;
         this.hp = 100;
+        this.range = 200;
+        this.attack = false;
+        this.attackObject = {};
+        this.fighting = false;
+        this.fightDirection = "left";
+        this.fightTimer = 1;
+        this.fightTurn = false;
 
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
@@ -52,7 +59,7 @@ game.cCatapult = game.playerObject.extend({
     },
 
     update : function (dt) {
-        if (this.collision === true && this.walk === false) {
+        if (this.collision === true && this.walk === false && this.fighting === false) {
             this.newX = this.collisionX;
             this.newY = this.collisionY;
             this.collision = false;
@@ -62,33 +69,81 @@ game.cCatapult = game.playerObject.extend({
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
 
-        if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
-            if (!(this.isSpaceOccupied(this.newX, this.newY))) {
-                this.moveObject(distx, disty);
-                if (this.direction == "left") {
-                    this.renderable.flipX(true);
-                    this.direction = "right";
-                    if (!this.renderable.isCurrentAnimation(this.direction)) {
-                        this.renderable.setCurrentAnimation(this.direction);
-                    }
-                }
-                else {
-                    this.renderable.flipX(false);
-                    if (!this.renderable.isCurrentAnimation(this.direction)) {
-                        this.renderable.setCurrentAnimation(this.direction);
-                    }
-                }
-            } else  {
-                this.walk = false;
+        if (this.attack) {
+            this.renderable.flipX(false);
+            if (this.attackInRange() || this.fighting) {
                 this.body.vel.x = 0;
                 this.body.vel.y = 0;
+                this.attackCollision(this.attackObject);
+                this.fightTimer += 1;
+            } else {
+                this.renderable.flipX(false);
+                if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
+                    this.moveObject(distx, disty);
+                    if (this.direction == "left") {
+                        this.renderable.flipX(true);
+                        this.direction = "right";
+                        if (!this.renderable.isCurrentAnimation(this.direction)) {
+                            this.renderable.setCurrentAnimation(this.direction);
+                        }
+                    }
+                    else {
+                        this.renderable.flipX(false);
+                        if (!this.renderable.isCurrentAnimation(this.direction)) {
+                            this.renderable.setCurrentAnimation(this.direction);
+                        }
+                    }
+                } else  {
+                    this.walk = false;
+                    this.body.vel.x = 0;
+                    this.body.vel.y = 0;
+                }
+            }
+        } else if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
+            this.renderable.flipX(false);
+            this.moveObject(distx, disty);
+            if (this.direction == "left") {
+                this.renderable.flipX(true);
+                this.direction = "right";
+                if (!this.renderable.isCurrentAnimation(this.direction)) {
+                    this.renderable.setCurrentAnimation(this.direction);
+                }
+            }
+            else {
+                this.renderable.flipX(false);
+                if (!this.renderable.isCurrentAnimation(this.direction)) {
+                    this.renderable.setCurrentAnimation(this.direction);
+                }
             }
         } else  {
             this.walk = false;
-            this.renderable.setCurrentAnimation( "stand" );
             this.body.vel.x = 0;
             this.body.vel.y = 0;
         }
+
+
+        if (this.fightTimer % 150 === 0) {
+            console.log(this.fightTimer);
+            this.catFightHit(this.attackObject, CATAPULT_STRENGTH);
+        }
+
+        this.checkAttackHP();
+
+        //--
+        if (!(this.walk) && !(this.attack)) {
+            this.renderable.flipX(false);
+            if (!this.renderable.isCurrentAnimation("stand")) {
+                this.renderable.setCurrentAnimation("stand");
+            }
+        }
+
+        //check own hp
+        if (this.hp <= 0) {
+            this.stopWalkOrFight();
+            me.game.world.removeChild(this);
+        }
+
+        //--
 
         this.body.update(dt);
         // handle collisions against other shapes

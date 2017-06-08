@@ -62,6 +62,7 @@ game.UI.moveButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
+        removeFromWorld("attackIcon");
         me.game.world.addChild(new game.moveIcon(100, 100));
         // don't propagate the event
         return false;
