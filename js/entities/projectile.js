@@ -18,10 +18,10 @@ game.Rock = me.Entity.extend({
         this.newX = newx;
         this.newY = newy;
 
-        this.body.maxVel.x = 3;
-        this.body.maxVel.y = 3;
-        this.body.accel.x = 1.7;
-        this.body.accel.y = 1.7;
+        this.body.maxVel.x = 4;
+        this.body.maxVel.y = 4;
+        this.body.accel.x = 2;
+        this.body.accel.y = 2;
 
         this.attackObject = object;
     },
@@ -36,6 +36,9 @@ game.Rock = me.Entity.extend({
             if (this.attackObject.type === "structure") {
                 this.attackObject.renderable.setCurrentAnimation("attacked", "idle");
             }
+            var hit = Math.round((Math.random() * 6) + 1);
+            hit = hit * CATAPULT_STRENGTH;
+            this.attackObject.hp -= hit;
             me.game.world.removeChild(this);
         }
 

@@ -71,6 +71,8 @@ game.UI.attackButton = me.GUI_Object.extend({
                 removeFromWorld("attackIcon");
             } else {
                 console.log("can't attack own type!");
+                me.game.world.getChildByName("UIPanel")[0].remove();
+                removeFromWorld("attackIcon");
             }
         } else {
             console.log("can't attack this!");

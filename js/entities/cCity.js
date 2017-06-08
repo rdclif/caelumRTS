@@ -59,6 +59,11 @@ game.cCity = game.playerObject.extend({
             this.trainPlayer(this.player)
         }
 
+        //vicotry condition
+        if (this.hp <= 0) {
+            me.state.change(me.state.GAME_END);
+        }
+
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 

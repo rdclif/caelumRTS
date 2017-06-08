@@ -88,26 +88,34 @@ game.playerObject = me.Entity.extend({
 
     movePlayerToAttack :function (sprite) {
         //console.log("attack called");
-        if (this.attackObject.name){
-            if (this.attackObject === sprite) {
+        if (sprite.name){
+            if (sprite === this.attackObject) {
                 console.log("already attacking this");
             }else {
+                if(sprite.name === "cBuilder") {
+                    me.game.world.getChildByName("menuPanel")[0].alert("Where is your honor? I can't attack a poor defenceless builder...");
+                } else {
+                    this.attackObject = sprite;
+                    this.newX = Math.round(Math.random() * ((sprite.pos.x + sprite.width) - (sprite.pos.x)) + (sprite.pos.x));
+                    this.newY = Math.round(Math.random() * ((sprite.pos.y + sprite.height) - (sprite.pos.y)) + (sprite.pos.y));
+                    this.collision = false;
+                    this.walk = true;
+                    this.attack = true;
+                    this.fightTimer = 1;
+                }
+            }
+        } else {
+            if(sprite.name === "cBuilder") {
+                me.game.world.getChildByName("menuPanel")[0].alert("Where is your honor? I can't attack a poor defenceless builder...");
+            } else {
                 this.attackObject = sprite;
-                this.newX = Math.round(Math.random() * ((sprite.pos.x +sprite.width) - (sprite.pos.x)) + (sprite.pos.x));
-                this.newY = Math.round(Math.random() * ((sprite.pos.y +sprite.height) - (sprite.pos.y)) + (sprite.pos.y));
+                this.newX = Math.round(Math.random() * ((sprite.pos.x + sprite.width) - (sprite.pos.x)) + (sprite.pos.x));
+                this.newY = Math.round(Math.random() * ((sprite.pos.y + sprite.height) - (sprite.pos.y)) + (sprite.pos.y));
                 this.collision = false;
                 this.walk = true;
                 this.attack = true;
                 this.fightTimer = 1;
             }
-        } else {
-            this.attackObject = sprite;
-            this.newX = Math.round(Math.random() * ((sprite.pos.x + sprite.width) - (sprite.pos.x)) + (sprite.pos.x));
-            this.newY = Math.round(Math.random() * ((sprite.pos.y + sprite.height) - (sprite.pos.y)) + (sprite.pos.y));
-            this.collision = false;
-            this.walk = true;
-            this.attack = true;
-            this.fightTimer = 1;
         }
 
     },
@@ -187,16 +195,15 @@ game.playerObject = me.Entity.extend({
 
     catFightHit : function (sprite, mult) {
         //console.log(sprite);
-        if (this.fightDirection === "left") {
-            this.renderable.flipX(true);
-        } else {
-            this.renderable.flipX(false);
+        if (sprite !== undefined){
+            if (this.fightDirection === "left") {
+                this.renderable.flipX(true);
+            } else {
+                this.renderable.flipX(false);
+            }
+            this.renderable.setCurrentAnimation("attack-side", "stand");
+            me.game.world.addChild(new game.Rock((this.pos.x + (this.width / 2)), (this.pos.y + (this.height / 2)), (sprite.pos.x + (sprite.width / 2)), (sprite.pos.y + (sprite.height / 2)), sprite));
         }
-        this.renderable.setCurrentAnimation("attack-side", "stand");
-        me.game.world.addChild(new game.Rock((this.pos.x+(this.width/2)), (this.pos.y+(this.height/2)), (this.attackObject.pos.x+(this.attackObject.width/2)), (this.attackObject.pos.y+(this.attackObject.height/2)), this.attackObject));
-        var hit = Math.round((Math.random() * 6) + 1);
-        hit = hit * mult;
-        sprite.hp -= hit;
     },
 
 

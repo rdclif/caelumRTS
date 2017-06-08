@@ -22,10 +22,12 @@ game.PlayScreen = me.ScreenObject.extend({
         me.game.world.addChild(this.menu, Infinity);
 
 
-        // For loading save or loading new game
+        // if the loadSave bool set, calls load function
         if (game.data.loadSave) {
             this.loadSave();
 
+
+            //else load a new game
         } else {
 
             me.game.world.addChild(me.pool.pull("knightPlayer", 300, 300));
@@ -57,18 +59,18 @@ game.PlayScreen = me.ScreenObject.extend({
 
         // navigate the map :)
         if (action === "left") {
-            me.game.viewport.move(-(me.levelDirector.getCurrentLevel().tilewidth / 2), 0);
+            me.game.viewport.move(-(me.levelDirector.getCurrentLevel().tilewidth ), 0);
 
         } else if (action === "right") {
-            me.game.viewport.move(me.levelDirector.getCurrentLevel().tilewidth / 2, 0);
+            me.game.viewport.move(me.levelDirector.getCurrentLevel().tilewidth , 0);
 
         }
 
         if (action === "up") {
-            me.game.viewport.move(0, -(me.levelDirector.getCurrentLevel().tileheight / 2));
+            me.game.viewport.move(0, -(me.levelDirector.getCurrentLevel().tileheight ));
 
         } else if (action === "down") {
-            me.game.viewport.move(0, me.levelDirector.getCurrentLevel().tileheight / 2);
+            me.game.viewport.move(0, me.levelDirector.getCurrentLevel().tileheight );
         }
 
         // force redraw
