@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7821a996-d1bc-4730-8af4-f1b6f7a59dfc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/HUD.js" afterPath="$PROJECT_DIR$/js/entities/HUD.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/alertBox.js" afterPath="$PROJECT_DIR$/js/entities/alertBox.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/screens/play.js" afterPath="$PROJECT_DIR$/js/screens/play.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,21 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="alertBox.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/entities/alertBox.js">
+      <file leaf-file-name="play.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/screens/play.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="142" column="30" lean-forward="true" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HUD.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/entities/HUD.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="150" column="54" lean-forward="true" selection-start-line="150" selection-start-column="54" selection-end-line="150" selection-end-column="54" />
+            <state relative-caret-position="279">
+              <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -135,13 +124,13 @@
         <option value="$PROJECT_DIR$/js/entities/cancelButton.js" />
         <option value="$PROJECT_DIR$/js/entities/barracksPointer.js" />
         <option value="$PROJECT_DIR$/js/entities/entities.js" />
-        <option value="$PROJECT_DIR$/js/screens/play.js" />
         <option value="$PROJECT_DIR$/js/entities/cCity.js" />
         <option value="$PROJECT_DIR$/js/entities/city.js" />
         <option value="$PROJECT_DIR$/js/entities/attackPointer.js" />
         <option value="$PROJECT_DIR$/js/entities/projectile.js" />
         <option value="$PROJECT_DIR$/js/entities/HUD.js" />
         <option value="$PROJECT_DIR$/js/entities/alertBox.js" />
+        <option value="$PROJECT_DIR$/js/screens/play.js" />
       </list>
     </option>
   </component>
@@ -210,8 +199,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="148" />
-    <option name="y" value="257" />
+    <option name="x" value="24" />
+    <option name="y" value="58" />
     <option name="width" value="1532" />
     <option name="height" value="671" />
   </component>
@@ -496,15 +485,15 @@
       <workItem from="1496942798375" duration="26183000" />
       <workItem from="1497022021829" duration="18000" />
       <workItem from="1497022059158" duration="5177000" />
-      <workItem from="1497027302573" duration="11486000" />
+      <workItem from="1497027302573" duration="12426000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="373630000" />
+    <option name="totallyTimeSpent" value="374570000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="148" y="257" width="1532" height="671" extended-state="0" />
+    <frame x="24" y="58" width="1532" height="671" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23163468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -788,7 +777,7 @@
         <state relative-caret-position="420">
           <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
           <folding>
-            <marker date="1497037063000" expanded="true" signature="1286:1320" ph="//..." />
+            <marker date="1497046356000" expanded="true" signature="1286:1320" ph="//..." />
           </folding>
         </state>
       </provider>
@@ -884,14 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/screens/play.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/screens/defeat.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6">
@@ -910,7 +891,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/HUD.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
+        <state relative-caret-position="2250">
           <caret line="150" column="54" lean-forward="true" selection-start-line="150" selection-start-column="54" selection-end-line="150" selection-end-column="54" />
           <folding />
         </state>
@@ -918,8 +899,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/alertBox.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
+        <state relative-caret-position="2130">
           <caret line="142" column="30" lean-forward="true" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/screens/play.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
           <folding />
         </state>
       </provider>
