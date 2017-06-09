@@ -73,7 +73,7 @@ game.UI.cancelButton = me.GUI_Object.extend({
 
 		removeFromWorld("attackIcon");
 
-		if (this.player) {
+		if (this.player.name !== undefined) {
 		    if (this.player.walk || this.player.attack) {
                 this.player.stopWalkOrFight();
             }

@@ -167,13 +167,17 @@ game.playerObject = me.Entity.extend({
         } else {
             if (this.attack) {
                 this.attackObject = {};
+                this.newX = this.pos.x;
+                this.newY = this.pos.y;
                 this.walk = false;
                 this.attack = false;
                 this.fighting = false;
+                this.collision = false;
             } else if (this.walk) {
                 this.walk = false;
                 this.attack = false;
                 this.fighting = false;
+                this.collision = false;
                 this.newX = this.pos.x;
                 this.newY = this.pos.y;
             }
@@ -229,39 +233,41 @@ game.playerObject = me.Entity.extend({
     //if z = true returns the object clicked on or false
     isSpaceOccupied : function (x,y,z) {
         //var coord = me.game.viewport.localToWorld(x, y);
-
-                for (var i in me.game.world.children) {
-                    if (me.game.world.children[i].sId || me.game.world.children[i].id) {
-                        if (me.game.world.children[i].containsPoint(x, y)) {
-                            //console.log(me.game.world.children[i]);
-                            if (z) {
-                                return me.game.world.children[i];
-                            } else {
-                                return true;
-                            }
+            for (var i in me.game.world.children) {
+                if (me.game.world.children[i].sId || me.game.world.children[i].id) {
+                    if (me.game.world.children[i].containsPoint(x, y)) {
+                        //console.log(me.game.world.children[i]);
+                        if (z) {
+                            return me.game.world.children[i];
+                        } else {
+                            return true;
                         }
-
                     }
-                }
 
+                }
+            }
         return false;
     },
 
     //scan world objects for conflict
     //works on this centered this.x and this.y
     isThisSpaceOccupied : function () {
-        console.log(this.pos.x);
-        var co = me.game.viewport.localToWorld(this.pos.x, this.pos.y);
-        for (var x = (co.x-(this.width/2)); x < (co.x + this.width); x+=1) {
-            for (var y = (co.y-(this.height/2)); y < (co.y + this.height); y += 1) {
-                for (var i in me.game.world.children) {
-                    if (me.game.world.children[i].sId || me.game.world.children[i].id) {
-                        if (me.game.world.children[i].containsPoint(x, y)) {
-                            //console.log(me.game.world.children[i]);
-                            return true;
-                        }
+        var bounds = this.getBounds();
+        var top = bounds.top - (bounds.height/2);
+        var bottom = bounds.top + (bounds.height/2);
+        var left = bounds.left - (bounds.width/2);
+        var right = bounds.left + (bounds.width/2);
 
-                    }
+        for (var i in me.game.world.children) {
+            if (me.game.world.children[i].sId || me.game.world.children[i].id) {
+                if (me.game.world.children[i].containsPoint(left, top)) {
+                    return true;
+                } else if (me.game.world.children[i].containsPoint(left, bottom)) {
+                    return true;
+                } else if (me.game.world.children[i].containsPoint(right, top)) {
+                    return true;
+                } else if (me.game.world.children[i].containsPoint(right, bottom)) {
+                    return true;
                 }
             }
         }

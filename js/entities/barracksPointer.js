@@ -15,8 +15,6 @@ game.buildBarracksIcon = game.playerObject.extend({
         this.renderable.setCurrentAnimation("idle");
         this.body.collisionType = me.collision.types.ACTION_OBJECT;
 
-        this.setOpacity(0.1);
-
         // ensure the player is updated even when outside of the viewport
         this.alwaysUpdate = true;
         this.anchorPoint.set(0, 0);

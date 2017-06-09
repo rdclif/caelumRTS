@@ -31,7 +31,6 @@ game.HUD.Container = me.Container.extend({
                 this.font = new me.Font("kenpixel", 14, "gray");
                 this.font.bold();
                 this.scroller = "Placeholder Text";
-                console.log(this.font);
             },
 
 
