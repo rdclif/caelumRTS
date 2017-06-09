@@ -88,6 +88,11 @@ game.playerObject = me.Entity.extend({
 
     movePlayerToAttack :function (sprite) {
         //console.log("attack called");
+		if(sprite == undefined)
+		{
+			return;
+		}
+		
         if (sprite.name){
             if (sprite === this.attackObject) {
                 //console.log("already attacking this");

@@ -148,6 +148,7 @@ game.cCatapult = game.playerObject.extend({
 				this.attackObject.stopWalkOrFight();
 			}
 			
+			removeFromWorld("hpBar");
 			//Remove selection box if it is there
 			removeFromWorld("selectBox", this);
             me.game.world.removeChild(this);

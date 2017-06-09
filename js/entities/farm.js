@@ -63,6 +63,13 @@ game.Farm = game.playerObject.extend({
         }
 
         if (this.hp <= 0) {
+			
+			if(this.attackObject.name)
+			{
+				this.attackObject.stopWalkOrFight();
+			}
+			
+			removeFromWorld("hpBar");
 			//Remove selection box if it is there
 			removeFromWorld("selectBox", this);
             me.game.world.removeChild(this);
