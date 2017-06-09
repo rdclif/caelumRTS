@@ -10,7 +10,7 @@ game.UI.playAgainButton = me.GUI_Object.extend({
     init: function(x, y) {
         this._super(me.GUI_Object, "init", [ x, y, {
             image: game.texture,
-            region : "buttonLong_blue",
+            region : "buttonLong_blue"
         } ]);
 
         // offset of the two used images in the texture
