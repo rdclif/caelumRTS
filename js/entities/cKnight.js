@@ -129,7 +129,7 @@ game.cKnight = game.playerObject.extend({
         //check own hp					  
         if (this.hp <= 0) {
             this.stopWalkOrFight();
-			console.log(this.attackObject.name);
+			//console.log(this.attackObject.name);
 			if(this.attackObject.name)
 			{
 				this.attackObject.stopWalkOrFight();

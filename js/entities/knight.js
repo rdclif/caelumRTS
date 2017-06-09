@@ -130,6 +130,10 @@ game.Knight = game.playerObject.extend({
         //check own hp
         if (this.hp <= 0) {
             this.stopWalkOrFight();
+			if(this.attackObject.name)
+			{
+				this.attackObject.stopWalkOrFight();
+			}
 			
 			//Remove selection box if it is there
 			removeFromWorld("selectBox", this);

@@ -53,7 +53,7 @@ game.UI.menuSoundButton = me.GUI_Object.extend({
 		{
 			//alert("deleting");
 			this.active = false;
-			console.log(this.container);
+			//console.log(this.container);
 			
 			//Relies on fact that the first 3 elements in array are the new buttons
 			for (i = 0; i < 3; i++)

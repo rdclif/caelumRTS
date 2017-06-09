@@ -88,62 +88,115 @@ game.AI_main = me.Entity.extend({
 				city.callTraining(spawnLocation_x, spawnLocation_y, "builderComputer", this);
 				
 			}
-			
-			/*
-			//Try moving a unit somewhere (starting knight)
-			var knightList = me.game.world.getChildByName("cKnight");
-			//console.log(knight);
-			if ( knightList.length > 0 )
-			{
-				for(x = 0; x < knightList.length; x++)
-				{
-					knight = knightList[x];
-					if (!(knight.walk)) {
-						//console.log(knight);
-						var destinationX = 50;
-						var destinationY = 50;
-						knight.movePlayerTo(destinationX, destinationY);
-					}
-				}
-			}
-			
-			var soldierList = me.game.world.getChildByName("cSoldier");
-			if ( soldierList.length > 0 )
-			{
-				for(x = 0; x < soldierList.length; x++)
-				{
-					soldier = soldierList[x];
-					if (!(soldier.walk)) {
-						var destinationX = 50;
-						var destinationY = 50;
-						soldier.movePlayerTo(destinationX, destinationY);
-					}
-				}
-			}
-
-			var soldierList = me.game.world.getChildByName("cSoldier");
-			if ( soldierList.length > 0 )
-			{
-				for(x = 0; x < soldierList.length; x++)
-				{
-					soldier = soldierList[x];
-					if (!(soldier.walk)) {
-						var destinationX = 50;
-						var destinationY = 50;
-						soldier.movePlayerTo(destinationX, destinationY);
-					}
-				}
-			}
-			*/
 
 			var dest_x = enemyCity.pos.x;
 			var dest_y = enemyCity.pos.y;
-			//moveUnit("cKnight", 50, 50);
-			//moveUnit("cKnight", dest_x, dest_y);
-			attackWithUnit("cKnight", enemyCity);
-			attackWithUnit("cSoldier", enemyCity);
+			
+			var totalEnemyUnits = 0;
+			var maxEnenyUnits = 1;
+			
+			//Enemy unit count
+			var unitList = ["Knight", "Soldier", "Catapult"];
+			for (x = 0; x < unitList.length; x++)
+			{
+				unit = me.game.world.getChildByName(unitList[x]);
+				totalEnemyUnits += unit.length;
+				
+			}
+			
+			var totalEnemyBuildings = 0;
+			//Enemy building count
+			var buildingList = ["Barracks", "Farm", "Mine"];
+			for (x = 0; x < buildingList.length; x++)
+			{
+				building = me.game.world.getChildByName(buildingList[x]);
+				totalEnemyBuildings += building.length;
+			}
+			
+			//Determine threshold for attacking enemy buildings
+			var totalPlayerUnits = this.numUnits.Knight + this.numUnits.Soldier + this.numUnits.Catapult;
+			if(totalEnemyUnits == 0)
+			{
+				maxEnemyUnits = 0;
+			}
+			else
+			{
+				maxEnemyUnits = AI_UNIT_THRESHOLD;
+			}
+			
+			console.log("Total: " + totalEnemyUnits);
+			console.log("Max: " + maxEnemyUnits);
+			//Advantage is big enough to attack city directly
+			if(maxEnemyUnits < (totalPlayerUnits - 2) )
+			{
+				attackWithUnit("cKnight", enemyCity);
+				attackWithUnit("cSoldier", enemyCity);
+				attackWithUnit("cCatapult", enemyCity);
+			}
+			//Advantage is big enough to attack buildings, but not city
+			else if(maxEnemyUnits < totalPlayerUnits)
+			{
+				//No enemy buildings to attack
+				if(totalEnemyBuildings == 0)
+				{
+					attackWithUnit("cKnight", enemyCity);
+					attackWithUnit("cSoldier", enemyCity);
+					attackWithUnit("cCatapult", enemyCity);
+				}
+				else
+				{
+					var buildingList = ["Barracks", "Farm", "Mine"];
+					for (x = 0; x < buildingList.length; x++)
+					{
+						building = me.game.world.getChildByName(buildingList[x]);
+						totalEnemyBuildings += building.length;
+						if(building.length <= 0)
+						{
+							continue;
+						}
+						
+						//for(y = 0; y < building.length; y++)
+						//{
+						attackWithUnit("cKnight", building[0]);
+						attackWithUnit("cSoldier", building[0]);
+						attackWithUnit("cCatapult", building[0]);
+							//break;
+						//}
+
+						break;
+					}
+				}
+			}
+			//Attack enemy units
+			else
+			{
+				unitList = ["Knight", "Soldier", "Catapult"];
+				for (x = 0; x < unitList.length; x++)
+				{
+					unit = me.game.world.getChildByName(unitList[x]);
+					totalEnemyUnits += unit.length;
+					if(unit.length <= 0)
+					{
+						continue;
+					}
+					
+					//for(y = 0; y < unit.length; y++)
+					//{
+					attackWithUnit("cKnight", unit[0]);
+					attackWithUnit("cSoldier", unit[0]);
+					attackWithUnit("cCatapult", unit[0]);
+					//}
+
+					break;
+				}
+
+			}
+
+			
+			//attackWithUnit("cKnight", enemyCity);
+			//attackWithUnit("cSoldier", enemyCity);
 			//moveUnit("cSoldier", dest_x, dest_y);
-			attackWithUnit("cCatapult", enemyCity);
+			//attackWithUnit("cCatapult", enemyCity);
 			//moveUnit("cCatapult", dest_x, dest_y);
 			
 			//Build up economy first

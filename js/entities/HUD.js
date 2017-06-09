@@ -231,7 +231,7 @@ game.HUD.menuPanel = me.Container.extend({
         this.addChild(new game.UI.menuSaveButton(0,35, this));
 		this.addChild(new game.UI.menuSoundButton(0,70, this));
 		this.addChild(new game.UI.menuQuitButton(0,105, this));
-		this.addChild(new game.UI.menuDebugButton(0,140, this));
+		//this.addChild(new game.UI.menuDebugButton(0,140, this));
     },
 	
 	

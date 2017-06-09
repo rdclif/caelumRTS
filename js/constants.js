@@ -62,6 +62,7 @@ var NORMAL_TARGET_CATAPULT	= 2;
 var NORMAL_TARGET_BUILDER	= 1;
 var NORMAL_TARGET_FARM		= 2;
 var NORMAL_TARGET_MINE		= 2;
+var NORMAL_UNIT_THRESHOLD	= 5;
 
 //Hard AI values
 var HARD_ACTION_INTERVAL	= 100;
@@ -71,6 +72,7 @@ var HARD_TARGET_CATAPULT	= 5;
 var HARD_TARGET_BUILDER		= 3;
 var HARD_TARGET_FARM		= 3;
 var HARD_TARGET_MINE		= 3;
+var HARD_UNIT_THRESHOLD		= 3;
 
 
 // Just default values, will be immediately changed in utils.js
@@ -81,5 +83,7 @@ var AI_TARGET_CATAPULT	= 5;
 var AI_TARGET_BUILDER	= 3;
 var AI_TARGET_FARM		= 1;
 var AI_TARGET_MINE		= 1;
+var AI_UNIT_THRESHOLD	= 3;
 
 var AI_BUILDING_SPACING	= 200;
+
