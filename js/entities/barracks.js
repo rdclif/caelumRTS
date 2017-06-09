@@ -65,6 +65,8 @@ game.Barracks = game.playerObject.extend({
 			removeFromWorld("selectBox", this);
             me.game.world.removeChild(this);
         }
+		
+		removeFromWorld("hpBar");
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 

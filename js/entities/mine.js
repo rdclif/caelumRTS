@@ -91,6 +91,7 @@ game.Mine = game.playerObject.extend({
         }
         me.game.world.addChild(new game.hpBar(this.pos.x, this.pos.y, this.height, this));
 
+		removeFromWorld("hpBar");
 		//Create selection box around newly selected object
 		removeFromWorld("selectBox");
 		createSelectionBox( this );		

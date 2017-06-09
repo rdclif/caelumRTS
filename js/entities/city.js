@@ -38,6 +38,8 @@ game.City = game.playerObject.extend({
 
         this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 
+		this.counter = 0;
+		
         this.maxHP = CITY_HP;
         this.hp = CITY_HP;
 
@@ -58,6 +60,14 @@ game.City = game.playerObject.extend({
      */
     update: function (dt) {
 
+	    //player earns resources from city
+        this.counter += 1;
+        if (this.counter >= TIMETHRESHOLD_RESOURCES) {
+            game.data.foodCounter += FOODPERTICK_CITY;
+			game.data.goldCounter += GOLDPERTICK_CITY;
+            this.counter = 0;
+        }
+	
         if (this.training) {
             this.trainPlayer()
         }
