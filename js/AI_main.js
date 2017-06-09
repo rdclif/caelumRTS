@@ -236,7 +236,6 @@ game.AI_main = me.Entity.extend({
 			//Prioritize production structures next
 			else if ( (this.numBuildings.Barracks + this.inProgress_Buildings.Barracks) < 1)
 			{
-				console.log("BARRACHS");
 				buildBuilding("barracksComputerObject", this);
 			}
 			
