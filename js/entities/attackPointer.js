@@ -5,11 +5,11 @@ game.attackIcon = game.playerObject.extend({
     init : function (x, y) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image : "cursorSword_silver",
+            image : "mouseSword",
             name : "attackIcon",
-            width : 34,
-            height : 37,
-            framewidth : 34
+            width : 18,
+            height : 20,
+            framewidth : 18
         }]);
 
         // ensure the player is updated even when outside of the viewport

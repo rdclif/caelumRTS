@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7821a996-d1bc-4730-8af4-f1b6f7a59dfc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cCity.js" afterPath="$PROJECT_DIR$/js/entities/cCity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/city.js" afterPath="$PROJECT_DIR$/js/entities/city.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/screens/play.js" afterPath="$PROJECT_DIR$/js/screens/play.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/attackPointer.js" afterPath="$PROJECT_DIR$/js/entities/attackPointer.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,6 +27,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="attackPointer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/entities/attackPointer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="farm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/entities/farm.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -40,7 +47,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="city.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="city.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/entities/city.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="810">
@@ -172,10 +179,10 @@
         <option value="$PROJECT_DIR$/js/entities/barracksPointer.js" />
         <option value="$PROJECT_DIR$/js/entities/HUD.js" />
         <option value="$PROJECT_DIR$/js/entities/entities.js" />
-        <option value="$PROJECT_DIR$/js/entities/attackPointer.js" />
         <option value="$PROJECT_DIR$/js/screens/play.js" />
         <option value="$PROJECT_DIR$/js/entities/cCity.js" />
         <option value="$PROJECT_DIR$/js/entities/city.js" />
+        <option value="$PROJECT_DIR$/js/entities/attackPointer.js" />
       </list>
     </option>
   </component>
@@ -244,10 +251,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="21" />
-    <option name="y" value="51" />
+    <option name="x" value="66" />
+    <option name="y" value="122" />
     <option name="width" value="1532" />
-    <option name="height" value="812" />
+    <option name="height" value="671" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -530,22 +537,22 @@
       <workItem from="1496942798375" duration="26183000" />
       <workItem from="1497022021829" duration="18000" />
       <workItem from="1497022059158" duration="5177000" />
-      <workItem from="1497027302573" duration="3912000" />
+      <workItem from="1497027302573" duration="4783000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="366056000" />
+    <option name="totallyTimeSpent" value="366927000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="21" y="51" width="1532" height="812" extended-state="0" />
+    <frame x="66" y="122" width="1532" height="671" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23163468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14861111" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18480138" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24884182" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1842576" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -604,13 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
           <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/save.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -880,14 +880,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/attackPointer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="50" column="71" lean-forward="false" selection-start-line="50" selection-start-column="71" selection-end-line="50" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/builder.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="461">
@@ -960,6 +952,22 @@
             <marker date="1497031381000" expanded="true" signature="111:1066" ph="{...}" />
             <marker date="1497031381000" expanded="true" signature="3851:3917" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/save.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/attackPointer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
