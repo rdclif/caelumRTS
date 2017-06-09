@@ -130,4 +130,33 @@ game.UI.storyBox = me.GUI_Object.extend({
 
 });
 
+game.UI.hudText = me.Renderable.extend({
+
+    // constructor
+    init: function (x, y, w, h, string) {
+        this._super(me.Renderable, 'init', [x, y, w, h]);
+
+        this.font = new me.Font("kenpixel", 9, "#8B0000");
+
+        this.label = string;
+
+        this.name = "hudText";
+
+    },
+
+
+    update: function (dt) {
+        return true;
+    },
+
+    draw: function (renderer) {
+        this.font.draw(renderer, this.label, this.pos.x, this.pos.y);
+    },
+
+
+    onDestroyEvent: function () {
+        return true;
+    }
+});
+
 
