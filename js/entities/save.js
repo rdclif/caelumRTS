@@ -20,7 +20,7 @@ game.save.object.prototype.removeSave = function () {
 game.save.object.prototype.saveAll = function () {
     //clear out old save
     this.removeSave();
-
+	
     //clear storage for reload
     while (this.data.length > 0) {
         this.data.pop();
@@ -45,6 +45,9 @@ game.save.object.prototype.saveAll = function () {
     }
     //save sprites to local storage
     me.save.add({"sprites" : this.data});
+	
+	
+	me.game.world.getChildByName("menuPanel")[0].alert("Game saved successfully!");
 
 };
 

@@ -60,7 +60,9 @@ game.UI.menuSaveButton = me.GUI_Object.extend({
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
         //save important data
-        me.saveGame.saveAll();
+		game.data.saving = true;
+		//me.game.world.getChildByName("menuPanel")[0].alert("Saving, please wait...");
+        //me.saveGame.saveAll();
         this.container.remove();
         me.game.repaint();
         //deactivate menu menu button

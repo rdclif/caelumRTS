@@ -13,6 +13,7 @@ var game = {
 		foodCounter_comp : 500,
 
         //loadSave is used in the play onReset function
+		saving: false,
         loadSave : 0
     },
 

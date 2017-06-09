@@ -15,9 +15,8 @@ function removeFromWorld( itemName, sprite = null )
 				}
 			
 			}
-			
 			me.game.world.removeChild(itemList[i]);	
-
+			console.log("Done");
 		}
     }
 		

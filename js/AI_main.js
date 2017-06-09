@@ -43,6 +43,28 @@ game.AI_main = me.Entity.extend({
 	
     update : function (dt) {
 
+		//console.log(game.data);
+		if(game.data.saving == true)
+		{
+			//Freeze the AI while the game is saving
+			AI_ACTION_INTERVAL = 100000;
+			
+			var constructions = me.game.world.getChildByName("buildingSite");
+			if(constructions.length > 0)
+			{
+				//Do nothing
+			}
+			else
+			{
+				me.saveGame.saveAll();
+				setHardMode();
+				game.data.saving = false;
+			}
+			
+
+		}
+
+	
 		//Check victory conditions
 		var city = me.game.world.getChildByName("cCity");
 		var enemyCity = me.game.world.getChildByName("city");
