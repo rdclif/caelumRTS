@@ -123,16 +123,16 @@ game.Barracks = game.playerObject.extend({
                 }
             }
             if (string === "knightPlayer") {
-                if (game.data.goldCounter >= 500 && game.data.foodCounter >= 200) {
+                if (game.data.goldCounter >= KNIGHT_COST_GOLD && game.data.foodCounter >= KNIGHT_COST_FOOD) {
                     this.trainx = x;
                     this.trainy = y;
                     this.trainType = string;
                     this.training = true;
                     this.trainTime = 0;
-                    game.data.goldCounter -= 500;
-                    game.data.foodCounter -= 200;
+                    game.data.goldCounter -= KNIGHT_COST_GOLD;
+                    game.data.foodCounter -= KNIGHT_COST_FOOD;
                 } else {
-                    if (game.data.goldCounter < 500) {
+                    if (game.data.goldCounter < KNIGHT_COST_GOLD) {
                         menu.alert("You do not have enough gold.");
                     } else {
                         menu.alert("You do not have enough food.");
