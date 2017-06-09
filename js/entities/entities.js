@@ -268,6 +268,8 @@ game.playerObject = me.Entity.extend({
                     return true;
                 } else if (me.game.world.children[i].containsPoint(right, bottom)) {
                     return true;
+                } else if (me.game.world.children[i].containsPoint(bounds.right, bounds.top)) {
+                    return true;
                 }
             }
         }
