@@ -28,13 +28,13 @@ game.PlayScreen = me.ScreenObject.extend({
 
         } else {
 
-            me.game.world.addChild(me.pool.pull("knightPlayer", 300, 300));
+            //me.game.world.addChild(me.pool.pull("knightPlayer", 300, 300));
             me.game.world.addChild(me.pool.pull("cityObject", 100, 150));
 
             //load computer player units
             var level  = me.levelDirector.getCurrentLevel();
 
-            me.game.world.addChild(me.pool.pull("knightComputer", level.width-300, level.height-100));
+            //me.game.world.addChild(me.pool.pull("knightComputer", level.width-300, level.height-100));
             me.game.world.addChild(me.pool.pull("cityComputerObject", level.width-300, level.height-300));
 
 

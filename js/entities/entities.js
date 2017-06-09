@@ -98,7 +98,7 @@ game.playerObject = me.Entity.extend({
                 //console.log("already attacking this");
             }else {
                 if(sprite.name === "cBuilder") {
-                    me.game.world.getChildByName("menuPanel")[0].alert("Where is your honor!? I cannot attack a poor defenceless builder...");
+                    me.game.world.getChildByName("menuPanel")[0].alert("Where is your honor!? I cannot attack a poor defenseless builder...");
                 } else {
                     this.attackObject = sprite;
                     this.newX = Math.round(Math.random() * ((sprite.pos.x + sprite.width) - (sprite.pos.x)) + (sprite.pos.x));
@@ -111,7 +111,7 @@ game.playerObject = me.Entity.extend({
             }
         } else {
             if(sprite.name === "cBuilder") {
-                me.game.world.getChildByName("menuPanel")[0].alert("Where is your honor? I cannot attack a poor defenceless builder...");
+                me.game.world.getChildByName("menuPanel")[0].alert("Where is your honor? I cannot attack a poor defenseless builder...");
             } else {
                 this.attackObject = sprite;
                 this.newX = Math.round(Math.random() * ((sprite.pos.x + sprite.width) - (sprite.pos.x)) + (sprite.pos.x));
