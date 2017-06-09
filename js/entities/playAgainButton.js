@@ -3,42 +3,37 @@ game.UI = game.UI || {};
 /**
  * a basic button control
  */
-game.UI.moveButton = me.GUI_Object.extend({
+game.UI.playAgainButton = me.GUI_Object.extend({
     /**
      * constructor
      */
-    init: function(x, y, player) {
+    init: function(x, y) {
         this._super(me.GUI_Object, "init", [ x, y, {
             image: game.texture,
-            region : "buttonSquare_blue",
-            player : {}
+            region : "buttonLong_blue",
         } ]);
 
         // offset of the two used images in the texture
-        this.unclicked_region = game.texture.getRegion("buttonSquare_blue");
-        this.clicked_region = game.texture.getRegion("buttonSquare_blue_pressed");
+        this.unclicked_region = game.texture.getRegion("buttonLong_blue");
+        this.clicked_region = game.texture.getRegion("buttonLong_blue_pressed");
 
-
-        this.player = player;
-
-
-
-        this.name = "moveButton";
-        this.alwaysUpdate = true;
 
         this.anchorPoint.set(0, 0);
-        this.setOpacity(0.9);
+        //this.setOpacity(0.8);
 
+        this.name = "playAgainButton";
+        this.alwaysUpdate = true;
 
         this.font = new me.Font("kenpixel", 12, "black");
         this.font.textAlign = "center";
         this.font.textBaseline = "middle";
 
-        this.label = "Move";
+        this.label = "Play Again";
+		
+		this.active = false;
 
         // only the parent container is a floating object
         this.floating = false;
-
     },
 
     /**
@@ -49,7 +44,8 @@ game.UI.moveButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
-        // don't propagate the event
+        
+        //console.log(this);
         return false;
     },
 
@@ -61,19 +57,11 @@ game.UI.moveButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
-        removeFromWorld("attackIcon");
-        me.game.world.addChild(new game.moveIcon(100, 100));
-        // don't propagate the event
+        me.state.change(me.state.MENU);
         return false;
     },
 
-    //movePointer calls this function - passes mouse x y back so this can call player movePlayerTo function
-    movePlayer : function (x, y) {
-        //melon likes it better when I create new vars to pass
-        var newx = x;
-        var newy = y;
-        this.player.movePlayerTo(newx,newy);
-    },
+
 
     draw: function(renderer) {
         this._super(me.GUI_Object, "draw", [ renderer ]);
@@ -82,5 +70,14 @@ game.UI.moveButton = me.GUI_Object.extend({
             this.pos.x + this.width / 2,
             this.pos.y + this.height / 2
         );
+    },
+
+    removeChildNow : function (child) {
+        this._super(me.Container, "removeChildNow", [child]);
+        this.updateChildBounds();
+    },
+    update: function () {
+        return this.selected || this.hover;
     }
+
 });

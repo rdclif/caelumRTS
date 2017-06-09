@@ -224,6 +224,10 @@ game.HUD.menuPanel = me.Container.extend({
         this.addChild(new game.UI.alertBox(me.game.viewport.width/2-200,me.game.viewport.height/2-25, this, string));
     },
 
+    story : function (string) {
+        this.addChild(new game.UI.storyBox(me.game.viewport.width/2-200,me.game.viewport.height/2-25, this, string));
+    },
+
     menu : function () {
         this.addChild(new game.UI.menuSaveButton(0,35, this));
 		this.addChild(new game.UI.menuSoundButton(0,70, this));

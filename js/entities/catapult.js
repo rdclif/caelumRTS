@@ -84,6 +84,11 @@ game.Catapult = game.playerObject.extend({
                 this.body.vel.y = 0;
                 this.attackCollision(this.attackObject);
                 this.fightTimer += 1;
+                if(this.fightDirection === "left") {
+                    this.renderable.flipX(true);
+                } else {
+                    this.renderable.flipX(false);
+                }
             } else {
                 this.renderable.flipX(false);
                 if (Math.abs(distx) > this.width/4 || Math.abs(disty) > this.height/4) {
@@ -131,7 +136,6 @@ game.Catapult = game.playerObject.extend({
 
 
         if (this.fightTimer % 150 === 0) {
-            console.log(this.fightTimer);
             this.catFightHit(this.attackObject, CATAPULT_STRENGTH);
         }
 
@@ -276,13 +280,11 @@ game.Catapult = game.playerObject.extend({
             switch (response.a.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (response.a.walk){
-                        console.log(this.sId);
                         return false;
                     }
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
                     if (response.a.walk){
-                        console.log(this.sId);
                         return false;
                     }
                     return true;

@@ -209,14 +209,12 @@ game.cKnight = game.playerObject.extend({
                     }
                 case me.collision.types.ENEMY_OBJECT:
                     if (this.walk) {
-                        console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
                     }
                 case me.collision.types.WORLD_SHAPE:
                     if (this.walk) {
-                        console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;

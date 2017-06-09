@@ -206,14 +206,12 @@ game.cSoldier = game.playerObject.extend({
                     }
                 case me.collision.types.ENEMY_OBJECT:
                     if (this.walk) {
-                        console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
                     }
                 case me.collision.types.WORLD_SHAPE:
                     if (this.walk) {
-                        console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
@@ -228,13 +226,13 @@ game.cSoldier = game.playerObject.extend({
             switch (response.a.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (response.a.walk){
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return false;
                     }
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
                     if (response.a.walk){
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return false;
                     }
                     return true;
