@@ -31,7 +31,8 @@ game.AI_main = me.Entity.extend({
 		this.inProgress_Locations = new Array();
 		
 		this.foodIncome = 0;
-		this.goldIncome = 0;							  
+		this.goldIncome = 0;	
+	
     },
 	
 
@@ -140,8 +141,10 @@ game.AI_main = me.Entity.extend({
 			//moveUnit("cKnight", 50, 50);
 			//moveUnit("cKnight", dest_x, dest_y);
 			attackWithUnit("cKnight", enemyCity);
-			moveUnit("cSoldier", dest_x, dest_y);
-			moveUnit("cCatapult", dest_x, dest_y);
+			attackWithUnit("cSoldier", enemyCity);
+			//moveUnit("cSoldier", dest_x, dest_y);
+			attackWithUnit("cCatapult", enemyCity);
+			//moveUnit("cCatapult", dest_x, dest_y);
 			
 			//Build up economy first
 			//if (this.foodIncome < FOODPERTICK * 1 || this.goldIncome < GOLDPERTICK * 1)

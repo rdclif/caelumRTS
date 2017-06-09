@@ -62,7 +62,7 @@ game.City = game.playerObject.extend({
             this.trainPlayer()
         }
 
-        //vicotry condition
+        //defeat condition
         if (this.hp <= 0) {
             me.state.change(me.state.GAMEOVER);
         }

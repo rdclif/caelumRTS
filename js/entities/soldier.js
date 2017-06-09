@@ -129,6 +129,9 @@ game.Soldier = game.playerObject.extend({
         //check own hp
         if (this.hp <= 0) {
             this.stopWalkOrFight();
+			
+			//Remove selection box if it is there
+			removeFromWorld("selectBox", this);
             me.game.world.removeChild(this);
         }
 

@@ -36,15 +36,10 @@ game.cSoldier = game.playerObject.extend({
         this.newY = y;
 
         this.pool = "soldierComputer";
-
-        this.collision = false;
-        this.collisionX = x;
-        this.collisionY = y;
-
-
-        this.maxHP = 100;
-        this.hp = 100;
-        this.range = 50;
+		
+        this.maxHP = SOLDIER_HP;
+        this.hp = SOLDIER_HP;
+        this.range = SOLDIER_RANGE;
         this.attack = false;
         this.attackObject = {};
         this.fighting = false;
@@ -52,6 +47,13 @@ game.cSoldier = game.playerObject.extend({
         this.fightTimer = 1;
         this.fightTurn = false;
         this.beingAttacked = false;
+		
+		this.direction = "down";
+		this.lastdirection = "down";
+		
+        this.collision = false;
+        this.collisionX = x;
+        this.collisionY = y;
 
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
@@ -122,6 +124,9 @@ game.cSoldier = game.playerObject.extend({
         //check own hp
         if (this.hp <= 0) {
             this.stopWalkOrFight();
+			
+			//Remove selection box if it is there
+			removeFromWorld("selectBox", this);
             me.game.world.removeChild(this);
         }
 

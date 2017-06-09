@@ -8,7 +8,7 @@
         this.float = false;
 		this.name = "selectBox";
         this.sprite = sprite;
-
+		
 		this.hOffset = hOffset;
 		this.vOffset = vOffset;
 		

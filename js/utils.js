@@ -1,12 +1,23 @@
 
-function removeFromWorld( itemName )
+function removeFromWorld( itemName, sprite = null )
 {
 	var itemList = me.game.world.getChildByName(itemName);
     if (itemList)
 	{
 		for (i = 0; i < itemList.length; i++)
 		{
-			me.game.world.removeChild(itemList[i]);
+			if(sprite != null)
+			{
+				//Get rid of selection box only if it is not for the same unit
+				if(sprite.name != itemList[i].sprite.name)
+				{
+					return;
+				}
+			
+			}
+			
+			me.game.world.removeChild(itemList[i]);	
+
 		}
     }
 		
@@ -232,7 +243,7 @@ function moveUnit(unitName, destinationX, destinationY)
 		for(x = 0; x < unitList.length; x++)
 		{
 			unit = unitList[x];
-			if (!(unit.walk))
+			if (!(unit.walk)) 
 			{
 				//console.log("Old X: " + destinationX + " Old Y: " + destinationY);
 				while( unit.isSpaceOccupied(destinationX, destinationY) )

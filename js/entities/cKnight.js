@@ -37,21 +37,24 @@ game.cKnight = game.playerObject.extend({
 
         this.pool = "knightComputer";
 
-        this.collision = false;
-        this.collisionX = x;
-        this.collisionY = y;
-
         this.maxHP = KNIGHT_HP;
         this.hp = KNIGHT_HP;
-        this.range = 50;
+        this.range = KNIGHT_RANGE;
         this.attack = false;
         this.attackObject = {};
         this.fighting = false;
         this.fightDirection = "left";
         this.fightTimer = 1;
         this.fightTurn = false;
-        this.beingAttacked = false;
+		this.beingAttacked = false;
 
+		this.direction = "down";
+		this.lastdirection = "down";
+		
+        this.collision = false;
+        this.collisionX = x;
+        this.collisionY = y;		
+		
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
         this.setId();
@@ -68,6 +71,8 @@ game.cKnight = game.playerObject.extend({
 
         var distx = this.newX - this.pos.x;
         var disty = this.newY - this.pos.y;
+
+
         if (this.attack) {
             if (this.attackInRange() || this.fighting) {
                 this.body.vel.x = 0;
@@ -99,13 +104,14 @@ game.cKnight = game.playerObject.extend({
             this.renderable.flipX(false);
             this.moveObject(distx, disty);
             if (!this.renderable.isCurrentAnimation(this.direction)) {
-                this.renderable.setCurrentAnimation(this.direction);
+                this.renderable.setCurrentAnimation(this.direction);											 
             }
         } else  {
             this.walk = false;
             this.body.vel.x = 0;
             this.body.vel.y = 0;
         }
+
         //--
         if (!(this.walk) && !(this.attack)) {
             this.renderable.flipX(false);
@@ -114,19 +120,34 @@ game.cKnight = game.playerObject.extend({
             }
         }
 
-
-        if (this.fightTimer % 50 === 0) {
-            this.fightHit(this.attackObject, KNIGHT_STRENGTH);
+		if (this.fightTimer % 50 === 0) {
+            this.fightHit(this.attackObject, SOLDIER_STRENGTH);
         }
-
-        this.checkAttackHP();
-
-        //check own hp
+		
+		
+        //this.checkAttackHP();							 
+        //check own hp					  
         if (this.hp <= 0) {
             this.stopWalkOrFight();
+			console.log(this.attackObject.name);
+			if(this.attackObject.name)
+			{
+				this.attackObject.stopWalkOrFight();
+			}
+			
+			//Remove selection box if it is there
+			removeFromWorld("selectBox", this);
             me.game.world.removeChild(this);
         }
 
+        //for following
+        if (this.attack && this.fighting===false && this.attackObject.type !== "structure") {
+            this.newX = this.attackObject.pos.x;
+            this.newY = this.attackObject.pos.y;
+            this.walk = true
+        }
+
+        this.attackSpriteOutRange();																							 
         //--
 
         this.body.update(dt);
@@ -138,12 +159,11 @@ game.cKnight = game.playerObject.extend({
     },
 
     movePlayerTo :function (x, y) {
-        console.log(this.sId);
 		this.newX = Math.round(x);
         this.newY = Math.round(y);
         this.collision = false;
         this.walk = true;
-        this.attack = false;
+		this.attack = false;					  
     },
 
     moveObject : function(distx, disty){
@@ -196,7 +216,9 @@ game.cKnight = game.playerObject.extend({
             switch (response.b.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (this.walk) {
+                        //console.log(this.sId);
                         if (response.b === this.attackObject){
+                            //console.log("allstop");
                             this.fighting = true;
                             this.allStop();
                             return true;
@@ -209,12 +231,14 @@ game.cKnight = game.playerObject.extend({
                     }
                 case me.collision.types.ENEMY_OBJECT:
                     if (this.walk) {
+                        //console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
                     }
                 case me.collision.types.WORLD_SHAPE:
                     if (this.walk) {
+                        //console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;

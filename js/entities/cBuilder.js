@@ -176,6 +176,8 @@ game.cBuilder = game.playerObject.extend({
 
     buildSomething : function (x, y, string) {
 		//console.log(this.player.numUnits.Builder);
+		this.player = me.game.world.getChildByName("cpu")[0];
+		
         //check if something there first
 	    if (!(this.isSpaceOccupied(x,y))) {
 			if (string === "barracksComputerObject") {

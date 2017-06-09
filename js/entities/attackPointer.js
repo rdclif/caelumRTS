@@ -49,7 +49,7 @@ game.attackIcon = game.playerObject.extend({
     onClick : function (event) {
         //TODO: Attack Stuff
         var click = this.isSpaceOccupied(this.pos.x, this.pos.y, true);
-        //console.log(click);
+        console.log(click);
         if (this.collisionBool && (click !== false)) {
             var attackButton = me.game.world.getChildByName("attackButton")[0];
             attackButton.movePlayerAttack(click);

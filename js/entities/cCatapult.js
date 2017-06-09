@@ -38,19 +38,22 @@ game.cCatapult = game.playerObject.extend({
 
         this.pool = "catapultComputer";
 
-        this.collision = false;
-        this.collisionX = x;
-        this.collisionY = y;
-
-        this.maxHP = 100;
-        this.hp = 100;
-        this.range = 200;
+        this.maxHP = CATAPULT_HP;
+        this.hp = CATAPULT_HP;
+        this.range = CATAPULT_RANGE;
         this.attack = false;
         this.attackObject = {};
         this.fighting = false;
         this.fightDirection = "left";
         this.fightTimer = 1;
         this.fightTurn = false;
+		
+		this.direction = "down";
+		this.lastdirection = "down";
+		
+        this.collision = false;
+        this.collisionX = x;
+        this.collisionY = y;
 
         this.body.collisionType = me.collision.types.ENEMY_OBJECT;
 
@@ -123,7 +126,7 @@ game.cCatapult = game.playerObject.extend({
 
 
         if (this.fightTimer % 150 === 0) {
-            console.log(this.fightTimer);
+            //console.log(this.fightTimer);
             this.catFightHit(this.attackObject, CATAPULT_STRENGTH);
         }
 
@@ -140,6 +143,9 @@ game.cCatapult = game.playerObject.extend({
         //check own hp
         if (this.hp <= 0) {
             this.stopWalkOrFight();
+			
+			//Remove selection box if it is there
+			removeFromWorld("selectBox", this);
             me.game.world.removeChild(this);
         }
 
@@ -206,21 +212,21 @@ game.cCatapult = game.playerObject.extend({
             switch (response.b.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (this.walk) {
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
                     }
                 case me.collision.types.ENEMY_OBJECT:
                     if (this.walk) {
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
                     }
                 case me.collision.types.WORLD_SHAPE:
                     if (this.walk) {
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return this.collisionEvent(response.b);
                     } else {
                         return true;
@@ -235,13 +241,13 @@ game.cCatapult = game.playerObject.extend({
             switch (response.a.body.collisionType) {
                 case me.collision.types.PLAYER_OBJECT:
                     if (response.a.walk){
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return false;
                     }
                     return true;
                 case me.collision.types.ENEMY_OBJECT:
                     if (response.a.walk){
-                        console.log(this.sId);
+                        //console.log(this.sId);
                         return false;
                     }
                     return true;

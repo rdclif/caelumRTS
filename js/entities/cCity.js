@@ -40,14 +40,13 @@ game.cCity = game.playerObject.extend({
 
         this.setId();
 
-        this.type = "structure";
+		this.type = "structure";
         this.attack = false;
         this.attackObject = {};
         this.fighting = false;
         this.fightDirection = "left";
         this.fightTimer = 0;
-        this.fightTurn = false;
-
+        this.fightTurn = false;													
     },
 
     /*
@@ -59,11 +58,10 @@ game.cCity = game.playerObject.extend({
             this.trainPlayer(this.player)
         }
 
-        //vicotry condition
+        //defeat condition
         if (this.hp <= 0) {
             me.state.change(me.state.GAME_END);
-        }
-
+        }						  
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 
@@ -119,7 +117,7 @@ game.cCity = game.playerObject.extend({
             var xLoc = this.trainx-60;
             var yLoc = this.trainy+120;
 
-            //move right if occupied
+            //move left if occupied
             while(this.isSpaceOccupied(xLoc, yLoc)) {
                 xLoc -= 40;
             };
@@ -127,8 +125,7 @@ game.cCity = game.playerObject.extend({
             me.game.world.addChild(me.pool.pull(this.trainType, xLoc, yLoc));
             this.trainTime = 0;
             this.training = false;
-			//Probably will be removed - alternate implementation
-			//incrementComputerUnitList(player, this.trainType);
+
             this.trainType = "";
         }
     },

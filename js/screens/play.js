@@ -22,12 +22,10 @@ game.PlayScreen = me.ScreenObject.extend({
         me.game.world.addChild(this.menu, Infinity);
 
 
-        // if the loadSave bool set, calls load function
+        // For loading save or loading new game
         if (game.data.loadSave) {
             this.loadSave();
 
-
-            //else load a new game
         } else {
 
             me.game.world.addChild(me.pool.pull("knightPlayer", 300, 300));
@@ -54,24 +52,23 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.AI_logic = new game.AI_main();
 		me.game.world.addChild(this.AI_logic);
 
-        me.game.world.getChildByName("menuPanel")[0].story("An enemy from far away has entered into your lands and constructed a\n new city! It appears they are setting up for an attack. You must defend\n your territory! Destroy their city before they destroy yours.\n\nHurry, there is no time to waste!");
     },
     keyPressed: function (action /*, keyCode, edge */) {
 
         // navigate the map :)
         if (action === "left") {
-            me.game.viewport.move(-(me.levelDirector.getCurrentLevel().tilewidth ), 0);
+            me.game.viewport.move(-(me.levelDirector.getCurrentLevel().tilewidth / 2), 0);
 
         } else if (action === "right") {
-            me.game.viewport.move(me.levelDirector.getCurrentLevel().tilewidth , 0);
+            me.game.viewport.move(me.levelDirector.getCurrentLevel().tilewidth / 2, 0);
 
         }
 
         if (action === "up") {
-            me.game.viewport.move(0, -(me.levelDirector.getCurrentLevel().tileheight ));
+            me.game.viewport.move(0, -(me.levelDirector.getCurrentLevel().tileheight / 2));
 
         } else if (action === "down") {
-            me.game.viewport.move(0, me.levelDirector.getCurrentLevel().tileheight );
+            me.game.viewport.move(0, me.levelDirector.getCurrentLevel().tileheight / 2);
         }
 
         // force redraw
@@ -86,7 +83,7 @@ game.PlayScreen = me.ScreenObject.extend({
         var food = JSON.parse(localStorage.getItem("me.save.Food"));
         var gold = JSON.parse(localStorage.getItem("me.save.Gold"));
         var hard = JSON.parse(localStorage.getItem("me.save.Hard"));
-        //console.log(sprites);
+        console.log(sprites);
 
         game.data.idCounter = idcounter;
         game.data.goldCounter = gold;
@@ -98,8 +95,15 @@ game.PlayScreen = me.ScreenObject.extend({
             var added = me.game.world.addChild(me.pool.pull(sprite.pool, sprite.x, sprite.y));
             added.loadHP(sprite.hp);
         }
+		
+		//var player = me.game.world.getChildByName("cpu")[0];
+		//console.log(player);
+		var AI_logic = new game.AI_main();
+		me.game.world.addChild(AI_logic);
+		
         game.data.loadSave = 0;
 		setHardMode();
+
     },
 
     /**

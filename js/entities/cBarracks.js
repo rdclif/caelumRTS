@@ -62,6 +62,9 @@ game.cBarracks = game.playerObject.extend({
         }
 
         if (this.hp <= 0) {
+			
+			//Remove selection box if it is there
+			removeFromWorld("selectBox", this);
             me.game.world.removeChild(this);
         }
 
@@ -97,6 +100,8 @@ game.cBarracks = game.playerObject.extend({
 		//console.log("Inside callTraining");
 		//console.log("Gold: " + game.data.goldCounter_comp);
 		//console.log("Food: " + game.data.foodCounter_comp);
+		this.player = me.game.world.getChildByName("cpu")[0];
+		
 		if (!this.training)
 		{
 			if (string === "soldierComputer") {

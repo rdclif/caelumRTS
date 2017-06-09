@@ -63,7 +63,7 @@ game.buildBarracksIcon = game.playerObject.extend({
             me.game.world.removeChild(this);
             me.game.repaint();
         } else {
-            me.game.world.getChildByName("menuPanel")[0].alert("Can't build here, somthing is in the way!");
+            me.game.world.getChildByName("menuPanel")[0].alert("Can't build here, something is in the way!");
             me.game.world.removeChild(this);
             me.game.repaint();
         }
