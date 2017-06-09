@@ -20,6 +20,7 @@ game.cBarracks = game.playerObject.extend({
             trainTime: 0
         }]);
 
+		
 		this.player = me.game.world.getChildByName("cpu")[0];
 
         // ensure the player is updated even when outside of the viewport
@@ -42,6 +43,7 @@ game.cBarracks = game.playerObject.extend({
 
         this.pool = "barracksComputerObject";
 
+		this.training = false;
         this.type = "structure";
         this.attack = false;
         this.attackObject = {};

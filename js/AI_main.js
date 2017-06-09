@@ -91,6 +91,7 @@ game.AI_main = me.Entity.extend({
 
 		if(this.act)
 		{
+			this.act = false;
 			checkComputerRoster(this);
 			
 			//City position is used as a reference for all other building placement
@@ -146,8 +147,8 @@ game.AI_main = me.Entity.extend({
 				maxEnemyUnits = AI_UNIT_THRESHOLD;
 			}
 			
-			console.log("Total: " + totalEnemyUnits);
-			console.log("Max: " + maxEnemyUnits);
+			//console.log("Total: " + totalEnemyUnits);
+			//console.log("Max: " + maxEnemyUnits);
 			//Advantage is big enough to attack city directly
 			if(maxEnemyUnits < (totalPlayerUnits - 2) )
 			{
@@ -234,38 +235,84 @@ game.AI_main = me.Entity.extend({
 			}
 			
 			//Prioritize production structures next
-			else if ( (this.numBuildings.Barracks + this.inProgress_Buildings.Barracks) < 1)
+			else if ( (this.numBuildings.Barracks + this.inProgress_Buildings.Barracks) < AI_TARGET_BARRACKS)
 			{
 				buildBuilding("barracksComputerObject", this);
 			}
 			
 			if (this.numBuildings.Barracks >= 1)
 			{
-				var barracks = me.game.world.getChildByName("cBarracks")[0];
-				var bar_spawnLocation_x = barracks.pos.x;
-				var bar_spawnLocation_y = barracks.pos.y;
+				//var barracks = me.game.world.getChildByName("cBarracks")[0];
+				var barracksList = me.game.world.getChildByName("cBarracks");
+				for(x = 0; x < barracksList.length; x++)
+				{
+					if(barracksList[x].training == false)
+					{
+						var barracks = barracksList[x];
+
+						
+						var bar_spawnLocation_x = barracks.pos.x;
+						var bar_spawnLocation_y = barracks.pos.y;
+						
+						//console.log("Knights: " + this.numUnits.Knight);
+						//console.log("Soldiers: " + this.numUnits.Soldier);
+						
+						//Determine which unit to build based on the proportions set in constants.js
+
+						
+						var total = AI_SOLDIER_PROPORTION + AI_KNIGHT_PROPORTION + AI_CATAPULT_PROPORTION;
+						var lowerBound = AI_KNIGHT_PROPORTION / total;
+						var midBound = AI_SOLDIER_PROPORTION / total + lowerBound;
+						
+						var unitQueued = false;
+						
+						while (!unitQueued)
+						{
+							var toBuild = "";
+							var randNum = Math.random();
+							
+							//console.log(randNum);
+							
+							if(randNum <= lowerBound)
+							{
+								toBuild = "Knight";
+							}
+							else if (randNum > lowerBound && randNum <= midBound)
+							{
+								toBuild = "Soldier";
+							}
+							else
+							{
+								toBuild = "Catapult";
+							}
+							
+							if(toBuild == "Knight" && (this.numUnits.Knight < AI_TARGET_KNIGHT) )
+							{
+								barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "knightComputer");
+								this.inProgress_Units.Knight += 1;
+								unitQueued = true;
+							}
+							else if(toBuild == "Soldier" && (this.numUnits.Soldier < AI_TARGET_SOLDIER) )
+							{
+								barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "soldierComputer");
+								this.inProgress_Units.Soldier += 1;
+								unitQueued = true;
+							}
+							else if(toBuild == "Catapult" && (this.numUnits.Catapult < AI_TARGET_CATAPULT) )
+							{
+								barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "catapultComputer");
+								this.inProgress_Units.Catapult += 1;
+								unitQueued = true;
+							}
+						}
+						
+					}
+				}
 				
-				//console.log("Knights: " + this.numUnits.Knight);
-				//console.log("Soldiers: " + this.numUnits.Soldier);
-				if(this.numUnits.Knight < AI_TARGET_KNIGHT)
-				{
-					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "knightComputer");
-					this.inProgress_Units.Knight += 1;
-				}
-				else if(this.numUnits.Soldier < AI_TARGET_SOLDIER)
-				{
-					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "soldierComputer");
-					this.inProgress_Units.Soldier += 1;
-				}
-				else if(this.numUnits.Catapult < AI_TARGET_CATAPULT)
-				{
-					barracks.callTraining(bar_spawnLocation_x, bar_spawnLocation_y, "catapultComputer");
-					this.inProgress_Units.Catapult += 1;
-				}
 			}
 			
 			
-			this.act = false;
+
 		}
 		
 		
