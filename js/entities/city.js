@@ -62,6 +62,7 @@ game.City = game.playerObject.extend({
 
 	    //player earns resources from city
         this.counter += 1;
+
         if (this.counter >= TIMETHRESHOLD_RESOURCES) {
             game.data.foodCounter += FOODPERTICK_CITY;
 			game.data.goldCounter += GOLDPERTICK_CITY;
