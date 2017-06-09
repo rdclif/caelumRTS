@@ -52,11 +52,9 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.AI_logic = new game.AI_main();
 		me.game.world.addChild(this.AI_logic);
 
-        me.game.world.getChildByName("menuPanel")[0].story("An enemy from far away has entered into your lands and constructed a\n new city! It appears they are setting up for an attack. You must defend\n your territory! Destroy their city before they destroy yours.\n\nHurry, there is no time to waste!");
     },
     keyPressed: function (action /*, keyCode, edge */) {
-        //remove if there
-        me.game.world.getChildByName("menuPanel")[0].remove();
+
         // navigate the map :)
         if (action === "left") {
             me.game.viewport.move(-(me.levelDirector.getCurrentLevel().tilewidth / 2), 0);
@@ -84,12 +82,20 @@ game.PlayScreen = me.ScreenObject.extend({
         var idcounter = JSON.parse(localStorage.getItem("me.save.idCounter"));
         var food = JSON.parse(localStorage.getItem("me.save.Food"));
         var gold = JSON.parse(localStorage.getItem("me.save.Gold"));
+		var food_comp = JSON.parse(localStorage.getItem("me.save.Food_comp"));
+        var gold_comp = JSON.parse(localStorage.getItem("me.save.Gold_comp"));
         var hard = JSON.parse(localStorage.getItem("me.save.Hard"));
-        console.log(sprites);
+        //console.log(sprites);
 
+		var AI_logic = new game.AI_main();
+		me.game.world.addChild(AI_logic);
+		setHardMode();
+		
         game.data.idCounter = idcounter;
         game.data.goldCounter = gold;
         game.data.foodCounter = food;
+		game.data.goldCounter_comp = gold_comp;
+        game.data.foodCounter_comp = food_comp;
         game.data.hardMode = hard;
 
         for (var x = 0; x < sprites.length; x += 1) {
@@ -100,11 +106,9 @@ game.PlayScreen = me.ScreenObject.extend({
 		
 		//var player = me.game.world.getChildByName("cpu")[0];
 		//console.log(player);
-		var AI_logic = new game.AI_main();
-		me.game.world.addChild(AI_logic);
-		
+
         game.data.loadSave = 0;
-		setHardMode();
+
 
     },
 

@@ -35,6 +35,8 @@ function setHardMode()
 		AI_TARGET_FARM		= HARD_TARGET_FARM;
 		AI_TARGET_MINE		= HARD_TARGET_MINE;
 		AI_UNIT_THRESHOLD	= HARD_UNIT_THRESHOLD;
+		game.data.foodCounter_comp = HARD_START_FOOD;
+		game.data.goldCounter_comp = HARD_START_GOLD;
 	}
 	else
 	{
@@ -47,6 +49,8 @@ function setHardMode()
 		AI_TARGET_FARM		= NORMAL_TARGET_FARM;
 		AI_TARGET_MINE		= NORMAL_TARGET_MINE;
 		AI_UNIT_THRESHOLD	= NORMAL_UNIT_THRESHOLD;
+		game.data.foodCounter_comp = NORMAL_START_FOOD;
+		game.data.goldCounter_comp = NORMAL_START_GOLD;
 	}
 }
 

@@ -65,6 +65,8 @@ var NORMAL_TARGET_BUILDER	= 1;
 var NORMAL_TARGET_FARM		= 2;
 var NORMAL_TARGET_MINE		= 2;
 var NORMAL_UNIT_THRESHOLD	= 5;
+var NORMAL_START_FOOD		= 2000;
+var NORMAL_START_GOLD		= 2000;
 
 //Hard AI values
 var HARD_ACTION_INTERVAL	= 100;
@@ -75,7 +77,8 @@ var HARD_TARGET_BUILDER		= 3;
 var HARD_TARGET_FARM		= 3;
 var HARD_TARGET_MINE		= 3;
 var HARD_UNIT_THRESHOLD		= 3;
-
+var HARD_START_FOOD			= 5000;
+var HARD_START_GOLD			= 5000;
 
 // Just default values, will be immediately changed in utils.js
 var AI_ACTION_INTERVAL	= 100;
@@ -88,3 +91,4 @@ var AI_TARGET_MINE		= 1;
 var AI_UNIT_THRESHOLD	= 3;
 
 var AI_BUILDING_SPACING	= 200;
+

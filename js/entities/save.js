@@ -13,6 +13,8 @@ game.save.object.prototype.removeSave = function () {
     me.save.remove("idCounter");
     me.save.remove("Gold");
     me.save.remove("Food");
+	me.save.remove("Gold_comp");
+    me.save.remove("Food_comp");
     me.save.remove("sprites");
     me.save.remove("Hard");
 };
@@ -28,6 +30,8 @@ game.save.object.prototype.saveAll = function () {
     me.save.add({"idCounter": game.data.idCounter});
     me.save.add({"Gold": game.data.goldCounter});
     me.save.add({"Food": game.data.foodCounter});
+	me.save.add({"Gold_comp": game.data.goldCounter_comp});
+    me.save.add({"Food_comp": game.data.foodCounter_comp});
     me.save.add({"Hard": game.data.hardMode});
 
     //save important data
