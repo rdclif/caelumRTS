@@ -5,11 +5,11 @@ game.attackIcon = game.playerObject.extend({
     init : function (x, y) {
         // call the constructor
         this._super(game.playerObject, 'init', [x, y, {
-            image : "cursorSword_silver",
+            image : "mouseSword",
             name : "attackIcon",
-            width : 34,
-            height : 37,
-            framewidth : 34
+            width : 18,
+            height : 20,
+            framewidth : 18
         }]);
 
         // ensure the player is updated even when outside of the viewport
@@ -49,7 +49,6 @@ game.attackIcon = game.playerObject.extend({
     onClick : function (event) {
         //TODO: Attack Stuff
         var click = this.isSpaceOccupied(this.pos.x, this.pos.y, true);
-        console.log(click);
         if (this.collisionBool && (click !== false)) {
             var attackButton = me.game.world.getChildByName("attackButton")[0];
             attackButton.movePlayerAttack(click);

@@ -36,7 +36,7 @@ game.cCity = game.playerObject.extend({
         this.pool = "cityComputerObject";
 
 		this.counter = 0;
-		
+
         this.maxHP = CITY_HP;
         this.hp = CITY_HP;
 
@@ -58,6 +58,7 @@ game.cCity = game.playerObject.extend({
 
 		//computer earns resources from city
         this.counter += 1;
+
         if (this.counter >= TIMETHRESHOLD_RESOURCES) {
             game.data.foodCounter_comp += FOODPERTICK_CITY;
 			game.data.goldCounter_comp += GOLDPERTICK_CITY;

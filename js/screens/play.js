@@ -52,9 +52,11 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.AI_logic = new game.AI_main();
 		me.game.world.addChild(this.AI_logic);
 
+        me.game.world.getChildByName("menuPanel")[0].story("An enemy from far away has entered into your lands and constructed a\n new city! It appears they are setting up for an attack. You must defend\n your territory! Destroy their city before they destroy yours.\n\nHurry, there is no time to waste!");
     },
     keyPressed: function (action /*, keyCode, edge */) {
-
+        //remove if there
+        me.game.world.getChildByName("menuPanel")[0].remove();
         // navigate the map :)
         if (action === "left") {
             me.game.viewport.move(-(me.levelDirector.getCurrentLevel().tilewidth / 2), 0);
