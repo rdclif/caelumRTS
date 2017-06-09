@@ -38,7 +38,9 @@ game.Rock = me.Entity.extend({
             }
             var hit = Math.round((Math.random() * 6) + 1);
             hit = hit * CATAPULT_STRENGTH;
-            this.attackObject.hp -= hit;
+            if (this.attackObject.hp !== undefined) {
+                this.attackObject.hp -= hit;
+            }
             me.game.world.removeChild(this);
         }
 
