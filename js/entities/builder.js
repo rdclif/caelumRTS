@@ -211,7 +211,11 @@ game.Builder = game.playerObject.extend({
     onClick : function (event) {
         //alert(this.name);
        this.hud.remove();
-       if (!(this.building) ) {
+
+
+       if (!(this.building)) {
+           this.hud.builderPanel(this);
+       } else if (this.building && this.walk) {
            this.hud.builderPanel(this);
        }
 

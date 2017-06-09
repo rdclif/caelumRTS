@@ -166,6 +166,7 @@ game.playerObject = me.Entity.extend({
             if (this.walk) {
                 this.walk = false;
                 this.building = false;
+                this.collision = false;
                 this.newX = this.pos.x;
                 this.newY = this.pos.y;
             }
