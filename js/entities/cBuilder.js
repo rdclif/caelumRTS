@@ -181,7 +181,7 @@ game.cBuilder = game.playerObject.extend({
         //check if something there first
 	    if (!(this.isSpaceOccupied(x,y))) {
 			if (string === "barracksComputerObject") {
-                if (game.data.goldCounter >= BARRACKS_COST_GOLD) {
+                if (game.data.goldCounter_comp >= BARRACKS_COST_GOLD) {
                     this.buildx = x;
                     this.buildy = y;
                     this.buildType = string;
@@ -205,7 +205,7 @@ game.cBuilder = game.playerObject.extend({
 				}
             }
 			if (string === "mineComputerObject") {
-                if (game.data.goldCounter >= MINE_COST_GOLD) {
+                if (game.data.goldCounter_comp >= MINE_COST_GOLD) {
                     this.buildx = x;
                     this.buildy = y;
                     this.buildType = string;
