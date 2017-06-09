@@ -54,7 +54,7 @@ game.PlayScreen = me.ScreenObject.extend({
 
     },
     keyPressed: function (action /*, keyCode, edge */) {
-
+        me.game.world.getChildByName("menuPanel")[0].remove();
         // navigate the map :)
         if (action === "left") {
             me.game.viewport.move(-(me.levelDirector.getCurrentLevel().tilewidth / 2), 0);
