@@ -93,9 +93,9 @@ game.HUD.UIPanel = me.Container.extend({
 
     barracksPanel : function (barracks) {
         this.remove();
-        var soldier = "-"+ SOLDIER_COST_GOLD + "G/-" + SOLDIER_COST_FOOD +"F";
-        var knight = "-"+ KNIGHT_COST_GOLD + "G/-" + KNIGHT_COST_FOOD +"F";
-        var cat = "-"+ CATAPULT_COST_GOLD + "G/-" + CATAPULT_COST_FOOD +"F";
+		var soldier = SOLDIER_COST_GOLD + "G / " + SOLDIER_COST_FOOD +"F";
+        var knight = KNIGHT_COST_GOLD + "G / " + KNIGHT_COST_FOOD +"F";
+        var cat = CATAPULT_COST_GOLD + "G / " + CATAPULT_COST_FOOD +"F";
         this.addChild(new game.UI.soldierButton(12,15, barracks));
         this.addChild(new game.UI.hudText(12, 65, this.width, this.height, soldier));
         this.addChild(new game.UI.knightButton(70,15, barracks));
@@ -118,9 +118,9 @@ game.HUD.UIPanel = me.Container.extend({
 
     buildPanel : function (builder) {
         this.remove();
-        var barracks = "-"+ BARRACKS_COST_GOLD + "G/-0F";
-        var farm = "-"+ FARM_COST_GOLD + "G/-0F";
-        var mine = "-"+ MINE_COST_GOLD + "G/-0F";
+        var barracks = BARRACKS_COST_GOLD + "G / 0F";
+        var farm = FARM_COST_GOLD + "G / 0F";
+        var mine = MINE_COST_GOLD + "G / 0F";
 
         this.addChild(new game.UI.barracksButton(12,15, builder));
         this.addChild(new game.UI.hudText(12, 65, this.width, this.height, barracks));
@@ -144,7 +144,7 @@ game.HUD.UIPanel = me.Container.extend({
 
     cityPanel : function (city) {
         this.remove();
-        var builder = "-"+ BUILDER_COST_GOLD + "G/-" + BUILDER_COST_FOOD +"F";
+        var builder = BUILDER_COST_GOLD + "G / " + BUILDER_COST_FOOD +"F";
         this.addChild(new game.UI.builderButton(12, 15, city));
         this.addChild(new game.UI.hudText(12, 65, this.width, this.height, builder));
         this.addChild(new game.UI.cancelButton(12,80));
