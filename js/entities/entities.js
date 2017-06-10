@@ -193,12 +193,15 @@ game.playerObject = me.Entity.extend({
     //
     fightHit : function (sprite, mult) {
         //console.log(sprite);
-        if (sprite.type === "structure") {
-            sprite.renderable.setCurrentAnimation("attacked", "idle");
-        }
-        var hit = Math.round((Math.random() * 6) + 1);
-        hit = hit * mult;
-        sprite.hp -= hit;
+		if(sprite !== undefined)
+		{
+			if (sprite.type === "structure") {
+				sprite.renderable.setCurrentAnimation("attacked", "idle");
+			}
+			var hit = Math.round((Math.random() * 6) + 1);
+			hit = hit * mult;
+			sprite.hp -= hit;
+		}
     },
 
 
