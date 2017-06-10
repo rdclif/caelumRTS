@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7821a996-d1bc-4730-8af4-f1b6f7a59dfc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/cancelButton.js" afterPath="$PROJECT_DIR$/js/entities/cancelButton.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/entities.js" afterPath="$PROJECT_DIR$/js/entities/entities.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entities/projectile.js" afterPath="$PROJECT_DIR$/js/entities/projectile.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,6 +20,26 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="entities.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="209" column="17" lean-forward="true" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="projectile.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/entities/projectile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="564">
+              <caret line="41" column="42" lean-forward="true" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="mine.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/entities/mine.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -27,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="cancelButton.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/entities/cancelButton.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="30" column="88" lean-forward="false" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
+            <state relative-caret-position="506">
+              <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -124,13 +147,10 @@
         <option value="$PROJECT_DIR$/js/entities/cCity.js" />
         <option value="$PROJECT_DIR$/js/entities/city.js" />
         <option value="$PROJECT_DIR$/js/entities/attackPointer.js" />
-        <option value="$PROJECT_DIR$/js/entities/projectile.js" />
         <option value="$PROJECT_DIR$/js/entities/HUD.js" />
         <option value="$PROJECT_DIR$/js/entities/alertBox.js" />
         <option value="$PROJECT_DIR$/js/screens/play.js" />
         <option value="$PROJECT_DIR$/js/entities/barracksButton.js" />
-        <option value="$PROJECT_DIR$/js/entities/cancelButton.js" />
-        <option value="$PROJECT_DIR$/js/entities/entities.js" />
         <option value="$PROJECT_DIR$/js/entities/builder.js" />
         <option value="$PROJECT_DIR$/js/entities/knight.js" />
         <option value="$PROJECT_DIR$/js/entities/cBuilder.js" />
@@ -140,6 +160,9 @@
         <option value="$PROJECT_DIR$/js/entities/cKnight.js" />
         <option value="$PROJECT_DIR$/js/entities/cCatapult.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/entities/cancelButton.js" />
+        <option value="$PROJECT_DIR$/js/entities/entities.js" />
+        <option value="$PROJECT_DIR$/js/entities/projectile.js" />
       </list>
     </option>
   </component>
@@ -494,15 +517,15 @@
       <workItem from="1496942798375" duration="26183000" />
       <workItem from="1497022021829" duration="18000" />
       <workItem from="1497022059158" duration="5177000" />
-      <workItem from="1497027302573" duration="17360000" />
+      <workItem from="1497027302573" duration="18160000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="379504000" />
+    <option name="totallyTimeSpent" value="380304000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="1680" height="976" extended-state="1" />
+    <frame x="1" y="23" width="1680" height="976" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21097046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -741,14 +764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/projectile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/entities/barracks.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -801,14 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2130">
           <caret line="142" column="30" lean-forward="true" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/cancelButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="91" column="17" lean-forward="false" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -901,10 +908,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="168" column="9" lean-forward="false" selection-start-line="168" selection-start-column="9" selection-end-line="168" selection-end-column="9" />
+        <state relative-caret-position="223">
+          <caret line="30" column="88" lean-forward="false" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/cancelButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -917,10 +932,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/js/entities/entities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="30" column="88" lean-forward="false" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
+        <state relative-caret-position="381">
+          <caret line="209" column="17" lean-forward="true" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/entities/projectile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="41" column="42" lean-forward="true" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
           <folding />
         </state>
       </provider>

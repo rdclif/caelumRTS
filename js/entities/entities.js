@@ -205,7 +205,9 @@ game.playerObject = me.Entity.extend({
 		if(sprite !== undefined)
 		{
 			if (sprite.type === "structure") {
-				sprite.renderable.setCurrentAnimation("attacked", "idle");
+			    if (sprite !== undefined) {
+                    sprite.renderable.setCurrentAnimation("attacked", "idle");
+                }
 			}
 			var hit = Math.round((Math.random() * 6) + 1);
 			hit = hit * mult;

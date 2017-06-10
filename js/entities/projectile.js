@@ -34,7 +34,9 @@ game.Rock = me.Entity.extend({
             this.moveObject(distx, disty);
         } else {
             if (this.attackObject.type === "structure") {
-                this.attackObject.renderable.setCurrentAnimation("attacked", "idle");
+                if (this.attackObject !== undefined) {
+                    this.attackObject.renderable.setCurrentAnimation("attacked", "idle");
+                }
             }
             var hit = Math.round((Math.random() * 6) + 1);
             hit = hit * CATAPULT_STRENGTH;
