@@ -160,6 +160,15 @@ game.playerObject = me.Entity.extend({
         }
     },
 
+    outOfPlay : function () {
+        var level  = me.levelDirector.getCurrentLevel();
+        if (this.pos.y < 0 || this.pos.x < 0) {
+            me.game.world.removeChild(this);
+        } else if (this.pos.y > level.height || this.pos.x > level.width) {
+            me.game.world.removeChild(this);
+        }
+    },
+
     //only call on movable objects - called from cancel button
     stopWalkOrFight :function () {
         if (this.name === "Builder") {

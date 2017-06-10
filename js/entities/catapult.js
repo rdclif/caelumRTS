@@ -163,6 +163,8 @@ game.Catapult = game.playerObject.extend({
             me.game.world.removeChild(this);
         }
 
+        this.outOfPlay();
+
 
         this.body.update(dt);
         // handle collisions against other shapes

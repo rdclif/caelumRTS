@@ -148,7 +148,9 @@ game.cKnight = game.playerObject.extend({
             this.walk = true
         }
 
-        this.attackSpriteOutRange();																							 
+        this.attackSpriteOutRange();
+
+        this.outOfPlay();
         //--
 
         this.body.update(dt);

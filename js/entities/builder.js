@@ -108,6 +108,8 @@ game.Builder = game.playerObject.extend({
             }
         }
 
+        this.outOfPlay();
+
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 

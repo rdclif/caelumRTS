@@ -150,6 +150,8 @@ game.Knight = game.playerObject.extend({
 
         this.attackSpriteOutRange();
 
+        this.outOfPlay();
+
         //--
 
         this.body.update(dt);
