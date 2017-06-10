@@ -43,6 +43,32 @@ game.UI.cancelButton = me.GUI_Object.extend({
         // account for the different sprite size
         this.pos.y += this.height - this.clicked_region.height ;
         this.height = this.clicked_region.height;
+
+        var hud = me.game.world.getChildByName("UIPanel")[0];
+        hud.remove();
+        var hp = me.game.world.getChildByName("hpBar")[0];
+        if (hp) {
+            me.game.world.removeChild(hp);
+        }
+        removeFromWorld("buildmineIcon");
+        removeFromWorld("moveIcon");
+        removeFromWorld("buildFarmIcon");
+        removeFromWorld("buildBarracksIcon");
+
+
+        //Function in utils.js
+        removeFromWorld("selectBox");
+
+        removeFromWorld("attackIcon");
+
+        if (this.player.name !== undefined) {
+            if (this.player.walk || this.player.attack) {
+                this.player.stopWalkOrFight();
+            }
+        }
+
+        me.game.repaint();
+
         // don't propagate the event
         return false;
     },
@@ -56,30 +82,6 @@ game.UI.cancelButton = me.GUI_Object.extend({
         this.pos.y -= this.unclicked_region.height - this.height;
         this.height = this.unclicked_region.height;
 
-        var hud = me.game.world.getChildByName("UIPanel")[0];
-        hud.remove();
-        var hp = me.game.world.getChildByName("hpBar")[0];
-        if (hp) {
-            me.game.world.removeChild(hp);
-        }
-	    removeFromWorld("buildmineIcon");
-        removeFromWorld("moveIcon");
-        removeFromWorld("buildFarmIcon");
-        removeFromWorld("buildBarracksIcon");
-
-
-		//Function in utils.js
-		removeFromWorld("selectBox");
-
-		removeFromWorld("attackIcon");
-
-		if (this.player.name !== undefined) {
-		    if (this.player.walk || this.player.attack) {
-                this.player.stopWalkOrFight();
-            }
-        }
-
-        me.game.repaint();
         return false;
     },
 

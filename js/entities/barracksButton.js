@@ -38,7 +38,7 @@ game.UI.barracksButton = me.GUI_Object.extend({
 
         // only the parent container is a floating object
         this.floating = false;
-        
+
     },
 
     /**
