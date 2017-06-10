@@ -82,5 +82,17 @@ game.UI.moveButton = me.GUI_Object.extend({
             this.pos.x + this.width / 2,
             this.pos.y + this.height / 2
         );
+    },
+	
+	update: function () {
+
+		if(me.input.isKeyPressed('move'))
+		{
+			removeFromWorld("attackIcon");
+			me.game.world.addChild(new game.moveIcon(100, 100));
+		}
+		
+        return this.selected || this.hover;
     }
+	
 });

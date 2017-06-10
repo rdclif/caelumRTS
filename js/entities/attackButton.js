@@ -90,6 +90,13 @@ game.UI.attackButton = me.GUI_Object.extend({
         );
     },
     update: function () {
+
+		if(me.input.isKeyPressed('attack'))
+		{
+			removeFromWorld("moveIcon");
+			me.game.world.addChild(new game.attackIcon(100, 100));
+		}
+		
         return this.selected || this.hover;
     }
 });

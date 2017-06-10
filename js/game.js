@@ -61,6 +61,8 @@ var game = {
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.UP,    "up");
         me.input.bindKey(me.input.KEY.DOWN,  "down");
+		me.input.bindKey(me.input.KEY.A,  "attack");
+		me.input.bindKey(me.input.KEY.M,  "move");
         me.input.bindKey(me.input.KEY.T,  "test");
 
         //set gravity to 0
